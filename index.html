@@ -6,14 +6,34 @@
   <title>Asia & Maldives Family Adventure 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    .hero-section {
+      background-image: url('https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?w=1600&auto=format');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
     .destination-card {
-      height: 200px;
+      height: 300px;
       background-size: cover;
       background-position: center;
       position: relative;
       border-radius: 0.5rem;
       overflow: hidden;
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .destination-card:hover {
+      transform: scale(1.02);
     }
     .destination-card::after {
       content: '';
@@ -21,8 +41,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 60%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      height: 70%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     }
     .destination-info {
       position: absolute;
@@ -31,184 +51,475 @@
       padding: 1.5rem;
       color: white;
       z-index: 10;
+      width: 100%;
+    }
+    .calendar-day {
+      border-left: 3px solid #3b82f6;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .journey-line {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background-color: #3b82f6;
+      z-index: 0;
+    }
+    .journey-point {
+      width: 16px;
+      height: 16px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #3b82f6;
+      z-index: 10;
     }
   </style>
 </head>
 <body class="bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4 py-8">
-    <header class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Asia & Maldives Family Adventure</h1>
-      <p class="text-lg text-gray-600 mt-2">July 30 - August 21, 2025</p>
-    </header>
-
-    <!-- Header Section -->
-    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-white shadow-lg mb-8">
-      <h2 class="text-2xl font-bold mb-2">Asia & Maldives Family Adventure</h2>
-      <p class="text-lg">July 30 - August 21, 2025</p>
-      <div class="mt-3 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-        <p>A 23-day journey through Asia's most captivating destinations</p>
+  <!-- Navigation Menu -->
+  <nav class="sticky-nav shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="text-blue-600 font-bold text-xl">Family Adventure 2025</div>
+        <div class="flex space-x-6">
+          <a href="#inspiration" class="text-gray-700 hover:text-blue-600">Inspiration</a>
+          <a href="#destinations" class="text-gray-700 hover:text-blue-600">Destinations</a>
+          <a href="#itinerary" class="text-gray-700 hover:text-blue-600">Itinerary</a>
+          <a href="#journey" class="text-gray-700 hover:text-blue-600">Journey Map</a>
+        </div>
       </div>
     </div>
+  </nav>
 
-    <!-- Highlights Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <div class="bg-blue-50 p-4 rounded-lg shadow text-center">
-        <div class="flex justify-center mb-2">
-          <div class="bg-blue-100 p-2 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-          </div>
+  <!-- Hero Section with Inspirational Content -->
+  <section id="inspiration" class="hero-section flex items-center justify-center">
+    <div class="hero-overlay"></div>
+    <div class="hero-content max-w-4xl text-center text-white px-4">
+      <h1 class="text-5xl font-bold mb-4">Our Epic Asian Adventure</h1>
+      <p class="text-xl mb-6">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
+      <p class="text-lg mb-8">A journey of discovery, connection, and wonder awaits our family in Summer 2025.</p>
+      <div class="flex justify-center gap-4">
+        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
+          <p class="font-bold">6 Travelers</p>
         </div>
-        <h4 class="font-medium">6 Destinations</h4>
-        <p class="text-sm text-gray-600">Seoul, Tokyo, Kyoto, Singapore, Kuala Lumpur, Maldives</p>
-      </div>
-      
-      <div class="bg-purple-50 p-4 rounded-lg shadow text-center">
-        <div class="flex justify-center mb-2">
-          <div class="bg-purple-100 p-2 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-purple-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M1 21h22"/><path d="M6 21v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M12 7v.01"/><path d="M12 10v.01"/><path d="M12 13v.01"/><path d="M12 16v.01"/></svg>
-          </div>
+        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
+          <p class="font-bold">6 Destinations</p>
         </div>
-        <h4 class="font-medium">Luxury Accommodations</h4>
-        <p class="text-sm text-gray-600">From city suites to overwater villas</p>
-      </div>
-      
-      <div class="bg-green-50 p-4 rounded-lg shadow text-center">
-        <div class="flex justify-center mb-2">
-          <div class="bg-green-100 p-2 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-green-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-          </div>
+        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
+          <p class="font-bold">23 Days</p>
         </div>
-        <h4 class="font-medium">Unforgettable Experiences</h4>
-        <p class="text-sm text-gray-600">Cultural immersion to paradise beaches</p>
       </div>
     </div>
+  </section>
 
+  <div class="max-w-6xl mx-auto px-4 py-12">
     <!-- Destinations Section -->
-    <h2 class="text-2xl font-bold mb-4 text-center">Our Destinations</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <!-- Seoul -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1538485399081-7c8ed8f9fc67?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Seoul</h3>
-          <p class="text-sm">July 31 - August 4</p>
-        </div>
-      </div>
+    <section id="destinations" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-center">Our Destinations</h2>
+      <p class="text-center text-gray-600 mb-8">A carefully crafted journey through Asia's most captivating places</p>
       
-      <!-- Tokyo -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Tokyo</h3>
-          <p class="text-sm">August 4 - 8</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Seoul -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1534274867514-d5b47ef89ed7?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Seoul, South Korea</h3>
+            <p class="text-sm mb-2">July 31 - August 4</p>
+            <p class="text-sm">Where ancient palaces stand beside futuristic skyscrapers. Experience vibrant night markets, K-culture, and the DMZ.</p>
+          </div>
+        </div>
+        
+        <!-- Tokyo -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Tokyo, Japan</h3>
+            <p class="text-sm mb-2">August 4 - 8</p>
+            <p class="text-sm">Immerse yourself in Tokyo's electric energy, from peaceful shrines to the world's busiest crossing and digital art museums.</p>
+          </div>
+        </div>
+        
+        <!-- Kyoto -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Kyoto, Japan</h3>
+            <p class="text-sm mb-2">August 8 - 10</p>
+            <p class="text-sm">Step back in time with ancient temples, traditional tea houses, bamboo forests, and the possibility of geisha sightings.</p>
+          </div>
+        </div>
+        
+        <!-- Singapore -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Singapore</h3>
+            <p class="text-sm mb-2">August 11 - 14</p>
+            <p class="text-sm">Experience the perfect blend of cultures in this garden city, with futuristic attractions and luxury resort amenities.</p>
+          </div>
+        </div>
+        
+        <!-- Kuala Lumpur -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Kuala Lumpur, Malaysia</h3>
+            <p class="text-sm mb-2">August 14 - 16</p>
+            <p class="text-sm">Marvel at the iconic Petronas Towers, explore cultural sites like Batu Caves, and savor Malaysian street food.</p>
+          </div>
+        </div>
+        
+        <!-- Maldives -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&auto=format')">
+          <div class="destination-info">
+            <h3 class="text-xl font-bold">Maldives</h3>
+            <p class="text-sm mb-2">August 16 - 20</p>
+            <p class="text-sm">Unwind in paradise with overwater villas, crystal-clear waters for snorkeling, and pristine white beaches.</p>
+          </div>
         </div>
       </div>
-      
-      <!-- Kyoto -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Kyoto</h3>
-          <p class="text-sm">August 8 - 10</p>
-        </div>
-      </div>
-      
-      <!-- Singapore -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Singapore</h3>
-          <p class="text-sm">August 11 - 14</p>
-        </div>
-      </div>
-      
-      <!-- Kuala Lumpur -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Kuala Lumpur</h3>
-          <p class="text-sm">August 14 - 16</p>
-        </div>
-      </div>
-      
-      <!-- Maldives -->
-      <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&auto=format')">
-        <div class="destination-info">
-          <h3 class="text-xl font-bold">Maldives</h3>
-          <p class="text-sm">August 16 - 20</p>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Itinerary Section -->
-    <h2 class="text-2xl font-bold mb-4 text-center">Trip Itinerary</h2>
-    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-      <div class="space-y-4">
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">July 30-31, 2025</h3>
-            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Departure</span>
+    <!-- Itinerary Calendar Section -->
+    <section id="itinerary" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-center">Day-by-Day Itinerary</h2>
+      <p class="text-center text-gray-600 mb-8">Our carefully planned adventure, with each day offering new experiences</p>
+
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Week 1 -->
+        <div class="border-b">
+          <h3 class="px-6 py-3 bg-blue-50 font-bold">Week 1: Barcelona to Seoul to Tokyo</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            <!-- July 30 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">July 30 (Wed)</p>
+              <p class="text-xs text-gray-500">Day 1</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Barcelona Departure</p>
+                <p class="text-xs text-gray-600">• 19:00: Transport to Barcelona Airport</p>
+                <p class="text-xs text-gray-600">• 21:00: Flight TW408 to Seoul (overnight)</p>
+              </div>
+            </div>
+            
+            <!-- July 31 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">July 31 (Thu)</p>
+              <p class="text-xs text-gray-500">Day 2</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Seoul Arrival</p>
+                <p class="text-xs text-gray-600">• 16:25: Arrive at Incheon Airport</p>
+                <p class="text-xs text-gray-600">• 18:00: Check-in at UH Suite The Coex</p>
+                <p class="text-xs text-gray-600">• 19:30: Welcome dinner</p>
+              </div>
+            </div>
+            
+            <!-- August 1 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 1 (Fri)</p>
+              <p class="text-xs text-gray-500">Day 3</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Seoul Cultural Day</p>
+                <p class="text-xs text-gray-600">• Gyeongbokgung Palace & Guard Ceremony</p>
+                <p class="text-xs text-gray-600">• Bukchon Hanok Village exploration</p>
+                <p class="text-xs text-gray-600">• Gwangjang Market for street food</p>
+              </div>
+            </div>
+            
+            <!-- August 2 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 2 (Sat)</p>
+              <p class="text-xs text-gray-500">Day 4</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">DMZ Tour</p>
+                <p class="text-xs text-gray-600">• Full-day DMZ and JSA tour</p>
+                <p class="text-xs text-gray-600">• Evening at COEX Mall</p>
+              </div>
+            </div>
+            
+            <!-- August 3 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 3 (Sun)</p>
+              <p class="text-xs text-gray-500">Day 5</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Seoul Split Activities</p>
+                <p class="text-xs text-gray-600">• K-Beauty Experiences (girls)</p>
+                <p class="text-xs text-gray-600">• Tech Experiences (boys)</p>
+                <p class="text-xs text-gray-600">• Lotte World or N Seoul Tower</p>
+              </div>
+            </div>
+            
+            <!-- August 4 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 4 (Mon)</p>
+              <p class="text-xs text-gray-500">Day 6</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Seoul to Tokyo</p>
+                <p class="text-xs text-gray-600">• 10:00: Check-out from hotel</p>
+                <p class="text-xs text-gray-600">• 13:35: Flight to Tokyo Narita</p>
+                <p class="text-xs text-gray-600">• 18:00: Check-in at MIMARU SUITES</p>
+              </div>
+            </div>
+            
+            <!-- August 5 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 5 (Tue)</p>
+              <p class="text-xs text-gray-500">Day 7</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tokyo Exploration</p>
+                <p class="text-xs text-gray-600">• Meiji Shrine & Yoyogi Park</p>
+                <p class="text-xs text-gray-600">• Harajuku & Shibuya Crossing</p>
+                <p class="text-xs text-gray-600">• Joypolis Gaming Center</p>
+              </div>
+            </div>
           </div>
-          <p class="mt-2 text-sm">Barcelona ✈️ Seoul</p>
         </div>
         
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">July 31 - August 4, 2025</h3>
-            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Seoul</span>
+        <!-- Week 2 -->
+        <div class="border-b">
+          <h3 class="px-6 py-3 bg-blue-50 font-bold">Week 2: Tokyo, Kyoto, Singapore</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            <!-- August 6 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 6 (Wed)</p>
+              <p class="text-xs text-gray-500">Day 8</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tokyo Cultural Day</p>
+                <p class="text-xs text-gray-600">• Samurai Museum or Anime Workshop</p>
+                <p class="text-xs text-gray-600">• Sensō-ji Temple & Tokyo Skytree</p>
+                <p class="text-xs text-gray-600">• Akihabara Electric Town</p>
+              </div>
+            </div>
+            
+            <!-- August 7 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 7 (Thu)</p>
+              <p class="text-xs text-gray-500">Day 9</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tokyo Culinary & Art</p>
+                <p class="text-xs text-gray-600">• Tsukiji Outer Market food tour</p>
+                <p class="text-xs text-gray-600">• teamLab digital art museum</p>
+                <p class="text-xs text-gray-600">• Traditional tea ceremony</p>
+              </div>
+            </div>
+            
+            <!-- August 8 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 8 (Fri)</p>
+              <p class="text-xs text-gray-500">Day 10</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tokyo to Kyoto</p>
+                <p class="text-xs text-gray-600">• 11:00: Shinkansen bullet train to Kyoto</p>
+                <p class="text-xs text-gray-600">• 16:00: Fushimi Inari Shrine</p>
+                <p class="text-xs text-gray-600">• Dinner in Pontocho Alley</p>
+              </div>
+            </div>
+            
+            <!-- August 9 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 9 (Sat)</p>
+              <p class="text-xs text-gray-500">Day 11</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Kyoto Exploration</p>
+                <p class="text-xs text-gray-600">• Kinkaku-ji (Golden Pavilion)</p>
+                <p class="text-xs text-gray-600">• Arashiyama Bamboo Grove</p>
+                <p class="text-xs text-gray-600">• Kimono experience & Gion District</p>
+              </div>
+            </div>
+            
+            <!-- August 10 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 10 (Sun)</p>
+              <p class="text-xs text-gray-500">Day 12</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Kyoto to Tokyo</p>
+                <p class="text-xs text-gray-600">• Kyoto Imperial Palace & Nijo Castle</p>
+                <p class="text-xs text-gray-600">• 18:00: Shinkansen to Tokyo</p>
+                <p class="text-xs text-gray-600">• Check-in at Narita Airport hotel</p>
+              </div>
+            </div>
+            
+            <!-- August 11 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 11 (Mon)</p>
+              <p class="text-xs text-gray-500">Day 13</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Tokyo to Singapore</p>
+                <p class="text-xs text-gray-600">• 11:10: Flight to Singapore</p>
+                <p class="text-xs text-gray-600">• 19:00: Check-in at Village Hotel Sentosa</p>
+              </div>
+            </div>
+            
+            <!-- August 12 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 12 (Tue)</p>
+              <p class="text-xs text-gray-500">Day 14</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Sentosa Island Day</p>
+                <p class="text-xs text-gray-600">• Hotel pool experience</p>
+                <p class="text-xs text-gray-600">• Universal Studios or S.E.A. Aquarium</p>
+                <p class="text-xs text-gray-600">• Dinner at Quayside Isle</p>
+              </div>
+            </div>
           </div>
-          <p class="mt-2 text-sm">Cultural exploration, DMZ tour, Korean cuisine</p>
         </div>
         
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 4 - 8, 2025</h3>
-            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Tokyo</span>
+        <!-- Week 3 -->
+        <div>
+          <h3 class="px-6 py-3 bg-blue-50 font-bold">Week 3: Singapore, Kuala Lumpur, Maldives, Return</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            <!-- August 13 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 13 (Wed)</p>
+              <p class="text-xs text-gray-500">Day 15</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Singapore Exploration</p>
+                <p class="text-xs text-gray-600">• Gardens by the Bay</p>
+                <p class="text-xs text-gray-600">• Cultural Heritage Tour</p>
+                <p class="text-xs text-gray-600">• Marina Bay Sands SkyPark</p>
+              </div>
+            </div>
+            
+            <!-- August 14 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 14 (Thu)</p>
+              <p class="text-xs text-gray-500">Day 16</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Singapore to Kuala Lumpur</p>
+                <p class="text-xs text-gray-600">• 12:40: Flight to Kuala Lumpur</p>
+                <p class="text-xs text-gray-600">• 15:30: Check-in at The Ritz-Carlton</p>
+                <p class="text-xs text-gray-600">• Petronas Twin Towers at sunset</p>
+              </div>
+            </div>
+            
+            <!-- August 15 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 15 (Fri)</p>
+              <p class="text-xs text-gray-500">Day 17</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Kuala Lumpur Exploration</p>
+                <p class="text-xs text-gray-600">• Batu Caves with 272 colorful steps</p>
+                <p class="text-xs text-gray-600">• Afternoon activities: shopping or eco park</p>
+                <p class="text-xs text-gray-600">• Jalan Alor Night Food Street</p>
+              </div>
+            </div>
+            
+            <!-- August 16 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 16 (Sat)</p>
+              <p class="text-xs text-gray-500">Day 18</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Kuala Lumpur to Maldives</p>
+                <p class="text-xs text-gray-600">• 10:10: Flight to Malé, Maldives</p>
+                <p class="text-xs text-gray-600">• Seaplane transfer to resort</p>
+                <p class="text-xs text-gray-600">• 14:00: Check-in at Radisson Blu Resort</p>
+              </div>
+            </div>
+            
+            <!-- August 17-19 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 17-19</p>
+              <p class="text-xs text-gray-500">Days 19-21</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Maldives Paradise</p>
+                <p class="text-xs text-gray-600">• Overwater villa experience</p>
+                <p class="text-xs text-gray-600">• Snorkeling & marine life</p>
+                <p class="text-xs text-gray-600">• Water sports & relaxation</p>
+                <p class="text-xs text-gray-600">• Spa treatments</p>
+              </div>
+            </div>
+            
+            <!-- August 20-21 -->
+            <div class="calendar-day p-3 bg-gray-50 rounded">
+              <p class="font-bold">August 20-21</p>
+              <p class="text-xs text-gray-500">Days 22-23</p>
+              <div class="mt-2">
+                <p class="text-sm font-medium">Return Journey</p>
+                <p class="text-xs text-gray-600">• 13:15: Flight from Malé to Singapore</p>
+                <p class="text-xs text-gray-600">• 23:35: Overnight flight to Barcelona</p>
+                <p class="text-xs text-gray-600">• 06:55: Arrive in Barcelona</p>
+              </div>
+            </div>
           </div>
-          <p class="mt-2 text-sm">Ancient temples, modern technology, digital art</p>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 8 - 10, 2025</h3>
-            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Kyoto</span>
-          </div>
-          <p class="mt-2 text-sm">Traditional Japan, temples, bamboo forest</p>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 11 - 14, 2025</h3>
-            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Singapore</span>
-          </div>
-          <p class="mt-2 text-sm">City exploration, Sentosa Island resort</p>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 14 - 16, 2025</h3>
-            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Kuala Lumpur</span>
-          </div>
-          <p class="mt-2 text-sm">Petronas Towers, Batu Caves, night markets</p>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 16 - 20, 2025</h3>
-            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded">Maldives</span>
-          </div>
-          <p class="mt-2 text-sm">Paradise beaches, overwater villa, snorkeling</p>
-        </div>
-        
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between items-center">
-            <h3 class="font-medium">August 20-21, 2025</h3>
-            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">Return</span>
-          </div>
-          <p class="mt-2 text-sm">Maldives ✈️ Singapore ✈️ Barcelona</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <footer class="mt-12 text-center text-gray-500 text-sm">
-      <p>Created with ❤️ for our family adventure | 6 travelers | Summer 2025</p>
-    </footer>
+    <!-- Journey Map Section -->
+    <section id="journey" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-center">Our Journey Map</h2>
+      <p class="text-center text-gray-600 mb-8">From Barcelona and back, traveling across Asia and the Indian Ocean</p>
+      
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="relative h-64 flex items-center mb-6">
+          <div class="journey-line"></div>
+          
+          <!-- Barcelona -->
+          <div class="absolute left-0 flex flex-col items-center" style="top: 30%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Barcelona</p>
+            <p class="text-xs text-gray-500">Start/End</p>
+          </div>
+          
+          <!-- Seoul -->
+          <div class="absolute left-20%" flex flex-col items-center" style="top: 20%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Seoul</p>
+            <p class="text-xs text-gray-500">4 nights</p>
+          </div>
+          
+          <!-- Tokyo -->
+          <div class="absolute left-33%" flex flex-col items-center" style="top: 10%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Tokyo</p>
+            <p class="text-xs text-gray-500">4 nights</p>
+          </div>
+          
+          <!-- Kyoto -->
+          <div class="absolute left-45%" flex flex-col items-center" style="top: 20%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Kyoto</p>
+            <p class="text-xs text-gray-500">2 nights</p>
+          </div>
+          
+          <!-- Singapore -->
+          <div class="absolute left-58%" flex flex-col items-center" style="top: 50%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Singapore</p>
+            <p class="text-xs text-gray-500">3 nights</p>
+          </div>
+          
+          <!-- Kuala Lumpur -->
+          <div class="absolute left-70%" flex flex-col items-center" style="top: 70%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Kuala Lumpur</p>
+            <p class="text-xs text-gray-500">2 nights</p>
+          </div>
+          
+          <!-- Maldives -->
+          <div class="absolute left-85%" flex flex-col items-center" style="top: 90%">
+            <div class="journey-point"></div>
+            <p class="text-sm font-medium mt-2">Maldives</p>
+            <p class="text-xs text-gray-500">4 nights</p>
+          </div>
+        </div>
+        
+        <div class="text-center text-sm text-gray-600">
+          <p>Total distance: Approximately 26,000 kilometers</p>
+          <p>7 flights, 1 bullet train journey, and countless memories</p>
+        </div>
+      </div>
+    </section>
   </div>
+
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h3 class="text-xl font-bold mb-3">Asia & Maldives Family Adventure</h3>
+      <p class="mb-4">July 30 - August 21, 2025</p>
+      <p class="text-blue-200">Created with ❤️ for our family of 6</p>
+    </div>
+  </footer>
 </body>
 </html>
