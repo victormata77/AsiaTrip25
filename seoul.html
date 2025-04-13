@@ -347,40 +347,78 @@
           </div>
         </div>
 
-        <!-- World Clock Widget -->
+        <!-- HTML for the World Clock Widget -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
           <div class="bg-gray-50 p-4">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <h3 class="font-bold text-lg">World Clock</h3>
+              <h3 class="font-bold text-lg">Trip World Clock</h3>
             </div>
           </div>
           <div class="p-5">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <!-- Barcelona Time -->
-              <div class="bg-gray-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-                <div class="text-sm text-gray-600">Barcelona</div>
-                <div class="text-xs text-gray-500">(Home)</div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <!-- UTC+2 Timezone Group -->
+              <div class="space-y-2">
+                <div class="bg-indigo-100 p-2 rounded-lg text-center">
+                  <div class="text-sm font-medium text-indigo-800">UTC+2</div>
+                </div>
+                <div class="bg-red-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                  <div class="text-sm text-gray-600">Barcelona</div>
+                  <div class="text-xs text-gray-500">Spain</div>
+                </div>
               </div>
-              
-              <!-- Seoul Time -->
-              <div class="bg-red-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="seoul-time">--:--</div>
-                <div class="text-sm text-gray-600">Seoul</div>
-                <div class="text-xs text-gray-500">(Current)</div>
+              <!-- UTC+5 Timezone Group -->
+              <div class="space-y-2">
+                <div class="bg-indigo-100 p-2 rounded-lg text-center">
+                  <div class="text-sm font-medium text-indigo-800">UTC+5</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                  <div class="text-sm text-gray-600">Maldives</div>
+                  <div class="text-xs text-gray-500">Maldives</div>
+                </div>
               </div>
-              
-              <!-- Tokyo Time -->
-              <div class="bg-red-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="tokyo-time">--:--</div>
-                <div class="text-sm text-gray-600">Tokyo</div>
-                <div class="text-xs text-gray-500">(Next)</div>
+              <!-- UTC+8 Timezone Group -->
+              <div class="space-y-2">
+                <div class="bg-indigo-100 p-2 rounded-lg text-center">
+                  <div class="text-sm font-medium text-indigo-800">UTC+8</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="singapore-time">--:--</div>
+                  <div class="text-sm text-gray-600">Singapore</div>
+                  <div class="text-xs text-gray-500">Singapore</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="kuala-lumpur-time">--:--</div>
+                  <div class="text-sm text-gray-600">Kuala Lumpur</div>
+                  <div class="text-xs text-gray-500">Malaysia</div>
+                </div>
+              </div>
+              <!-- UTC+9 Timezone Group -->
+              <div class="space-y-2">
+                <div class="bg-indigo-100 p-2 rounded-lg text-center">
+                  <div class="text-sm font-medium text-indigo-800">UTC+9</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="seoul-time">--:--</div>
+                  <div class="text-sm text-gray-600">Seoul</div>
+                  <div class="text-xs text-gray-500">South Korea</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="tokyo-time">--:--</div>
+                  <div class="text-sm text-gray-600">Tokyo</div>
+                  <div class="text-xs text-gray-500">Japan</div>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="kyoto-time">--:--</div>
+                  <div class="text-sm text-gray-600">Kyoto</div>
+                  <div class="text-xs text-gray-500">Japan</div>
+                </div>
               </div>
             </div>
-            
             <p class="mt-3 text-sm text-gray-600 text-center">Times are displayed in 24-hour format</p>
           </div>
         </div>
@@ -937,36 +975,65 @@
     }
   });
 
-  function updateWorldClocks() {
+function updateAllClocks() {
+  try {
     const now = new Date();
     
-    // Barcelona time (CEST, UTC+2)
-    const barcelonaTime = new Date(now.getTime());
-    barcelonaTime.setHours(now.getUTCHours() + 2);
+    // Pre-calculate minutes for all clocks since they're the same, just padded
+    const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+    
+    // Update each destination's clock
+    
+    // Calculate hours for barcelona-time (UTC+2)
+    const barcelona_time_hours = (now.getUTCHours() + 2) % 24;
     document.getElementById('barcelona-time').textContent = 
-      barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
-      barcelonaTime.getMinutes().toString().padStart(2, '0');
+      barcelona_time_hours.toString().padStart(2, '0') + ':' + minutes;
     
-    // Seoul time (KST, UTC+9)
-    const seoulTime = new Date(now.getTime());
-    seoulTime.setHours(now.getUTCHours() + 9);
+    // Calculate hours for seoul-time (UTC+9)
+    const seoul_time_hours = (now.getUTCHours() + 9) % 24;
     document.getElementById('seoul-time').textContent = 
-      seoulTime.getHours().toString().padStart(2, '0') + ':' + 
-      seoulTime.getMinutes().toString().padStart(2, '0');
+      seoul_time_hours.toString().padStart(2, '0') + ':' + minutes;
     
-    // Tokyo time (JST, UTC+9) - same as Seoul
-    const tokyoTime = new Date(now.getTime());
-    tokyoTime.setHours(now.getUTCHours() + 9);
+    // Calculate hours for tokyo-time (UTC+9)
+    const tokyo_time_hours = (now.getUTCHours() + 9) % 24;
     document.getElementById('tokyo-time').textContent = 
-      tokyoTime.getHours().toString().padStart(2, '0') + ':' + 
-      tokyoTime.getMinutes().toString().padStart(2, '0');
+      tokyo_time_hours.toString().padStart(2, '0') + ':' + minutes;
+    
+    // Calculate hours for kyoto-time (UTC+9)
+    const kyoto_time_hours = (now.getUTCHours() + 9) % 24;
+    document.getElementById('kyoto-time').textContent = 
+      kyoto_time_hours.toString().padStart(2, '0') + ':' + minutes;
+    
+    // Calculate hours for singapore-time (UTC+8)
+    const singapore_time_hours = (now.getUTCHours() + 8) % 24;
+    document.getElementById('singapore-time').textContent = 
+      singapore_time_hours.toString().padStart(2, '0') + ':' + minutes;
+    
+    // Calculate hours for kuala-lumpur-time (UTC+8)
+    const kuala_lumpur_time_hours = (now.getUTCHours() + 8) % 24;
+    document.getElementById('kuala-lumpur-time').textContent = 
+      kuala_lumpur_time_hours.toString().padStart(2, '0') + ':' + minutes;
+    
+    // Calculate hours for maldives-time (UTC+5)
+    const maldives_time_hours = (now.getUTCHours() + 5) % 24;
+    document.getElementById('maldives-time').textContent = 
+      maldives_time_hours.toString().padStart(2, '0') + ':' + minutes;
+  } catch (error) {
+    console.error("Clock update error:", error);
   }
-  
+}
+
+// Ensure DOM is loaded before trying to access elements
+document.addEventListener('DOMContentLoaded', function() {
   // Update clocks immediately
-  updateWorldClocks();
+  updateAllClocks();
   
   // Then update every minute
-  setInterval(updateWorldClocks, 60000);
+  setInterval(updateAllClocks, 60000);
+});
+
+
+  
 </script>
 </body>
 </html>
