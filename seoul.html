@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seoul, South Korea - Family Adventure 2025</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background-image: url('https://images.unsplash.com/photo-1534274867514-d5b47ef89ed7?w=1600&auto=format');
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .photo-card {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover {
+      transform: scale(1.03);
+    }
+    .info-card {
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation Menu -->
+  <nav class="sticky-nav shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="text-blue-600 font-bold text-xl">Family Adventure 2025</div>
+        <div class="flex space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-blue-600">← Back to Overview</a>
+          <a href="#essentials" class="text-gray-700 hover:text-blue-600">Essentials</a>
+          <a href="#activities" class="text-gray-700 hover:text-blue-600">Activities</a>
+          <a href="#culture" class="text-gray-700 hover:text-blue-600">Culture</a>
+          <a href="#photos" class="text-gray-700 hover:text-blue-600">Photos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section flex items-center justify-center">
+    <div class="hero-overlay"></div>
+    <div class="hero-content max-w-4xl text-center text-white px-4">
+      <h1 class="text-5xl font-bold mb-4">Seoul, South Korea</h1>
+      <p class="text-xl mb-2">July 31 - August 4, 2025</p>
+      <p class="text-lg">Where ancient traditions meet cutting-edge innovation</p>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Destination Summary -->
+    <section class="mb-12">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4">Welcome to Seoul</h2>
+        <p class="text-gray-700 mb-4">
+          Seoul is a captivating blend of ancient traditions and cutting-edge innovation. As South Korea's capital, this dynamic metropolis offers an unforgettable mix of historic palaces, bustling markets, tranquil temples, and futuristic architecture. During our four-night stay, we'll experience both the rich cultural heritage and the vibrant contemporary energy that makes Seoul one of Asia's most exciting destinations.
+        </p>
+        <div class="flex flex-wrap justify-between mt-6">
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-blue-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-blue-800 mb-2">Accommodation</h3>
+              <p class="text-sm">UH Suite The Coex (Gangnam-gu)</p>
+              <p class="text-sm text-gray-600">Modern suite accommodation in the trendy Gangnam district, connected to COEX Mall</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-blue-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-blue-800 mb-2">Highlights</h3>
+              <p class="text-sm">• Historic palaces & traditional villages</p>
+              <p class="text-sm">• DMZ tour & Korean War history</p>
+              <p class="text-sm">• K-beauty & cutting-edge technology</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-blue-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-blue-800 mb-2">Daily Schedule</h3>
+              <p class="text-sm">• Day 1: Arrival & settle in</p>
+              <p class="text-sm">• Day 2: Cultural immersion</p>
+              <p class="text-sm">• Day 3: DMZ & modern Seoul</p>
+              <p class="text-sm">• Day 4: Split activities & final day</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essential Information -->
+    <section id="essentials" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center">Essential Information</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Weather Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Weather in August</h3>
+          </div>
+          <ul class="text-gray-700 space-y-1">
+            <li>• Average high: 30-32°C (86-90°F)</li>
+            <li>• Average low: 22-25°C (71-77°F)</li>
+            <li>• Humidity: High (70-80%)</li>
+            <li>• Rainfall: Monsoon season, frequent showers</li>
+            <li>• Daylight: Sunrise ~5:30 AM, Sunset ~7:30 PM</li>
+          </ul>
+          <p class="mt-3 text-sm text-gray-600">Pack light, breathable clothing, rain gear, and a light jacket for air-conditioned spaces.</p>
+        </div>
+        
+        <!-- Currency Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Currency</h3>
+          </div>
+          <ul class="text-gray-700 space-y-1">
+            <li>• Korean Won (₩/KRW)</li>
+            <li>• €1 ≈ ₩1,450 (April 2025 rate)</li>
+            <li>• Credit cards widely accepted</li>
+            <li>• ATMs available throughout the city</li>
+            <li>• Foreign exchange at airport, hotels, banks</li>
+          </ul>
+          <div class="mt-3 bg-blue-50 p-2 rounded text-sm">
+            <p class="font-bold">Tipping</p>
+            <p>Not expected in South Korea. Service charge often included at upscale restaurants.</p>
+          </div>
+        </div>
+        
+        <!-- Transportation Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Getting Around</h3>
+          </div>
+          <ul class="text-gray-700 space-y-1">
+            <li>• T-Money Card: Essential for subway, bus, and some taxis</li>
+            <li>• Subway: Clean, efficient network connecting most attractions</li>
+            <li>• Buses: Extensive network with English displays</li>
+            <li>• Taxis: Affordable and plentiful</li>
+            <li>• Kakao T app: Convenient for booking taxis</li>
+          </ul>
+          <p class="mt-3 text-sm text-gray-600">Our hotel is near Samseong Station on Line 2 (green line), offering easy access to many popular destinations.</p>
+        </div>
+        
+        <!-- Food Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Must-Try Foods</h3>
+          </div>
+          <ul class="text-gray-700 space-y-1">
+            <li>• Bibimbap: Mixed rice bowl with vegetables, meat, and egg</li>
+            <li>• Bulgogi: Marinated grilled beef</li>
+            <li>• Korean BBQ: Grilled meat at your table</li>
+            <li>• Kimchi: Fermented cabbage (served with most meals)</li>
+            <li>• Tteokbokki: Spicy rice cakes</li>
+            <li>• Bingsu: Shaved ice dessert with toppings</li>
+          </ul>
+          <div class="mt-3 bg-yellow-50 p-2 rounded text-sm">
+            <p class="font-bold">Dining Etiquette</p>
+            <p>Wait for elders to start eating, use both hands when receiving food/drinks, don't stick chopsticks upright in rice.</p>
+          </div>
+        </div>
+        
+        <!-- Communication Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Language & Communication</h3>
+          </div>
+          <div class="text-gray-700">
+            <p class="mb-2"><span class="font-bold">Useful Korean Phrases:</span></p>
+            <table class="w-full text-sm">
+              <tr>
+                <td>Hello</td>
+                <td>안녕하세요 (Annyeong-haseyo)</td>
+              </tr>
+              <tr>
+                <td>Thank you</td>
+                <td>감사합니다 (Kamsahamnida)</td>
+              </tr>
+              <tr>
+                <td>Yes/No</td>
+                <td>네/아니요 (Ne/Aniyo)</td>
+              </tr>
+              <tr>
+                <td>Excuse me</td>
+                <td>실례합니다 (Sillyehamnida)</td>
+              </tr>
+              <tr>
+                <td>Where is...</td>
+                <td>어디입니까? (Eodiimnikka?)</td>
+              </tr>
+              <tr>
+                <td>How much?</td>
+                <td>얼마예요? (Eolmayeyo?)</td>
+              </tr>
+            </table>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">Many signs are in English, especially in tourist areas. Download Papago app for real-time translation.</p>
+        </div>
+        
+        <!-- Cultural Tips Card -->
+        <div class="info-card bg-white p-5 rounded-lg shadow-md">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Cultural Tips</h3>
+          </div>
+          <ul class="text-gray-700 space-y-1">
+            <li>• Bow slightly when greeting people (especially elders)</li>
+            <li>• Remove shoes when entering homes or certain restaurants</li>
+            <li>• Accept items (money, business cards) with both hands</li>
+            <li>• Public displays of affection are uncommon</li>
+            <li>• Point with your entire hand rather than index finger</li>
+            <li>• Cover your mouth when using a toothpick</li>
+          </ul>
+          <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+            <p class="font-bold">Important Note</p>
+            <p>Respect is highly valued in Korean culture, particularly toward elders and people in positions of authority.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities and Itinerary -->
+    <section id="activities" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center">Activities & Itinerary</h2>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Day 1 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-blue-50">
+            <h3 class="font-bold">Day 1: Thursday, July 31, 2025 – Arrival</h3>
+          </div>
+          <div class="p-5">
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li><span class="font-medium">16:25:</span> Arrival at Incheon International Airport</li>
+              <li><span class="font-medium">17:00-18:00:</span> Transport to hotel via pre-arranged van service</li>
+              <li><span class="font-medium">18:00:</span> Check-in at UH Suite The Coex in Gangnam district</li>
+              <li><span class="font-medium">19:30-21:00:</span> Welcome dinner at SMT Seoul (international buffet) in COEX Mall</li>
+              <li><span class="font-medium">Evening:</span> Rest at hotel to recover from travel</li>
+            </ul>
+            <div class="mt-4 bg-yellow-50 p-3 rounded-lg">
+              <p class="text-sm"><span class="font-bold">Tip:</span> The COEX Mall is connected to our hotel and is one of Asia's largest underground shopping centers, featuring hundreds of shops, restaurants, an aquarium, and the Instagram-famous Starfield Library.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 2 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-blue-50">
+            <h3 class="font-bold">Day 2: Friday, August 1, 2025 – Cultural Immersion</h3>
+          </div>
+          <div class="p-5">
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li><span class="font-medium">09:00-12:00:</span> Gyeongbokgung Palace & Guard Changing Ceremony</li>
+              <li><span class="font-medium">12:30-13:30:</span> Lunch in Samcheongdong area restaurants</li>
+              <li><span class="font-medium">13:30-16:00:</span> Bukchon Hanok Village exploration with traditional Korean houses</li>
+              <li><span class="font-medium">16:00-17:30:</span> Return to hotel for rest</li>
+              <li><span class="font-medium">18:30-21:00:</span> Gwangjang Market for authentic street food dinner</li>
+            </ul>
+            <div class="mt-4 bg-yellow-50 p-3 rounded-lg">
+              <p class="text-sm"><span class="font-bold">Highlight:</span> The changing of the royal guard ceremony at Gyeongbokgung Palace is a colorful spectacle featuring guards in traditional Joseon dynasty uniforms performing a ceremonial process that dates back hundreds of years.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 3 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-blue-50">
+            <h3 class="font-bold">Day 3: Saturday, August 2, 2025 – DMZ & Modern Seoul</h3>
+          </div>
+          <div class="p-5">
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li><span class="font-medium">07:30-16:00:</span> DMZ Tour (Joint Security Area, Third Infiltration Tunnel, Dora Observatory)</li>
+              <li><span class="font-medium">16:00-18:00:</span> Rest at hotel</li>
+              <li><span class="font-medium">18:30-21:00:</span> Evening activities (options):</li>
+              <ul class="list-disc pl-5 ml-4 text-gray-600">
+                <li>Dongdaemun Design Plaza for futuristic architecture</li>
+                <li>COEX Mall exploration</li>
+                <li>Dinner at local Korean BBQ restaurant</li>
+              </ul>
+            </ul>
+            <div class="mt-4 bg-yellow-50 p-3 rounded-lg">
+              <p class="text-sm"><span class="font-bold">Important:</span> PASSPORTS REQUIRED for DMZ tour. No ripped jeans, sleeveless tops, or sandals allowed. Photography restrictions will be explained by your guide.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 4 -->
+        <div>
+          <div class="px-6 py-3 bg-blue-50">
+            <h3 class="font-bold">Day 4: Sunday, August 3, 2025 – Split Activities & Entertainment</h3>
+          </div>
+          <div class="p-5">
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li><span class="font-medium">09:00-12:00:</span> Morning split activities:</li>
+              <ul class="list-disc pl-5 ml-4 text-gray-600">
+                <li><span class="font-medium">For girls:</span> K-Beauty Experience (LOTTE Department Store or AmorePacific Flagship)</li>
+                <li><span class="font-medium">For boys:</span> Tech experiences (Samsung d'light and COEX Game Center)</li>
+              </ul>
+              <li><span class="font-medium">12:00-14:00:</span> Group lunch & short hotel rest</li>
+              <li><span class="font-medium">14:30-18:30:</span> Group activity (choose one):</li>
+              <ul class="list-disc pl-5 ml-4 text-gray-600">
+                <li>Lotte World Theme Park (indoor/outdoor amusement park)</li>
+                <li>N Seoul Tower (panoramic city views via cable car)</li>
+              </ul>
+              <li><span class="font-medium">19:00-21:00:</span> Farewell evening (Han River cruise or special dinner)</li>
+            </ul>
+            <div class="mt-4 bg-yellow-50 p-3 rounded-lg">
+              <p class="text-sm"><span class="font-bold">Highlight:</span> Lotte World is one of the world's largest indoor theme parks, making it perfect regardless of weather, while N Seoul Tower offers spectacular 360° views of the sprawling metropolis from its 236m observation deck.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Culture & Fun Facts -->
+    <section id="culture" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center">Culture & Fun Facts</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- History & Culture Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">History & Culture</h3>
+          <ul class="text-gray-700 space-y-3">
+            <li><span class="font-medium">Ancient Heritage:</span> Seoul has been Korea's capital for over 600 years, since the Joseon Dynasty established it in 1392.</li>
+            <li><span class="font-medium">K-Wave:</span> South Korea's global cultural influence (Hallyu) includes K-pop, K-dramas, beauty products, and cuisine.</li>
+            <li><span class="font-medium">Age Culture:</span> Koreans calculate age differently—everyone is 1 at birth and gains a year every New Year's Day.</li>
+            <li><span class="font-medium">Technology:</span> Seoul has the world's fastest internet speeds and highest smartphone ownership rates.</li>
+            <li><span class="font-medium">Education Focus:</span> Education is highly valued, with students often studying until late evening at after-school academies.</li>
+          </ul>
+        </div>
+        
+        <!-- Fun Facts Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">Did You Know?</h3>
+          <ul class="text-gray-700 space-y-3">
+            <li>South Korea has the world's highest credit card usage rate per capita.</li>
+            <li>Seoul's subway has free WiFi and heated seats in winter.</li>
+            <li>"Gangnam Style" is named after our hotel's neighborhood—Gangnam means "south of the river."</li>
+            <li>Seoul's Incheon Airport has consistently ranked as the world's best airport.</li>
+            <li>Many buildings in Korea don't have a 4th floor, as the number 4 sounds like the word for "death."</li>
+            <li>Seoul has one of the world's largest underground shopping malls (COEX).</li>
+            <li>South Korea has the world's lowest birth rate (less than 1 child per woman).</li>
+          </ul>
+        </div>
+        
+        <!-- What to Buy Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">What to Buy</h3>
+          <ul class="text-gray-700 space-y-3">
+            <li><span class="font-medium">K-Beauty Products:</span> Face masks, serums, and cosmetics from brands like Innisfree, Nature Republic, and COSRX.</li>
+            <li><span class="font-medium">Traditional Crafts:</span> Hanji (handmade paper), celadon pottery, and hanbok-inspired accessories.</li>
+            <li><span class="font-medium">K-Pop Merchandise:</span> Official albums, posters, and merchandise from K-pop groups.</li>
+            <li><span class="font-medium">Technology:</span> Electronics and gadgets, often available before worldwide release.</li>
+            <li><span class="font-medium">Korean Snacks:</span> Unique flavors of familiar snacks (honey butter chips, banana milk).</li>
+          </ul>
+          <p class="mt-3 text-sm">Best shopping areas: Myeongdong, Dongdaemun Market, COEX Mall, and Insadong for traditional items.</p>
+        </div>
+        
+        <!-- Health & Safety Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3 text-blue-600">Health & Safety</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li><span class="font-medium">Tap Water:</span> Safe to drink, though many Koreans prefer filtered or bottled water.</li>
+            <li><span class="font-medium">Healthcare:</span> Excellent medical facilities with English-speaking staff at major hospitals.</li>
+            <li><span class="font-medium">Safety:</span> Seoul consistently ranks among the world's safest cities with low crime rates.</li>
+            <li><span class="font-medium">Air Quality:</span> Can be poor during certain times of year, especially spring dust season.</li>
+            <li><span class="font-medium">Emergency Numbers:</span></li>
+            <ul class="list-disc pl-5 ml-4 text-gray-600">
+              <li>Police: 112</li>
+              <li>Ambulance/Fire: 119</li>
+              <li>Tourist Hotline: 1330 (24/7, English support)</li>
+            </ul>
+          </ul>
+          <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+            <p class="font-bold">Travel Insurance</p>
+            <p>Our family policy (#TRV-2025-61792) covers medical emergencies and evacuation. Keep digital and physical copies of insurance details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="photos" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center">Seoul Photo Gallery</h2>
+      
+      <div class="photo-gallery">
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1538669715315-665fabdf9948?w=500&auto=format')"></div>
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=500&auto=format')"></div>
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1574060603747-421196bce3f0?w=500&auto=format')"></div>
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=500&auto=format')"></div>
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1585637071663-799845ad5212?w=500&auto=format')"></div>
+        <div class="photo-card" style="background-image: url('https://images.unsplash.com/photo-1598258710957-4910fdee40a6?w=500&auto=format')"></div>
+      </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="text-center mb-8">
+      <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+        Return to Main Itinerary
+      </a>
+    </section>
+  </div>
+
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h3 class="text-xl font-bold mb-3">Asia & Maldives Family Adventure</h3>
+      <p class="mb-4">July 30 - August 21, 2025</p>
+      <p class="text-blue-200">Created with ❤️ for our family of 6</p>
+    </div>
+  </footer>
+</body>
+</html>
