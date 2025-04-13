@@ -112,7 +112,8 @@
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
       </div>
       
-      <!-- Mobile Menu Button -->
+        <!-- Updated Mobile Menu HTML -->
+      <!-- Mobile Menu Button (unchanged) -->
       <div class="md:hidden">
         <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -120,18 +121,38 @@
           </svg>
         </button>
       </div>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-      <div class="flex flex-col space-y-3">
-        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2">Photos</a>
+      
+      <!-- Enhanced Mobile Menu with Destinations Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
+          <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+          <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+          <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+          <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+          
+          <!-- Destinations Dropdown -->
+          <div class="py-2 border-b border-gray-200">
+            <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600">
+              <span>Other Destinations</span>
+              <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <div id="destinations-submenu" class="hidden mt-2 pl-4 space-y-2">
+              <a href="seoul.html" class="block py-1 text-gray-700 hover:text-red-600">Seoul</a>
+              <a href="tokyo.html" class="block py-1 text-gray-700 hover:text-red-600">Tokyo</a>
+              <a href="kyoto.html" class="block py-1 text-gray-700 hover:text-red-600">Kyoto</a>
+              <a href="singapore.html" class="block py-1 text-gray-700 hover:text-red-600">Singapore</a>
+              <a href="kl.html" class="block py-1 text-gray-700 hover:text-red-600">Kuala Lumpur</a>
+              <a href="maldives.html" class="block py-1 text-gray-700 hover:text-red-600">Maldives</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+  
+  
   </div>
 </nav>
 
