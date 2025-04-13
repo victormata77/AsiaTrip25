@@ -90,6 +90,12 @@
       vertical-align: middle;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
+      .text-red-600.font-bold.text-xl {
+      transition: all 0.3s ease;
+    }    
+      .page-title-visible {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -985,6 +991,30 @@ updateWorldClocks();
 
 // Then update every minute
 setInterval(updateWorldClocks, 60000);
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the current page title from the h1 in the hero section
+  const pageTitle = document.querySelector('.hero-content h1').textContent;
+  const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+  const originalTitle = navTitle.textContent;
+  
+  // Function to handle scroll events
+  function handleScroll() {
+    // Change the title when scrolled down (e.g., 100px from top)
+    if (window.scrollY > 100) {
+      navTitle.textContent = pageTitle;
+      navTitle.classList.add('page-title-visible');
+    } else {
+      navTitle.textContent = originalTitle;
+      navTitle.classList.remove('page-title-visible');
+    }
+  }
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+});
+
+  
 </script>
 </body>
 </html>
