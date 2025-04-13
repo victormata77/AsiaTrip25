@@ -410,45 +410,50 @@
         </div>
       </div>
 
-    <!-- HTML for the Full-Width Timezone-Grouped World Clock Widget -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-      <div class="flex items-center mb-4">
-        <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <h3 class="font-bold text-lg">World Clock</h3>
+      <!-- World Clock Widget -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden col-span-1 md:col-span-3">
+        <div class="bg-gray-50 p-4">
+          <div class="flex items-center">
+            <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">World Clock</h3>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Barcelona Time -->
+            <div class="bg-gray-100 p-3 rounded-lg text-center">
+              <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+              <div class="text-sm text-gray-600">Barcelona</div>
+              <div class="text-xs text-gray-500">(Home)</div>
+            </div>
+            
+            <!-- East Asia Time (Seoul/Tokyo/Kyoto) -->
+            <div class="bg-gray-100 p-3 rounded-lg text-center">
+              <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+              <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+              <div class="text-xs text-gray-500">(East Asia)</div>
+            </div>
+            
+            <!-- Southeast Asia Time (Singapore/Kuala Lumpur) -->
+            <div class="bg-gray-100 p-3 rounded-lg text-center">
+              <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+              <div class="text-sm text-gray-600">Singapore/KL</div>
+              <div class="text-xs text-gray-500">(Southeast Asia)</div>
+            </div>
+            
+            <!-- Maldives Time -->
+            <div class="bg-gray-100 p-3 rounded-lg text-center">
+              <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+              <div class="text-sm text-gray-600">Maldives</div>
+              <div class="text-xs text-gray-500">(Indian Ocean)</div>
+            </div>
+          </div>
+          
+          <p class="mt-3 text-sm text-gray-600 text-center">Time Zones: Barcelona (UTC+2), Seoul/Tokyo/Kyoto (UTC+9), Singapore/KL (UTC+8), Maldives (UTC+5)</p>
+        </div>
       </div>
-      
-      <div class="grid grid-cols-4 gap-3">
-        <!-- UTC+2 -->
-        <div class="bg-gray-100 p-4 rounded-lg text-center">
-          <div class="font-bold text-xl mb-1" id="barcelona-time">--:--</div>
-          <div class="text-sm text-gray-600">Barcelona</div>
-          <div class="text-xs text-gray-500">Spain (UTC+2)</div>
-        </div>
-        
-        <!-- UTC+5 -->
-        <div class="bg-gray-100 p-4 rounded-lg text-center current-location">
-          <div class="font-bold text-xl mb-1" id="maldives-time">--:--</div>
-          <div class="text-sm text-gray-600">Maldives</div>
-          <div class="text-xs text-gray-500">Maldives (UTC+5)</div>
-        </div>
-        
-        <!-- UTC+8 -->
-        <div class="bg-gray-100 p-4 rounded-lg text-center">
-          <div class="font-bold text-xl mb-1" id="singapore-time">--:--</div>
-          <div class="text-sm text-gray-600">Singapore, Kuala Lumpur</div>
-          <div class="text-xs text-gray-500">Singapore, Malaysia (UTC+8)</div>
-        </div>
-        
-        <!-- UTC+9 -->
-        <div class="bg-gray-100 p-4 rounded-lg text-center">
-          <div class="font-bold text-xl mb-1" id="tokyo-time">--:--</div>
-          <div class="text-sm text-gray-600">Seoul, Tokyo, Kyoto</div>
-          <div class="text-xs text-gray-500">South Korea, Japan (UTC+9)</div>
-        </div>
-      </div>
-    </div>
 
 
         
@@ -1005,62 +1010,47 @@
     }
   });
 
-function updateWorldClock() {
-  try {
-    const now = new Date();
-    const minutes = now.getUTCMinutes().toString().padStart(2, '0');
-    
-    // Barcelona (UTC+2)
-    const barcelona_hours = (now.getUTCHours() + 2) % 24;
-    document.getElementById('barcelona-time').textContent = 
-      barcelona_hours.toString().padStart(2, '0') + ':' + minutes;
-    
-    // Maldives (UTC+5)
-    const maldives_hours = (now.getUTCHours() + 5) % 24;
-    document.getElementById('maldives-time').textContent = 
-      maldives_hours.toString().padStart(2, '0') + ':' + minutes;
-    
-    // Singapore & KL (UTC+8)
-    const singapore_hours = (now.getUTCHours() + 8) % 24;
-    document.getElementById('singapore-time').textContent = 
-      singapore_hours.toString().padStart(2, '0') + ':' + minutes;
-    
-    // Japan & Korea (UTC+9)
-    const tokyo_hours = (now.getUTCHours() + 9) % 24;
-    document.getElementById('tokyo-time').textContent = 
-      tokyo_hours.toString().padStart(2, '0') + ':' + minutes;
-  } catch (error) {
-    console.error("Clock update error:", error);
-  }
+function updateWorldClocks() {
+  const now = new Date();
+  
+  // Barcelona time (CEST, UTC+2)
+  const barcelonaTime = new Date(now.getTime());
+  barcelonaTime.setHours(now.getUTCHours() + 2);
+  document.getElementById('barcelona-time').textContent = 
+    barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
+    barcelonaTime.getMinutes().toString().padStart(2, '0');
+  
+  // East Asia time (JST/KST, UTC+9)
+  const eastAsiaTime = new Date(now.getTime());
+  eastAsiaTime.setHours(now.getUTCHours() + 9);
+  document.getElementById('eastasia-time').textContent = 
+    eastAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
+    eastAsiaTime.getMinutes().toString().padStart(2, '0');
+  
+  // Southeast Asia time (SGT/MYT, UTC+8)
+  const seAsiaTime = new Date(now.getTime());
+  seAsiaTime.setHours(now.getUTCHours() + 8);
+  document.getElementById('seasia-time').textContent = 
+    seAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
+    seAsiaTime.getMinutes().toString().padStart(2, '0');
+  
+  // Maldives time (MVT, UTC+5)
+  const maldivesTime = new Date(now.getTime());
+  maldivesTime.setHours(now.getUTCHours() + 5);
+  document.getElementById('maldives-time').textContent = 
+    maldivesTime.getHours().toString().padStart(2, '0') + ':' + 
+    maldivesTime.getMinutes().toString().padStart(2, '0');
 }
 
-// Highlight current location based on page
-document.addEventListener('DOMContentLoaded', function() {
-  // Set for the specific page - change this value for each destination page
-  const currentPage = "maldives"; // Options: barcelona, seoul, tokyo, kyoto, singapore, kualalumpur, maldives
-  
-  // Find elements with current-location class and apply highlighting
-  const currentLocationElement = document.querySelector('.current-location');
-  if (currentLocationElement) {
-    currentLocationElement.classList.remove('bg-gray-100');
-    currentLocationElement.classList.add('bg-red-100');
-  }
-  
-  // Update clocks immediately
-  updateWorldClock();
-  
-  // Then update every minute
-  setInterval(updateWorldClock, 60000);
-});
+// Update clocks immediately
+updateWorldClocks();
+
+// Then update every minute
+setInterval(updateWorldClocks, 60000);
+
 
   
 </script>
-<style>
-/* Custom styles to ensure consistent sizing and appearance */
-.current-location {
-  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5);
-}
-</style>
 </body>
 </html>
 
