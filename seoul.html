@@ -96,63 +96,188 @@
       .page-title-visible {
       transform: scale(1.05);
     }
-    /* Desktop dropdown styles */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;  /* Position directly below the button */
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;  /* Initially hidden */
-    }
-    
-    #desktop-destinations-menu.visible {
-      display: block;
-    }
-    
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    
-    .relative {
-      position: relative;
-    }
-  
+   /* ===== NAVIGATION STYLES ===== */
+/* Desktop dropdown menu */
+#desktop-destinations-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;  /* Position directly below the button */
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;  /* Initially hidden */
+}
+
+#desktop-destinations-menu.visible {
+  display: block;
+}
+
+#desktop-destinations-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+
+#desktop-destinations-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+
+.relative {
+  position: relative;
+}
+
+/* Dropdown button styling */
+#desktop-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+
+#desktop-dropdown-button:hover {
+  background-color: #f9fafb;
+}
+
+/* ===== MENU ALIGNMENT FIXES ===== */
+/* Better menu alignment */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px; /* Fixed height for all menu items */
+}
+
+/* Make sure all top-level items are aligned */
+.md\:flex.md\:items-center.md\:space-x-6 {
+  min-height: 40px;
+}
+
+/* ===== DYNAMIC TITLE STYLES ===== */
+/* Styles for the dynamic page title */
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* ===== PHOTO GALLERY STYLES ===== */
+.photo-card {
+  transition: all 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== FLAG ICON STYLES ===== */
+.flag-icon {
+  height: 20px;
+  width: 28px;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ===== BRAND COLOR VARIABLES ===== */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+.brand-bg-red {
+  background-color: var(--mata-red);
+}
+
+.brand-text-red {
+  color: var(--mata-red);
+}
+
+.brand-border-red {
+  border-color: var(--mata-red);
+}
+
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.brand-button:hover {
+  background-color: var(--mata-dark-red);
+}
+
+/* ===== HERO SECTION STYLES ===== */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* ===== STICKY NAVIGATION ===== */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== INFO CARD HOVER EFFECT ===== */
+.info-card {
+  transition: transform 0.2s;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
   
   </style>
 </head>
 <body class="bg-gray-50">
 
-<!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
       
-
-            <!-- Desktop Navigation Menu with Click-to-Open Dropdown -->
-      <div class="hidden md:flex space-x-6">
+      <!-- Desktop Navigation Menu with Better Alignment -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
         <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
         <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
         <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
         <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
         
-        <!-- Desktop Destinations Dropdown (Click-to-Open) -->
-        <div class="relative">
-          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1">
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
             Other Destinations
             <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -179,7 +304,7 @@
       </div>
     </div>
     
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu (unchanged) -->
     <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
       <div class="flex flex-col space-y-3">
         <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
