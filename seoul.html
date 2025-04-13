@@ -106,7 +106,8 @@
     <div class="flex justify-between items-center">
       <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
       
-      <!-- Desktop Navigation Menu -->
+
+      <!-- Desktop Navigation Menu with Click-to-Open Dropdown -->
       <div class="hidden md:flex space-x-6">
         <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
         <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
@@ -114,15 +115,15 @@
         <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
         
-        <!-- Desktop Destinations Dropdown -->
-        <div class="relative group">
-          <button class="text-gray-700 hover:text-red-600 flex items-center gap-1">
+        <!-- Desktop Destinations Dropdown (Click-to-Open) -->
+        <div class="relative">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1">
             Other Destinations
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+          <div id="desktop-destinations-menu" class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
             <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
             <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
             <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
@@ -1014,6 +1015,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  // Desktop dropdown functionality
+  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+  
+  if (desktopDropdownButton && desktopDestinationsMenu) {
+    // Toggle dropdown on click
+    desktopDropdownButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent click from propagating to document
+      desktopDestinationsMenu.classList.toggle('hidden');
+      desktopDropdownArrow.classList.toggle('rotate-180');
+    });
+    
+    // Close dropdown when clicking elsewhere on the page
+    document.addEventListener('click', function(e) {
+      if (!desktopDropdownButton.contains(e.target) && !desktopDestinationsMenu.contains(e.target)) {
+        desktopDestinationsMenu.classList.add('hidden');
+        desktopDropdownArrow.classList.remove('rotate-180');
+      }
+    });
+
+    
 function updateWorldClocks() {
   const now = new Date();
   
