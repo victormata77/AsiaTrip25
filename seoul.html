@@ -347,81 +347,73 @@
           </div>
         </div>
 
-        <!-- HTML for the World Clock Widget -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-gray-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Trip World Clock</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <!-- UTC+2 Timezone Group -->
-              <div class="space-y-2">
-                <div class="bg-indigo-100 p-2 rounded-lg text-center">
-                  <div class="text-sm font-medium text-indigo-800">UTC+2</div>
-                </div>
-                <div class="bg-red-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-                  <div class="text-sm text-gray-600">Barcelona</div>
-                  <div class="text-xs text-gray-500">Spain</div>
-                </div>
-              </div>
-              <!-- UTC+5 Timezone Group -->
-              <div class="space-y-2">
-                <div class="bg-indigo-100 p-2 rounded-lg text-center">
-                  <div class="text-sm font-medium text-indigo-800">UTC+5</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-                  <div class="text-sm text-gray-600">Maldives</div>
-                  <div class="text-xs text-gray-500">Maldives</div>
-                </div>
-              </div>
-              <!-- UTC+8 Timezone Group -->
-              <div class="space-y-2">
-                <div class="bg-indigo-100 p-2 rounded-lg text-center">
-                  <div class="text-sm font-medium text-indigo-800">UTC+8</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="singapore-time">--:--</div>
-                  <div class="text-sm text-gray-600">Singapore</div>
-                  <div class="text-xs text-gray-500">Singapore</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="kuala-lumpur-time">--:--</div>
-                  <div class="text-sm text-gray-600">Kuala Lumpur</div>
-                  <div class="text-xs text-gray-500">Malaysia</div>
-                </div>
-              </div>
-              <!-- UTC+9 Timezone Group -->
-              <div class="space-y-2">
-                <div class="bg-indigo-100 p-2 rounded-lg text-center">
-                  <div class="text-sm font-medium text-indigo-800">UTC+9</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="seoul-time">--:--</div>
-                  <div class="text-sm text-gray-600">Seoul</div>
-                  <div class="text-xs text-gray-500">South Korea</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="tokyo-time">--:--</div>
-                  <div class="text-sm text-gray-600">Tokyo</div>
-                  <div class="text-xs text-gray-500">Japan</div>
-                </div>
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="kyoto-time">--:--</div>
-                  <div class="text-sm text-gray-600">Kyoto</div>
-                  <div class="text-xs text-gray-500">Japan</div>
-                </div>
-              </div>
-            </div>
-            <p class="mt-3 text-sm text-gray-600 text-center">Times are displayed in 24-hour format</p>
+        <!-- HTML for the Compact World Clock Widget -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-gray-50 p-4">
+          <div class="flex items-center">
+            <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="font-bold text-lg">Trip World Clock</h3>
           </div>
         </div>
+        <div class="p-5">
+          <div class="grid grid-cols-4 gap-4">
+            <!-- UTC+2 -->
+            <div>
+              <div class="bg-indigo-100 p-2 rounded-t-lg text-center">
+                <div class="text-sm font-medium text-indigo-800">UTC+2</div>
+              </div>
+              <div class="bg-red-100 p-3 rounded-b-lg text-center">
+                <div class="font-bold text-xl mb-1" id="barcelona-time">--:--</div>
+                <div class="text-sm text-gray-600">Barcelona</div>
+                <div class="text-xs text-gray-500">Spain</div>
+              </div>
+            </div>
+            
+            <!-- UTC+5 -->
+            <div>
+              <div class="bg-indigo-100 p-2 rounded-t-lg text-center">
+                <div class="text-sm font-medium text-indigo-800">UTC+5</div>
+              </div>
+              <div class="bg-gray-100 p-3 rounded-b-lg text-center">
+                <div class="font-bold text-xl mb-1" id="maldives-time">--:--</div>
+                <div class="text-sm text-gray-600">Maldives</div>
+              </div>
+            </div>
+            
+            <!-- UTC+8 -->
+            <div>
+              <div class="bg-indigo-100 p-2 rounded-t-lg text-center">
+                <div class="text-sm font-medium text-indigo-800">UTC+8</div>
+              </div>
+              <div class="bg-gray-100 p-3 rounded-b-lg text-center">
+                <div class="font-bold text-xl mb-1" id="singapore-time">--:--</div>
+                <div class="text-sm text-gray-600">Singapore, Kuala Lumpur</div>
+                <div class="text-xs text-gray-500">Singapore, Malaysia</div>
+              </div>
+            </div>
+            
+            <!-- UTC+9 -->
+            <div>
+              <div class="bg-indigo-100 p-2 rounded-t-lg text-center">
+                <div class="text-sm font-medium text-indigo-800">UTC+9</div>
+              </div>
+              <div class="bg-gray-100 p-3 rounded-b-lg text-center">
+                <div class="font-bold text-xl mb-1" id="tokyo-time">--:--</div>
+                <div class="text-sm text-gray-600">Seoul, Tokyo, Kyoto</div>
+                <div class="text-xs text-gray-500">South Korea, Japan</div>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-gray-600 text-center">Times are displayed in 24-hour format</p>
+        </div>
+      </div>
+
+
+
+
+        
       </div>
     </section>
 
