@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mata Family Asian Adventure 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="icon2.png" type="image/png">
+  <link rel="shortcut icon" href="icon2.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon2.png">
+  <!-- Ensure the icon is loaded even if browser caches old versions -->
+  <link rel="icon" href="icon2.png?v=2" type="image/png" sizes="32x32">
   <style>
     :root {
       --mata-red: #c62828;
@@ -13,22 +18,7 @@
       --mata-cream: #f5f0e1;
     }
     
-    .hero-section {
-      background-image: url('https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?w=1600&auto=format');
-      background-size: cover;
-      background-position: center;
-      height: 70vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
+    
     .destination-card {
       height: 300px;
       background-size: cover;
@@ -212,6 +202,18 @@
       font-size: 12px;
       color: #666;
     }
+    
+
+    
+    .flag-icon {
+      height: 20px;
+      width: 28px;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      vertical-align: middle;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -220,17 +222,17 @@
     <div class="max-w-6xl mx-auto px-4 py-3">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
-          <div class="logo-container mr-3">
-            <img src="./images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="h-full">
+          <div class="mr-3">
+            <h1 class="font-bold text-2xl brand-text-red">MATA'S ASIAN TOUR 2025</h1>
           </div>
         </div>
         
-        <!-- Desktop Menu -->
+        <!-- Desktop Menu (Reordered) -->
         <div class="hidden md:flex space-x-4">
           <a href="#destinations" class="text-gray-700 hover:brand-text-red">Destinations</a>
           <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
-          <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
           <a href="#tips" class="text-gray-700 hover:brand-text-red">Tips</a>
+          <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
         </div>
         
         <!-- Mobile Menu Button -->
@@ -243,38 +245,44 @@
         </div>
       </div>
       
-      <!-- Mobile Menu Dropdown (hidden by default) -->
+      <!-- Mobile Menu Dropdown (Reordered & hidden by default) -->
       <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
         <div class="flex flex-col space-y-3">
           <a href="#destinations" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Destinations</a>
           <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
-          <a href="#journey" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Journey</a>
-          <a href="#tips" class="text-gray-700 hover:brand-text-red py-2">Tips</a>
+          <a href="#tips" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Tips</a>
+          <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section with Inspirational Content -->
-  <section class="hero-section flex items-center justify-center">
-    <div class="hero-overlay"></div>
-    <div class="hero-content max-w-4xl text-center text-white px-4">
-      <img src="./images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="max-h-36 mx-auto mb-6">
-      <h1 class="text-5xl font-bold mb-4">Our Epic Asian Adventure</h1>
-      <p class="text-xl mb-6">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
+<!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
+<section style="background-color: #eeeada;" class="py-10">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+    <!-- Logo displayed as a prominent image with updated filename -->
+    <div class="mb-6 w-full max-w-2xl">
+      <img src="logowide.png" alt="Mata's Asian Tour 2025" class="w-full">
+    </div>
+    
+    <!-- Text content below the logo -->
+    <div class="text-center">
+      <p class="text-lg mb-5 text-gray-700">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
+      
       <div class="flex flex-wrap justify-center gap-4">
-        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
-          <p class="font-bold">6 Travelers</p>
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
+          <p class="font-bold text-white">6 Travelers</p>
         </div>
-        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
-          <p class="font-bold">6 Destinations</p>
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
+          <p class="font-bold text-white">6 Destinations</p>
         </div>
-        <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur-sm">
-          <p class="font-bold">23 Days</p>
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
+          <p class="font-bold text-white">23 Days</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <div class="max-w-6xl mx-auto px-4 py-12">
     <!-- Destinations Section -->
@@ -331,8 +339,8 @@
           </div>
         </div>
         
-        <!-- Maldives -->
-        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&auto=format')">
+        <!-- Maldives - UPDATED IMAGE -->
+        <div class="destination-card shadow-lg" style="background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg')">
           <div class="destination-info">
             <h3 class="text-xl font-bold">Maldives</h3>
             <p class="text-sm mb-2">August 16 - 20 • 4 nights</p>
@@ -349,12 +357,15 @@
 
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
         <!-- Barcelona to Seoul -->
-        <div class="border-b">
-          <h3 class="px-6 py-3 bg-blue-50 font-bold flex justify-between items-center">
-            <span>Barcelona to Seoul</span>
-            <span class="text-sm text-gray-600">July 30 - August 4</span>
+        <div class="border-b accordion-item">
+          <h3 class="px-6 py-3 bg-red-100 font-bold flex items-center text-red-800 cursor-pointer accordion-header">
+            <span class="flex-grow">Barcelona to Seoul</span>
+            <span class="text-sm text-red-600 w-32 text-right mr-3">July 30 - August 4</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </h3>
-          <div class="p-5">
+          <div class="p-5 accordion-content hidden">
             <ul class="list-disc pl-5 text-gray-700 space-y-1">
               <li>Overnight flight from Barcelona to Seoul</li>
               <li>Cultural immersion at Gyeongbokgung Palace</li>
@@ -363,18 +374,21 @@
               <li>K-Beauty experiences & tech adventures</li>
               <li>Authentic street food at local markets</li>
             </ul>
-            <p class="mt-3 text-sm font-medium">Accommodation: UH Suite The Coex (4 nights)</p>
+            <p class="mt-3 text-sm font-medium text-red-700">Accommodation: UH Suite The Coex (4 nights)</p>
           </div>
         </div>
         
         <!-- Japan -->
-        <div class="border-b">
-          <h3 class="px-6 py-3 bg-blue-50 font-bold flex justify-between items-center">
-            <span>Japan: Tokyo & Kyoto</span>
-            <span class="text-sm text-gray-600">August 4 - 10</span>
+        <div class="border-b accordion-item">
+          <h3 class="px-6 py-3 bg-red-100 font-bold flex items-center text-red-800 cursor-pointer accordion-header">
+            <span class="flex-grow">Japan: Tokyo & Kyoto</span>
+            <span class="text-sm text-red-600 w-32 text-right mr-3">August 4 - 11</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </h3>
-          <div class="p-5">
-            <p class="font-medium mb-2">Tokyo (4 nights):</p>
+          <div class="p-5 accordion-content hidden">
+            <p class="font-medium mb-2 text-red-700">Tokyo (4 nights):</p>
             <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-4">
               <li>Meiji Shrine & trendy Harajuku district</li>
               <li>Iconic Shibuya Crossing experience</li>
@@ -383,26 +397,36 @@
               <li>Traditional tea ceremony</li>
             </ul>
             
-            <p class="font-medium mb-2">Kyoto (2 nights):</p>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+            <p class="font-medium mb-2 text-red-700">Kyoto (2 nights):</p>
+            <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-4">
               <li>Bullet train from Tokyo to Kyoto</li>
               <li>Fushimi Inari Shrine with vermilion gates</li>
               <li>Golden Pavilion & Bamboo Grove</li>
               <li>Kimono wearing experience</li>
               <li>Evening walk through historic Gion District</li>
             </ul>
-            <p class="mt-3 text-sm font-medium">Accommodation: MIMARU SUITES Tokyo & Kyoto</p>
+            
+            <p class="font-medium mb-2 text-red-700">Narita Airport (1 night):</p>
+            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+              <li>Return to Tokyo via bullet train</li>
+              <li>Transit hotel at Narita Airport</li>
+              <li>Convenient for early morning flight</li>
+            </ul>
+            <p class="mt-3 text-sm font-medium text-red-700">Accommodation: MIMARU SUITES Tokyo & Kyoto, 9h nine hours Narita Airport</p>
           </div>
         </div>
         
         <!-- Singapore & Malaysia -->
-        <div class="border-b">
-          <h3 class="px-6 py-3 bg-blue-50 font-bold flex justify-between items-center">
-            <span>Singapore & Malaysia</span>
-            <span class="text-sm text-gray-600">August 11 - 16</span>
+        <div class="border-b accordion-item">
+          <h3 class="px-6 py-3 bg-red-100 font-bold flex items-center text-red-800 cursor-pointer accordion-header">
+            <span class="flex-grow">Singapore & Malaysia</span>
+            <span class="text-sm text-red-600 w-32 text-right mr-3">August 11 - 16</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </h3>
-          <div class="p-5">
-            <p class="font-medium mb-2">Singapore (3 nights):</p>
+          <div class="p-5 accordion-content hidden">
+            <p class="font-medium mb-2 text-red-700">Singapore (3 nights):</p>
             <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-4">
               <li>Sentosa Island resort with themed pools</li>
               <li>Gardens by the Bay with Supertree Grove</li>
@@ -411,25 +435,28 @@
               <li>Universal Studios or S.E.A. Aquarium</li>
             </ul>
             
-            <p class="font-medium mb-2">Kuala Lumpur (2 nights):</p>
+            <p class="font-medium mb-2 text-red-700">Kuala Lumpur (2 nights):</p>
             <ul class="list-disc pl-5 text-gray-700 space-y-1">
               <li>Petronas Twin Towers visit</li>
               <li>Colorful Batu Caves Hindu temple</li>
               <li>Local markets and shopping</li>
               <li>Authentic street food experience</li>
             </ul>
-            <p class="mt-3 text-sm font-medium">Accommodation: Village Hotel Sentosa & The Ritz-Carlton</p>
+            <p class="mt-3 text-sm font-medium text-red-700">Accommodation: Village Hotel Sentosa & The Ritz-Carlton</p>
           </div>
         </div>
         
         <!-- Maldives & Return -->
-        <div>
-          <h3 class="px-6 py-3 bg-blue-50 font-bold flex justify-between items-center">
-            <span>Maldives & Return Journey</span>
-            <span class="text-sm text-gray-600">August 16 - 21</span>
+        <div class="accordion-item">
+          <h3 class="px-6 py-3 bg-red-100 font-bold flex items-center text-red-800 cursor-pointer accordion-header">
+            <span class="flex-grow">Maldives & Return Journey</span>
+            <span class="text-sm text-red-600 w-32 text-right mr-3">August 16 - 21</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </h3>
-          <div class="p-5">
-            <p class="font-medium mb-2">Maldives (4 nights):</p>
+          <div class="p-5 accordion-content hidden">
+            <p class="font-medium mb-2 text-red-700">Maldives (4 nights):</p>
             <ul class="list-disc pl-5 text-gray-700 space-y-1 mb-4">
               <li>Scenic seaplane transfer to private resort</li>
               <li>Luxury overwater villa accommodation</li>
@@ -438,18 +465,18 @@
               <li>Beach relaxation & family time</li>
             </ul>
             
-            <p class="font-medium mb-2">Return to Barcelona:</p>
+            <p class="font-medium mb-2 text-red-700">Return to Barcelona:</p>
             <ul class="list-disc pl-5 text-gray-700 space-y-1">
               <li>Flights from Malé to Singapore to Barcelona</li>
               <li>Morning arrival in Barcelona on August 21</li>
             </ul>
-            <p class="mt-3 text-sm font-medium">Accommodation: Radisson Blu Resort Maldives</p>
+            <p class="mt-3 text-sm font-medium text-red-700">Accommodation: Radisson Blu Resort Maldives</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Travel Tips Section -->
+    <!-- Travel Tips Section (moved before Journey Map)-->
     <section id="tips" class="mb-16">
       <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Essential Travel Tips</h2>
       <p class="text-center text-gray-600 mb-8">Click on any category to view detailed information</p>
@@ -515,171 +542,204 @@
       </div>
     </section>
 
-    <!-- Journey Map Section -->
-    <section id="journey" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Journey Map</h2>
-      <p class="text-center text-gray-600 mb-8">From Barcelona and back, traveling across Asia and the Indian Ocean</p>
-      
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="custom-journey-map">
-          <div class="relative w-full">
-            <div class="journey-line w-full h-1"></div>
-            
-            <!-- Barcelona -->
-            <div class="journey-stop" style="left: 0%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇪🇸</span>
-                <p>Barcelona</p>
-                <p class="journey-nights">Start/End</p>
-              </div>
-            </div>
-            
-            <!-- Seoul -->
-            <div class="journey-stop" style="left: 20%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇰🇷</span>
-                <p>Seoul</p>
-                <p class="journey-nights">4 nights</p>
-              </div>
-            </div>
-            
-            <!-- Tokyo -->
-            <div class="journey-stop" style="left: 35%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇯🇵</span>
-                <p>Tokyo</p>
-                <p class="journey-nights">4 nights</p>
-              </div>
-            </div>
-            
-            <!-- Kyoto -->
-            <div class="journey-stop" style="left: 45%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇯🇵</span>
-                <p>Kyoto</p>
-                <p class="journey-nights">2 nights</p>
-              </div>
-            </div>
-            
-            <!-- Singapore -->
-            <div class="journey-stop" style="left: 62%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇸🇬</span>
-                <p>Singapore</p>
-                <p class="journey-nights">3 nights</p>
-              </div>
-            </div>
-            
-            <!-- Kuala Lumpur -->
-            <div class="journey-stop" style="left: 78%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇲🇾</span>
-                <p>Kuala Lumpur</p>
-                <p class="journey-nights">2 nights</p>
-              </div>
-            </div>
-            
-            <!-- Maldives -->
-            <div class="journey-stop" style="left: 92%">
-              <div class="journey-dot"></div>
-              <div class="journey-label">
-                <span class="flag-icon">🇲🇻</span>
-                <p>Maldives</p>
-                <p class="journey-nights">4 nights</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Mobile Vertical Journey (hidden on desktop) -->
-        <div class="md:hidden mt-10">
-          <div class="space-y-6">
-            <div class="flex items-center">
-              <span class="flag-icon">🇪🇸</span>
-              <div class="ml-3">
-                <p class="font-medium">Barcelona</p>
-                <p class="text-xs text-gray-500">Start/End</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇰🇷</span>
-              <div class="ml-3">
-                <p class="font-medium">Seoul</p>
-                <p class="text-xs text-gray-500">4 nights: Jul 31 - Aug 4</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇯🇵</span>
-              <div class="ml-3">
-                <p class="font-medium">Tokyo</p>
-                <p class="text-xs text-gray-500">4 nights: Aug 4 - 8</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇯🇵</span>
-              <div class="ml-3">
-                <p class="font-medium">Kyoto</p>
-                <p class="text-xs text-gray-500">2 nights: Aug 8 - 10</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇸🇬</span>
-              <div class="ml-3">
-                <p class="font-medium">Singapore</p>
-                <p class="text-xs text-gray-500">3 nights: Aug 11 - 14</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇲🇾</span>
-              <div class="ml-3">
-                <p class="font-medium">Kuala Lumpur</p>
-                <p class="text-xs text-gray-500">2 nights: Aug 14 - 16</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇲🇻</span>
-              <div class="ml-3">
-                <p class="font-medium">Maldives</p>
-                <p class="text-xs text-gray-500">4 nights: Aug 16 - 20</p>
-              </div>
-            </div>
-            
-            <div class="flex items-center">
-              <span class="flag-icon">🇪🇸</span>
-              <div class="ml-3">
-                <p class="font-medium">Barcelona</p>
-                <p class="text-xs text-gray-500">Return: Aug 21</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="text-center text-sm text-gray-600 mt-20 pt-10">
-          <p>Total distance: Approximately 26,000 kilometers</p>
-          <p>7 flights, 1 bullet train journey, and countless memories</p>
+    
+
+   <!-- Horizontal map for desktop with added flags -->
+<section id="journey" class="mb-16">
+  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Journey</h2>
+  <p class="text-center text-gray-600 mb-8">Follow our path through Asia and the Maldives</p>
+  
+  <div class="journey-map-horizontal">
+    <!-- Map line with stops -->
+    <div class="map-line" style="position: relative;">
+      <!-- BCN (Start) - Position: 0% and exactly at beginning of line -->
+      <div class="map-stop" style="left: 0%; transform: translateX(-50%);">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag">
+          <p class="font-medium">BCN</p>
+          <p class="text-xs text-gray-500">Start</p>
         </div>
       </div>
-    </section>
+      
+      <!-- Seoul - Position: 12.5% -->
+      <div class="map-stop" style="left: 12.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag">
+          <p class="font-medium">Seoul</p>
+          <p class="text-xs text-gray-500">4 nights</p>
+        </div>
+      </div>
+      
+      <!-- Tokyo - Position: 25% -->
+      <div class="map-stop" style="left: 25%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
+          <p class="font-medium">Tokyo</p>
+          <p class="text-xs text-gray-500">4 nights</p>
+        </div>
+      </div>
+      
+      <!-- Kyoto - Position: 37.5% -->
+      <div class="map-stop" style="left: 37.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
+          <p class="font-medium">Kyoto</p>
+          <p class="text-xs text-gray-500">2 nights</p>
+        </div>
+      </div>
+      
+      <!-- Narita - Position: 50% -->
+      <div class="map-stop" style="left: 50%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
+          <p class="font-medium">Narita</p>
+          <p class="text-xs text-gray-500">1 night</p>
+        </div>
+      </div>
+      
+      <!-- Singapore - Position: 62.5% -->
+      <div class="map-stop" style="left: 62.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag">
+          <p class="font-medium">Singapore</p>
+          <p class="text-xs text-gray-500">3 nights</p>
+        </div>
+      </div>
+      
+      <!-- Kuala Lumpur - Position: 75% -->
+      <div class="map-stop" style="left: 75%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag">
+          <p class="font-medium">Kuala Lumpur</p>
+          <p class="text-xs text-gray-500">2 nights</p>
+        </div>
+      </div>
+      
+      <!-- Maldives - Position: 87.5% -->
+      <div class="map-stop" style="left: 87.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag">
+          <p class="font-medium">Maldives</p>
+          <p class="text-xs text-gray-500">4 nights</p>
+        </div>
+      </div>
+      
+      <!-- BCN (End) - Position: 100% and exactly at end of line -->
+      <div class="map-stop" style="left: 100%; transform: translateX(-50%);">
+        <div class="map-dot"></div>
+        <div class="map-label">
+          <img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag">
+          <p class="font-medium">BCN</p>
+          <p class="text-xs text-gray-500">End</p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Vertical map for mobile with improved spacing and flag emojis -->
+  <div class="journey-map-vertical">
+    <div class="map-line-vertical">
+      <!-- BCN (Start) - Position: 0% and exactly at beginning of line -->
+      <div class="map-stop-vertical" style="top: 0%; transform: translateY(-50%);">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag"> BCN</p>
+          <p class="text-xs text-gray-500">Start: July 30</p>
+        </div>
+      </div>
+      
+      <!-- Seoul -->
+      <div class="map-stop-vertical" style="top: 12.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag"> Seoul</p>
+          <p class="text-xs text-gray-500">4 nights: Jul 31 - Aug 4</p>
+        </div>
+      </div>
+      
+      <!-- Tokyo -->
+      <div class="map-stop-vertical" style="top: 25%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Tokyo</p>
+          <p class="text-xs text-gray-500">4 nights: Aug 4 - 8</p>
+        </div>
+      </div>
+      
+      <!-- Kyoto -->
+      <div class="map-stop-vertical" style="top: 37.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Kyoto</p>
+          <p class="text-xs text-gray-500">2 nights: Aug 8 - 10</p>
+        </div>
+      </div>
+      
+      <!-- Narita -->
+      <div class="map-stop-vertical" style="top: 50%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Narita</p>
+          <p class="text-xs text-gray-500">1 night: Aug 10 - 11</p>
+        </div>
+      </div>
+      
+      <!-- Singapore -->
+      <div class="map-stop-vertical" style="top: 62.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag"> Singapore</p>
+          <p class="text-xs text-gray-500">3 nights: Aug 11 - 14</p>
+        </div>
+      </div>
+      
+      <!-- Kuala Lumpur -->
+      <div class="map-stop-vertical" style="top: 75%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag"> Kuala Lumpur</p>
+          <p class="text-xs text-gray-500">2 nights: Aug 14 - 16</p>
+        </div>
+      </div>
+      
+      <!-- Maldives -->
+      <div class="map-stop-vertical" style="top: 87.5%;">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag"> Maldives</p>
+          <p class="text-xs text-gray-500">4 nights: Aug 16 - 20</p>
+        </div>
+      </div>
+      
+      <!-- BCN (End) - Position: 100% and exactly at end of line -->
+      <div class="map-stop-vertical" style="top: 100%; transform: translateY(-50%);">
+        <div class="map-dot"></div>
+        <div class="map-label-vertical">
+          <p class="font-medium"><img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag"> BCN</p>
+          <p class="text-xs text-gray-500">Return: Aug 21</p>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+  <div class="text-center text-sm text-gray-600 mt-20 pt-10">
+    <p>Total distance: Approximately 26,000 kilometers</p>
+    <p>7 flights, 1 bullet train journey, and countless memories</p>
+  </div>
+</section>
+</div>
 
   <footer class="brand-bg-red text-white py-8">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <div class="mb-6">
-        <img src="./images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="h-16 mx-auto">
-      </div>
-      <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+      <h3 class="text-3xl font-bold mb-3">MATA'S ASIAN TOUR 2025</h3>
       <p class="mb-4">July 30 - August 21, 2025</p>
       <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
     </div>
@@ -707,6 +767,33 @@
         });
       });
     }
+    
+    // Accordion functionality for itinerary section
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    // Add click event to each header
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        // Toggle the active class
+        this.classList.toggle('active');
+        
+        // Get the content panel
+        const content = this.nextElementSibling;
+        
+        // Toggle the hidden class
+        content.classList.toggle('hidden');
+        
+        // Rotate the arrow icon
+        const arrow = this.querySelector('svg');
+        if (content.classList.contains('hidden')) {
+          arrow.classList.remove('rotate-180');
+        } else {
+          arrow.classList.add('rotate-180');
+        }
+      });
+    });
+
+
   });
 </script>
 </body>
