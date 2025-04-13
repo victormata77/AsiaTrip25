@@ -90,20 +90,50 @@
       vertical-align: middle;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
+    .text-red-600.font-bold.text-xl {
+      transition: all 0.3s ease;
+    }
+    
+    .page-title-visible {
+      transform: scale(1.05);
+    }
+  
+  
   </style>
 </head>
 <body class="bg-gray-50">
+
 <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu -->
       <div class="hidden md:flex space-x-6">
         <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
         <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
         <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
         <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
+        
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative group">
+          <button class="text-gray-700 hover:text-red-600 flex items-center gap-1">
+            Other Destinations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+          </div>
+        </div>
       </div>
       
       <!-- Mobile Menu Button -->
@@ -123,11 +153,31 @@
         <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
         <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
         <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2">Photos</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+        
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Other Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+  
 
   <!-- Hero Section -->
   <section class="hero-section flex items-center justify-center" style="background-image: url('https://i.pinimg.com/originals/86/f2/55/86f2556da6cca07d10bf405e2d08791a.jpg');">
@@ -347,18 +397,20 @@
           </div>
         </div>
 
-        <!-- World Clock Widget -->
+      <!-- World Clock Widget (Full Width) -->
+      <!-- Add this within your "essentials" section, making sure it spans the full width -->
+      <div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
           <div class="bg-gray-50 p-4">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <h3 class="font-bold text-lg">World Clock</h3>
+              <h3 class="font-bold text-lg">Trip World Clock</h3>
             </div>
           </div>
           <div class="p-5">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
               <!-- Barcelona Time -->
               <div class="bg-gray-100 p-3 rounded-lg text-center">
                 <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
@@ -366,24 +418,34 @@
                 <div class="text-xs text-gray-500">(Home)</div>
               </div>
               
-              <!-- Seoul Time -->
+              <!-- East Asia Time (Seoul/Tokyo/Kyoto) -->
               <div class="bg-gray-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="seoul-time">--:--</div>
-                <div class="text-sm text-gray-600">Seoul</div>
-                <div class="text-xs text-gray-500">(Previous)</div>
+                <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+                <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+                <div class="text-xs text-gray-500">(UTC+9)</div>
               </div>
               
-              <!-- Tokyo Time -->
-              <div class="bg-red-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="tokyo-time">--:--</div>
-                <div class="text-sm text-gray-600">Tokyo</div>
-                <div class="text-xs text-gray-500">(Current)</div>
+              <!-- Southeast Asia Time (Singapore/Kuala Lumpur) -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+                <div class="text-sm text-gray-600">Singapore/KL</div>
+                <div class="text-xs text-gray-500">(UTC+8)</div>
+              </div>
+              
+              <!-- Maldives Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                <div class="text-sm text-gray-600">Maldives</div>
+                <div class="text-xs text-gray-500">(UTC+5)</div>
               </div>
             </div>
             
-            <p class="mt-3 text-sm text-gray-600 text-center">Times are displayed in 24-hour format</p>
+            <p class="mt-3 text-sm text-gray-600 text-center">Time difference from Barcelona: East Asia +7h, Southeast Asia +6h, Maldives +3h</p>
           </div>
         </div>
+      </div>
+
+        
       </div>
     </section>
 
@@ -952,6 +1014,63 @@
   </footer>
 
 <script>
+ // Mobile menu and destinations dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      dropdownArrow.classList.toggle('rotate-180');
+    });
+  }
+  
+  // Highlight current page in destinations submenu
+  const currentPage = window.location.pathname.split('/').pop();
+  if (destinationsSubmenu) {
+    const links = destinationsSubmenu.querySelectorAll('a');
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('text-red-600', 'font-bold');
+      }
+    });
+  }
+});
+
+  // Get the current page title from the h1 in the hero section
+  const pageTitle = document.querySelector('.hero-content h1').textContent;
+  const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+  const originalTitle = navTitle.textContent;
+  
+  // Function to handle scroll events
+  function handleScroll() {
+    // Change the title when scrolled down (e.g., 100px from top)
+    if (window.scrollY > 100) {
+      navTitle.textContent = pageTitle;
+      navTitle.classList.add('page-title-visible');
+    } else {
+      navTitle.textContent = originalTitle;
+      navTitle.classList.remove('page-title-visible');
+    }
+  }
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+});
+  
   // Mobile menu toggle functionality
   document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -968,36 +1087,44 @@
     }
   });
 
-  function updateWorldClocks() {
-    const now = new Date();
-    
-    // Barcelona time (CEST, UTC+2)
-    const barcelonaTime = new Date(now.getTime());
-    barcelonaTime.setHours(now.getUTCHours() + 2);
-    document.getElementById('barcelona-time').textContent = 
-      barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
-      barcelonaTime.getMinutes().toString().padStart(2, '0');
-    
-    // Seoul time (KST, UTC+9)
-    const seoulTime = new Date(now.getTime());
-    seoulTime.setHours(now.getUTCHours() + 9);
-    document.getElementById('seoul-time').textContent = 
-      seoulTime.getHours().toString().padStart(2, '0') + ':' + 
-      seoulTime.getMinutes().toString().padStart(2, '0');
-    
-    // Tokyo time (JST, UTC+9) - same as Seoul
-    const tokyoTime = new Date(now.getTime());
-    tokyoTime.setHours(now.getUTCHours() + 9);
-    document.getElementById('tokyo-time').textContent = 
-      tokyoTime.getHours().toString().padStart(2, '0') + ':' + 
-      tokyoTime.getMinutes().toString().padStart(2, '0');
-  }
+function updateWorldClocks() {
+  const now = new Date();
   
-  // Update clocks immediately
-  updateWorldClocks();
+  // Barcelona time (CEST, UTC+2)
+  const barcelonaTime = new Date(now.getTime());
+  barcelonaTime.setHours(now.getUTCHours() + 2);
+  document.getElementById('barcelona-time').textContent = 
+    barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
+    barcelonaTime.getMinutes().toString().padStart(2, '0');
   
-  // Then update every minute
-  setInterval(updateWorldClocks, 60000);
+  // Maldives time (MVT, UTC+5)
+  const maldivesTime = new Date(now.getTime());
+  maldivesTime.setHours(now.getUTCHours() + 5);
+  document.getElementById('maldives-time').textContent = 
+    maldivesTime.getHours().toString().padStart(2, '0') + ':' + 
+    maldivesTime.getMinutes().toString().padStart(2, '0');
+  
+  // Southeast Asia time (SGT/MYT, UTC+8)
+  const seAsiaTime = new Date(now.getTime());
+  seAsiaTime.setHours(now.getUTCHours() + 8);
+  document.getElementById('seasia-time').textContent = 
+    seAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
+    seAsiaTime.getMinutes().toString().padStart(2, '0');
+  
+  // East Asia time (JST/KST, UTC+9)
+  const eastAsiaTime = new Date(now.getTime());
+  eastAsiaTime.setHours(now.getUTCHours() + 9);
+  document.getElementById('eastasia-time').textContent = 
+    eastAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
+    eastAsiaTime.getMinutes().toString().padStart(2, '0');
+}
+
+// Update clocks immediately
+updateWorldClocks();
+
+// Then update every minute
+setInterval(updateWorldClocks, 60000);
+</script>
 </script>
 </body>
 </html>
