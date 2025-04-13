@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATA'S ASIAN TOUR 2025</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="icon2.png" type="image/png">
+  <style>
+    :root {
+      --mata-red: #c62828;
+      --mata-dark-red: #8e0000;
+      --mata-light-red: #ff5f52;
+      --mata-cream: #f5f0e1;
+    }
+    
+    .brand-bg-red {
+      background-color: var(--mata-red);
+    }
+    
+    .brand-text-red {
+      color: var(--mata-red);
+    }
+    
+    .brand-border-red {
+      border-color: var(--mata-red);
+    }
+    
+    .brand-button {
+      background-color: var(--mata-red);
+      color: white;
+      transition: background-color 0.3s;
+    }
+    
+    .brand-button:hover {
+      background-color: var(--mata-dark-red);
+    }
+    
+    .hero-section {
+      background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format');
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .photo-card {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover {
+      transform: scale(1.03);
+    }
+    .info-card {
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .flag-icon {
+      height: 20px;
+      width: 28px;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      vertical-align: middle;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation Menu -->
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2">Photos</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content max-w-4xl text-center text-white px-4">
+      <h1 class="text-5xl font-bold mb-4">Singapore</h1>
+      <p class="text-xl mb-2">August 11 - August 14, 2025</p>
+      <p class="text-lg">The dynamic Garden City where futuristic meets multicultural</p>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Destination Summary -->
+    <section class="mb-12">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4 brand-text-red">Welcome to Singapore</h2>
+        <p class="text-gray-700 mb-4">
+          Singapore, a vibrant city-state known as the "Lion City," uniquely blends ultramodern architecture with lush greenery and diverse cultural heritage. During our three-day stay, we'll experience the best of this dynamic destination—from the futuristic Gardens by the Bay and luxury marina area to the rich heritage districts of Chinatown, Little India, and Arab Street. Our base at Village Hotel Sentosa offers both resort relaxation and easy access to Singapore's cultural highlights, creating the perfect balance of leisure and exploration.
+        </p>
+        <div class="flex flex-wrap justify-between mt-6">
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Accommodation</h3>
+              <p class="text-sm">Village Hotel Sentosa by Far East Hospitality</p>
+              <p class="text-sm text-gray-600">10 Artillery Avenue, #02-01 Sentosa Island</p>
+              <p class="text-sm text-gray-600">Resort-style accommodation on Sentosa Island featuring four themed pools, shuttle services, and family-friendly amenities</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Highlights</h3>
+              <p class="text-sm">• Gardens by the Bay's Supertrees</p>
+              <p class="text-sm">• Sentosa Island resort amenities</p>
+              <p class="text-sm">• Cultural heritage neighborhoods</p>
+              <p class="text-sm">• Marina Bay's spectacular views</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
+              <p class="text-sm">• Day 1: Arrival & resort introduction</p>
+              <p class="text-sm">• Day 2: Sentosa adventures & pool day</p>
+              <p class="text-sm">• Day 3: Singapore city exploration</p>
+              <p class="text-sm">• Day 4: Morning relaxation & departure</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essential Information -->
+    <section id="essentials" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Weather Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-yellow-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Weather in August</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Average high: 30-32°C (86-90°F)</li>
+              <li>• Average low: 25-27°C (77-81°F)</li>
+              <li>• Humidity: Very high (80-90%)</li>
+              <li>• Rainfall: Frequent brief showers</li>
+              <li>• Daylight: Sunrise ~7:00 AM, Sunset ~7:15 PM</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">Singapore's climate is consistently hot and humid year-round. Air conditioning indoors can be quite cold, so bring light layers. Afternoon showers are common but typically brief.</p>
+          </div>
+        </div>
+        
+        <!-- Currency Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-green-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Currency</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Singapore Dollar (SGD/S$)</li>
+              <li>• €1 ≈ S$1.45 (April 2025 rate)</li>
+              <li>• Credit cards widely accepted</li>
+              <li>• Contactless payment very common</li>
+              <li>• ATMs readily available throughout the city</li>
+            </ul>
+            <div class="mt-3 bg-green-50 p-2 rounded text-sm">
+              <p class="font-bold">Tipping</p>
+              <p>Not expected or necessary in Singapore. Most restaurants include a 10% service charge and 7% GST in the bill. Taxis do not expect tips.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Transportation Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Getting Around</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• MRT (Mass Rapid Transit): Efficient and extensive subway system</li>
+              <li>• Singapore Tourist Pass: Unlimited travel on public transport</li>
+              <li>• Hotel Shuttles: Complimentary shuttles to VivoCity/HarbourFront</li>
+              <li>• Sentosa Express: Monorail from VivoCity to Sentosa stations</li>
+              <li>• Grab: Southeast Asia's ride-hailing app (similar to Uber)</li>
+              <li>• Taxis: Clean, metered, and reliable</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">Our hotel offers complimentary shuttles to VivoCity mall and HarbourFront MRT station, providing easy access to Singapore's excellent public transport network.</p>
+          </div>
+        </div>
+        
+        <!-- Must-Try Foods Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-red-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Must-Try Foods</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Chicken Rice: Singapore's unofficial national dish</li>
+              <li>• Chili Crab: Seafood specialty with sweet-spicy sauce</li>
+              <li>• Laksa: Spicy noodle soup with coconut milk</li>
+              <li>• Satay: Grilled meat skewers with peanut sauce</li>
+              <li>• Kaya Toast: Coconut jam toast with soft-boiled eggs</li>
+              <li>• Ice Kachang: Shaved ice dessert with colorful toppings</li>
+            </ul>
+            <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+              <p class="font-bold">Hawker Centers</p>
+              <p>These affordable food courts offer authentic local cuisine. Notable ones include Maxwell Food Centre, Lau Pa Sat, and Gluttons Bay. Look for stalls with long queues—they're usually the best!</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Communication Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-purple-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Language & Connectivity</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="text-gray-700">
+              <p class="mb-2"><span class="font-bold">Languages:</span></p>
+              <ul class="space-y-1">
+                <li>• English is an official language and widely spoken</li>
+                <li>• Other official languages: Mandarin, Malay, Tamil</li>
+                <li>• "Singlish" is the local English dialect with unique expressions</li>
+              </ul>
+              
+              <p class="mt-3 mb-2"><span class="font-bold">Internet & Connectivity:</span></p>
+              <ul class="space-y-1">
+                <li>• Free public Wi-Fi available (Wireless@SG network)</li>
+                <li>• High-speed Wi-Fi in most hotels, cafes, and malls</li>
+                <li>• Tourist SIM cards available at the airport</li>
+                <li>• Strong 4G/5G coverage throughout the island</li>
+              </ul>
+            </div>
+            <p class="mt-3 text-sm text-gray-600">Unlike many Asian destinations, language barriers are rare in Singapore as English is the primary language of education and business.</p>
+          </div>
+        </div>
+        
+        <!-- Laws & Etiquette Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-indigo-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Rules & Etiquette</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Strict littering laws with heavy fines</li>
+              <li>• No eating or drinking on public transportation</li>
+              <li>• Chewing gum is prohibited (not sold in Singapore)</li>
+              <li>• Remove shoes when entering homes and some religious sites</li>
+              <li>• Stand on the left side of escalators</li>
+              <li>• Queue for everything - Singaporeans love orderly lines</li>
+            </ul>
+            <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
+              <p class="font-bold">Important Note</p>
+              <p>Singapore has very strict drug laws with severe penalties. The country is known for its cleanliness and order, which comes from adherence to various regulations. Follow all posted rules—fines for violations can be substantial.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- World Clock Widget -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-gray-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">World Clock</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Barcelona Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                <div class="text-sm text-gray-600">Barcelona</div>
+                <div class="text-xs text-gray-500">(Home)</div>
+              </div>
+              
+              <!-- Tokyo Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="tokyo-time">--:--</div>
+                <div class="text-sm text-gray-600">Tokyo</div>
+                <div class="text-xs text-gray-500">(Previous)</div>
+              </div>
+              
+              <!-- Singapore Time -->
+              <div class="bg-red-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="singapore-time">--:--</div>
+                <div class="text-sm text-gray-600">Singapore</div>
+                <div class="text-xs text-gray-500">(Current)</div>
+              </div>
+            </div>
+            
+            <p class="mt-3 text-sm text-gray-600 text-center">Singapore is 6 hours ahead of Barcelona and 1 hour behind Tokyo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities and Itinerary -->
+    <section id="activities" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Day 1 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
+            <h3 class="font-bold">Monday, August 11, 2025 – Arrival & Resort Introduction</h3>
+            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <!-- Day 1 Icon -->
+                <div class="bg-blue-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <p class="font-medium mt-2">Village Hotel Sentosa</p>
+                    <p class="text-sm text-gray-600">Resort-style accommodation with four themed pools</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">17:20:</span> Arrive at Singapore Changi Airport (SIN)</li>
+                  <li><span class="font-medium">18:00-19:00:</span> Transport to Village Hotel Sentosa</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Private van transfer recommended for 6 people with luggage</li>
+                    <li>Travel time: 30-40 minutes to Sentosa Island</li>
+                  </ul>
+                  <li><span class="font-medium">19:00:</span> Check-in at Village Hotel Sentosa</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Address: 10 Artillery Avenue, #02-01 Sentosa Island</li>
+                    <li>Confirm room arrangements for your party of 6</li>
+                  </ul>
+                  <li><span class="font-medium">19:30-21:00:</span> Dinner at Native Kitchen (hotel's restaurant)</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>All-day dining restaurant with international and local cuisine</li>
+                    <li>Convenient option after a long travel day</li>
+                  </ul>
+                  <li><span class="font-medium">21:00-22:00:</span> Evening stroll around the hotel's pool deck</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Explore the four themed pools illuminated at night</li>
+                    <li>Brief orientation to the hotel facilities</li>
+                  </ul>
+                </ul>
+                <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Highlight:</span> Singapore's Changi Airport is consistently rated the world's best, featuring stunning architecture, indoor gardens, art installations, and even a butterfly habitat. It sets the tone for Singapore's blend of natural elements with ultra-modern design.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 2 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
+            <h3 class="font-bold">Tuesday, August 12, 2025 – Sentosa Adventures & Hotel Pool Day</h3>
+            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 2</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <!-- Day 2 Icon -->
+                <div class="bg-green-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                    <p class="font-medium mt-2">Sentosa Island Resort</p>
+                    <p class="text-sm text-gray-600">Tropical paradise with beaches and attractions</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">08:00-09:30:</span> Breakfast at Village Hotel Sentosa</li>
+                  <li><span class="font-medium">09:30-12:30:</span> Village Hotel pool experience</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Four themed pools to enjoy: Adventure Pool with water slides, Lazy River Pool, Children's Play Pool, and Pamukkale Pool (adults-only option)</li>
+                    <li>Pool games and activities often scheduled during morning hours</li>
+                  </ul>
+                  <li><span class="font-medium">12:30-13:30:</span> Lunch at hotel or The Village Square nearby</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Options: Malaysian Food Street or Authentic Singapore Food at Good Old Days</li>
+                    <li>5-10 minute walk from your hotel</li>
+                  </ul>
+                  <li><span class="font-medium">14:00-18:00:</span> Sentosa Island attractions (all near your hotel)</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Choose from: Universal Studios Singapore, S.E.A. Aquarium, adventure activities (zipline, giant swing), or beach day at Palawan or Siloso Beach</li>
+                    <li>All options within walking distance or a short shuttle ride from hotel</li>
+                  </ul>
+                  <li><span class="font-medium">18:30-19:30:</span> Return to hotel to refresh</li>
+                  <li><span class="font-medium">20:00-21:30:</span> Dinner at Quayside Isle</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Upscale waterfront dining with marina views</li>
+                    <li>Multiple cuisine options to suit different preferences</li>
+                    <li>10-minute taxi from hotel</li>
+                  </ul>
+                </ul>
+                <div class="mt-4 bg-green-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Highlight:</span> S.E.A. Aquarium houses more than 100,000 marine animals representing 1,000+ species in 50 different habitats. The Open Ocean habitat features a 36-meter wide by 8.3-meter tall viewing panel that creates the feeling of being on the ocean floor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 3 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-yellow-50 flex justify-between items-center">
+            <h3 class="font-bold">Wednesday, August 13, 2025 – Singapore City Exploration</h3>
+            <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 3</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <!-- Day 3 Icon -->
+                <div class="bg-yellow-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-yellow-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                    <p class="font-medium mt-2">Gardens by the Bay</p>
+                    <p class="text-sm text-gray-600">Futuristic gardens with Supertrees and conservatories</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">08:00-09:00:</span> Breakfast at hotel</li>
+                  <li><span class="font-medium">09:30:</span> Depart hotel via complimentary shuttle to VivoCity/HarbourFront MRT</li>
+                  <li><span class="font-medium">10:00-12:30:</span> Gardens by the Bay</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Supertree Grove & OCBC Skyway (elevated walkway)</li>
+                    <li>Flower Dome & Cloud Forest conservatories</li>
+                    <li>Transport: MRT from HarbourFront to Bayfront Station (25 min)</li>
+                  </ul>
+                  <li><span class="font-medium">12:30-13:30:</span> Lunch at Satay by the Bay</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Open-air hawker center with local specialties</li>
+                    <li>Try Singapore's famous satay, laksa, and other local dishes</li>
+                  </ul>
+                  <li><span class="font-medium">14:00-16:00:</span> Cultural Heritage Tour</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Chinatown Heritage Centre</li>
+                    <li>Buddha Tooth Relic Temple</li>
+                    <li>Sri Mariamman Temple (oldest Hindu temple in Singapore)</li>
+                  </ul>
+                  <li><span class="font-medium">16:30-18:00:</span> Marina Bay Sands SkyPark</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Panoramic views from 57th floor observation deck</li>
+                    <li>Shopping at The Shoppes at Marina Bay Sands</li>
+                  </ul>
+                  <li><span class="font-medium">18:30-19:15:</span> ArtScience Museum (Future World exhibition)</li>
+                  <li><span class="font-medium">20:00-21:00:</span> Spectra Light & Water Show at Marina Bay</li>
+                  <li><span class="font-medium">21:00-22:00:</span> Dinner at Gluttons Bay hawker center</li>
+                </ul>
+                <div class="mt-4 bg-yellow-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Highlight:</span> The Supertrees at Gardens by the Bay stand up to 50 meters tall and function as vertical gardens housing over 162,900 plants. At night, they come alive with a spectacular light and sound show, creating a magical forest of illuminated technological "trees."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 4 -->
+        <div>
+          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
+            <h3 class="font-bold">Thursday, August 14, 2025 – Departure Day</h3>
+            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 4</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                    <p class="font-medium mt-2">Onward to Kuala Lumpur</p>
+                    <p class="text-sm text-gray-600">Morning relaxation before departure</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">07:00-08:00:</span> Breakfast at Village Hotel Sentosa</li>
+                  <li><span class="font-medium">08:00-09:00:</span> Quick final swim or hotel activity</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Morning dip in the pool if desired</li>
+                    <li>Pack and prepare for departure</li>
+                  </ul>
+                  <li><span class="font-medium">09:00:</span> Check-out from hotel</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Store luggage with concierge if needed</li>
+                  </ul>
+                  <li><span class="font-medium">09:15:</span> Depart from hotel</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Private van transfer to airport (35-45 minutes)</li>
+                    <li>Allow extra time for potential traffic</li>
+                  </ul>
+                  <li><span class="font-medium">10:00:</span> Arrive at Changi Airport</li>
+                  <li><span class="font-medium">10:40:</span> Check-in for flight SQ114 to Kuala Lumpur (12:40 departure)</li>
+                </ul>
+                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Tip:</span> Changi Airport is an attraction in itself, so arriving early gives you time to explore. Consider visiting the world-famous Jewel complex with its indoor waterfall (Changi Rain Vortex), butterfly garden, or cinema if time permits before your flight.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Culture & Fun Facts -->
+    <section id="culture" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Singapore Country Info Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-red-50 p-4 mb-4">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag">
+              <h3 class="font-bold text-lg">Singapore Country Profile</h3>
+            </div>
+          </div>
+          <div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Official Name</p>
+                <p>Republic of Singapore</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Capital</p>
+                <p>Singapore (city-state)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Population</p>
+                <p>6.0 million (2025 est.)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Area</p>
+                <p>728.6 km² (281.3 sq mi)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Official Languages</p>
+                <p>English, Mandarin, Malay, Tamil</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Currency</p>
+                <p>Singapore Dollar (SGD/S$)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Government</p>
+                <p>Parliamentary republic</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Major Ethnic Groups</p>
+                <p>Chinese (74%), Malay (13%), Indian (9%)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Religion</p>
+                <p>Buddhism, Christianity, Islam, Taoism, Hinduism</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">GDP per Capita</p>
+                <p>$76,700 (vs. Spain: $44,100)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Time Zone</p>
+                <p>SGT (UTC+8)</p>
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <p class="font-bold text-sm text-gray-700">Driving Side</p>
+                <p>Left</p>
+              </div>
+            </div>
+            <div class="bg-red-50 p-3 rounded text-sm mb-4">
+              <p class="font-bold mb-1">Comparison with Spain</p>
+              <ul class="list-disc pl-4 text-gray-700 space-y-1">
+                <li>Area: 70 times smaller than Spain</li>
+                <li>Population density: 47 times higher than Spain</li>
+                <li>GDP per capita: 74% higher than Spain</li>
+                <li>Life expectancy: 2 years longer than Spain</li>
+                <li>Internet speed: 3 times faster than Spain</li>
+              </ul>
+            </div>
+            <p class="text-sm text-gray-600">Singapore is one of the world's smallest countries but has one of the highest GDP per capita. Despite its tiny size, it's a global financial hub and has the world's busiest transshipment port.</p>
+          </div>
+        </div>
+        
+        <!-- History & Culture Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-rose-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              <h3 class="font-bold text-lg">History & Multiculturalism</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Ancient Origins:</span> Originally known as Temasek, the island was a trading post for the Srivijaya Empire as early as the 3rd century.</li>
+              <li><span class="font-medium">Colonial Era:</span> Sir Stamford Raffles established a British trading post in 1819, transforming the island into a major port city.</li>
+              <li><span class="font-medium">Japanese Occupation:</span> During WWII, Singapore fell to Japanese forces (1942-1945) in what Winston Churchill called the "worst disaster" in British military history.</li>
+              <li><span class="font-medium">Independence:</span> After briefly joining Malaysia, Singapore became an independent republic on August 9, 1965, under the leadership of Lee Kuan Yew.</li>
+              <li><span class="font-medium">Economic Miracle:</span> In just one generation, Singapore transformed from a third-world country to a first-world nation with virtually no natural resources.</li>
+              <li><span class="font-medium">Cultural Harmony:</span> Singapore embraces its multicultural heritage through policies promoting racial and religious harmony. The "CMIO" model (Chinese, Malay, Indian, Other) forms the basis of many social policies.</li>
+            </ul>
+            <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Cultural Identity</p>
+              <p>Singapore's unique identity comes from its blend of Asian cultures with Western influences. This multicultural heritage is reflected in its architecture, festivals, languages, and especially its food, which combines Chinese, Malay, Indian, and Western traditions into unique Singaporean dishes.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Food Culture Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-amber-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Singapore's Food Culture</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">National Passion:</span> Food is considered a national obsession in Singapore, with eating being described as the unofficial national pastime.</li>
+              <li><span class="font-medium">Hawker Centers:</span> These open-air food courts are the heart of Singapore's food culture, offering affordable, diverse, and authentic local cuisine. Some hawker stalls have even earned Michelin stars.</li>
+              <li><span class="font-medium">Cultural Fusion:</span> Singaporean cuisine reflects its multicultural heritage, with dishes blending Chinese, Malay, Indian, and Western influences.</li>
+              <li><span class="font-medium">Famous Dishes:</span></li>
+              <ul class="list-disc pl-5 ml-4 text-gray-600 space-y-1">
+                <li>Hainanese Chicken Rice: Poached chicken with fragrant rice</li>
+                <li>Laksa: Spicy coconut milk-based noodle soup</li>
+                <li>Chili Crab: Singapore's iconic seafood dish</li>
+                <li>Char Kway Teow: Stir-fried rice noodles with dark soy sauce</li>
+                <li>Satay: Grilled meat skewers with peanut sauce</li>
+              </ul>
+              <li><span class="font-medium">Food Heritage:</span> In 2020, Singapore's hawker culture was added to UNESCO's list of Intangible Cultural Heritage, recognizing its cultural significance.</li>
+            </ul>
+            <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Hawker Center Etiquette</p>
+              <p>When visiting hawker centers, look for tables with tissue packets or personal items—they're "choped" (reserved). After ordering, wait for your food to be ready before paying. It's customary to clear your own tray when finished. Follow the locals' lead and join the longest queues—they usually lead to the best food!</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Garden City Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-green-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">The Garden City Vision</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Green Vision:</span> In 1967, Singapore launched its "Garden City" campaign, transforming a concrete jungle into one of the world's greenest urban environments.</li>
+              <li><span class="font-medium">City in a Garden:</span> Singapore has evolved beyond being a "Garden City" to become a "City in a Garden," where greenery is integrated into the urban landscape.</li>
+              <li><span class="font-medium">Parks Everywhere:</span> Despite its small size, Singapore has over 350 parks and 4 nature reserves, with 80% of residents living within 400m of a green space.</li>
+              <li><span class="font-medium">Vertical Gardens:</span> With limited land, Singapore pioneered vertical greenery, with many buildings featuring green walls and rooftop gardens.</li>
+              <li><span class="font-medium">Sustainable Architecture:</span> Buildings like Parkroyal on Pickering and CapitaGreen incorporate thousands of plants into their designs, creating "hotel-in-a-garden" experiences.</li>
+              <li><span class="font-medium">Gardens by the Bay:</span> This 101-hectare nature park features Supertrees (vertical gardens up to 50m tall), two conservatories (Flower Dome and Cloud Forest), and serves as Singapore's horticultural showcase.</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">Singapore's transformation into a green city wasn't just aesthetic—it was a deliberate strategy to differentiate itself from other Asian cities, provide a high quality of life, and create a sustainable urban environment despite limited natural resources.</p>
+          </div>
+        </div>
+        
+        <!-- Fun Facts Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-purple-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Did You Know?</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li>Singapore is one of only three city-states in the world, alongside Monaco and Vatican City.</li>
+              <li>The Singapore Sling cocktail was created at the Long Bar in Raffles Hotel around 1915.</li>
+              <li>Singapore's Changi Airport has been voted the world's best airport for 12 consecutive years (2013-2025).</li>
+              <li>The national symbol of Singapore is the Merlion—a mythical creature with a lion's head and fish's body.</li>
+              <li>Singapore has one of the world's lowest crime rates and is consistently ranked among the safest countries.</li>
+              <li>Despite its tiny size, Singapore is the world's fourth-leading financial center after New York, London, and Hong Kong.</li>
+              <li>Singapore has the world's highest percentage of millionaires, with nearly 10% of households having at least $1 million in disposable wealth.</li>
+              <li>The Singapore Botanic Gardens is the only tropical garden to be honored as a UNESCO World Heritage Site.</li>
+              <li>Singapore's tap water is among the cleanest in the world and is perfectly safe to drink directly from the tap.</li>
+              <li>Singapore's Night Safari was the world's first nocturnal wildlife park when it opened in 1994.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Sentosa Island Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-teal-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <h3 class="font-bold text-lg">Sentosa Island: Your Resort Home</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Island Transformation:</span> Once known as Pulau Blakang Mati ("Island of Death from Behind" in Malay), Sentosa was renamed in 1972 to a Sanskrit word meaning "peace and tranquility."</li>
+              <li><span class="font-medium">Man-Made Beaches:</span> Sentosa's beaches (Siloso, Palawan, and Tanjong) feature imported sand from Indonesia and Malaysia to create idyllic shorelines.</li>
+              <li><span class="font-medium">Top Attractions:</span></li>
+              <ul class="list-disc pl-5 ml-4 text-gray-600 space-y-1">
+                <li>Universal Studios Singapore: Southeast Asia's first and only Universal Studios theme park</li>
+                <li>S.E.A. Aquarium: Home to more than 100,000 marine animals</li>
+                <li>Adventure Cove Waterpark: Water slides and marine encounters</li>
+                <li>Mega Adventure Park: 450m zipline across the jungle canopy</li>
+                <li>Madame Tussauds Singapore: Wax museum featuring local and international celebrities</li>
+              </ul>
+              <li><span class="font-medium">Unique Transport:</span> You can reach Sentosa via cable car, monorail (Sentosa Express), walking across the Sentosa Boardwalk, or by car.</li>
+              <li><span class="font-medium">Luxury Hub:</span> Sentosa is home to some of Singapore's most exclusive residences, with beachfront properties commanding premium prices.</li>
+              <li><span class="font-medium">Historical Significance:</span> Fort Siloso on Sentosa is Singapore's only preserved coastal fort and played a significant role during WWII.</li>
+            </ul>
+            <div class="mt-4 bg-teal-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Village Hotel Sentosa</p>
+              <p>Your accommodation on Sentosa features four themed pools: Adventure Pool (with water slides), Lazy River Pool, Children's Play Pool, and Pamukkale Pool (adults-only). The hotel offers complimentary shuttles to VivoCity mall, which connects to Singapore's MRT system for easy access to the city.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="photos" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Singapore Photo Gallery</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Image 1: Gardens by the Bay -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format" alt="Gardens by the Bay" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Gardens by the Bay</p>
+          </div>
+        </div>
+        
+        <!-- Image 2: Marina Bay Sands -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&auto=format" alt="Marina Bay Sands" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Marina Bay Sands</p>
+          </div>
+        </div>
+        
+        <!-- Image 3: Sentosa Island -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.sentosa.com.sg/images/default-source/homepage/universal-masthead-image-2020.jpg" alt="Sentosa Island" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Sentosa Island</p>
+          </div>
+        </div>
+
+        <!-- Image 4: Singapore Food -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.eater.com/wp-content/uploads/sites/2/2022/05/SingaporeHawkersCulture.jpg" alt="Singapore Hawker Food" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Singapore Hawker Food</p>
+          </div>
+        </div>
+
+        <!-- Image 5: Chinatown -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/aa/6d/9d.jpg" alt="Singapore Chinatown" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Singapore Chinatown</p>
+          </div>
+        </div>
+
+        <!-- Image 6: Village Hotel Pools -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.fareastvillages.com/app/uploads/sites/4/2019/03/Village-Hotel-Sentosa_Pamukkale-Pool-Day.jpg" alt="Village Hotel Sentosa Pools" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Village Hotel Sentosa Pools</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="text-center mb-8">
+      <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+        Return to Main Itinerary
+      </a>
+    </section>
+  </div>
+
+  <footer class="brand-bg-red text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+      <p class="mb-4">July 30 - August 21, 2025</p>
+      <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
+    </div>
+  </footer>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    }
+  });
+
+  function updateWorldClocks() {
+    const now = new Date();
+    
+    // Barcelona time (CEST, UTC+2)
+    const barcelonaTime = new Date(now.getTime());
+    barcelonaTime.setHours(now.getUTCHours() + 2);
+    document.getElementById('barcelona-time').textContent = 
+      barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
+      barcelonaTime.getMinutes().toString().padStart(2, '0');
+    
+    // Tokyo time (JST, UTC+9)
+    const tokyoTime = new Date(now.getTime());
+    tokyoTime.setHours(now.getUTCHours() + 9);
+    document.getElementById('tokyo-time').textContent = 
+      tokyoTime.getHours().toString().padStart(2, '0') + ':' + 
+      tokyoTime.getMinutes().toString().padStart(2, '0');
+    
+    // Singapore time (SGT, UTC+8)
+    const singaporeTime = new Date(now.getTime());
+    singaporeTime.setHours(now.getUTCHours() + 8);
+    document.getElementById('singapore-time').textContent = 
+      singaporeTime.getHours().toString().padStart(2, '0') + ':' + 
+      singaporeTime.getMinutes().toString().padStart(2, '0');
+  }
+  
+  // Update clocks immediately
+  updateWorldClocks();
+  
+  // Then update every minute
+  setInterval(updateWorldClocks, 60000);
+</script>
+</body>
+</html>
