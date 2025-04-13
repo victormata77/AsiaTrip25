@@ -6,6 +6,13 @@
   <title>Mata Family Asian Adventure 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    :root {
+      --mata-red: #c62828;
+      --mata-dark-red: #8e0000;
+      --mata-light-red: #ff5f52;
+      --mata-cream: #f5f0e1;
+    }
+    
     .hero-section {
       background-image: url('https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?w=1600&auto=format');
       background-size: cover;
@@ -73,13 +80,13 @@
     }
     .map-line {
       height: 5px;
-      background-color: #3b82f6;
+      background-color: var(--mata-red);
       margin: 30px 0;
       position: relative;
     }
     .map-line-vertical {
       width: 5px;
-      background-color: #3b82f6;
+      background-color: var(--mata-red);
       margin: 0 auto;
       position: relative;
       height: 600px;
@@ -101,10 +108,10 @@
     .map-dot {
       width: 20px;
       height: 20px;
-      background-color: #3b82f6;
+      background-color: var(--mata-red);
       border-radius: 50%;
       border: 3px solid white;
-      box-shadow: 0 0 0 2px #3b82f6;
+      box-shadow: 0 0 0 2px var(--mata-red);
     }
     .map-label {
       margin-top: 12px;
@@ -123,12 +130,41 @@
       transform: translateY(-5px);
     }
     
+    .brand-bg-red {
+      background-color: var(--mata-red);
+    }
+    
+    .brand-text-red {
+      color: var(--mata-red);
+    }
+    
+    .brand-border-red {
+      border-color: var(--mata-red);
+    }
+    
+    .brand-button {
+      background-color: var(--mata-red);
+      color: white;
+      transition: background-color 0.3s;
+    }
+    
+    .brand-button:hover {
+      background-color: var(--mata-dark-red);
+    }
+    
+    .logo-container {
+      height: 50px;
+    }
+    
     @media (max-width: 768px) {
       .journey-map-horizontal {
         display: none;
       }
       .journey-map-vertical {
         display: flex;
+      }
+      .logo-container {
+        height: 40px;
       }
     }
   </style>
@@ -138,19 +174,23 @@
   <nav class="sticky-nav shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3">
       <div class="flex justify-between items-center">
-        <div class="text-blue-600 font-bold text-xl">Mata Family Asian Adventure 2025</div>
+        <div class="flex items-center">
+          <div class="logo-container mr-3">
+            <img src="images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="h-full">
+          </div>
+        </div>
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-4">
-          <a href="#destinations" class="text-gray-700 hover:text-blue-600">Destinations</a>
-          <a href="#itinerary" class="text-gray-700 hover:text-blue-600">Itinerary</a>
-          <a href="#journey" class="text-gray-700 hover:text-blue-600">Journey</a>
-          <a href="#tips" class="text-gray-700 hover:text-blue-600">Tips</a>
+          <a href="#destinations" class="text-gray-700 hover:brand-text-red">Destinations</a>
+          <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
+          <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
+          <a href="#tips" class="text-gray-700 hover:brand-text-red">Tips</a>
         </div>
         
         <!-- Mobile Menu Button -->
         <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+          <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -161,10 +201,10 @@
       <!-- Mobile Menu Dropdown (hidden by default) -->
       <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
         <div class="flex flex-col space-y-3">
-          <a href="#destinations" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Destinations</a>
-          <a href="#itinerary" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Itinerary</a>
-          <a href="#journey" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Journey</a>
-          <a href="#tips" class="text-gray-700 hover:text-blue-600 py-2">Tips</a>
+          <a href="#destinations" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Destinations</a>
+          <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
+          <a href="#journey" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Journey</a>
+          <a href="#tips" class="text-gray-700 hover:brand-text-red py-2">Tips</a>
         </div>
       </div>
     </div>
@@ -174,6 +214,7 @@
   <section class="hero-section flex items-center justify-center">
     <div class="hero-overlay"></div>
     <div class="hero-content max-w-4xl text-center text-white px-4">
+      <img src="images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="max-h-36 mx-auto mb-6">
       <h1 class="text-5xl font-bold mb-4">Our Epic Asian Adventure</h1>
       <p class="text-xl mb-6">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
       <div class="flex flex-wrap justify-center gap-4">
@@ -193,7 +234,7 @@
   <div class="max-w-6xl mx-auto px-4 py-12">
     <!-- Destinations Section -->
     <section id="destinations" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center">Our Destinations</h2>
+      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Destinations</h2>
       <p class="text-center text-gray-600 mb-8">A carefully crafted journey through Asia's most captivating places</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -246,7 +287,7 @@
         </div>
         
         <!-- Maldives -->
-        <div class="destination-card shadow-lg" style="background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg?w=800&auto=format')">
+        <div class="destination-card shadow-lg" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&auto=format')">
           <div class="destination-info">
             <h3 class="text-xl font-bold">Maldives</h3>
             <p class="text-sm mb-2">August 16 - 20 • 4 nights</p>
@@ -258,7 +299,7 @@
 
     <!-- Itinerary Calendar Section -->
     <section id="itinerary" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center">Our Itinerary</h2>
+      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Itinerary</h2>
       <p class="text-center text-gray-600 mb-8">Simplified overview of our adventure</p>
 
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -365,13 +406,13 @@
 
     <!-- Travel Tips Section -->
     <section id="tips" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center">Essential Travel Tips</h2>
+      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Essential Travel Tips</h2>
       <p class="text-center text-gray-600 mb-8">Click on any category to view detailed information</p>
       
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <!-- Packing Tips -->
         <a href="packing-tips.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-blue-500 p-4 flex flex-col items-center justify-center text-center h-32">
+          <div class="brand-bg-red p-4 flex flex-col items-center justify-center text-center h-32">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
@@ -384,7 +425,7 @@
         
         <!-- Health & Safety -->
         <a href="health-safety.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-green-500 p-4 flex flex-col items-center justify-center text-center h-32">
+          <div class="brand-bg-red p-4 flex flex-col items-center justify-center text-center h-32">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
@@ -397,7 +438,7 @@
         
         <!-- Technology & Connectivity -->
         <a href="connectivity.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-purple-500 p-4 flex flex-col items-center justify-center text-center h-32">
+          <div class="brand-bg-red p-4 flex flex-col items-center justify-center text-center h-32">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
@@ -410,7 +451,7 @@
         
         <!-- Money & Payments -->
         <a href="money-payments.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-yellow-500 p-4 flex flex-col items-center justify-center text-center h-32">
+          <div class="brand-bg-red p-4 flex flex-col items-center justify-center text-center h-32">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
@@ -423,7 +464,7 @@
       </div>
       
       <div class="mt-8 text-center">
-        <a href="travel-guide.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+        <a href="travel-guide.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
           View Complete Travel Guide
         </a>
       </div>
@@ -431,7 +472,7 @@
 
     <!-- Journey Map Section -->
     <section id="journey" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center">Our Journey Map</h2>
+      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Journey Map</h2>
       <p class="text-center text-gray-600 mb-8">From Barcelona and back, traveling across Asia and the Indian Ocean</p>
       
       <div class="bg-white p-6 rounded-lg shadow-md">
@@ -589,11 +630,14 @@
     </section>
   </div>
 
-  <footer class="bg-blue-900 text-white py-8">
+  <footer class="brand-bg-red text-white py-8">
     <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="mb-6">
+        <img src="images/Mata_asia_2025.png" alt="Mata's Asian Tour 2025" class="h-16 mx-auto">
+      </div>
       <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
       <p class="mb-4">July 30 - August 21, 2025</p>
-      <p class="text-blue-200">Created with ❤️ for our family of 5+1</p>
+      <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
     </div>
   </footer>
 
