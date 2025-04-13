@@ -139,11 +139,32 @@
     <div class="max-w-6xl mx-auto px-4 py-3">
       <div class="flex justify-between items-center">
         <div class="text-blue-600 font-bold text-xl">Mata Family Asian Adventure 2025</div>
-        <div class="flex space-x-4">
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-4">
           <a href="#destinations" class="text-gray-700 hover:text-blue-600">Destinations</a>
           <a href="#itinerary" class="text-gray-700 hover:text-blue-600">Itinerary</a>
           <a href="#journey" class="text-gray-700 hover:text-blue-600">Journey</a>
           <a href="#tips" class="text-gray-700 hover:text-blue-600">Tips</a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Dropdown (hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+        <div class="flex flex-col space-y-3">
+          <a href="#destinations" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Destinations</a>
+          <a href="#itinerary" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Itinerary</a>
+          <a href="#journey" class="text-gray-700 hover:text-blue-600 py-2 border-b border-gray-200">Journey</a>
+          <a href="#tips" class="text-gray-700 hover:text-blue-600 py-2">Tips</a>
         </div>
       </div>
     </div>
@@ -575,5 +596,30 @@
       <p class="text-blue-200">Created with ❤️ for our family of 5+1</p>
     </div>
   </footer>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+      
+      // Close menu when clicking on links
+      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+  });
+</script>
 </body>
 </html>
