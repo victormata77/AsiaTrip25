@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATA'S ASIAN TOUR 2025</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="icon2.png" type="image/png">
+  <style>
+    :root {
+      --mata-red: #c62828;
+      --mata-dark-red: #8e0000;
+      --mata-light-red: #ff5f52;
+      --mata-cream: #f5f0e1;
+    }
+    
+    .brand-bg-red {
+      background-color: var(--mata-red);
+    }
+    
+    .brand-text-red {
+      color: var(--mata-red);
+    }
+    
+    .brand-border-red {
+      border-color: var(--mata-red);
+    }
+    
+    .brand-button {
+      background-color: var(--mata-red);
+      color: white;
+      transition: background-color 0.3s;
+    }
+    
+    .brand-button:hover {
+      background-color: var(--mata-dark-red);
+    }
+    
+    .hero-section {
+      background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      position: relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .photo-card {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .photo-card:hover {
+      transform: scale(1.03);
+    }
+    .info-card {
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .flag-icon {
+      height: 20px;
+      width: 28px;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      vertical-align: middle;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation Menu -->
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2">Photos</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section flex items-center justify-center">
+    <div class="hero-overlay"></div>
+    <div class="hero-content max-w-4xl text-center text-white px-4">
+      <h1 class="text-5xl font-bold mb-4">Maldives</h1>
+      <p class="text-xl mb-2">August 16 - August 20, 2025</p>
+      <p class="text-lg">Overwater paradise, turquoise lagoons, and pristine white sand beaches</p>
+    </div>
+  </section>
+
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Destination Summary -->
+    <section class="mb-12">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4 brand-text-red">Welcome to Paradise</h2>
+        <p class="text-gray-700 mb-4">
+          The Maldives, a string of coral islands in the Indian Ocean, represents the perfect finale to our Asian adventure. After exploring dynamic cities and cultural sites, we'll spend four nights in an idyllic overwater villa at the Radisson Blu Resort, surrounded by crystal-clear waters, vibrant coral reefs, and powdery white beaches. With minimal scheduled activities, this is your time to relax, recharge, and enjoy the incomparable beauty and luxury of this tropical paradise at your own pace.
+        </p>
+        <div class="flex flex-wrap justify-between mt-6">
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Accommodation</h3>
+              <p class="text-sm">Radisson Blu Resort Maldives</p>
+              <p class="text-sm text-gray-600">Huruelhi Island, Alifu Dhaalu Atoll</p>
+              <p class="text-sm text-gray-600">Luxury overwater villa with direct access to the lagoon and house reef</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Highlights</h3>
+              <p class="text-sm">• Exclusive overwater villa accommodation</p>
+              <p class="text-sm">• World-class snorkeling on house reef</p>
+              <p class="text-sm">• Variety of water sports activities</p>
+              <p class="text-sm">• Underwater restaurant dining</p>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 p-2">
+            <div class="bg-red-50 p-4 rounded-lg h-full">
+              <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
+              <p class="text-sm">• Day 1: Arrival via seaplane & resort introduction</p>
+              <p class="text-sm">• Days 2-4: Relaxation and optional activities</p>
+              <p class="text-sm">• Day 5: Final morning in paradise & departure</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Essential Information -->
+    <section id="essentials" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Weather Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-yellow-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Weather in August</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Average high: 30°C (86°F)</li>
+              <li>• Average low: 25°C (77°F)</li>
+              <li>• Humidity: High (75-85%)</li>
+              <li>• Rainfall: Moderate, brief showers possible</li>
+              <li>• Daylight: Sunrise ~5:50 AM, Sunset ~6:30 PM</li>
+              <li>• Ocean temperature: 28-29°C (82-84°F)</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">August is generally pleasant in the Maldives with plenty of sunshine despite being technically part of the monsoon season. Occasional brief showers provide a refreshing break from the tropical sun. The water is warm and perfect for swimming year-round.</p>
+          </div>
+        </div>
+        
+        <!-- Transportation Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Getting There & Around</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Malé to Resort: 30-45 minute seaplane transfer</li>
+              <li>• Seaplane Hours: Operates only during daylight (6:00 AM - 4:00 PM)</li>
+              <li>• Resort Transportation: Golf carts for longer distances</li>
+              <li>• Walking: Wooden boardwalks connect all overwater villas</li>
+              <li>• Island Size: Small enough to walk around in 15-20 minutes</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">The seaplane journey to the resort is an experience in itself, offering breathtaking aerial views of the atolls. We've secured a 50% discount on the seaplane transfer as part of our accommodation package. Note that seaplanes have strict luggage weight restrictions (typically 20kg per person + 5kg hand luggage).</p>
+          </div>
+        </div>
+        
+        <!-- Resort Facilities Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-green-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <h3 class="font-bold text-lg">Resort Facilities</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Overwater Villa: Private deck, direct ocean access, indoor/outdoor shower</li>
+              <li>• Dining: Multiple restaurants including underwater dining experience</li>
+              <li>• Spa: Overwater treatment pavilions with glass floors</li>
+              <li>• Pools: Main infinity pool with ocean views</li>
+              <li>• Fitness Center: Air-conditioned with ocean views</li>
+              <li>• Kids Club: Supervised activities for younger children</li>
+              <li>• Water Sports Center: Equipment rental and excursion booking</li>
+            </ul>
+            <div class="mt-3 bg-green-50 p-2 rounded text-sm">
+              <p class="font-bold">Internet Access</p>
+              <p>Complimentary high-speed Wi-Fi is available throughout the resort, including in your villa. Coverage might occasionally be affected by weather conditions.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Water Activities Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-red-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Water Activities</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Snorkeling: House reef accessible directly from villas</li>
+              <li>• Diving: PADI-certified dive center with courses for beginners</li>
+              <li>• Non-motorized Water Sports: Kayaking, paddleboarding, windsurfing</li>
+              <li>• Motorized Water Sports: Jet skiing, parasailing, wakeboarding</li>
+              <li>• Excursions: Dolphin watching, fishing trips, island hopping</li>
+              <li>• Marine Wildlife: Manta rays, reef sharks, turtles, colorful fish</li>
+            </ul>
+            <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+              <p class="font-bold">Snorkeling Tip</p>
+              <p>The best snorkeling times are during high tide when water currents are minimal. The resort provides complimentary snorkeling equipment for all guests. Consider bringing your own mask if you wear prescription glasses.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dining Options Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-purple-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Dining Experiences</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Alifaan: All-day dining restaurant with international cuisine</li>
+              <li>• Crusoe's: Beach grill serving fresh seafood and steaks</li>
+              <li>• The Lab: Underwater restaurant for special dining experiences</li>
+              <li>• Mahurab: Overwater bar and lounge for sunset cocktails</li>
+              <li>• Eats & Beats: Pool bar with light snacks and refreshments</li>
+              <li>• In-Villa Dining: 24-hour room service</li>
+              <li>• Special Arrangements: Private beach dinners, floating breakfast</li>
+            </ul>
+            <div class="mt-3 bg-purple-50 p-2 rounded text-sm">
+              <p class="font-bold">Dining Recommendation</p>
+              <p>The underwater restaurant requires advance reservation (ideally before arrival). For a memorable experience, consider booking a private beach dinner under the stars on one evening of our stay.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Travel Tips Card -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-indigo-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Essential Travel Tips</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <ul class="text-gray-700 space-y-1">
+              <li>• Currency: USD widely accepted at resorts, credit cards (Visa/Mastercard) preferred</li>
+              <li>• Time Zone: Maldives Time (MVT) is UTC+5, 3 hours behind Singapore</li>
+              <li>• Language: Dhivehi is official, but English is widely spoken at the resort</li>
+              <li>• Electricity: 220-240V, UK-style three-pin plugs (adapters available at resort)</li>
+              <li>• Dress Code: Resort casual, modest attire for dining areas</li>
+              <li>• Tipping: Not required but appreciated (10-15% customary for good service)</li>
+              <li>• Health: No vaccines required, but travel insurance recommended</li>
+            </ul>
+            <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
+              <p class="font-bold">Important Note</p>
+              <p>The Maldives is a Muslim country with strict laws on alcohol and modest dress. However, these restrictions don't apply to resort islands like ours. Respect local customs if visiting inhabited islands.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- World Clock Widget -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden col-span-1 md:col-span-3">
+          <div class="bg-gray-50 p-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">World Clock</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <!-- Barcelona Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                <div class="text-sm text-gray-600">Barcelona</div>
+                <div class="text-xs text-gray-500">(Home)</div>
+              </div>
+              
+              <!-- Kuala Lumpur Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="kl-time">--:--</div>
+                <div class="text-sm text-gray-600">Kuala Lumpur</div>
+                <div class="text-xs text-gray-500">(Previous)</div>
+              </div>
+              
+              <!-- Maldives Time -->
+              <div class="bg-red-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                <div class="text-sm text-gray-600">Maldives</div>
+                <div class="text-xs text-gray-500">(Current)</div>
+              </div>
+              
+              <!-- Singapore Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="singapore-time">--:--</div>
+                <div class="text-sm text-gray-600">Singapore</div>
+                <div class="text-xs text-gray-500">(Next)</div>
+              </div>
+              
+              <!-- Local Time -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="local-time">--:--</div>
+                <div class="text-sm text-gray-600">Your Location</div>
+                <div class="text-xs text-gray-500">(Now)</div>
+              </div>
+            </div>
+            
+            <p class="mt-3 text-sm text-gray-600 text-center">Note: The Maldives is 3 hours behind Singapore and 3 hours ahead of Barcelona</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities and Itinerary -->
+    <section id="activities" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
+      
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Day 1 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
+            <h3 class="font-bold">Saturday, August 16, 2025 – Arrival in Paradise</h3>
+            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <!-- Day 1 Icon -->
+                <div class="bg-blue-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                    </svg>
+                    <p class="font-medium mt-2">Seaplane Adventure</p>
+                    <p class="text-sm text-gray-600">Breathtaking aerial views</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">11:25:</span> Arrive at Malé International Airport</li>
+                  <li><span class="font-medium">11:30-12:30:</span> Welcome at Radisson Blu seaplane lounge</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Refreshments while waiting for seaplane transfer</li>
+                    <li>Complete resort check-in formalities</li>
+                  </ul>
+                  <li><span class="font-medium">12:30-13:30:</span> Seaplane transfer to Radisson Blu Resort</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Spectacular aerial views of atolls and islands</li>
+                    <li>30-45 minute scenic flight</li>
+                  </ul>
+                  <li><span class="font-medium">14:00:</span> Arrival and welcome at Radisson Blu Resort Maldives</li>
+                  <li><span class="font-medium">14:30-16:30:</span> Resort orientation and villa settling</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Tour of resort facilities with personal host</li>
+                    <li>Introduction to your luxury overwater villa</li>
+                    <li>Unpack and relax in your private accommodation</li>
+                  </ul>
+                  <li><span class="font-medium">17:00-18:30:</span> Beach time or pool relaxation</li>
+                  <li><span class="font-medium">19:00-21:00:</span> Welcome dinner at Alifaan Restaurant</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>International cuisine with Maldivian influences</li>
+                    <li>First taste of fresh seafood specialties</li>
+                  </ul>
+                </ul>
+                <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Highlight:</span> The seaplane journey offers breathtaking bird's-eye views of the Maldives' distinctive ring-shaped atolls, pearl-like islands, and countless shades of blue water. Have your camera ready for this incredible introduction to paradise!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Days 2-4 -->
+        <div class="border-b">
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
+            <h3 class="font-bold">Sunday-Tuesday, August 17-19, 2025 – Paradise at Your Pace</h3>
+            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Days 2-4</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <!-- Day 2-4 Icon -->
+                <div class="bg-green-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                    <p class="font-medium mt-2">Paradise at Your Pace</p>
+                    <p class="text-sm text-gray-600">Relaxation & adventure options</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <p class="text-gray-700 mb-4">
+                  These days are yours to enjoy the incomparable beauty and luxury of the Maldives at your own pace. With minimal scheduled activities, you can relax, recharge, and create your own perfect paradise experience. The resort offers a wealth of options for both relaxation and adventure.
+                </p>
+                
+                <h4 class="font-bold text-green-700 mb-2">Daily Schedule Framework:</h4>
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">07:00-10:30:</span> Breakfast at Alifaan Restaurant</li>
+                  <li><span class="font-medium">Morning Activities:</span> Choose from:</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Guided snorkeling tour of the house reef</li>
+                    <li>Introductory scuba diving lesson</li>
+                    <li>Morning yoga session on the beach</li>
+                    <li>Relaxation in your private villa</li>
+                  </ul>
+                  <li><span class="font-medium">12:30-14:30:</span> Lunch at your preferred venue</li>
+                  <li><span class="font-medium">Afternoon Activities:</span> Choose from:</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Water sports (kayaking, paddleboarding, jet skiing)</li>
+                    <li>Dolphin watching cruise</li>
+                    <li>Spa treatments</li>
+                    <li>Beach or infinity pool relaxation</li>
+                  </ul>
+                  <li><span class="font-medium">18:00-19:00:</span> Sunset cocktails at Mahurab Bar</li>
+                  <li><span class="font-medium">19:30-21:30:</span> Dinner at one of the resort's restaurants</li>
+                </ul>
+                
+                <div class="mt-4 bg-green-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Special Evening:</span> Consider reserving one evening for a special dining experience such as the underwater restaurant or a private beach dinner under the stars. These signature experiences should be booked in advance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Day 5 -->
+        <div>
+          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
+            <h3 class="font-bold">Wednesday, August 20, 2025 – Final Morning & Departure</h3>
+            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 5</span>
+          </div>
+          <div class="p-5">
+            <div class="flex flex-col md:flex-row gap-6 mb-4">
+              <div class="md:w-1/3">
+                <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                  <div class="text-center p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                    <p class="font-medium mt-2">Farewell to Paradise</p>
+                    <p class="text-sm text-gray-600">Last glimpses of paradise</p>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                  <li><span class="font-medium">05:30-06:30:</span> Optional sunrise viewing from your villa deck</li>
+                  <li><span class="font-medium">07:00-08:30:</span> Final breakfast at Alifaan Restaurant</li>
+                  <li><span class="font-medium">08:30-09:00:</span> Complete check-out procedures</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Settle any outstanding charges</li>
+                    <li>Arrange luggage collection</li>
+                  </ul>
+                  <li><span class="font-medium">09:00-11:00:</span> Free time for last-minute activities</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Final swim or snorkel</li>
+                    <li>Last photos of the beautiful surroundings</li>
+                    <li>Optional: Browse the resort boutique for souvenirs</li>
+                  </ul>
+                  <li><span class="font-medium">11:15:</span> Seaplane transfer to Malé Airport</li>
+                  <ul class="list-disc pl-5 ml-4 text-gray-600">
+                    <li>Farewell from resort staff</li>
+                    <li>Last aerial views of the stunning atolls</li>
+                  </ul>
+                  <li><span class="font-medium">13:15-21:00:</span> Flight SQ431 to Singapore</li>
+                  <li><span class="font-medium">23:35:</span> Flight SQ388 to Barcelona (overnight)</li>
+                </ul>
+                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
+                  <p class="text-sm"><span class="font-bold">Last Morning Tip:</span> Consider setting your alarm early to witness a spectacular Maldivian sunrise from your private villa deck or the beach. This magical moment of tranquility will be the perfect farewell to paradise before our journey home.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Culture & Fun Facts -->
+    <section id="culture" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Maldives Overview Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-rose-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              <h3 class="font-bold text-lg">About the Maldives</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Geography:</span> The Maldives consists of 26 ring-shaped atolls made up of more than 1,000 coral islands, only 200 of which are inhabited.</li>
+              <li><span class="font-medium">Population:</span> Approximately 540,000 people, with about one-third living in the capital city of Malé.</li>
+              <li><span class="font-medium">Language:</span> Dhivehi is the official language, with English widely spoken in tourist areas.</li>
+              <li><span class="font-medium">Religion:</span> Islam is the official religion, and the country follows many Islamic traditions.</li>
+              <li><span class="font-medium">Economy:</span> Tourism and fishing are the main industries, with tourism accounting for nearly 30% of GDP.</li>
+              <li><span class="font-medium">Climate:</span> Tropical monsoon climate with two seasons: dry season (northeast monsoon, November-April) and rainy season (southwest monsoon, May-October).</li>
+            </ul>
+            <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Low-Lying Nation</p>
+              <p>The Maldives is the world's lowest country with an average elevation of just 1.5 meters (4.9 feet) above sea level. The highest natural point in the country is just 2.4 meters (7.9 feet) above sea level, making the Maldives particularly vulnerable to rising sea levels due to climate change.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Marine Life Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-amber-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Incredible Marine Life</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Coral Reefs:</span> The Maldives is home to approximately 5% of the world's coral reefs, supporting over 2,000 species of fish and other marine life.</li>
+              <li><span class="font-medium">Manta Rays:</span> The Maldives has the world's largest population of reef manta rays, which can be seen year-round at various cleaning stations.</li>
+              <li><span class="font-medium">Whale Sharks:</span> The gentle giants of the ocean can be spotted throughout the year, particularly in the South Ari Atoll.</li>
+              <li><span class="font-medium">Sea Turtles:</span> Five of the world's seven species of sea turtles can be found in Maldivian waters, including green turtles and hawksbill turtles.</li>
+              <li><span class="font-medium">Reef Sharks:</span> Several species of non-aggressive reef sharks are common, including blacktip reef sharks, whitetip reef sharks, and nurse sharks.</li>
+              <li><span class="font-medium">Dolphins:</span> Spinner dolphins and bottlenose dolphins are frequently spotted playing in the channels between islands.</li>
+            </ul>
+            <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Snorkeling at Our Resort</p>
+              <p>The house reef at Radisson Blu Resort is known for its diverse marine life, including colorful reef fish, rays, reef sharks, and occasionally turtles. The waters surrounding the resort feature visibility up to 30 meters, creating perfect conditions for underwater exploration.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cultural Traditions Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-blue-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <h3 class="font-bold text-lg">Maldivian Culture & Traditions</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Dhivehi Culture:</span> The Maldivian culture, known as Dhivehi, is a unique blend of influences from South Asia, Arabia, and East Africa.</li>
+              <li><span class="font-medium">Bodu Beru:</span> Traditional Maldivian music featuring drums made of coconut wood, often performed at resorts for guests.</li>
+              <li><span class="font-medium">Libaas:</span> Traditional Maldivian costume consisting of a long dress for women and a sarong paired with a shirt for men.</li>
+              <li><span class="font-medium">Crafts:</span> Traditional crafts include mat weaving (Thundu Kunaa), coir rope making, lacquer work, and traditional boat (dhoni) building.</li>
+              <li><span class="font-medium">Cuisine:</span> Fresh seafood, coconut, and spices form the basis of Maldivian cuisine, with popular dishes including mas huni (tuna and coconut), garudhiya (fish soup), and hedhikaa (savory snacks).</li>
+              <li><span class="font-medium">Hospitality:</span> Maldivians are known for their warm hospitality, reflected in the resort industry's high service standards.</li>
+            </ul>
+            <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">Cultural Performances</p>
+              <p>Our resort occasionally offers cultural evenings featuring Bodu Beru performances, where drums start slowly and gradually build to a faster rhythm. Guests are often invited to join in the dancing, making it an interactive cultural experience.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Fun Facts Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-green-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Did You Know?</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li>The Maldives is the smallest Asian country both by land area and population.</li>
+              <li>The word "atoll" is derived from the Dhivehi word "atholhu."</li>
+              <li>The Maldives was the first country to hold an underwater cabinet meeting in 2009 to highlight the threat of climate change.</li>
+              <li>Coconut is considered the most important plant in the Maldives and is used in many aspects of daily life, from food and drink to construction materials and handicrafts.</li>
+              <li>The Maldives is home to the world's first underwater restaurant, opened in 2005 at the Conrad Maldives Rangali Island resort.</li>
+              <li>The unique geography of the Maldives means that no island is more than 1.8 meters (5.9 feet) above sea level.</li>
+              <li>The Maldives was the first country in South Asia to introduce private island resorts in the 1970s, pioneering the luxury tourism model that it's famous for today.</li>
+              <li>Every resort in the Maldives occupies its own private island, leading to the concept of "one island, one resort."</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Sustainability Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-purple-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </svg>
+              <h3 class="font-bold text-lg">Sustainability in Paradise</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Climate Change:</span> As the world's lowest-lying nation, the Maldives is particularly vulnerable to rising sea levels and has become a vocal advocate for climate action globally.</li>
+              <li><span class="font-medium">Coral Regeneration:</span> Many resorts, including ours, participate in coral regeneration programs to help restore damaged reefs.</li>
+              <li><span class="font-medium">Plastic Reduction:</span> The Maldives has implemented various initiatives to reduce single-use plastics, with many resorts eliminating plastic straws, bottles, and toiletry containers.</li>
+              <li><span class="font-medium">Renewable Energy:</span> Solar power is increasingly being adopted across resorts to reduce dependency on diesel generators.</li>
+              <li><span class="font-medium">Desalination:</span> With no natural freshwater sources, the Maldives relies on desalination technology to produce drinking water.</li>
+              <li><span class="font-medium">Marine Conservation:</span> Protected marine areas and fishing regulations help preserve the rich biodiversity of Maldivian waters.</li>
+            </ul>
+            <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
+              <p class="font-bold mb-1">How You Can Help</p>
+              <p>During our stay, we can contribute to sustainability efforts by using reef-safe sunscreen, avoiding touching or stepping on coral while snorkeling, conserving water, and participating in any conservation activities offered by the resort, such as coral planting or beach clean-ups.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Romantic Experiences Card -->
+        <div class="bg-white p-5 rounded-lg shadow-md">
+          <div class="bg-teal-50 p-4 mb-4">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <h3 class="font-bold text-lg">Family & Group Activities</h3>
+            </div>
+          </div>
+          <div>
+            <ul class="text-gray-700 space-y-3">
+              <li><span class="font-medium">Group Snorkeling:</span> Guided house reef tours tailored for different ages and experience levels.</li>
+              <li><span class="font-medium">Dolphin Cruises:</span> Family-friendly excursions to watch playful dolphins in their natural habitat.</li>
+              <li><span class="font-medium">Fishing Trips:</span> Traditional Maldivian sunset fishing experiences where you can catch your own dinner.</li>
+              <li><span class="font-medium">Beach Games:</span> Volleyball, beach soccer, and other activities organized by the resort.</li>
+              <li><span class="font-medium">Cooking Classes:</span> Learn to prepare Maldivian specialties together as a family.</li>
+              <li><span class="font-medium">Marine Biology Talks:</span> Educational sessions about the resort's marine ecosystem, suitable for all ages.</li>
+              <li><span class="font-medium">Movie Nights:</span> Outdoor cinema experiences under the stars on the beach.</li>
+            </ul>
+            <p class="mt-3 text-sm text-gray-600">The Maldives is perfect for our group of six, offering activities for different ages while allowing everyone to participate in memorable shared experiences. Our spacious villa accommodation will provide both togetherness and privacy for all family members.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="photos" class="mb-12">
+      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Maldives Photo Gallery</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Image 1: Overwater Villa -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/242642938.jpg?k=8645668a6b9a165d33e8013e5ea8a647eef75ee960c55bb8ca24abf21e141e28&o=&hp=1" alt="Overwater Villa" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Radisson Blu Overwater Villa</p>
+          </div>
+        </div>
+        
+        <!-- Image 2: Aerial View -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.cruisemaldives.co.uk/wp-content/uploads/2019/12/seaplane.jpg" alt="Aerial View" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Seaplane View of Atolls</p>
+          </div>
+        </div>
+        
+        <!-- Image 3: Underwater -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/475000/475462-Maldives.jpg" alt="Underwater Scene" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Vibrant Coral Reef</p>
+          </div>
+        </div>
+
+        <!-- Image 4: Beach Dining -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.telegraph.co.uk/content/dam/Travel/hotels/2020/august/radisson-maldives-beach-dinner-xlarge.jpg" alt="Beach Dining" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Private Beach Dining</p>
+          </div>
+        </div>
+
+        <!-- Image 5: Water Sports -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://www.island-hideaway.com/files/media/WS_kayak.jpg" alt="Water Sports" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Kayaking in Crystal Waters</p>
+          </div>
+        </div>
+
+        <!-- Image 6: Sunset -->
+        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+          <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFsZGl2ZXMlMjBzdW5zZXR8ZW58MHx8MHx8&w=1000&q=80" alt="Maldives Sunset" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+          <div class="absolute bottom-3 left-3 text-white">
+            <p class="font-medium">Breathtaking Sunset</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="text-center mb-8">
+      <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+        Return to Main Itinerary
+      </a>
+    </section>
+  </div>
+
+  <footer class="brand-bg-red text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+      <p class="mb-4">July 30 - August 21, 2025</p>
+      <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
+    </div>
+  </footer>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    }
+  });
+
+  function updateWorldClocks() {
+    const now = new Date();
+    
+    // Barcelona time (CEST, UTC+2)
+    const barcelonaTime = new Date(now.getTime());
+    barcelonaTime.setHours(now.getUTCHours() + 2);
+    document.getElementById('barcelona-time').textContent = 
+      barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
+      barcelonaTime.getMinutes().toString().padStart(2, '0');
+    
+    // Kuala Lumpur time (MYT, UTC+8)
+    const klTime = new Date(now.getTime());
+    klTime.setHours(now.getUTCHours() + 8);
+    document.getElementById('kl-time').textContent = 
+      klTime.getHours().toString().padStart(2, '0') + ':' + 
+      klTime.getMinutes().toString().padStart(2, '0');
+    
+    // Maldives time (MVT, UTC+5)
+    const maldivesTime = new Date(now.getTime());
+    maldivesTime.setHours(now.getUTCHours() + 5);
+    document.getElementById('maldives-time').textContent = 
+      maldivesTime.getHours().toString().padStart(2, '0') + ':' + 
+      maldivesTime.getMinutes().toString().padStart(2, '0');
+    
+    // Singapore time (SGT, UTC+8) - same as KL
+    const singaporeTime = new Date(now.getTime());
+    singaporeTime.setHours(now.getUTCHours() + 8);
+    document.getElementById('singapore-time').textContent = 
+      singaporeTime.getHours().toString().padStart(2, '0') + ':' + 
+      singaporeTime.getMinutes().toString().padStart(2, '0');
+    
+    // Local time (based on user's browser)
+    document.getElementById('local-time').textContent = 
+      now.getHours().toString().padStart(2, '0') + ':' + 
+      now.getMinutes().toString().padStart(2, '0');
+  }
+  
+  // Update clocks immediately
+  updateWorldClocks();
+  
+  // Then update every minute
+  setInterval(updateWorldClocks, 60000);
+</script>
+</body>
+</html>
