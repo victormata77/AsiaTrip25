@@ -99,21 +99,41 @@
   </style>
 </head>
 <body class="bg-gray-50">
+
 <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu -->
       <div class="hidden md:flex space-x-6">
         <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
         <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
         <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
         <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
+        
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative group">
+          <button class="text-gray-700 hover:text-red-600 flex items-center gap-1">
+            Other Destinations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+          </div>
+        </div>
       </div>
       
-        <!-- Updated Mobile Menu HTML -->
-      <!-- Mobile Menu Button (unchanged) -->
+      <!-- Mobile Menu Button -->
       <div class="md:hidden">
         <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,40 +141,40 @@
           </svg>
         </button>
       </div>
-      
-      <!-- Enhanced Mobile Menu with Destinations Dropdown -->
-      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-        <div class="flex flex-col space-y-3">
-          <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-          <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-          <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-          <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-          <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+        
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Other Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
           
-          <!-- Destinations Dropdown -->
-          <div class="py-2 border-b border-gray-200">
-            <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600">
-              <span>Other Destinations</span>
-              <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            <div id="destinations-submenu" class="hidden mt-2 pl-4 space-y-2">
-              <a href="seoul.html" class="block py-1 text-gray-700 hover:text-red-600">Seoul</a>
-              <a href="tokyo.html" class="block py-1 text-gray-700 hover:text-red-600">Tokyo</a>
-              <a href="kyoto.html" class="block py-1 text-gray-700 hover:text-red-600">Kyoto</a>
-              <a href="singapore.html" class="block py-1 text-gray-700 hover:text-red-600">Singapore</a>
-              <a href="kl.html" class="block py-1 text-gray-700 hover:text-red-600">Kuala Lumpur</a>
-              <a href="maldives.html" class="block py-1 text-gray-700 hover:text-red-600">Maldives</a>
-            </div>
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
           </div>
         </div>
       </div>
-  
-  
+    </div>
   </div>
 </nav>
+  
 
   <!-- Hero Section -->
   <section class="hero-section flex items-center justify-center">
@@ -959,22 +979,41 @@
   </footer>
 
 <script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        if (mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.remove('hidden');
-        } else {
-          mobileMenu.classList.add('hidden');
-        }
-      });
-    }
-  });
-
+  // Mobile menu and destinations dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      dropdownArrow.classList.toggle('rotate-180');
+    });
+  }
+  
+  // Highlight current page in destinations submenu
+  const currentPage = window.location.pathname.split('/').pop();
+  if (destinationsSubmenu) {
+    const links = destinationsSubmenu.querySelectorAll('a');
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('text-red-600', 'font-bold');
+      }
+    });
+  }
+});
 function updateWorldClocks() {
   const now = new Date();
   
