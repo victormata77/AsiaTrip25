@@ -148,27 +148,46 @@
     .page-title-visible {
       transform: scale(1.05);
     }
+/* Better menu alignment */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px; /* Fixed height for all menu items */
+}
+
+/* Fix dropdown alignment */
+#desktop-dropdown-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure all top-level items are aligned */
+.md\:flex.md\:items-center.md\:space-x-6 {
+  min-height: 40px;
+}
   </style>
 </head>
 <body class="bg-gray-50">
 
-      <!-- Navigation Menu -->
+    <!-- Fixed Navigation Menu with Better Alignment -->
     <nav class="sticky-nav shadow-md">
       <div class="max-w-6xl mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
           <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
           
-          <!-- Desktop Navigation Menu with Click-to-Open Dropdown -->
-          <div class="hidden md:flex space-x-6">
+          <!-- Desktop Navigation Menu with Better Alignment -->
+          <div class="hidden md:flex md:items-center md:space-x-6">
             <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
             <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
             <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
             <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
             <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
             
-            <!-- Desktop Destinations Dropdown (Click-to-Open) -->
-            <div class="relative">
-              <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1">
+            <!-- Desktop Destinations Dropdown -->
+            <div class="relative flex items-center">
+              <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
                 Other Destinations
                 <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -195,7 +214,7 @@
           </div>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (unchanged) -->
         <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
           <div class="flex flex-col space-y-3">
             <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
