@@ -6,134 +6,89 @@
   <title>MATA'S ASIAN TOUR 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
-  <style>
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-    .hero-section {
-      background-image: url('https://wallpaperaccess.com/full/116417.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .photo-card {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-    .photo-card:hover {
-      transform: scale(1.03);
-    }
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-   /* ===== NAVIGATION STYLES ===== */
+  
+
+<style>
+/* Root variables and brand colors */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+/* Brand styles */
+.brand-bg-red { background-color: var(--mata-red); }
+.brand-text-red { color: var(--mata-red); }
+.brand-border-red { border-color: var(--mata-red); }
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+.brand-button:hover { background-color: var(--mata-dark-red); }
+
+/* Hero section */
+.hero-section {
+  background-image: url('https://i.pinimg.com/originals/86/f2/55/86f2556da6cca07d10bf405e2d08791a.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+.page-title-visible {
+  transform: scale(1.05);
+}
+
 /* Desktop dropdown menu */
-#desktop-destinations-menu {
+#desktop-destinations-menu, #desktop-tips-menu {
   position: absolute;
   left: 0;
-  top: 100%;  /* Position directly below the button */
+  top: 100%;
   width: 200px;
   background-color: white;
   border-radius: 0.375rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   z-index: 50;
   overflow: hidden;
-  display: none;  /* Initially hidden */
+  display: none;
 }
-
-#desktop-destinations-menu.visible {
-  display: block;
-}
-
-#desktop-destinations-menu a {
+#desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+#desktop-destinations-menu a, #desktop-tips-menu a {
   display: block;
   padding: 0.5rem 1rem;
   color: #4a5568;
   transition: all 0.2s;
 }
-
-#desktop-destinations-menu a:hover {
+#desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
   background-color: #fee2e2;
   color: #c62828;
 }
-
-.relative {
-  position: relative;
-}
+.relative { position: relative; }
 
 /* Dropdown button styling */
-#desktop-dropdown-button {
+#desktop-dropdown-button, #desktop-tips-button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -142,46 +97,101 @@
   transition: all 0.2s;
   height: 40px;
 }
+#desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
 
-#desktop-dropdown-button:hover {
-  background-color: #f9fafb;
-}
-
-/* ===== MENU ALIGNMENT FIXES ===== */
-/* Better menu alignment */
+/* Menu alignment fixes */
 .md\:flex.md\:items-center.md\:space-x-6 > a,
 .md\:flex.md\:items-center.md\:space-x-6 > div {
   display: flex;
   align-items: center;
-  height: 40px; /* Fixed height for all menu items */
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* Card and day headers with right-aligned arrows - UPDATED */
+.card-header, .day-header {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing */
 }
 
-/* Make sure all top-level items are aligned */
-.md\:flex.md\:items-center.md\:space-x-6 {
-  min-height: 40px;
+/* Make header titles take appropriate space */
+.card-header h3, .day-header h3 {
+  flex: 1; /* Allows title to take available space */
+  padding-right: 10px; /* Space between text and arrow */
 }
 
-/* ===== DYNAMIC TITLE STYLES ===== */
-/* Styles for the dynamic page title */
-.text-red-600.font-bold.text-xl {
-  transition: all 0.3s ease;
+/* Style for all arrows to ensure right alignment */
+.card-header svg, .day-header svg {
+  flex-shrink: 0; /* Prevent arrow from shrinking */
+  transition: transform 0.2s ease; /* Smooth rotation animation */
 }
 
-.page-title-visible {
-  transform: scale(1.05);
+/* Ensure rotation works consistently */
+.card-header.active svg, .day-header.active svg,
+.card-header svg.rotate-180, .day-header svg.rotate-180 {
+  transform: rotate(180deg);
 }
 
-/* ===== PHOTO GALLERY STYLES ===== */
+/* Card and content styles */
+.card-content, .day-content {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-header.active, .day-header.active {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Day indicators - Unified and fixed */
+.day-header .bg-blue-500,
+.day-header .bg-green-500,
+.day-header .bg-yellow-500,
+.day-header .bg-purple-500,
+.day-header .bg-orange-500,
+.day-header .bg-gray-500 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Ensure text is visible on gray background */
+.day-header .bg-gray-500 {
+  color: white;
+}
+
+/* Card hover effects */
+.info-card {
+  transition: transform 0.2s;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Photo gallery */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
 .photo-card {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
   transition: all 0.3s ease;
 }
-
 .photo-card:hover {
   transform: scale(1.03);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* ===== FLAG ICON STYLES ===== */
+/* Flag icon */
 .flag-icon {
   height: 20px;
   width: 28px;
@@ -192,78 +202,113 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/* ===== BRAND COLOR VARIABLES ===== */
-:root {
-  --mata-red: #c62828;
-  --mata-dark-red: #8e0000;
-  --mata-light-red: #ff5f52;
-  --mata-cream: #f5f0e1;
+/* Text contrast improvements */
+.text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+.text-purple-700, .text-indigo-700, .text-yellow-800, 
+.text-orange-800, .text-purple-800, .text-blue-800 {
+  font-weight: 600;
 }
 
-.brand-bg-red {
-  background-color: var(--mata-red);
+/* Responsive styles */
+/* Day indicators oval on wider screens - FIXED with consistent sizes */
+@media (min-width: 768px) {
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 60px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: 10px;
+  }
 }
 
-.brand-text-red {
-  color: var(--mata-red);
-}
-
-.brand-border-red {
-  border-color: var(--mata-red);
-}
-
-.brand-button {
-  background-color: var(--mata-red);
-  color: white;
-  transition: background-color 0.3s;
-}
-
-.brand-button:hover {
-  background-color: var(--mata-dark-red);
-}
-
-/* ===== HERO SECTION STYLES ===== */
-.hero-section {
-  background-size: cover;
-  background-position: center;
-  height: 50vh;
-  position: relative;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-}
-
-/* ===== STICKY NAVIGATION ===== */
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* ===== INFO CARD HOVER EFFECT ===== */
-.info-card {
-  transition: transform 0.2s;
-}
-
-.info-card:hover {
-  transform: translateY(-5px);
-}
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  /* Day header layout */
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
   
-  </style>
+  .day-header h3 {
+    flex: 1;
+    padding-right: 8px;
+  }
+  
+  /* Day indicators - UPDATED to include gray-500 */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* Arrow icon */
+  .day-header svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 640px) {
+  .day-header h3 {
+    width: auto; /* Changed from 100% to auto for better layout */
+    flex: 1;
+    font-size: 0.9rem;
+  }
+  
+  /* Consistent styling for all day indicators including gray */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 48px;
+    height: 32px;
+    border-radius: 16px;
+  }
+  
+  /* Add more space at bottom of cards */
+  .card-content {
+    padding-bottom: 1.5rem;
+  }
+  
+  /* Better alignment for mobile view */
+  .day-header {
+    flex-wrap: nowrap; /* Changed from wrap to nowrap */
+  }
+  
+  .day-header .flex-shrink-0 {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Card headers on mobile */
+  .card-header {
+    flex-wrap: nowrap;
+  }
+  
+  .card-header h3 {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
 </head>
 <body class="bg-gray-50">
 
-<!-- Fixed Navigation Menu with Better Alignment -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
@@ -271,13 +316,29 @@
       
       <!-- Desktop Navigation Menu with Better Alignment -->
       <div class="hidden md:flex md:items-center md:space-x-6">
-        <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
         <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
         <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
         <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
         <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
         
-        <!-- Desktop Destinations Dropdown -->
+<!-- Tips Dropdown -->
+  <div class="relative flex items-center">
+    <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+      Tips
+      <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+    <div id="desktop-tips-menu" class="hidden">
+      <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+      <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+      <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+      <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+    </div>
+  </div>        
+
+<!-- Desktop Destinations Dropdown -->
         <div class="relative flex items-center">
           <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
             Other Destinations
@@ -307,40 +368,57 @@
     </div>
     
     <!-- Mobile Menu (unchanged) -->
-    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-      <div class="flex flex-col space-y-3">
-        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
-        
-        <!-- Destinations Accordion -->
-        <div class="relative">
-          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-            <span>Other Destinations</span>
-            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          
-          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-          </div>
-        </div>
+   
+<div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+  <div class="flex flex-col space-y-3">
+    <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
+    <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+    <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+    <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+    <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+    
+    <!-- Tips Accordion -->
+    <div class="relative">
+      <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+        <span>Tips</span>
+        <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+        <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+        <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+        <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+        <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
+      </div>
+    </div>
+    
+    <!-- Destinations Accordion (existing) -->
+    <div class="relative">
+      <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+        <span>Other Destinations</span>
+        <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+        <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+        <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+        <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+        <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+        <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+        <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
       </div>
     </div>
   </div>
+</div>
+  </div>
 </nav>
-  
 
-  <!-- Hero Section -->
-  <section class="hero-section flex items-center justify-center" style="background-image: url('https://i.pinimg.com/originals/86/f2/55/86f2556da6cca07d10bf405e2d08791a.jpg');">
+<!-- Hero Section -->
+  <section class="hero-section flex items-center justify-center">
     <div class="hero-overlay"></div>
     <div class="hero-content max-w-4xl text-center text-white px-4">
       <h1 class="text-5xl font-bold mb-4">Tokyo, Japan</h1>
@@ -364,6 +442,13 @@
     <p class="text-sm">MIMARU SUITES Tokyo Nihombashi</p>
     <p class="text-sm text-gray-600">2-10-2 Nihonbashi Kakigara-cho, Chuo-ku, Tokyo</p>
     <p class="text-sm text-gray-600">Spacious suite-style accommodation in historic Nihombashi district with easy access to Tokyo's main attractions</p>
+    <a href="https://maps.google.com/?q=MIMARU+SUITES+Tokyo+Nihombashi" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      View on Google Maps
+    </a>
   </div>
 </div>
           <div class="w-full md:w-1/3 p-2">
@@ -387,188 +472,226 @@
       </div>
     </section>
 
-    <!-- Essential Information -->
+<!-- Essential Information -->
     <section id="essentials" class="mb-12">
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Weather Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Weather in August</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Average high: 31-33°C (88-91°F)</li>
-              <li>• Average low: 23-25°C (73-77°F)</li>
-              <li>• Humidity: Very high (75-85%)</li>
-              <li>• Rainfall: Frequent, usually brief showers</li>
-              <li>• Daylight: Sunrise ~5:00 AM, Sunset ~6:45 PM</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">Pack lightweight, breathable clothing, rain gear, and portable fans or cooling towels for the summer heat.</p>
-          </div>
-        </div>
-        
-        <!-- Currency Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Currency</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Japanese Yen (¥/JPY)</li>
-              <li>• €1 ≈ ¥165 (April 2025 rate)</li>
-              <li>• Cash is still king in many places</li>
-              <li>• Credit cards accepted at hotels, department stores</li>
-              <li>• Seven Bank ATMs accept international cards</li>
-            </ul>
-            <div class="mt-3 bg-green-50 p-2 rounded text-sm">
-              <p class="font-bold">Tipping</p>
-              <p>Not expected or practiced in Japan. Service charge may be included at upscale restaurants and hotels.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Transportation Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Getting Around</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Suica/PASMO Card: Essential for trains, buses, and convenience stores</li>
-              <li>• JR Lines: Extensive rail network (consider 72-hour Subway Ticket)</li>
-              <li>• Tokyo Metro: Efficient subway system with English signage</li>
-              <li>• Taxis: Reliable but expensive, doors open automatically</li>
-              <li>• Walking: Many attractions can be reached on foot within districts</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">Our hotel is a 10-minute walk from Tokyo Station, offering excellent connections throughout the city. Hibiya and Ginza lines provide direct access to popular areas.</p>
-          </div>
-        </div>
-        
-        <!-- Food Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Must-Try Foods</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Sushi: Fresh seafood over vinegared rice (try at Tsukiji)</li>
-              <li>• Ramen: Hearty noodle soup with various broths</li>
-              <li>• Tempura: Lightly battered and fried seafood or vegetables</li>
-              <li>• Yakitori: Grilled chicken skewers</li>
-              <li>• Tonkatsu: Crispy breaded pork cutlets</li>
-              <li>• Matcha: Green tea in various forms (ice cream, cakes)</li>
-            </ul>
-            <div class="mt-3 bg-red-50 p-2 rounded text-sm">
-              <p class="font-bold">Dining Etiquette</p>
-              <p>Say "itadakimasu" before eating, don't stick chopsticks upright in rice, slurping noodles is acceptable and even appreciated, and no tipping.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Communication Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Language & Communication</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <div class="text-gray-700">
-              <p class="mb-2"><span class="font-bold">Useful Japanese Phrases:</span></p>
-              <table class="w-full text-sm">
-                <tr>
-                  <td>Hello</td>
-                  <td>こんにちは (Konnichiwa)</td>
-                </tr>
-                <tr>
-                  <td>Thank you</td>
-                  <td>ありがとう (Arigatou)</td>
-                </tr>
-                <tr>
-                  <td>Yes/No</td>
-                  <td>はい/いいえ (Hai/Iie)</td>
-                </tr>
-                <tr>
-                  <td>Excuse me</td>
-                  <td>すみません (Sumimasen)</td>
-                </tr>
-                <tr>
-                  <td>Where is...</td>
-                  <td>...はどこですか? (...wa doko desuka?)</td>
-                </tr>
-                <tr>
-                  <td>How much?</td>
-                  <td>いくらですか? (Ikura desuka?)</td>
-                </tr>
-              </table>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">English signage is common in Tokyo, especially in tourist areas and train stations. Download Google Translate with Japanese language pack for offline use.</p>
-          </div>
-        </div>
-        
-        <!-- Cultural Tips Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Cultural Tips</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Bow when greeting people (depth varies by formality)</li>
-              <li>• Remove shoes when entering homes, traditional restaurants, and some attractions</li>
-              <li>• Avoid eating while walking (except in designated food areas)</li>
-              <li>• Keep voices low in public transportation</li>
-              <li>• Carry a small towel for drying hands (many public restrooms don't have paper towels)</li>
-              <li>• Queue in orderly lines for trains, buses, and escalators</li>
-            </ul>
-            <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
-              <p class="font-bold">Important Note</p>
-              <p>Japan values politeness, cleanliness, and respect for personal space. Follow locals' lead on public behavior, and you'll fit right in.</p>
-            </div>
-          </div>
-        </div>
-<!-- World Clock Widget (Full Width) - Ordered by UTC -->
-<!-- Add this within your "essentials" section, making sure it spans the full width -->
-<div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
-  <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-    <div class="bg-gray-50 p-4">
+       
+
+<!-- Collapsible Essential Information Cards -->
+<!-- Weather Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
+    <div class="flex items-center justify-between">
       <div class="flex items-center">
-        <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
         </svg>
-        <h3 class="font-bold text-lg">Trip World Clock</h3>
+        <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="weather-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-1">
+      <li>• Average high: 31-33°C (88-91°F)</li>
+      <li>• Average low: 23-25°C (73-77°F)</li>
+      <li>• Humidity: Very high (75-85%)</li>
+      <li>• Rainfall: Frequent, usually brief showers</li>
+      <li>• Daylight: Sunrise ~5:00 AM, Sunset ~6:45 PM</li>
+    </ul>
+    <p class="mt-3 text-sm text-gray-600">Pack lightweight, breathable clothing, rain gear, and portable fans or cooling towels for the summer heat.</p>
+  </div>
+</div>
+
+<!-- Currency Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="currency-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="font-bold text-lg text-green-700">Currency</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="currency-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-1">
+      <li>• Japanese Yen (¥/JPY)</li>
+      <li>• €1 ≈ ¥165 (April 2025 rate)</li>
+      <li>• Cash is still king in many places</li>
+      <li>• Credit cards accepted at hotels, department stores</li>
+      <li>• Seven Bank ATMs accept international cards</li>
+    </ul>
+    <div class="mt-3 bg-green-50 p-2 rounded text-sm">
+      <p class="font-bold">Tipping</p>
+      <p>Not expected or practiced in Japan. Service charge may be included at upscale restaurants and hotels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Transportation Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+        </svg>
+        <h3 class="font-bold text-lg text-blue-700">Getting Around</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="transport-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-1">
+      <li>• Suica/PASMO Card: Essential for trains, buses, and convenience stores</li>
+      <li>• JR Lines: Extensive rail network (consider 72-hour Subway Ticket)</li>
+      <li>• Tokyo Metro: Efficient subway system with English signage</li>
+      <li>• Taxis: Reliable but expensive, doors open automatically</li>
+      <li>• Walking: Many attractions can be reached on foot within districts</li>
+    </ul>
+    <p class="mt-3 text-sm text-gray-600">Our hotel is a 10-minute walk from Tokyo Station, offering excellent connections throughout the city. Hibiya and Ginza lines provide direct access to popular areas.</p>
+  </div>
+</div>
+
+<!-- Food Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="food-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        <h3 class="font-bold text-lg text-red-700">Must-Try Foods</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="food-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-1">
+      <li>• Sushi: Fresh seafood over vinegared rice (try at Tsukiji)</li>
+      <li>• Ramen: Hearty noodle soup with various broths</li>
+      <li>• Tempura: Lightly battered and fried seafood or vegetables</li>
+      <li>• Yakitori: Grilled chicken skewers</li>
+      <li>• Tonkatsu: Crispy breaded pork cutlets</li>
+      <li>• Matcha: Green tea in various forms (ice cream, cakes)</li>
+    </ul>
+    <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+      <p class="font-bold">Dining Etiquette</p>
+      <p>Say "itadakimasu" before eating, don't stick chopsticks upright in rice, slurping noodles is acceptable and even appreciated, and no tipping.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Communication Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="communication-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        <h3 class="font-bold text-lg text-purple-700">Language & Communication</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="communication-content" class="p-5 card-content">
+    <div class="text-gray-700">
+      <p class="mb-2"><span class="font-bold">Useful Japanese Phrases:</span></p>
+      <table class="w-full text-sm">
+        <tr>
+          <td>Hello</td>
+          <td>こんにちは (Konnichiwa)</td>
+        </tr>
+        <tr>
+          <td>Thank you</td>
+          <td>ありがとう (Arigatou)</td>
+        </tr>
+        <tr>
+          <td>Yes/No</td>
+          <td>はい/いいえ (Hai/Iie)</td>
+        </tr>
+        <tr>
+          <td>Excuse me</td>
+          <td>すみません (Sumimasen)</td>
+        </tr>
+        <tr>
+          <td>Where is...</td>
+          <td>...はどこですか? (...wa doko desuka?)</td>
+        </tr>
+        <tr>
+          <td>How much?</td>
+          <td>いくらですか? (Ikura desuka?)</td>
+        </tr>
+      </table>
+    </div>
+    <p class="mt-3 text-sm text-gray-600">English signage is common in Tokyo, especially in tourist areas and train stations. Download Google Translate with Japanese language pack for offline use.</p>
+  </div>
+</div>
+
+<!-- Cultural Tips Card -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="culture-tips-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="font-bold text-lg text-indigo-700">Cultural Tips</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="culture-tips-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-1">
+      <li>• Bow when greeting people (depth varies by formality)</li>
+      <li>• Remove shoes when entering homes, traditional restaurants, and some attractions</li>
+      <li>• Avoid eating while walking (except in designated food areas)</li>
+      <li>• Keep voices low in public transportation</li>
+      <li>• Carry a small towel for drying hands (many public restrooms don't have paper towels)</li>
+      <li>• Queue in orderly lines for trains, buses, and escalators</li>
+    </ul>
+    <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
+      <p class="font-bold">Important Note</p>
+      <p>Japan values politeness, cleanliness, and respect for personal space. Follow locals' lead on public behavior, and you'll fit right in.</p>
+    </div>
+  </div>
+</div>
+
+<!-- World Clock Widget (Full Width) with collapsible functionality -->
+<div class="col-span-1 md:col-span-3 lg:col-span-3">
+  <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
     </div>
-    <div class="p-5">
+    <div id="world-clock-content" class="p-5 card-content">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Barcelona Time (UTC+2) -->
         <div class="bg-gray-100 p-3 rounded-lg text-center">
@@ -603,23 +726,27 @@
     </div>
   </div>
 </div>
-
         
       </div>
     </section>
 
-    <!-- Activities and Itinerary -->
+<!-- Activities and Itinerary -->
     <section id="activities" class="mb-12">
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
       
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
         <!-- Day 1 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
-            <h3 class="font-bold">Monday, August 4, 2025 – Arrival</h3>
-            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-1-content">
+            <h3 class="font-bold text-blue-800">Monday, August 4, 2025 – Arrival</h3>
+            <div class="flex items-center">
+              <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 1</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-1-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 1 Icon -->
@@ -652,14 +779,19 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Day 2 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
-            <h3 class="font-bold">Tuesday, August 5, 2025 – Classic Tokyo & Gaming</h3>
-            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 2</span>
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="day-2-content">
+            <h3 class="font-bold text-green-800 pr-3">Tuesday, August 5, 2025 – Classic Tokyo & Gaming</h3>
+            <div class="flex-shrink-0 flex items-center">
+              <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 2</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-2-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 2 Icon -->
@@ -703,14 +835,19 @@
             </div>
           </div>
         </div>
-        
-        <!-- Day 3 -->
+
+       <!-- Day 3 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-yellow-50 flex justify-between items-center">
-            <h3 class="font-bold">Wednesday, August 6, 2025 – Traditional & Modern Tokyo</h3>
-            <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 3</span>
+          <div class="px-6 py-3 bg-yellow-50 flex justify-between items-center cursor-pointer day-header" data-target="day-3-content">
+            <h3 class="font-bold text-yellow-800 pr-3">Wednesday, August 6, 2025 – Traditional & Modern Tokyo</h3>
+            <div class="flex-shrink-0 flex items-center">
+              <span class="bg-yellow-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 3</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-3-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 3 Icon -->
@@ -754,344 +891,376 @@
             </div>
           </div>
         </div>
-        
-        <!-- Day 4 -->
-        <div class="border-b">
-         <div class="px-6 py-3 bg-purple-50 flex justify-between items-center">
-            <h3 class="font-bold">Thursday, August 7, 2025 – Culinary & Artistic Tokyo</h3>
-            <span class="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 4</span>
-          </div>
-          <div class="p-5">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <!-- Day 4 Icon -->
-                <div class="bg-purple-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-purple-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
-                    </svg>
-                    <p class="font-medium mt-2">Tsukiji Market & Digital Art</p>
-                    <p class="text-sm text-gray-600">Food culture and immersive art experiences</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">08:30-09:30:</span> Breakfast at hotel</li>
-                  <li><span class="font-medium">10:00-11:30:</span> Tsukiji Outer Market food tour</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Sample Japanese delicacies</li>
-                    <li>Watch food preparation demonstrations</li>
-                    <li>Learn about unique Japanese ingredients</li>
-                  </ul>
-                  <li><span class="font-medium">12:00-13:30:</span> Fresh sushi lunch near Tsukiji</li>
-                  <li><span class="font-medium">14:00-16:30:</span> teamLab digital art museum</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Immersive digital art experiences</li>
-                    <li>Interactive installations that respond to movement</li>
-                    <li>Borderless exhibits that blend into one another</li>
-                  </ul>
-                  <li><span class="font-medium">17:00-18:30:</span> Traditional tea ceremony experience</li>
-                  <li><span class="font-medium">19:00-21:30:</span> Teppanyaki dining experience</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Theatrical cooking performance at your table</li>
-                    <li>Premium ingredients prepared with skillful techniques</li>
-                    <li>Interactive dining experience with chef</li>
-                  </ul>
-                </ul>
-                <div class="mt-4 bg-purple-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Highlight:</span> TeamLab creates otherworldly digital art experiences where light, sound, and space converge. The installations change and respond to visitor presence, meaning no two visits are ever the same, and the boundaries between artworks blur creating a seamless, immersive experience.</p>
-                </div>
-              </div>
-            </div>
+
+<!-- Day 4 (Fixed content) -->
+<div class="border-b">
+  <div class="px-6 py-3 bg-purple-50 flex justify-between items-center cursor-pointer day-header" data-target="day-4-content">
+    <h3 class="font-bold text-purple-800 pr-3">Thursday, August 7, 2025 – Culinary & Artistic Tokyo</h3>
+    <div class="flex-shrink-0 flex items-center">
+      <span class="bg-purple-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 4</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="day-4-content" class="p-5 day-content">
+    <div class="flex flex-col md:flex-row gap-6 mb-4">
+      <div class="md:w-1/3">
+        <!-- Day 4 Icon -->
+        <div class="bg-purple-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+          <div class="text-center p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-purple-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+            </svg>
+            <p class="font-medium mt-2">Tsukiji Market & Digital Art</p>
+            <p class="text-sm text-gray-600">Food culture and immersive art experiences</p>
           </div>
         </div>
-        
-        <!-- Day 5 -->
-        <div>
-         <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
-            <h3 class="font-bold">Friday, August 8, 2025 – Departure to Kyoto</h3>
-            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 5</span>
-         </div>
-          <div class="p-5">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                    </svg>
-                    <p class="font-medium mt-2">Shinkansen to Kyoto</p>
-                    <p class="text-sm text-gray-600">Bullet train experience to cultural heart of Japan</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">08:00-09:00:</span> Breakfast at hotel</li>
-                  <li><span class="font-medium">09:30:</span> Check-out from MIMARU SUITES Tokyo</li>
-                  <li><span class="font-medium">10:00:</span> Transport to Tokyo Station (10-minute walk from hotel)</li>
-                  <li><span class="font-medium">10:00-10:45:</span> Tokyo Station exploration</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Historic station building with beautiful architecture</li>
-                    <li>Purchase ekiben (station bento) for the train journey</li>
-                    <li>Last-minute shopping at Character Street or Tokyo Station shops</li>
-                  </ul>
-                  <li><span class="font-medium">11:00-13:30:</span> Shinkansen bullet train to Kyoto</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Reserved seats for comfort</li>
-                    <li>Potential Mt. Fuji views (right side of train)</li>
-                    <li>Ekiben (station bento) lunch on board</li>
-                  </ul>
-                  <li><span class="font-medium">13:30:</span> Arrival at Kyoto Station</li>
-                </ul>
-                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Important:</span> The Shinkansen (bullet train) is an experience in itself with speeds up to 320 km/h (200 mph). Look for Mt. Fuji views approximately 40-45 minutes after departure from Tokyo (weather permitting). Arrive at Tokyo Station 30 minutes before departure to find your platform and car.</p>
-                </div>
-              </div>
-            </div>
+      </div>
+      <div class="md:w-2/3">
+        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+          <li><span class="font-medium">08:30-09:30:</span> Breakfast at hotel</li>
+          <li><span class="font-medium">10:00-11:30:</span> Tsukiji Outer Market food tour</li>
+          <ul class="list-disc pl-5 ml-4 text-gray-600">
+            <li>Sample Japanese delicacies</li>
+            <li>Watch food preparation demonstrations</li>
+            <li>Learn about unique Japanese ingredients</li>
+          </ul>
+          <li><span class="font-medium">12:00-13:30:</span> Fresh sushi lunch near Tsukiji</li>
+          <li><span class="font-medium">14:00-16:30:</span> teamLab digital art museum</li>
+          <ul class="list-disc pl-5 ml-4 text-gray-600">
+            <li>Immersive digital art experiences</li>
+            <li>Interactive installations that respond to movement</li>
+            <li>Borderless exhibits that blend into one another</li>
+          </ul>
+          <li><span class="font-medium">17:00-18:30:</span> Traditional tea ceremony experience</li>
+          <li><span class="font-medium">19:00-21:30:</span> Teppanyaki dining experience</li>
+          <ul class="list-disc pl-5 ml-4 text-gray-600">
+            <li>Theatrical cooking performance at your table</li>
+            <li>Premium ingredients prepared with skillful techniques</li>
+            <li>Interactive dining experience with chef</li>
+          </ul>
+        </ul>
+        <div class="mt-4 bg-purple-50 p-3 rounded-lg">
+          <p class="text-sm"><span class="font-bold">Highlight:</span> TeamLab creates otherworldly digital art experiences where light, sound, and space converge. The installations change and respond to visitor presence, meaning no two visits are ever the same, and the boundaries between artworks blur creating a seamless, immersive experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Day 5 (Properly formatted) -->
+<div class="border-b">
+  <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-5-content">
+    <h3 class="font-bold text-orange-800 pr-3">Friday, August 8, 2025 – Departure to Kyoto</h3>
+    <div class="flex-shrink-0 flex items-center">
+      <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 5</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="day-5-content" class="p-5 day-content">
+    <div class="flex flex-col md:flex-row gap-6 mb-4">
+      <div class="md:w-1/3">
+        <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+          <div class="text-center p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+            <p class="font-medium mt-2">Shinkansen to Kyoto</p>
+            <p class="text-sm text-gray-600">Bullet train experience to cultural heart of Japan</p>
           </div>
+        </div>
+      </div>
+      <div class="md:w-2/3">
+        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+          <li><span class="font-medium">08:00-09:00:</span> Breakfast at hotel</li>
+          <li><span class="font-medium">09:30:</span> Check-out from MIMARU SUITES Tokyo</li>
+          <li><span class="font-medium">10:00:</span> Transport to Tokyo Station (10-minute walk from hotel)</li>
+          <li><span class="font-medium">10:00-10:45:</span> Tokyo Station exploration</li>
+          <ul class="list-disc pl-5 ml-4 text-gray-600">
+            <li>Historic station building with beautiful architecture</li>
+            <li>Purchase ekiben (station bento) for the train journey</li>
+            <li>Last-minute shopping at Character Street or Tokyo Station shops</li>
+          </ul>
+          <li><span class="font-medium">11:00-13:30:</span> Shinkansen bullet train to Kyoto</li>
+          <ul class="list-disc pl-5 ml-4 text-gray-600">
+            <li>Reserved seats for comfort</li>
+            <li>Potential Mt. Fuji views (right side of train)</li>
+            <li>Ekiben (station bento) lunch on board</li>
+          </ul>
+          <li><span class="font-medium">13:30:</span> Arrival at Kyoto Station</li>
+        </ul>
+        <div class="mt-4 bg-orange-50 p-3 rounded-lg">
+          <p class="text-sm"><span class="font-bold">Important:</span> The Shinkansen (bullet train) is an experience in itself with speeds up to 320 km/h (200 mph). Look for Mt. Fuji views approximately 40-45 minutes after departure from Tokyo (weather permitting). Arrive at Tokyo Station 30 minutes before departure to find your platform and car.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </section>
 
-    <!-- Culture & Fun Facts -->
+<!-- Culture & Fun Facts -->
     <section id="culture" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
+<h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Japan Country Info Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-red-50 p-4 mb-4">
-            <div class="flex items-center">
-              <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
-              <h3 class="font-bold text-lg">Japan Country Profile</h3>
-            </div>
-          </div>
-          <div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Name</p>
-                <p>Japan (日本, Nippon or Nihon)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Capital City</p>
-                <p>Tokyo (population: 14 million; metro: 37 million)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Population</p>
-                <p>124 million (2025 est.)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Area</p>
-                <p>377,975 km² (145,937 sq mi)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Language</p>
-                <p>Japanese (日本語, Nihongo)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Currency</p>
-                <p>Japanese Yen (¥/JPY)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Government</p>
-                <p>Unitary parliamentary constitutional monarchy</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Head of State</p>
-                <p>Emperor Fumihito (2025)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Religion</p>
-                <p>Shinto and Buddhism (practiced together by many)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">GDP per Capita</p>
-                <p>$48,900 (vs. Spain: $44,100)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Time Zone</p>
-                <p>JST (UTC+9)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Driving Side</p>
-                <p>Left</p>
-              </div>
-            </div>
-            <div class="bg-red-50 p-3 rounded text-sm mb-4">
-              <p class="font-bold mb-1">Comparison with Spain</p>
-              <ul class="list-disc pl-4 text-gray-700 space-y-1">
-                <li>Area: 25% smaller than Spain (505,990 km²)</li>
-                <li>Population: 2.6x larger than Spain (47.4 million)</li>
-                <li>Population density: 3.5x higher than Spain</li>
-                <li>GDP per capita: 11% higher than Spain</li>
-                <li>Life expectancy: 5 years longer than Spain</li>
-              </ul>
-            </div>
-            <p class="text-sm text-gray-600">Japan is an archipelago consisting of 6,852 islands, with the four largest (Honshu, Hokkaido, Kyushu, and Shikoku) making up 97% of the country's land area. Tokyo is the world's largest metropolitan economy.</p>
-          </div>
-        </div>
-        
-        <!-- History & Culture Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-rose-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              <h3 class="font-bold text-lg">History & Culture</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Ancient Heritage:</span> Japan has the world's oldest continuous monarchy (Emperor lineage dates back to 660 BCE).</li>
-              <li><span class="font-medium">Contrasts:</span> The country seamlessly blends ancient traditions with cutting-edge technology and pop culture.</li>
-              <li><span class="font-medium">Harmony:</span> "Wa" (harmony) is central to Japanese culture, emphasizing group needs over individual desires.</li>
-              <li><span class="font-medium">Religion:</span> Most Japanese practice elements of both Shinto (indigenous) and Buddhism, focusing on rituals rather than doctrine.</li>
-              <li><span class="font-medium">Arts:</span> Traditional arts like ikebana (flower arrangement), calligraphy, and the tea ceremony remain important cultural practices.</li>
-              <li><span class="font-medium">Concepts:</span> "Omotenashi" (selfless hospitality) and "wabi-sabi" (finding beauty in imperfection) are key cultural values.</li>
-              <li><span class="font-medium">Population:</span> Japan has the world's oldest population and is facing demographic challenges with declining birth rates.</li>
-            </ul>
-            <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Quick Timeline</p>
-              <ul class="text-gray-700 space-y-1">
-                <li>• 660 BCE-710 CE: Early periods (mythological founding to Nara)</li>
-                <li>• 710-1185: Classical Japan (Nara & Heian periods)</li>
-                <li>• 1185-1600: Medieval Japan (Kamakura & Muromachi)</li>
-                <li>• 1600-1868: Edo period (Tokugawa shogunate)</li>
-                <li>• 1868-1912: Meiji Restoration (rapid modernization)</li>
-                <li>• 1912-1945: Imperial expansion and World War II</li>
-                <li>• 1945-present: Post-war economic growth, technological leadership</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Fun Facts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-amber-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Did You Know?</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li>Japan has more than 200 flavors of Kit Kat bars, including wasabi, sake, and sweet potato.</li>
-              <li>Tokyo has more Michelin-starred restaurants than any other city in the world.</li>
-              <li>Japan has over 5 million vending machines—one for every 23 people.</li>
-              <li>Square watermelons are grown in boxes and sold as luxury items (often costing $100+).</li>
-              <li>Slurping noodles is considered polite and shows you're enjoying your meal.</li>
-              <li>Punctuality is extremely important—trains average less than 1 minute of delay annually.</li>
-              <li>There are more pets than children in Japan due to declining birth rates.</li>
-              <li>Japan has one of the lowest crime rates in the world.</li>
-              <li>Real-life Mario Kart tours exist in Tokyo (though Nintendo won the lawsuit requiring costume changes).</li>
-              <li>The oldest company in the world was in Japan—Kongō Gumi construction company operated for 1,428 years (578-2006).</li>
-              <li>Capsule hotels were invented in Japan to provide affordable overnight accommodation.</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- What to Buy Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-pink-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-pink-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">What to Buy</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Traditional Crafts:</span> Handmade ceramics, chopsticks, folding fans, ukiyo-e prints, and traditional textiles.</li>
-              <li><span class="font-medium">Modern Goods:</span> Electronics, cameras, watches, and Japanese kitchen knives.</li>
-              <li><span class="font-medium">Beauty Products:</span> Japanese skincare and makeup brands like Shiseido, SK-II, and DHC.</li>
-              <li><span class="font-medium">Fashion:</span> Uniqlo clothing, designer items from Comme des Garçons, Issey Miyake, or Yohji Yamamoto.</li>
-              <li><span class="font-medium">Pop Culture:</span> Anime/manga merchandise, character goods from Studio Ghibli, Pokemon, and other franchises.</li>
-              <li><span class="font-medium">Food Items:</span> Green tea, sake, Japanese snacks and candies, premium instant ramen, and specialty Kit Kats.</li>
-              <li><span class="font-medium">Stationery:</span> High-quality notebooks, pens, washi tape, and cute/kawaii items.</li>
-            </ul>
-            <p class="mt-3 text-sm">Best shopping areas: Ginza (luxury), Shibuya/Harajuku (fashion), Akihabara (electronics/anime), Tokyo Station (souvenirs), and department stores like Tokyu Hands or Don Quijote.</p>
-            <div class="mt-3 bg-pink-50 p-2 rounded text-sm">
-              <p class="font-bold">Tax Refund</p>
-              <p>Foreign visitors can receive tax-free shopping on purchases over ¥5,000 (approximately €30) at participating stores. Look for the "Tax-Free" sign and bring your passport when shopping.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Health & Safety Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-teal-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Health & Safety</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-2">
-              <li><span class="font-medium">Tap Water:</span> Safe to drink throughout Japan.</li>
-              <li><span class="font-medium">Healthcare:</span> World-class medical facilities, though English services may be limited outside major cities.</li>
-              <li><span class="font-medium">Safety:</span> Tokyo is consistently rated one of the world's safest major cities.</li>
-              <li><span class="font-medium">Natural Disasters:</span> Japan is prone to earthquakes, typhoons, and tsunamis, but has excellent preparedness systems.</li>
-              <li><span class="font-medium">Emergency Numbers:</span></li>
-              <ul class="list-disc pl-5 ml-4 text-gray-600">
-                <li>Police: 110</li>
-                <li>Ambulance/Fire: 119</li>
-                <li>Japan Visitor Hotline: 050-3816-2787 (24/7, English support)</li>
-              </ul>
-            </ul>
-            <div class="mt-3 bg-teal-50 p-2 rounded text-sm">
-              <p class="font-bold">Travel Insurance</p>
-              <p>Our family policy (#TRV-2025-61792) covers medical emergencies and evacuation. Keep digital and physical copies of insurance details.</p>
-            </div>
-            <div class="mt-3">
-              <p class="font-medium text-sm mb-1">Recommended Hospitals with English Services:</p>
-              <ul class="list-disc pl-5 text-sm text-gray-700">
-                <li>St. Luke's International Hospital (Tsukiji area)</li>
-                <li>Tokyo Medical University Hospital (Shinjuku area)</li>
-                <li>Japanese Red Cross Medical Center (Hiroo area)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Tech & Connectivity Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-cyan-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Tech & Connectivity</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-2">
-              <li><span class="font-medium">Internet Speed:</span> Japan has excellent internet infrastructure with fast speeds.</li>
-              <li><span class="font-medium">Wi-Fi Access:</span> Free Wi-Fi available in many cafes, convenience stores, and major attractions.</li>
-              <li><span class="font-medium">Mobile Data:</span> Consider renting a pocket Wi-Fi device or purchasing a travel SIM card.</li>
-              <li><span class="font-medium">5G Coverage:</span> Extensive 5G network in Tokyo and major cities.</li>
-              <li><span class="font-medium">Essential Apps:</span></li>
-              <ul class="list-disc pl-5 ml-4 text-gray-600">
-                <li>Japan Travel by Navitime: Comprehensive transit information</li>
-                <li>Tokyo Subway Navigation: Metro-specific guidance</li>
-                <li>Google Maps: Works well in Japan for navigation</li>
-                <li>Google Translate: Download Japanese language pack</li>
-                <li>Japan Wi-Fi Auto-Connect: Connects to free networks</li>
-              </ul>
-            </ul>
-            <div class="mt-3 bg-cyan-50 p-2 rounded text-sm">
-              <p class="font-bold">Mobile Data Options</p>
-              <p>Pocket Wi-Fi rentals are available at Narita Airport (¥800-1,000/day). Travel SIM cards with unlimited data typically cost ¥3,000-5,000 (€18-30) for 7-8 days.</p>
-            </div>
-          </div>
-        </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<!-- Japan Country Profile Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="country-profile-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">🇯🇵</span>
+        <h3 class="font-bold text-lg text-red-700">Japan Country Profile</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="country-profile-content" class="p-5 card-content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🏛️ Official Name</p>
+        <p>Japan (日本, Nippon or Nihon)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🏙️ Capital City</p>
+        <p>Tokyo (population: 14 million; metro: 37 million)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">👥 Population</p>
+        <p>124 million (2025 est.)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🗺️ Area</p>
+        <p>377,975 km² (145,937 sq mi)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🗣️ Official Language</p>
+        <p>Japanese (日本語, Nihongo)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">💵 Currency</p>
+        <p>Japanese Yen (¥/JPY)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🏛️ Government</p>
+        <p>Unitary parliamentary constitutional monarchy</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">👑 Head of State</p>
+        <p>Emperor Fumihito (2025)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">⛪ Religion</p>
+        <p>Shinto and Buddhism (practiced together by many)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">💰 GDP per Capita</p>
+        <p>$48,900 (vs. Spain: $44,100)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🕒 Time Zone</p>
+        <p>JST (UTC+9)</p>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <p class="font-bold text-sm text-gray-700">🚗 Driving Side</p>
+        <p>Left</p>
+      </div>
+    </div>
+    <div class="bg-red-50 p-3 rounded text-sm mb-4">
+      <p class="font-bold mb-1">🇯🇵 vs 🇪🇸 Comparison with Spain</p>
+      <ul class="list-disc pl-4 text-gray-700 space-y-1">
+        <li>Area: 25% smaller than Spain (505,990 km²)</li>
+        <li>Population: 2.6x larger than Spain (47.4 million)</li>
+        <li>Population density: 3.5x higher than Spain</li>
+        <li>GDP per capita: 11% higher than Spain</li>
+        <li>Life expectancy: 5 years longer than Spain</li>
+      </ul>
+    </div>
+    <p class="text-sm text-gray-600">Japan is an archipelago consisting of 6,852 islands, with the four largest (Honshu, Hokkaido, Kyushu, and Shikoku) making up 97% of the country's land area. Tokyo is the world's largest metropolitan economy.</p>
+  </div>
+</div>
+
+<!-- History & Culture Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="history-culture-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">📚</span>
+        <h3 class="font-bold text-lg text-blue-700">History & Culture</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="history-culture-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-3">
+      <li><span class="font-medium">🏯 Ancient Heritage:</span> Japan has the world's oldest continuous monarchy (Emperor lineage dates back to 660 BCE).</li>
+      <li><span class="font-medium">🌸 Contrasts:</span> The country seamlessly blends ancient traditions with cutting-edge technology and pop culture.</li>
+      <li><span class="font-medium">⚖️ Harmony:</span> "Wa" (harmony) is central to Japanese culture, emphasizing group needs over individual desires.</li>
+      <li><span class="font-medium">🙏 Religion:</span> Most Japanese practice elements of both Shinto (indigenous) and Buddhism, focusing on rituals rather than doctrine.</li>
+      <li><span class="font-medium">🎭 Arts:</span> Traditional arts like ikebana (flower arrangement), calligraphy, and the tea ceremony remain important cultural practices.</li>
+      <li><span class="font-medium">🎎 Concepts:</span> "Omotenashi" (selfless hospitality) and "wabi-sabi" (finding beauty in imperfection) are key cultural values.</li>
+      <li><span class="font-medium">👵 Population:</span> Japan has the world's oldest population and is facing demographic challenges with declining birth rates.</li>
+    </ul>
+    <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
+      <p class="font-bold mb-1">⏳ Quick Timeline</p>
+      <ul class="text-gray-700 space-y-1">
+        <li>• 660 BCE-710 CE: Early periods (mythological founding to Nara)</li>
+        <li>• 710-1185: Classical Japan (Nara & Heian periods)</li>
+        <li>• 1185-1600: Medieval Japan (Kamakura & Muromachi)</li>
+        <li>• 1600-1868: Edo period (Tokugawa shogunate)</li>
+        <li>• 1868-1912: Meiji Restoration (rapid modernization)</li>
+        <li>• 1912-1945: Imperial expansion and World War II</li>
+        <li>• 1945-present: Post-war economic growth, technological leadership</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Fun Facts Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">💡</span>
+        <h3 class="font-bold text-lg text-yellow-700">Did You Know?</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="fun-facts-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-3">
+      <li>🍫 Japan has more than 200 flavors of Kit Kat bars, including wasabi, sake, and sweet potato.</li>
+      <li>🍣 Tokyo has more Michelin-starred restaurants than any other city in the world.</li>
+      <li>🥤 Japan has over 5 million vending machines—one for every 23 people.</li>
+      <li>🍉 Square watermelons are grown in boxes and sold as luxury items (often costing $100+).</li>
+      <li>🍜 Slurping noodles is considered polite and shows you're enjoying your meal.</li>
+      <li>🚅 Punctuality is extremely important—trains average less than 1 minute of delay annually.</li>
+      <li>🐱 There are more pets than children in Japan due to declining birth rates.</li>
+      <li>👮 Japan has one of the lowest crime rates in the world.</li>
+      <li>🏎️ Real-life Mario Kart tours exist in Tokyo (though Nintendo won the lawsuit requiring costume changes).</li>
+      <li>🏢 The oldest company in the world was in Japan—Kongō Gumi construction company operated for 1,428 years (578-2006).</li>
+      <li>🛌 Capsule hotels were invented in Japan to provide affordable overnight accommodation.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- What to Buy Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-pink-50 p-4 cursor-pointer card-header" data-target="shopping-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">🛍️</span>
+        <h3 class="font-bold text-lg text-pink-700">What to Buy</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="shopping-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-3">
+      <li><span class="font-medium">🥢 Traditional Crafts:</span> Handmade ceramics, chopsticks, folding fans, ukiyo-e prints, and traditional textiles.</li>
+      <li><span class="font-medium">📱 Modern Goods:</span> Electronics, cameras, watches, and Japanese kitchen knives.</li>
+      <li><span class="font-medium">💄 Beauty Products:</span> Japanese skincare and makeup brands like Shiseido, SK-II, and DHC.</li>
+      <li><span class="font-medium">👕 Fashion:</span> Uniqlo clothing, designer items from Comme des Garçons, Issey Miyake, or Yohji Yamamoto.</li>
+      <li><span class="font-medium">🎌 Pop Culture:</span> Anime/manga merchandise, character goods from Studio Ghibli, Pokemon, and other franchises.</li>
+      <li><span class="font-medium">🍵 Food Items:</span> Green tea, sake, Japanese snacks and candies, premium instant ramen, and specialty Kit Kats.</li>
+      <li><span class="font-medium">📝 Stationery:</span> High-quality notebooks, pens, washi tape, and cute/kawaii items.</li>
+    </ul>
+    <p class="mt-3 text-sm">Best shopping areas: Ginza (luxury), Shibuya/Harajuku (fashion), Akihabara (electronics/anime), Tokyo Station (souvenirs), and department stores like Tokyu Hands or Don Quijote.</p>
+    <div class="mt-3 bg-pink-50 p-2 rounded text-sm">
+      <p class="font-bold">💸 Tax Refund</p>
+      <p>Foreign visitors can receive tax-free shopping on purchases over ¥5,000 (approximately €30) at participating stores. Look for the "Tax-Free" sign and bring your passport when shopping.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Health & Safety Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="health-safety-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">🛡️</span>
+        <h3 class="font-bold text-lg text-green-700">Health & Safety</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="health-safety-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-2">
+      <li><span class="font-medium">🚰 Tap Water:</span> Safe to drink throughout Japan.</li>
+      <li><span class="font-medium">🏥 Healthcare:</span> World-class medical facilities, though English services may be limited outside major cities.</li>
+      <li><span class="font-medium">🛡️ Safety:</span> Tokyo is consistently rated one of the world's safest major cities.</li>
+      <li><span class="font-medium">🌋 Natural Disasters:</span> Japan is prone to earthquakes, typhoons, and tsunamis, but has excellent preparedness systems.</li>
+      <li><span class="font-medium">☎️ Emergency Numbers:</span></li>
+      <ul class="list-disc pl-5 ml-4 text-gray-600">
+        <li>Police: 110</li>
+        <li>Ambulance/Fire: 119</li>
+        <li>Japan Visitor Hotline: 050-3816-2787 (24/7, English support)</li>
+      </ul>
+    </ul>
+    <div class="mt-3 bg-green-50 p-2 rounded text-sm">
+      <p class="font-bold">🏥 Travel Insurance</p>
+      <p>Our family policy (#TRV-2025-61792) covers medical emergencies and evacuation. Keep digital and physical copies of insurance details.</p>
+    </div>
+    <div class="mt-3">
+      <p class="font-medium text-sm mb-1">Recommended Hospitals with English Services:</p>
+      <ul class="list-disc pl-5 text-sm text-gray-700">
+        <li>St. Luke's International Hospital (Tsukiji area)</li>
+        <li>Tokyo Medical University Hospital (Shinjuku area)</li>
+        <li>Japanese Red Cross Medical Center (Hiroo area)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Tech & Connectivity Card - Slim Style -->
+<div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="tech-content">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <span class="mr-2">📱</span>
+        <h3 class="font-bold text-lg text-purple-700">Tech & Connectivity</h3>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+  <div id="tech-content" class="p-5 card-content">
+    <ul class="text-gray-700 space-y-2">
+      <li><span class="font-medium">⚡ Internet Speed:</span> Japan has excellent internet infrastructure with fast speeds.</li>
+      <li><span class="font-medium">📶 Wi-Fi Access:</span> Free Wi-Fi available in many cafes, convenience stores, and major attractions.</li>
+      <li><span class="font-medium">📱 Mobile Data:</span> Consider renting a pocket Wi-Fi device or purchasing a travel SIM card.</li>
+      <li><span class="font-medium">5️⃣ 5G Coverage:</span> Extensive 5G network in Tokyo and major cities.</li>
+      <li><span class="font-medium">📲 Essential Apps:</span></li>
+      <ul class="list-disc pl-5 ml-4 text-gray-600">
+        <li>Japan Travel by Navitime: Comprehensive transit information</li>
+        <li>Tokyo Subway Navigation: Metro-specific guidance</li>
+        <li>Google Maps: Works well in Japan for navigation</li>
+        <li>Google Translate: Download Japanese language pack</li>
+        <li>Japan Wi-Fi Auto-Connect: Connects to free networks</li>
+      </ul>
+    </ul>
+    <div class="mt-3 bg-purple-50 p-2 rounded text-sm">
+      <p class="font-bold">📡 Mobile Data Options</p>
+      <p>Pocket Wi-Fi rentals are available at Narita Airport (¥800-1,000/day). Travel SIM cards with unlimited data typically cost ¥3,000-5,000 (€18-30) for 7-8 days.</p>
+    </div>
+  </div>
+</div>
       </div>
     </section>
 
@@ -1101,62 +1270,80 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Image 1: Tokyo Skyline -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://i.pinimg.com/originals/86/f2/55/86f2556da6cca07d10bf405e2d08791a.jpg" alt="Tokyo Skyline" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Tokyo Skyline with Mt. Fuji</p>
+        <a href="https://en.wikipedia.org/wiki/Tokyo" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://i.pinimg.com/originals/86/f2/55/86f2556da6cca07d10bf405e2d08791a.jpg" alt="Tokyo Skyline" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Tokyo Skyline with Mt. Fuji</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 2: Meiji Shrine -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.kMmX3LsfmEf7nNtfhOT41QHaFi?rs=1&pid=ImgDetMain" alt="Meiji Shrine" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Meiji Shrine</p>
+        <a href="https://en.wikipedia.org/wiki/Meiji_Shrine" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.kMmX3LsfmEf7nNtfhOT41QHaFi?rs=1&pid=ImgDetMain" alt="Meiji Shrine" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Meiji Shrine</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 3: Sushi -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.A6IsvjAenj85f5Dv1qv7NQHaE2?rs=1&pid=ImgDetMain" alt="Japanese Sushi" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Fresh Japanese Sushi</p>
+        <a href="https://en.wikipedia.org/wiki/Sushi" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.A6IsvjAenj85f5Dv1qv7NQHaE2?rs=1&pid=ImgDetMain" alt="Japanese Sushi" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Fresh Japanese Sushi</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 4: Shibuya Crossing -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.oRA-Ct9UNeAamGIhfepx4QHaE7?rs=1&pid=ImgDetMain" alt="Shibuya Crossing" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Shibuya Crossing</p>
+        <a href="https://en.wikipedia.org/wiki/Shibuya_Crossing" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.oRA-Ct9UNeAamGIhfepx4QHaE7?rs=1&pid=ImgDetMain" alt="Shibuya Crossing" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Shibuya Crossing</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 5: Senso-ji Temple -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/R.0eb476ca0ec3a5a1dc42f8c4446ddb80?rik=c1%2fvZGx%2fF3ZxJw&pid=ImgRaw&r=0" alt="Senso-ji Temple" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Sensō-ji Temple</p>
+        <a href="https://en.wikipedia.org/wiki/Sens%C5%8D-ji" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/R.0eb476ca0ec3a5a1dc42f8c4446ddb80?rik=c1%2fvZGx%2fF3ZxJw&pid=ImgRaw&r=0" alt="Senso-ji Temple" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Sensō-ji Temple</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 6: TeamLab Digital Art -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://media.timeout.com/images/105245693/image.jpg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">teamLab Digital Art Museum</p>
+        <a href="https://en.wikipedia.org/wiki/TeamLab_(art_collective)">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://media.timeout.com/images/105245693/image.jpg" alt="teamLab Digital Art Museum">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">teamLab Digital Art Museum</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
-    
-    <!-- Call to Action -->
+
+<!-- Call to Action -->
     <section class="text-center mb-8">
       <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
         Return to Main Itinerary
@@ -1173,7 +1360,8 @@
   </footer>
 
 <script>
-// Combined script with proper organization and fixed issues
+
+// Single unified script with complete functionality
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1184,22 +1372,122 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
     });
   }
-  
-  // 2. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 3. Desktop dropdown functionality - FIXED
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // 4. NEW: Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
+        
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // 5. Collapsible cards in Essential Information
+  document.querySelectorAll('.card-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg:last-child');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 6. Collapsible days in Itinerary
+  document.querySelectorAll('.day-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 7. World clocks functionality
+  updateWorldClocks();
+  setInterval(updateWorldClocks, 60000);
+  
+  // 8. Desktop dropdown functionality
   const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
   const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
   const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
@@ -1229,7 +1517,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 4. Highlight current page in destinations submenus
+  // 9. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Highlight current page in destinations submenus
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   // For mobile submenu
@@ -1252,7 +1553,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 5. Dynamic page title based on scroll position
+  // 11. Dynamic page title based on scroll position
   const pageTitle = document.querySelector('.hero-content h1')?.textContent;
   const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
   
@@ -1274,15 +1575,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
   }
-  
-  // 6. World clocks functionality
-  updateWorldClocks();
-  
-  // Update every minute
-  setInterval(updateWorldClocks, 60000);
 });
 
-// World clocks function - moved outside the DOMContentLoaded to prevent duplication issues
+// World clocks function
 function updateWorldClocks() {
   const now = new Date();
   
@@ -1326,6 +1621,67 @@ function updateWorldClocks() {
       eastAsiaTime.getMinutes().toString().padStart(2, '0');
   }
 }
+
+// Tips dropdown functionality
+const desktopTipsButton = document.getElementById('desktop-tips-button');
+const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+if (desktopTipsButton && desktopTipsMenu) {
+  // Use class-based toggle instead of hidden attribute
+  desktopTipsButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    desktopTipsMenu.classList.toggle('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.toggle('rotate-180');
+    }
+  });
+  
+  // Close when clicking elsewhere (add to existing document click handler)
+  document.addEventListener('click', function() {
+    desktopTipsMenu.classList.remove('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.remove('rotate-180');
+    }
+  });
+  
+  // Prevent menu from closing when clicking inside it
+  desktopTipsMenu.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
+
+// Mobile Tips submenu toggle
+const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+const tipsSubmenu = document.getElementById('tips-submenu');
+const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+if (tipsDropdownButton && tipsSubmenu) {
+  tipsDropdownButton.addEventListener('click', function() {
+    tipsSubmenu.classList.toggle('hidden');
+    if (tipsDropdownArrow) {
+      tipsDropdownArrow.classList.toggle('rotate-180');
+    }
+  });
+}
+
+// Add click handlers for Tips submenu links
+if (tipsSubmenu) {
+  const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+  tipsSubmenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Close both the submenu and the main mobile menu
+      tipsSubmenu.classList.add('hidden');
+      mobileMenu.classList.add('hidden');
+    });
+  });
+}
+
 </script>
 </body>
 </html>
+
+
+
+
