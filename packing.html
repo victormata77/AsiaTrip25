@@ -1,982 +1,1434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packing Essentials - Mata Family Asian Adventure 2025</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style>
-        :root {
-            --mata-red: #c62828;
-            --mata-dark-red: #8e0000;
-            --mata-light-red: #ff5f52;
-            --mata-cream: #f5f0e1;
-        }
-        
-        .brand-bg-red {
-            background-color: var(--mata-red);
-        }
-        
-        .brand-text-red {
-            color: var(--mata-red);
-        }
-        
-        .brand-border-red {
-            border-color: var(--mata-red);
-        }
-        
-        .brand-button {
-            background-color: var(--mata-red);
-            color: white;
-            transition: background-color 0.3s;
-        }
-        
-        .brand-button:hover {
-            background-color: var(--mata-dark-red);
-        }
-        
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .checklist-item {
-            transition: all 0.2s ease-in-out;
-        }
-        
-        .checklist-item:hover {
-            transform: translateX(5px);
-        }
-        
-        .checklist-item input:checked + label {
-            text-decoration: line-through;
-            color: #6b7280;
-        }
-        
-        .packing-tip {
-            transition: transform 0.3s ease;
-        }
-        
-        .packing-tip:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Print styles */
-        @media print {
-            .no-print {
-                display: none;
-            }
-            
-            .printable {
-                display: block !important;
-            }
-            
-            body {
-                font-size: 12pt;
-                color: #000;
-                background-color: #fff;
-            }
-            
-            .checklist-item input:checked + label {
-                text-decoration: line-through;
-                color: #6b7280;
-            }
-            
-            @page {
-                margin: 1.5cm;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATA'S ASIAN TOUR 2025 - Packing Essentials</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="icon2.png" type="image/png">
+  
+<style>
+/* Root variables and brand colors */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+/* Brand styles */
+.brand-bg-red { background-color: var(--mata-red); }
+.brand-text-red { color: var(--mata-red); }
+.brand-border-red { border-color: var(--mata-red); }
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+.brand-button:hover { background-color: var(--mata-dark-red); }
+
+/* Hero section */
+.hero-section {
+  background-image: url('https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* Desktop dropdown menu */
+#desktop-destinations-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible { display: block; }
+#desktop-destinations-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover { background-color: #f9fafb; }
+
+/* Tips dropdown styling (matches destinations dropdown) */
+#desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+
+#desktop-tips-menu.visible {
+  display: block;
+}
+
+#desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+
+#desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* Packing list specific styles */
+.checklist-item input:checked + label {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.checklist-item {
+  transition: all 0.2s ease-in-out;
+}
+
+.checklist-item:hover {
+  transform: translateX(5px);
+}
+
+/* Category cards */
+.category-card {
+  transition: transform 0.2s;
+}
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+/* PDF view styles */
+.pdf-view-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  .pdf-view-container {
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  body {
+    background-color: white;
+  }
+}
+
+.print-only {
+  display: none;
+}
+</style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation Menu -->
-    <nav class="sticky-nav shadow-md no-print">
-        <div class="max-w-6xl mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Main</a>
-                    <a href="#general-tips" class="text-gray-700 hover:text-red-600">Packing Tips</a>
-                    <a href="#printable-checklist" class="text-gray-700 hover:text-red-600">Checklist</a>
-                    <a href="#destination-specific" class="text-gray-700 hover:text-red-600">Destination Guide</a>
-                    <a href="#family-considerations" class="text-gray-700 hover:text-red-600">Family Tips</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-                <div class="flex flex-col space-y-3">
-                    <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Main</a>
-                    <a href="#general-tips" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Packing Tips</a>
-                    <a href="#printable-checklist" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Checklist</a>
-                    <a href="#destination-specific" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Destination Guide</a>
-                    <a href="#family-considerations" class="text-gray-700 hover:text-red-600 py-2">Family Tips</a>
-                </div>
-            </div>
+
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu with Better Alignment -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
+        
+        <!-- Tips Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full font-bold">
+            Tips
+            <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-tips-menu" class="hidden">
+            <a href="packing.html" class="block px-4 py-2 text-red-600 font-bold hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+          </div>
+        </div>        
+
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Destinations
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-destinations-menu" class="hidden">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+          </div>
         </div>
-    </nav>
-
-    <!-- Header Section -->
-    <header class="bg-red-600 text-white py-10 no-print">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold mb-3">Packing Essentials</h1>
-            <p class="text-xl">Everything you need for our Asian adventure</p>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
+        
+        <!-- Tips Accordion -->
+        <div class="relative">
+          <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200 font-bold">
+            <span>Tips</span>
+            <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="packing.html" class="block py-2 pl-4 text-red-600 font-bold hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+            <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+            <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+            <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
+          </div>
         </div>
-    </header>
-
-    <div class="max-w-6xl mx-auto px-4 py-10">
-        <!-- Quick Actions -->
-        <div class="flex flex-wrap justify-center gap-4 mb-10 no-print">
-            <button id="print-checklist" class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                <i class="fas fa-print mr-2"></i> Print Checklist
-            </button>
-            <button id="save-checklist" class="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-                <i class="fas fa-download mr-2"></i> Save as PDF
-            </button>
-            <button id="reset-checklist" class="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
-                <i class="fas fa-redo-alt mr-2"></i> Reset Checklist
-            </button>
+        
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</nav>
+  
+<!-- Hero Section -->
+<section class="hero-section flex items-center justify-center">
+  <div class="hero-overlay"></div>
+  <div class="hero-content max-w-4xl text-center text-white px-4">
+    <h1 class="text-5xl font-bold mb-4">Packing Essentials</h1>
+    <p class="text-xl mb-2">July 30 - August 21, 2025</p>
+    <p class="text-lg">Everything you need for our Asian adventure</p>
+  </div>
+</section>
 
-        <!-- General Packing Tips -->
-        <section id="general-tips" class="mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Smart Packing Tips</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Tip 1 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <i class="fas fa-weight-hanging text-2xl text-red-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Pack Light, Pack Smart</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Remember the "one-week rule" – pack for one week, even for longer trips. Laundry services are available at all our hotels.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Wear your bulkiest items during flights to save luggage space.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tip 2 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-green-100 p-4 flex items-center">
-                        <i class="fas fa-tshirt text-2xl text-green-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Mix & Match Clothing</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Choose a color scheme and pack items that can be mixed and matched to create multiple outfits.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Aim for a 3:1 ratio – three tops for every bottom.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tip 3 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-blue-100 p-4 flex items-center">
-                        <i class="fas fa-cube text-2xl text-blue-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Roll, Don't Fold</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Rolling clothes instead of folding saves space and reduces wrinkles. Use packing cubes to keep everything organized.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Pack heavier items at the bottom of your suitcase near the wheels.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tip 4 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-purple-100 p-4 flex items-center">
-                        <i class="fas fa-plug text-2xl text-purple-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Tech Essentials</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Universal adapter, portable charger, and extra memory cards for photos. Keep chargers in your carry-on.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Take photos of important documents as backups.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tip 5 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-yellow-100 p-4 flex items-center">
-                        <i class="fas fa-prescription-bottle-alt text-2xl text-yellow-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Medications & First Aid</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Pack more medication than you think you'll need. Bring prescriptions in original packaging with labels.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Basic first aid kit with painkillers, band-aids, antiseptic wipes, and rehydration salts.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tip 6 -->
-                <div class="packing-tip bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-indigo-100 p-4 flex items-center">
-                        <i class="fas fa-plane text-2xl text-indigo-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">Carry-On Essentials</h3>
-                    </div>
-                    <div class="p-5">
-                        <p class="text-gray-700">Pack a change of clothes, basic toiletries, medications, and entertainment in your carry-on in case of lost luggage.</p>
-                        <div class="mt-3 text-sm text-gray-600">
-                            <p><span class="font-bold">Pro Tip:</span> Bring an empty water bottle to fill after security.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="max-w-6xl mx-auto px-4 py-12">
+  
+  <!-- Introduction -->
+  <section class="mb-12">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-bold mb-4 brand-text-red">Master Packing List</h2>
+      <p class="text-gray-700 mb-4">
+        Our 23-day adventure through Seoul, Tokyo, Kyoto, Singapore, Kuala Lumpur, and the Maldives requires thoughtful packing. This comprehensive checklist helps ensure we bring everything necessary while avoiding overpacking. Use the interactive checklist to track your progress or download the PDF version for offline use.
+      </p>
+      
+      <!-- Quick Actions -->
+<div class="flex flex-wrap justify-center gap-4 mt-6 no-print">
+  <button id="view-checklist" class="flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+    </svg>
+    Interactive Checklist
+  </button>
+  <button id="print-checklist" class="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+    </svg>
+    Print Checklist
+  </button>
+</div></div>
+  </section>
 
-        <!-- Packing Strategies Section -->
-        <section class="mb-12 no-print">
-            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Packing Strategies</h2>
-            
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="p-6">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <!-- Do's -->
-                        <div class="md:w-1/2">
-                            <h3 class="text-xl font-bold text-green-600 mb-4 flex items-center">
-                                <i class="fas fa-check-circle mr-2"></i> Packing Do's
-                            </h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Type D, G, and L adapters for electronics</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
-                            <p class="font-bold">Climate:</p>
-                            <p>Hot and sunny (28-32°C) with occasional rain</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- General Tropical Items -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-blue-100 p-4 flex items-center">
-                        <i class="fas fa-umbrella-beach text-2xl text-blue-600 mr-3"></i>
-                        <h3 class="font-bold text-lg">General Tropical Items</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>High SPF sunscreen (reef-safe preferred)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>After-sun lotion or aloe vera gel</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Insect repellent with DEET</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Electrolyte tablets/powder for hydration</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Lightweight, quick-dry clothing</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div> class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Create a detailed list</strong> and check items off as you pack</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Use packing cubes</strong> to organize and compress clothing</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Pack items that serve multiple purposes</strong> (e.g., sarong as beach cover, scarf, blanket)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Leave room</strong> for souvenirs and purchases</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Pack a foldable tote bag</strong> for day trips and shopping</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Include essential toiletries</strong> like sunscreen and insect repellent</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                    <span><strong>Place a luggage tag</strong> with contact details on each bag</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Don'ts -->
-                        <div class="md:w-1/2">
-                            <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center">
-                                <i class="fas fa-times-circle mr-2"></i> Packing Don'ts
-                            </h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't pack full-sized toiletries</strong> – travel sizes save space</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't bring items you "might" use</strong> – stick to essentials</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't pack valuables</strong> in checked luggage</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't pack too many shoes</strong> – limit to 3 versatile pairs</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't fold what can be rolled</strong> to save space</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't wait until the last minute</strong> to pack</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
-                                    <span><strong>Don't forget to check airline baggage restrictions</strong> for each flight</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <!-- Interactive Checklist View -->
+  <section id="interactive-checklist" class="mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Interactive Packing Checklist</h2>
+    
+    <!-- Progress tracker -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 no-print">
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold">Your Packing Progress</h3>
+          <span id="progress-text" class="text-sm text-gray-600">0% packed</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4">
+          <div id="progress-bar" class="bg-red-600 h-4 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Filter options -->
+    <div class="flex flex-col sm:flex-row justify-between mb-6 no-print">
+      <div class="flex space-x-1 mb-4 sm:mb-0">
+        <button id="filter-all" class="px-3 py-1 text-sm rounded bg-red-600 text-white">All Items</button>
+        <button id="filter-unpacked" class="px-3 py-1 text-sm rounded bg-gray-200 text-gray-800">Still to Pack</button>
+        <button id="filter-packed" class="px-3 py-1 text-sm rounded bg-gray-200 text-gray-800">Already Packed</button>
+      </div>
+      <div class="relative">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search items..."
+          class="w-full sm:w-64 p-2 pl-8 border border-gray-300 rounded"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 absolute left-2.5 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <button id="clear-search" class="absolute right-2 top-2.5 text-gray-400 hover:text-gray-600 hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Checklist Categories -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Essential Documents -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-red-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Essential Documents
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="documents">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="passport" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="passport" class="text-gray-700">Passport (valid for at least 6 months)</label>
             </div>
-        </section>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="visa-docs" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="visa-docs" class="text-gray-700">Visa documentation (where required)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="flight-tickets" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="flight-tickets" class="text-gray-700">Flight tickets/confirmations</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hotel-reservations" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hotel-reservations" class="text-gray-700">Hotel reservations</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-insurance" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-insurance" class="text-gray-700">Travel insurance documents</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="drivers-license" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="drivers-license" class="text-gray-700">International driver's license (optional)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="emergency-contacts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="emergency-contacts" class="text-gray-700">Emergency contact information</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="photocopies" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="photocopies" class="text-gray-700">Photocopies of important documents</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="credit-cards" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="credit-cards" class="text-gray-700">Credit/debit cards (notify banks of travel)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="currency" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="currency" class="text-gray-700">Small amount of local currency for each country</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Clothing -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-blue-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6a6 6 0 0112 0 3.5 3.5 0 01-1 10 3.5 3.5 0 01-1 10 6 6 0 01-10-10 6 6 0 010-10z" />
+            </svg>
+            Clothing
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="clothing">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="tshirts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="tshirts" class="text-gray-700">T-shirts/tops (7-10)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="shorts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="shorts" class="text-gray-700">Shorts/skirts (3-4)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="long-pants" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="long-pants" class="text-gray-700">Long pants/jeans (2-3)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="dresses" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="dresses" class="text-gray-700">Dresses (if applicable)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="underwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="underwear" class="text-gray-700">Underwear (10+)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="socks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="socks" class="text-gray-700">Socks (7+ pairs)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="swimwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="swimwear" class="text-gray-700">Swimwear (2-3 sets)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sleepwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sleepwear" class="text-gray-700">Sleepwear</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="light-jacket" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="light-jacket" class="text-gray-700">Light jacket/cardigan</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="rain-jacket" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="rain-jacket" class="text-gray-700">Rain jacket/poncho</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hat" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hat" class="text-gray-700">Sun hat/cap</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="modest-clothing" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="modest-clothing" class="text-gray-700">Modest clothing for temples/religious sites</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="formal-outfit" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="formal-outfit" class="text-gray-700">One semi-formal outfit for nice dinners</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="rash-guard" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="rash-guard" class="text-gray-700">Rash guard/UV protection shirt (for Maldives)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footwear -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-yellow-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+            </svg>
+            Footwear
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="footwear">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="walking-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="walking-shoes" class="text-gray-700">Comfortable walking shoes/sneakers</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sandals" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sandals" class="text-gray-700">Sandals/flip-flops</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="water-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="water-shoes" class="text-gray-700">Water shoes (for Maldives)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="dress-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="dress-shoes" class="text-gray-700">Dressier shoes (for nice restaurants)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="slip-on-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="slip-on-shoes" class="text-gray-700">Slip-on shoes (for temples in Japan/Korea)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="shoe-bags" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="shoe-bags" class="text-gray-700">Shoe bags for packing</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Toiletries & Personal Care -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-green-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 2a1 1 0 011 1v19a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1h3.586a1 1 0 01.707.293l1.414 1.414a1 1 0 00.707.293H15z" />
+            </svg>
+            Toiletries & Personal Care
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="toiletries">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="toothbrush" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="toothbrush" class="text-gray-700">Toothbrush & toothpaste</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="deodorant" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="deodorant" class="text-gray-700">Deodorant</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="shampoo" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="shampoo" class="text-gray-700">Shampoo & conditioner (travel size)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="body-wash" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="body-wash" class="text-gray-700">Body wash/soap</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sunscreen" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sunscreen" class="text-gray-700">Sunscreen (high SPF, reef-safe for Maldives)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="after-sun" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="after-sun" class="text-gray-700">After-sun lotion or aloe vera gel</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="insect-repellent" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="insect-repellent" class="text-gray-700">Insect repellent</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hand-sanitizer" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hand-sanitizer" class="text-gray-700">Hand sanitizer</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="wet-wipes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="wet-wipes" class="text-gray-700">Wet wipes/antibacterial wipes</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="personal-items" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="personal-items" class="text-gray-700">Personal hygiene items</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="razor" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="razor" class="text-gray-700">Razor & shaving cream</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="makeup" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="makeup" class="text-gray-700">Makeup & remover (if applicable)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hairbrush" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hairbrush" class="text-gray-700">Hairbrush/comb</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hair-products" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hair-products" class="text-gray-700">Hair products (travel size)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="lip-balm" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="lip-balm" class="text-gray-700">Lip balm with SPF</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hand-towel" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hand-towel" class="text-gray-700">Small towel/handkerchief (for Japan/Korea)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-tissues" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-tissues" class="text-gray-700">Travel tissues</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-bottles" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-bottles" class="text-gray-700">Travel bottles for liquids</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="toiletry-bag" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="toiletry-bag" class="text-gray-700">Toiletry bag/organizer</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Medications & First Aid -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-red-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Medications & First Aid
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="medications">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="prescription-meds" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="prescription-meds" class="text-gray-700">Prescription medications (in original packaging)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="painkillers" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="painkillers" class="text-gray-700">Pain relievers (paracetamol/ibuprofen)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="anti-diarrheal" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="anti-diarrheal" class="text-gray-700">Anti-diarrheal medication</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="antihistamines" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="antihistamines" class="text-gray-700">Antihistamines for allergies</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="bandaids" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="bandaids" class="text-gray-700">Band-aids/plasters</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="antiseptic" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="antiseptic" class="text-gray-700">Antiseptic cream or wipes</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="motion-sickness" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="motion-sickness" class="text-gray-700">Motion sickness remedies</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="rehydration-salts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="rehydration-salts" class="text-gray-700">Rehydration salts/electrolyte tablets</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="tweezers" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="tweezers" class="text-gray-700">Tweezers & scissors</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="eye-drops" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="eye-drops" class="text-gray-700">Eye drops for dry eyes (air conditioning/flights)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="prescription-copy" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="prescription-copy" class="text-gray-700">Copy of any prescriptions</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="first-aid-kit" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="first-aid-kit" class="text-gray-700">Compact first aid kit</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="thermometer" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="thermometer" class="text-gray-700">Digital thermometer</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sleep-aid" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sleep-aid" class="text-gray-700">Sleep aid for jet lag (if needed)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tech & Electronics -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-purple-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            Tech & Electronics
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="tech">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="smartphone" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="smartphone" class="text-gray-700">Smartphone & charger</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="camera" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="camera" class="text-gray-700">Camera, memory cards & charger</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="power-adapter" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="power-adapter" class="text-gray-700">Universal power adapter</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="power-bank" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="power-bank" class="text-gray-700">Portable power bank</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="headphones" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="headphones" class="text-gray-700">Headphones</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="ereader" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="ereader" class="text-gray-700">E-reader/tablet & charger</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="waterproof-case" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="waterproof-case" class="text-gray-700">Waterproof phone case (for Maldives)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="specific-adapters" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="specific-adapters" class="text-gray-700">Country-specific adapters (Types A, B, C, F, G)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="charging-cables" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="charging-cables" class="text-gray-700">Extra charging cables</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="multi-port-usb" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="multi-port-usb" class="text-gray-700">Multi-port USB charger</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="laptops" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="laptops" class="text-gray-700">Laptop/device for teens (optional)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="bluetooth-speaker" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="bluetooth-speaker" class="text-gray-700">Portable Bluetooth speaker (waterproof)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sim-cards" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sim-cards" class="text-gray-700">Research local SIM cards or pocket WiFi options</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Travel Accessories -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            Travel Accessories
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="accessories">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="daypack" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="daypack" class="text-gray-700">Daypack/small backpack</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="money-belt" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="money-belt" class="text-gray-700">Money belt/hidden pouch</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-pillow" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-pillow" class="text-gray-700">Travel pillow & eye mask</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="water-bottle" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="water-bottle" class="text-gray-700">Reusable water bottle</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-towel" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-towel" class="text-gray-700">Quick-dry travel towel</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="sunglasses" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="sunglasses" class="text-gray-700">Sunglasses</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="earplugs" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="earplugs" class="text-gray-700">Earplugs & sleep mask</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="notebook" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="notebook" class="text-gray-700">Travel journal & pen</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="shopping-bag" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="shopping-bag" class="text-gray-700">Foldable shopping bag</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="laundry-bag" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="laundry-bag" class="text-gray-700">Travel laundry bag</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="luggage-locks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="luggage-locks" class="text-gray-700">TSA-approved luggage locks</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="luggage-tags" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="luggage-tags" class="text-gray-700">Luggage tags with contact info</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="laundry-soap" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="laundry-soap" class="text-gray-700">Travel laundry soap</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="packing-cubes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="packing-cubes" class="text-gray-700">Packing cubes or organizers</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="umbrella" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+<label for="umbrella" class="text-gray-700">Compact travel umbrella</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-clothesline" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-clothesline" class="text-gray-700">Travel clothesline</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Family & Teen-specific Items -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-orange-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            Family & Teen-specific Items
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="family">
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="entertainment" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="entertainment" class="text-gray-700">Entertainment for flights & transit</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="snacks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="snacks" class="text-gray-700">Snacks for travel days</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="portable-games" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="portable-games" class="text-gray-700">Portable games/playing cards</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="snorkel-gear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="snorkel-gear" class="text-gray-700">Snorkeling gear (or rent in Maldives)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="teen-power-banks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="teen-power-banks" class="text-gray-700">Extra power banks for teens</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="family-photo" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="family-photo" class="text-gray-700">Family photo (for emergencies with younger children)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="emergency-info" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="emergency-info" class="text-gray-700">Emergency contact cards for each family member</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="translation-apps" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="translation-apps" class="text-gray-700">Download translation apps for all devices</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="offline-maps" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="offline-maps" class="text-gray-700">Download offline maps for all destinations</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="travel-apps" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="travel-apps" class="text-gray-700">Install country-specific apps (Kakao for Korea, etc.)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Destination-Specific Items -->
+      <div class="category-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-teal-100 p-4">
+          <h3 class="font-bold text-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Destination-Specific Items
+          </h3>
+        </div>
+        <div class="p-5">
+          <div class="space-y-2 checklist-category" data-category="destination">
+            <div class="font-medium text-gray-700 mb-2">South Korea & Japan:</div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="hand-towel-asia" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="hand-towel-asia" class="text-gray-700">Portable hand towel (many restrooms don't provide paper towels)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="type-cf-adapters" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="type-cf-adapters" class="text-gray-700">Type C & F adapters for Korea</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="type-ab-adapters" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="type-ab-adapters" class="text-gray-700">Type A & B adapters for Japan</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="slip-on-shoes-asia" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="slip-on-shoes-asia" class="text-gray-700">Slip-on shoes for temple visits</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="temple-clothing" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="temple-clothing" class="text-gray-700">Modest clothing for temples (shoulders & knees covered)</label>
+            </div>
+            
+            <div class="font-medium text-gray-700 mb-2 mt-4">Singapore & Malaysia:</div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="type-g-adapters" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="type-g-adapters" class="text-gray-700">Type G adapters for Singapore & Malaysia</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="mosque-attire" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="mosque-attire" class="text-gray-700">Modest clothing for mosque visits in Malaysia</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="batu-caves-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="batu-caves-shoes" class="text-gray-700">Good walking shoes for Batu Caves steps</label>
+            </div>
+            
+            <div class="font-medium text-gray-700 mb-2 mt-4">Maldives:</div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="reef-safe-sunscreen" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="reef-safe-sunscreen" class="text-gray-700">Reef-safe sunscreen (essential)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="multiple-swimwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="multiple-swimwear" class="text-gray-700">Multiple swimsuits (you'll use them daily)</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="uv-shirt" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="uv-shirt" class="text-gray-700">UV protection swim shirt/rash guard</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="water-shoes-maldives" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="water-shoes-maldives" class="text-gray-700">Water shoes for coral protection</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="waterproof-case-maldives" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="waterproof-case-maldives" class="text-gray-700">Waterproof phone case/camera housing</label>
+            </div>
+            <div class="checklist-item flex items-center">
+              <input type="checkbox" id="light-layers" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
+              <label for="light-layers" class="text-gray-700">Light layers for evening ocean breezes</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-6 mb-8 bg-white rounded-lg shadow-md p-5">
+      <h3 class="font-bold text-lg mb-4 text-center">Packing Tips</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-bold text-red-600 mb-2">Packing Do's</h4>
+          <ul class="list-disc pl-5 text-gray-700 space-y-1">
+            <li><strong>Create a detailed list</strong> and check items off as you pack</li>
+            <li><strong>Use packing cubes</strong> to organize and compress clothing</li>
+            <li><strong>Pack items that serve multiple purposes</strong> (e.g., sarong as beach cover, scarf, blanket)</li>
+            <li><strong>Leave room</strong> for souvenirs and purchases</li>
+            <li><strong>Wear bulky items</strong> during flights to save space</li>
+            <li><strong>Pack a spare outfit</strong> in your carry-on in case of lost luggage</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-600 mb-2">Packing Don'ts</h4>
+          <ul class="list-disc pl-5 text-gray-700 space-y-1">
+            <li><strong>Don't pack full-sized toiletries</strong> – travel sizes save space</li>
+            <li><strong>Don't bring items you "might" use</strong> – stick to essentials</li>
+            <li><strong>Don't pack valuables</strong> in checked luggage</li>
+            <li><strong>Don't pack too many shoes</strong> – limit to 3 versatile pairs</li>
+            <li><strong>Don't fold what can be rolled</strong> to save space</li>
+            <li><strong>Don't wait until the last minute</strong> to pack</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Reset Button -->
+    <div class="text-center mb-8 no-print">
+      <button id="reset-all" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+        </svg>
+        Reset All Checkboxes
+      </button>
+    </div>
+  </section>
 
-        <!-- Packing Illustration -->
-        <section class="mb-12 no-print">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-4 text-center">Packing Visualization</h3>
-                    <div class="flex flex-col md:flex-row gap-6 justify-center">
-                        <!-- Packing Cubes Illustration -->
-                        <div class="text-center">
-                            <div class="bg-gray-100 p-4 rounded-lg mb-2">
-                                <i class="fas fa-box text-5xl text-blue-500"></i>
-                            </div>
-                            <h4 class="font-bold">Packing Cubes Method</h4>
-                            <p class="text-sm text-gray-600">Organize by category in compression cubes</p>
-                        </div>
-                        
-                        <!-- Rolling Clothes Illustration -->
-                        <div class="text-center">
-                            <div class="bg-gray-100 p-4 rounded-lg mb-2">
-                                <i class="fas fa-sync text-5xl text-green-500"></i>
-                            </div>
-                            <h4 class="font-bold">Rolling Method</h4>
-                            <p class="text-sm text-gray-600">Tight rolls save space and reduce wrinkles</p>
-                        </div>
-                        
-                        <!-- Layer Method Illustration -->
-                        <div class="text-center">
-                            <div class="bg-gray-100 p-4 rounded-lg mb-2">
-                                <i class="fas fa-layer-group text-5xl text-purple-500"></i>
-                            </div>
-                            <h4 class="font-bold">Layer Method</h4>
-                            <p class="text-sm text-gray-600">Heaviest items at bottom, lightest on top</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  
+  
+  <!-- Packing Strategies -->
+  <section class="mb-12 no-print">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Smart Packing Strategies</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Tip 1 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-red-100 p-4">
+          <h3 class="font-bold text-lg">Pack Light, Pack Smart</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Remember the "one-week rule" – pack for one week, even for longer trips. Laundry services are available at all our hotels.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Wear your bulkiest items during flights to save luggage space.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tip 2 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-green-100 p-4">
+          <h3 class="font-bold text-lg">Mix & Match Clothing</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Choose a color scheme and pack items that can be mixed and matched to create multiple outfits.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Aim for a 3:1 ratio – three tops for every bottom.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tip 3 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-blue-100 p-4">
+          <h3 class="font-bold text-lg">Roll, Don't Fold</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Rolling clothes instead of folding saves space and reduces wrinkles. Use packing cubes to keep everything organized.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Pack heavier items at the bottom of your suitcase near the wheels.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tip 4 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-purple-100 p-4">
+          <h3 class="font-bold text-lg">Tech & Charging Strategy</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Take photos of important documents as backups. Travel with a multi-port USB charger to reduce adapter needs.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Keep all electronic devices and chargers in your carry-on luggage.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tip 5 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-yellow-100 p-4">
+          <h3 class="font-bold text-lg">Medications & First Aid</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Pack more medication than you think you'll need. Bring prescriptions in original packaging with labels.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Divide critical medications between two bags in case one is lost.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tip 6 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-100 p-4">
+          <h3 class="font-bold text-lg">Family Organization</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-gray-700">Assign each family member a packing cube color or luggage tag color for easy identification.</p>
+          <div class="mt-3 text-sm text-gray-600">
+            <p><span class="font-bold">Pro Tip:</span> Have teens pack their own bags using this checklist, then verify completeness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Call to Action -->
+  <section class="text-center mb-8">
+    <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+      Return to Main Itinerary
+    </a>
+  </section>
+</div>
 
-        <!-- Printable Checklist -->
-        <section id="printable-checklist" class="mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Packing Checklist</h2>
-            
-            <!-- Checklist Header - Only shown when printing -->
-            <div class="hidden printable mb-4">
-                <h1 class="text-2xl font-bold text-center">Mata Family Asian Adventure 2025</h1>
-                <h2 class="text-xl font-bold text-center mb-2">Packing Checklist</h2>
-                <p class="text-center text-gray-600">July 30 - August 21, 2025</p>
-                <hr class="my-4">
-            </div>
-            
-            <!-- Progress Bar - Not shown when printing -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 no-print">
-                <div class="p-4">
-                    <h3 class="font-bold mb-2">Your Packing Progress</h3>
-                    <div class="w-full bg-gray-200 rounded-full h-4">
-                        <div id="progress-bar" class="bg-red-600 h-4 rounded-full" style="width: 0%"></div>
-                    </div>
-                    <p id="progress-text" class="text-sm mt-1 text-gray-600">0% packed</p>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Essential Documents -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-passport text-red-600 mr-2"></i> Essential Documents
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="passport" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="passport" class="text-gray-700">Passport (valid for at least 6 months)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="visa-docs" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="visa-docs" class="text-gray-700">Visa documentation (where required)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="flight-tickets" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="flight-tickets" class="text-gray-700">Flight tickets/confirmations</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="hotel-reservations" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="hotel-reservations" class="text-gray-700">Hotel reservations</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="travel-insurance" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="travel-insurance" class="text-gray-700">Travel insurance documents</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="drivers-license" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="drivers-license" class="text-gray-700">International driver's license (optional)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="emergency-contacts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="emergency-contacts" class="text-gray-700">Emergency contact information</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="photocopies" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="photocopies" class="text-gray-700">Photocopies of important documents</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Clothing -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-blue-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-tshirt text-blue-600 mr-2"></i> Clothing
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="tshirts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="tshirts" class="text-gray-700">T-shirts/tops (7-10)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="shorts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="shorts" class="text-gray-700">Shorts/skirts (3-4)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="long-pants" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="long-pants" class="text-gray-700">Long pants/jeans (2-3)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="dresses" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="dresses" class="text-gray-700">Dresses (if applicable)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="underwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="underwear" class="text-gray-700">Underwear (10+)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="socks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="socks" class="text-gray-700">Socks (7+ pairs)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="swimwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="swimwear" class="text-gray-700">Swimwear (2-3 sets)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="sleepwear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="sleepwear" class="text-gray-700">Sleepwear</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="light-jacket" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="light-jacket" class="text-gray-700">Light jacket/cardigan</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="rain-jacket" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="rain-jacket" class="text-gray-700">Rain jacket/poncho</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="hat" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="hat" class="text-gray-700">Sun hat/cap</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="modest-clothing" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="modest-clothing" class="text-gray-700">Modest clothing for temples/religious sites</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Footwear -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-yellow-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-shoe-prints text-yellow-600 mr-2"></i> Footwear
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="walking-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="walking-shoes" class="text-gray-700">Comfortable walking shoes/sneakers</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="sandals" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="sandals" class="text-gray-700">Sandals/flip-flops</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="water-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="water-shoes" class="text-gray-700">Water shoes (for Maldives)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="dress-shoes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="dress-shoes" class="text-gray-700">Dressier shoes (for nice restaurants)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Toiletries & Personal Care -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-green-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-pump-soap text-green-600 mr-2"></i> Toiletries & Personal Care
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="toothbrush" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="toothbrush" class="text-gray-700">Toothbrush & toothpaste</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="deodorant" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="deodorant" class="text-gray-700">Deodorant</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="shampoo" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="shampoo" class="text-gray-700">Shampoo & conditioner (travel size)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="body-wash" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="body-wash" class="text-gray-700">Body wash/soap</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="sunscreen" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="sunscreen" class="text-gray-700">Sunscreen (high SPF, reef-safe for Maldives)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="insect-repellent" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="insect-repellent" class="text-gray-700">Insect repellent</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="hand-sanitizer" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="hand-sanitizer" class="text-gray-700">Hand sanitizer</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="wet-wipes" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="wet-wipes" class="text-gray-700">Wet wipes/antibacterial wipes</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="personal-items" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="personal-items" class="text-gray-700">Personal hygiene items</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="razor" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="razor" class="text-gray-700">Razor & shaving cream</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="makeup" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="makeup" class="text-gray-700">Makeup & remover (if applicable)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="hairbrush" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="hairbrush" class="text-gray-700">Hairbrush/comb</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="hair-products" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="hair-products" class="text-gray-700">Hair products (travel size)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Medications & First Aid -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-first-aid text-red-600 mr-2"></i> Medications & First Aid
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="prescription-meds" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="prescription-meds" class="text-gray-700">Prescription medications (in original packaging)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="painkillers" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="painkillers" class="text-gray-700">Pain relievers (paracetamol/ibuprofen)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="anti-diarrheal" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="anti-diarrheal" class="text-gray-700">Anti-diarrheal medication</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="antihistamines" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="antihistamines" class="text-gray-700">Antihistamines for allergies</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="bandaids" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="bandaids" class="text-gray-700">Band-aids/plasters</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="antiseptic" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="antiseptic" class="text-gray-700">Antiseptic cream or wipes</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="motion-sickness" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="motion-sickness" class="text-gray-700">Motion sickness remedies</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="rehydration-salts" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="rehydration-salts" class="text-gray-700">Rehydration salts</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="tweezers" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="tweezers" class="text-gray-700">Tweezers & scissors</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tech & Electronics -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-purple-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-mobile-alt text-purple-600 mr-2"></i> Tech & Electronics
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="smartphone" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="smartphone" class="text-gray-700">Smartphone & charger</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="camera" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="camera" class="text-gray-700">Camera, memory cards & charger</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="power-adapter" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="power-adapter" class="text-gray-700">Universal power adapter</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="power-bank" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="power-bank" class="text-gray-700">Portable power bank</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="headphones" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="headphones" class="text-gray-700">Headphones</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="ereader" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="ereader" class="text-gray-700">E-reader/tablet & charger</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="waterproof-case" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="waterproof-case" class="text-gray-700">Waterproof phone case (for Maldives)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Travel Accessories -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-indigo-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-suitcase-rolling text-indigo-600 mr-2"></i> Travel Accessories
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="daypack" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="daypack" class="text-gray-700">Daypack/small backpack</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="money-belt" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="money-belt" class="text-gray-700">Money belt/hidden pouch</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="travel-pillow" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="travel-pillow" class="text-gray-700">Travel pillow & eye mask</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="water-bottle" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="water-bottle" class="text-gray-700">Reusable water bottle</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="travel-towel" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="travel-towel" class="text-gray-700">Quick-dry travel towel</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="sunglasses" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="sunglasses" class="text-gray-700">Sunglasses</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="earplugs" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="earplugs" class="text-gray-700">Earplugs & sleep mask</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="notebook" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="notebook" class="text-gray-700">Travel journal & pen</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="shopping-bag" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="shopping-bag" class="text-gray-700">Foldable shopping bag</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="laundry-bag" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="laundry-bag" class="text-gray-700">Travel laundry bag</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Family & Teen-specific Items -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-orange-100 p-4">
-                        <h3 class="font-bold text-lg flex items-center">
-                            <i class="fas fa-users text-orange-600 mr-2"></i> Family & Teen-specific Items
-                        </h3>
-                    </div>
-                    <div class="p-5">
-                        <div class="space-y-2">
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="entertainment" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="entertainment" class="text-gray-700">Entertainment for flights & transit</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="snacks" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="snacks" class="text-gray-700">Snacks for travel days</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="portable-games" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="portable-games" class="text-gray-700">Portable games/playing cards</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="snorkel-gear" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="snorkel-gear" class="text-gray-700">Snorkeling gear (or rent in Maldives)</label>
-                            </div>
-                            <div class="checklist-item flex items-center">
-                                <input type="checkbox" id="portable-speaker" class="h-5 w-5 text-red-600 mr-2 checklist-checkbox">
-                                <label for="portable-speaker" class="text-gray-700">Portable Bluetooth speaker (waterproof)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<footer class="brand-bg-red text-white py-8">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+    <p class="mb-4">July 30 - August 21, 2025</p>
+    <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
+  </div>
+</footer>
 
-        <!-- Destination-Specific Items -->
-        <section id="destination-specific" class="mb-12 no-print">
-            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Destination-Specific Items</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- South Korea -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <img src="https://flagcdn.com/w40/kr.png" class="w-8 h-6 mr-2" alt="South Korea flag">
-                        <h3 class="font-bold text-lg">South Korea (Seoul)</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>T-Money card for public transportation (purchase upon arrival)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Light rain jacket (summer showers)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Portable hand towel (many restrooms don't provide paper towels)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Type C & F adapters for electronics</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
-                            <p class="font-bold">Climate:</p>
-                            <p>Hot and humid (30-34°C) with occasional showers</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Japan -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <img src="https://flagcdn.com/w40/jp.png" class="w-8 h-6 mr-2" alt="Japan flag">
-                        <h3 class="font-bold text-lg">Japan (Tokyo & Kyoto)</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Suica/PASMO card for public transport (purchase upon arrival)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Modest clothing for temple visits (shoulders & knees covered)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Portable hand towel/handkerchief (common in Japan)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Slip-on shoes (for frequent removal at temples/restaurants)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Type A & B adapters for electronics</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
-                            <p class="font-bold">Climate:</p>
-                            <p>Hot and humid (28-33°C) with high humidity and possible showers</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Singapore -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <img src="https://flagcdn.com/w40/sg.png" class="w-8 h-6 mr-2" alt="Singapore flag">
-                        <h3 class="font-bold text-lg">Singapore</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Light, breathable clothing (air conditioning is very cold indoors)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Small umbrella for sudden showers</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Swimming attire for Villa Hotel Sentosa pools</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Type G adapters for electronics</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
-                            <p class="font-bold">Climate:</p>
-                            <p>Hot and humid year-round (30-32°C) with brief showers</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Malaysia -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <img src="https://flagcdn.com/w40/my.png" class="w-8 h-6 mr-2" alt="Malaysia flag">
-                        <h3 class="font-bold text-lg">Malaysia (Kuala Lumpur)</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Modest clothing for visiting Batu Caves (shoulders & knees covered)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Comfortable shoes for cave steps (272 steps)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Type G adapters for electronics</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
-                            <p class="font-bold">Climate:</p>
-                            <p>Hot and humid (30-34°C) with afternoon thunderstorms</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Maldives -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="bg-red-100 p-4 flex items-center">
-                        <img src="https://flagcdn.com/w40/mv.png" class="w-8 h-6 mr-2" alt="Maldives flag">
-                        <h3 class="font-bold text-lg">Maldives</h3>
-                    </div>
-                    <div class="p-5">
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>High SPF, reef-safe sunscreen (essential)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Multiple swimsuits (you'll use them daily)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Rash guard/UV protection swim shirt</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Snorkeling equipment (or rent at resort)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Waterproof case for smartphone</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Insect repellent for evenings</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Light layers for evenings</span>
-                            </li>
-                            <li
+<script>
+// Single unified script with complete functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // 2. Tips dropdown functionality
+  const desktopTipsButton = document.getElementById('desktop-tips-button');
+  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+  if (desktopTipsButton && desktopTipsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopTipsButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopTipsMenu.classList.toggle('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere (add to existing document click handler)
+    document.addEventListener('click', function() {
+      desktopTipsMenu.classList.remove('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopTipsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // 3. Mobile Tips submenu toggle
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.addEventListener('click', function() {
+      tipsSubmenu.classList.toggle('hidden');
+      if (tipsDropdownArrow) {
+        tipsDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 4. Desktop Destinations dropdown
+  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+  
+  if (desktopDropdownButton && desktopDestinationsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopDestinationsMenu.classList.toggle('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere
+    document.addEventListener('click', function() {
+      desktopDestinationsMenu.classList.remove('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopDestinationsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  
+  // 5. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // REMOVED PDF VIEW TOGGLE BUTTONS AND FUNCTIONALITY
+  // Keep the interactive checklist visible at all times
+  const interactiveChecklist = document.getElementById('interactive-checklist');
+  if (interactiveChecklist) {
+    interactiveChecklist.classList.remove('hidden');
+  }
+  
+  // 7. Print functionality
+  const printChecklist = document.getElementById('print-checklist');
+  
+  if (printChecklist) {
+    printChecklist.addEventListener('click', function() {
+      // Just print directly
+      window.print();
+    });
+  }
+  
+  // 8. Filter functionality
+  const filterAll = document.getElementById('filter-all');
+  const filterUnpacked = document.getElementById('filter-unpacked');
+  const filterPacked = document.getElementById('filter-packed');
+  const checklistItems = document.querySelectorAll('.checklist-item');
+  
+  if (filterAll && filterUnpacked && filterPacked) {
+    filterAll.addEventListener('click', function() {
+      checklistItems.forEach(item => {
+        item.classList.remove('hidden');
+      });
+      
+      filterAll.classList.add('bg-red-600', 'text-white');
+      filterAll.classList.remove('bg-gray-200', 'text-gray-800');
+      filterUnpacked.classList.remove('bg-red-600', 'text-white');
+      filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
+      filterPacked.classList.remove('bg-green-600', 'text-white');
+      filterPacked.classList.add('bg-gray-200', 'text-gray-800');
+    });
+    
+    filterUnpacked.addEventListener('click', function() {
+      checklistItems.forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+          item.classList.add('hidden');
+        } else {
+          item.classList.remove('hidden');
+        }
+      });
+      
+      filterUnpacked.classList.add('bg-red-600', 'text-white');
+      filterUnpacked.classList.remove('bg-gray-200', 'text-gray-800');
+      filterAll.classList.remove('bg-red-600', 'text-white');
+      filterAll.classList.add('bg-gray-200', 'text-gray-800');
+      filterPacked.classList.remove('bg-green-600', 'text-white');
+      filterPacked.classList.add('bg-gray-200', 'text-gray-800');
+    });
+    
+    filterPacked.addEventListener('click', function() {
+      checklistItems.forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      
+      filterPacked.classList.add('bg-green-600', 'text-white');
+      filterPacked.classList.remove('bg-gray-200', 'text-gray-800');
+      filterAll.classList.remove('bg-red-600', 'text-white');
+      filterAll.classList.add('bg-gray-200', 'text-gray-800');
+      filterUnpacked.classList.remove('bg-red-600', 'text-white');
+      filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
+    });
+  }
+  
+  // 9. Search functionality
+  const searchInput = document.getElementById('search-input');
+  const clearSearch = document.getElementById('clear-search');
+  
+  if (searchInput && clearSearch) {
+    searchInput.addEventListener('input', function() {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      if (searchTerm === '') {
+        clearSearch.classList.add('hidden');
+        checklistItems.forEach(item => {
+          item.classList.remove('hidden');
+        });
+      } else {
+        clearSearch.classList.remove('hidden');
+        
+        checklistItems.forEach(item => {
+          const label = item.querySelector('label').textContent.toLowerCase();
+          if (label.includes(searchTerm)) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      }
+    });
+    
+    clearSearch.addEventListener('click', function() {
+      searchInput.value = '';
+      clearSearch.classList.add('hidden');
+      checklistItems.forEach(item => {
+        item.classList.remove('hidden');
+      });
+    });
+  }
+  
+  // 10. Progress bar functionality
+  const progressBar = document.getElementById('progress-bar');
+  const progressText = document.getElementById('progress-text');
+  const checkboxes = document.querySelectorAll('.checklist-checkbox');
+  
+  if (progressBar && progressText && checkboxes.length > 0) {
+    // Function to update progress
+    const updateProgress = function() {
+      const total = checkboxes.length;
+      let checked = 0;
+      
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) checked++;
+      });
+      
+      const percentage = Math.round((checked / total) * 100);
+      progressBar.style.width = percentage + '%';
+      progressText.textContent = percentage + '% packed';
+    };
+    
+    // Add change event listener to all checkboxes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        updateProgress();
+        saveChecklistState();
+      });
+    });
+    
+    // Initial update
+    updateProgress();
+  }
+  
+  // 11. Reset button functionality
+  const resetAllButton = document.getElementById('reset-all');
+  
+  if (resetAllButton && checkboxes.length > 0) {
+    resetAllButton.addEventListener('click', function() {
+      if (confirm('Are you sure you want to reset all checkboxes? This cannot be undone.')) {
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = false;
+        });
+        
+        // Update progress
+        if (progressBar && progressText) {
+          progressBar.style.width = '0%';
+          progressText.textContent = '0% packed';
+        }
+        
+        // Save to localStorage
+        saveChecklistState();
+      }
+    });
+  }
+  
+  // 12. Save and load checklist state
+  const saveChecklistState = function() {
+    const state = {};
+    
+    checkboxes.forEach(checkbox => {
+      state[checkbox.id] = checkbox.checked;
+    });
+    
+    localStorage.setItem('mataAsianTrip2025PackingList', JSON.stringify(state));
+  };
+  
+  const loadChecklistState = function() {
+    const savedState = localStorage.getItem('mataAsianTrip2025PackingList');
+    
+    if (savedState) {
+      const state = JSON.parse(savedState);
+      
+      checkboxes.forEach(checkbox => {
+        if (state[checkbox.id] !== undefined) {
+          checkbox.checked = state[checkbox.id];
+        }
+      });
+      
+      // Update progress
+      if (progressBar && progressText) {
+        updateProgress();
+      }
+    }
+  };
+  
+  // Load saved state on page load
+  loadChecklistState();
+});
+</script>
+</body>
+</html>
