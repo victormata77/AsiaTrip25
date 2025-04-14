@@ -18,7 +18,6 @@
       --mata-cream: #f5f0e1;
     }
     
-    
     .destination-card {
       height: 300px;
       background-size: cover;
@@ -155,6 +154,129 @@
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     
+    /* Calendar styles */
+  .calendar {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .calendar th {
+    background-color: #e57373; /* Softer red for headers */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.85rem;
+  }
+  
+  .calendar td {
+    height: 80px;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+    padding: 8px;
+  }
+  
+  .calendar .date {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #e57373; /* Softer red for day numbers */
+  }
+  
+  .calendar .today {
+    background-color: #fef2f2;
+    border: 2px solid #e57373;
+  }
+  
+  .calendar .out-of-range {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+  }
+  
+  .destination-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: white;
+    margin-top: 2px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    margin-bottom: 3px;
+  }
+  
+  .destination-tag:hover {
+    transform: scale(1.05);
+  }
+  
+  .seoul-tag {
+    background-color: #e53e3e;
+  }
+  
+  .tokyo-tag {
+    background-color: #3182ce;
+  }
+  
+  .kyoto-tag {
+    background-color: #805ad5;
+  }
+  
+  .singapore-tag {
+    background-color: #38a169;
+  }
+  
+  .kl-tag {
+    background-color: #dd6b20;
+  }
+  
+  .maldives-tag {
+    background-color: #0d9488;
+  }
+  
+  @media (max-width: 768px) {
+    .calendar th {
+      font-size: 0.7rem;
+      padding: 6px 2px;
+    }
+    
+    .calendar .date {
+      font-size: 0.8rem;
+    }
+    
+    .destination-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+    }
+  }
+
+    
+    /* Sub-menu styles */
+    .sub-menu {
+      position: absolute;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      transform: translateY(10px);
+    }
+    
+    .menu-item:hover .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .menu-item {
+      position: relative;
+    }
+    
     @media (max-width: 768px) {
       .journey-map-horizontal {
         display: none;
@@ -164,6 +286,28 @@
       }
       .logo-container {
         height: 40px;
+      }
+      
+      .sub-menu {
+        position: static;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding-left: 1rem;
+        background-color: #f9fafb;
+        border-radius: 0;
+        margin: 0.5rem 0;
+      }
+      
+      .mobile-sub-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      
+      .mobile-sub-menu.show {
+        max-height: 500px;
       }
     }
     
@@ -203,8 +347,6 @@
       color: #666;
     }
     
-
-    
     .flag-icon {
       height: 20px;
       width: 28px;
@@ -214,48 +356,134 @@
       vertical-align: middle;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
+ .current-location .map-dot {
+    background-color: white;
+    border: 3px solid #38b2ac; /* Teal color */
+    box-shadow: 0 0 0 2px #38b2ac, 0 0 10px rgba(56, 178, 172, 0.5);
+    animation: pulse 2s infinite;
+  }
+  
+  .current-location a,
+  .current-location p.font-medium {
+    color: #38b2ac;
+    font-weight: bold;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(56, 178, 172, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 6px rgba(56, 178, 172, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(56, 178, 172, 0);
+    }
+  }
   </style>
 </head>
 <body class="bg-gray-50">
   <!-- Navigation Menu -->
-  <nav class="sticky-nav shadow-md">
-    <div class="max-w-6xl mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="mr-3">
-            <h1 class="font-bold text-2xl brand-text-red">MATA'S ASIAN TOUR 2025</h1>
-          </div>
-        </div>
-        
-        <!-- Desktop Menu (Reordered) -->
-        <div class="hidden md:flex space-x-4">
-          <a href="#destinations" class="text-gray-700 hover:brand-text-red">Destinations</a>
-          <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
-          <a href="#tips" class="text-gray-700 hover:brand-text-red">Tips</a>
-          <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
-        </div>
-        
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center">
+        <div class="mr-3">
+          <h1 class="font-bold text-2xl brand-text-red">MATA'S ASIAN TOUR 2025</h1>
         </div>
       </div>
       
-      <!-- Mobile Menu Dropdown (Reordered & hidden by default) -->
-      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-        <div class="flex flex-col space-y-3">
-          <a href="#destinations" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Destinations</a>
-          <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
-          <a href="#tips" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Tips</a>
-          <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
+      <!-- Desktop Menu (with Flight Info added) -->
+      <div class="hidden md:flex space-x-4">
+        <div class="menu-item">
+          <a href="#destinations" class="text-gray-700 hover:brand-text-red flex items-center">
+            Destinations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div class="sub-menu">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
+          </div>
         </div>
+        <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:brand-text-red">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
+        <div class="menu-item">
+          <a href="#tips" class="text-gray-700 hover:brand-text-red flex items-center">
+            Tips
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div class="sub-menu">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+            <a href="travel-guide.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Complete Travel Guide</a>
+          </div>
+        </div>
+        <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
-  </nav>
+    
+    <!-- Mobile Menu Dropdown with Flight Info added -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <div>
+          <a href="#destinations" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
+            Destinations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="destinations-submenu" class="mobile-sub-menu">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
+          </div>
+        </div>
+        <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
+        <div>
+          <a href="#tips" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
+            Tips
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="tips-submenu" class="mobile-sub-menu">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+            <a href="travel-guide.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Complete Travel Guide</a>
+          </div>
+        </div>
+        <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
 <section style="background-color: #eeeada;" class="py-10">
@@ -269,7 +497,7 @@
     <div class="text-center">
       <p class="text-lg mb-5 text-gray-700">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
       
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
         <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
           <p class="font-bold text-white">6 Travelers</p>
         </div>
@@ -279,6 +507,14 @@
         <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
           <p class="font-bold text-white">23 Days</p>
         </div>
+      </div>
+      
+      <!-- Countdown Timer -->
+      <div class="bg-red-100 p-4 rounded-lg shadow-md inline-block">
+        <p class="text-xl font-bold text-red-700">
+          <span id="countdown-days">...</span> days until departure!
+        </p>
+        <p class="text-sm text-red-600">Our adventure begins July 30, 2025</p>
       </div>
     </div>
   </div>
@@ -485,7 +721,214 @@
       </div>
     </section>
 
-    <!-- Travel Tips Section (moved before Journey Map)-->
+  
+
+
+<!-- Calendar View (FINAL VERSION) -->
+<section id="calendar" class="mb-16">
+  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Trip Calendar</h2>
+  <p class="text-center text-gray-600 mb-8">Day-by-day overview of our journey</p>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Monday 29/7</th>
+          <th>Tuesday 30/7</th>
+          <th>Wednesday 31/7</th>
+          <th>Thursday 1/8</th>
+          <th>Friday 2/8</th>
+          <th>Saturday 3/8</th>
+          <th>Sunday 4/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="out-of-range">
+            <div class="date">Pre-trip</div>
+          </td>
+          <td>
+            <div class="date">Day 0</div>
+            <div class="text-xs text-gray-700">Departure from BCN</div>
+          </td>
+          <td>
+            <div class="date">Day 1</div>
+            <a href="seoul.html#day1" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 2</div>
+            <a href="seoul.html#day2" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 3</div>
+            <a href="seoul.html#day3" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 4</div>
+            <a href="seoul.html#day4" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 5</div>
+            <a href="seoul.html#day5" class="destination-tag seoul-tag">Seoul</a>
+            <a href="tokyo.html#day5" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Monday 5/8</th>
+          <th>Tuesday 6/8</th>
+          <th>Wednesday 7/8</th>
+          <th>Thursday 8/8</th>
+          <th>Friday 9/8</th>
+          <th>Saturday 10/8</th>
+          <th>Sunday 11/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 6</div>
+            <a href="tokyo.html#day6" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 7</div>
+            <a href="tokyo.html#day7" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 8</div>
+            <a href="tokyo.html#day8" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 9</div>
+            <a href="tokyo.html#day9" class="destination-tag tokyo-tag">Tokyo</a>
+            <a href="kyoto.html#day9" class="destination-tag kyoto-tag">Kyoto</a>
+          </td>
+          <td>
+            <div class="date">Day 10</div>
+            <a href="kyoto.html#day10" class="destination-tag kyoto-tag">Kyoto</a>
+          </td>
+          <td>
+            <div class="date">Day 11</div>
+            <a href="kyoto.html#day11" class="destination-tag kyoto-tag">Kyoto</a>
+            <a href="narita.html#day11" class="destination-tag kyoto-tag">Narita</a>
+          </td>
+          <td>
+            <div class="date">Day 12</div>
+            <a href="narita.html#day12" class="destination-tag kyoto-tag">Narita</a>
+            <a href="singapore.html#day12" class="destination-tag singapore-tag">Singapore</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Monday 12/8</th>
+          <th>Tuesday 13/8</th>
+          <th>Wednesday 14/8</th>
+          <th>Thursday 15/8</th>
+          <th>Friday 16/8</th>
+          <th>Saturday 17/8</th>
+          <th>Sunday 18/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 13</div>
+            <a href="singapore.html#day13" class="destination-tag singapore-tag">Singapore</a>
+          </td>
+          <td>
+            <div class="date">Day 14</div>
+            <a href="singapore.html#day14" class="destination-tag singapore-tag">Singapore</a>
+          </td>
+          <td>
+            <div class="date">Day 15</div>
+            <a href="singapore.html#day15" class="destination-tag singapore-tag">Singapore</a>
+            <a href="kl.html#day15" class="destination-tag kl-tag">Kuala Lumpur</a>
+          </td>
+          <td>
+            <div class="date">Day 16</div>
+            <a href="kl.html#day16" class="destination-tag kl-tag">Kuala Lumpur</a>
+          </td>
+          <td>
+            <div class="date">Day 17</div>
+            <a href="kl.html#day17" class="destination-tag kl-tag">Kuala Lumpur</a>
+            <a href="maldives.html#day17" class="destination-tag maldives-tag">Maldives</a>
+          </td>
+          <td>
+            <div class="date">Day 18</div>
+            <a href="maldives.html#day18" class="destination-tag maldives-tag">Maldives</a>
+          </td>
+          <td>
+            <div class="date">Day 19</div>
+            <a href="maldives.html#day19" class="destination-tag maldives-tag">Maldives</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Monday 19/8</th>
+          <th>Tuesday 20/8</th>
+          <th>Wednesday 21/8</th>
+          <th>Thursday 22/8</th>
+          <th>Friday 23/8</th>
+          <th>Saturday 24/8</th>
+          <th>Sunday 25/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 20</div>
+            <a href="maldives.html#day20" class="destination-tag maldives-tag">Maldives</a>
+          </td>
+          <td>
+            <div class="date">Day 21</div>
+            <a href="maldives.html#day21" class="destination-tag maldives-tag">Maldives</a>
+          </td>
+          <td>
+            <div class="date">Day 22</div>
+            <div class="text-xs text-gray-700">Arrival in BCN</div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="mt-6 text-center text-sm text-gray-600">
+    <p>Each day is linked to its detailed itinerary</p>
+  </div>
+</section>
+
+
+    <!-- Travel Tips Section -->
     <section id="tips" class="mb-16">
       <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Essential Travel Tips</h2>
       <p class="text-center text-gray-600 mb-8">Click on any category to view detailed information</p>
@@ -544,16 +987,294 @@
         </a>
       </div>
       
-      <div class="mt-8 text-center">
-        <a href="travel-guide.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
-          View Complete Travel Guide
-        </a>
-      </div>
+      <!-- Complete Travel Guide button removed -->
     </section>
 
-    
 
-   <!-- Horizontal map for desktop with added flags -->
+<!-- Flight Information Section -->
+<section id="flights" class="mb-16">
+  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Flight Information</h2>
+  <p class="text-center text-gray-600 mb-8">Detailed information for all flights throughout our journey</p>
+  
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+      <thead class="bg-red-600 text-white">
+        <tr>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Date</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Route</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Airline</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Flight #</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Aircraft</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Departure</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Arrival</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Duration</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Baggage</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Terminal Info</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Check-in Closes</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <!-- Barcelona to Seoul -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Jul 30, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/es.png" class="mr-2" alt="Spain">
+              <span>BCN</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/kr.png" class="mr-2" alt="South Korea">
+              <span>ICN</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">T'way Air</td>
+          <td class="py-4 px-4 text-sm font-mono">TW408</td>
+          <td class="py-4 px-4 text-sm">Boeing 787-9</td>
+          <td class="py-4 px-4 text-sm">21:00 (Local)</td>
+          <td class="py-4 px-4 text-sm">16:25 (Local)<br><span class="text-xs text-gray-500">+1 day</span></td>
+          <td class="py-4 px-4 text-sm">12h 25m</td>
+          <td class="py-4 px-4 text-sm">23kg / person</td>
+          <td class="py-4 px-4 text-sm">BCN T1 → ICN T1</td>
+          <td class="py-4 px-4 text-sm">19:30</td>
+        </tr>
+        
+        <!-- Seoul to Tokyo -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 4, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/kr.png" class="mr-2" alt="South Korea">
+              <span>ICN</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/jp.png" class="mr-2" alt="Japan">
+              <span>NRT</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Nippon/ANA</td>
+          <td class="py-4 px-4 text-sm font-mono">ND122</td>
+          <td class="py-4 px-4 text-sm">Boeing 777-300ER</td>
+          <td class="py-4 px-4 text-sm">13:35 (Local)</td>
+          <td class="py-4 px-4 text-sm">16:15 (Local)</td>
+          <td class="py-4 px-4 text-sm">2h 40m</td>
+          <td class="py-4 px-4 text-sm">23kg / person</td>
+          <td class="py-4 px-4 text-sm">ICN T1 → NRT T1</td>
+          <td class="py-4 px-4 text-sm">12:05</td>
+        </tr>
+        
+        <!-- Tokyo to Singapore -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 11, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/jp.png" class="mr-2" alt="Japan">
+              <span>NRT</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/sg.png" class="mr-2" alt="Singapore">
+              <span>SIN</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Singapore Airlines</td>
+          <td class="py-4 px-4 text-sm font-mono">SQ637</td>
+          <td class="py-4 px-4 text-sm">Airbus A350-900</td>
+          <td class="py-4 px-4 text-sm">11:10 (Local)</td>
+          <td class="py-4 px-4 text-sm">17:20 (Local)</td>
+          <td class="py-4 px-4 text-sm">7h 10m</td>
+          <td class="py-4 px-4 text-sm">30kg / person</td>
+          <td class="py-4 px-4 text-sm">NRT T1 → SIN T3</td>
+          <td class="py-4 px-4 text-sm">09:40</td>
+        </tr>
+        
+        <!-- Singapore to Kuala Lumpur -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 14, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/sg.png" class="mr-2" alt="Singapore">
+              <span>SIN</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/my.png" class="mr-2" alt="Malaysia">
+              <span>KUL</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Singapore Airlines</td>
+          <td class="py-4 px-4 text-sm font-mono">SQ114</td>
+          <td class="py-4 px-4 text-sm">Boeing 787-10</td>
+          <td class="py-4 px-4 text-sm">12:40 (Local)</td>
+          <td class="py-4 px-4 text-sm">13:50 (Local)</td>
+          <td class="py-4 px-4 text-sm">1h 10m</td>
+          <td class="py-4 px-4 text-sm">30kg / person</td>
+          <td class="py-4 px-4 text-sm">SIN T3 → KUL KLIA</td>
+          <td class="py-4 px-4 text-sm">11:10</td>
+        </tr>
+        
+        <!-- Kuala Lumpur to Malé -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 16, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/my.png" class="mr-2" alt="Malaysia">
+              <span>KUL</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/mv.png" class="mr-2" alt="Maldives">
+              <span>MLE</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Malaysia Airlines</td>
+          <td class="py-4 px-4 text-sm font-mono">MH485</td>
+          <td class="py-4 px-4 text-sm">Airbus A330-300</td>
+          <td class="py-4 px-4 text-sm">10:10 (Local)</td>
+          <td class="py-4 px-4 text-sm">11:25 (Local)</td>
+          <td class="py-4 px-4 text-sm">4h 15m</td>
+          <td class="py-4 px-4 text-sm">30kg / person</td>
+          <td class="py-4 px-4 text-sm">KUL KLIA → MLE T</td>
+          <td class="py-4 px-4 text-sm">08:40</td>
+        </tr>
+        
+        <!-- Malé to Singapore -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 20, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/mv.png" class="mr-2" alt="Maldives">
+              <span>MLE</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/sg.png" class="mr-2" alt="Singapore">
+              <span>SIN</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Singapore Airlines</td>
+          <td class="py-4 px-4 text-sm font-mono">SQ431</td>
+          <td class="py-4 px-4 text-sm">Airbus A350-900</td>
+          <td class="py-4 px-4 text-sm">13:15 (Local)</td>
+          <td class="py-4 px-4 text-sm">21:00 (Local)</td>
+          <td class="py-4 px-4 text-sm">4h 45m</td>
+          <td class="py-4 px-4 text-sm">30kg / person</td>
+          <td class="py-4 px-4 text-sm">MLE T → SIN T3</td>
+          <td class="py-4 px-4 text-sm">11:45</td>
+        </tr>
+        
+        <!-- Singapore to Barcelona -->
+        <tr class="hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">Aug 20, 2025</td>
+          <td class="py-4 px-4 text-sm font-medium">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/sg.png" class="mr-2" alt="Singapore">
+              <span>SIN</span>
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+              <img src="https://flagcdn.com/w20/es.png" class="mr-2" alt="Spain">
+              <span>BCN</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Singapore Airlines</td>
+          <td class="py-4 px-4 text-sm font-mono">SQ388</td>
+          <td class="py-4 px-4 text-sm">Airbus A350-900ULR</td>
+          <td class="py-4 px-4 text-sm">23:35 (Local)</td>
+          <td class="py-4 px-4 text-sm">06:55 (Local)<br><span class="text-xs text-gray-500">+1 day</span></td>
+          <td class="py-4 px-4 text-sm">14h 20m</td>
+          <td class="py-4 px-4 text-sm">30kg / person</td>
+          <td class="py-4 px-4 text-sm">SIN T3 → BCN T1</td>
+          <td class="py-4 px-4 text-sm">22:05</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Additional notes and tips -->
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Check-in tips -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Check-in Tips</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Online check-in opens 48 hours before departure for most flights</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Arrive at airport 3 hours before international flights</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Singapore Airlines allows family check-in together</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Baggage Tips -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Baggage Tips</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Carry-on: 7kg per person (56x36x23cm) for most airlines</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Singapore Airlines has higher allowance (30kg) than T'way Air (23kg)</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Pack essential items and a change of clothes in carry-on</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Transit Information -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Transit Information</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Aug 20: 2.5 hours transit time in Singapore before BCN flight</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Singapore Changi has excellent facilities for transit passengers</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Keep boarding passes for connecting flights together</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</section>
+
+
+
+<!-- Horizontal map for desktop with flags ABOVE city names - SIMPLIFIED VERSION -->
 <section id="journey" class="mb-16">
   <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Our Journey</h2>
   <p class="text-center text-gray-600 mb-8">Follow our path through Asia and the Maldives</p>
@@ -564,8 +1285,10 @@
       <!-- BCN (Start) - Position: 0% and exactly at beginning of line -->
       <div class="map-stop" style="left: 0%; transform: translateX(-50%);">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag">
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/es.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Spain flag">
+          </div>
           <p class="font-medium">BCN</p>
           <p class="text-xs text-gray-500">Start</p>
         </div>
@@ -574,9 +1297,11 @@
       <!-- Seoul - Position: 12.5% -->
       <div class="map-stop" style="left: 12.5%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag">
-          <p class="font-medium">Seoul</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/kr.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="South Korea flag">
+          </div>
+          <a href="seoul.html" class="font-medium hover:text-red-600 transition-colors">Seoul</a>
           <p class="text-xs text-gray-500">4 nights</p>
         </div>
       </div>
@@ -584,9 +1309,11 @@
       <!-- Tokyo - Position: 25% -->
       <div class="map-stop" style="left: 25%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
-          <p class="font-medium">Tokyo</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/jp.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Japan flag">
+          </div>
+          <a href="tokyo.html" class="font-medium hover:text-red-600 transition-colors">Tokyo</a>
           <p class="text-xs text-gray-500">4 nights</p>
         </div>
       </div>
@@ -594,9 +1321,11 @@
       <!-- Kyoto - Position: 37.5% -->
       <div class="map-stop" style="left: 37.5%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
-          <p class="font-medium">Kyoto</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/jp.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Japan flag">
+          </div>
+          <a href="kyoto.html" class="font-medium hover:text-red-600 transition-colors">Kyoto</a>
           <p class="text-xs text-gray-500">2 nights</p>
         </div>
       </div>
@@ -604,9 +1333,11 @@
       <!-- Narita - Position: 50% -->
       <div class="map-stop" style="left: 50%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
-          <p class="font-medium">Narita</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/jp.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Japan flag">
+          </div>
+          <a href="kyoto.html" class="font-medium hover:text-red-600 transition-colors">Narita</a>
           <p class="text-xs text-gray-500">1 night</p>
         </div>
       </div>
@@ -614,9 +1345,11 @@
       <!-- Singapore - Position: 62.5% -->
       <div class="map-stop" style="left: 62.5%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag">
-          <p class="font-medium">Singapore</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/sg.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Singapore flag">
+          </div>
+          <a href="singapore.html" class="font-medium hover:text-red-600 transition-colors">Singapore</a>
           <p class="text-xs text-gray-500">3 nights</p>
         </div>
       </div>
@@ -624,9 +1357,11 @@
       <!-- Kuala Lumpur - Position: 75% -->
       <div class="map-stop" style="left: 75%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag">
-          <p class="font-medium">Kuala Lumpur</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/my.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Malaysia flag">
+          </div>
+          <a href="kl.html" class="font-medium hover:text-red-600 transition-colors">Kuala Lumpur</a>
           <p class="text-xs text-gray-500">2 nights</p>
         </div>
       </div>
@@ -634,9 +1369,11 @@
       <!-- Maldives - Position: 87.5% -->
       <div class="map-stop" style="left: 87.5%;">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag">
-          <p class="font-medium">Maldives</p>
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/mv.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Maldives flag">
+          </div>
+          <a href="maldives.html" class="font-medium hover:text-red-600 transition-colors">Maldives</a>
           <p class="text-xs text-gray-500">4 nights</p>
         </div>
       </div>
@@ -644,8 +1381,10 @@
       <!-- BCN (End) - Position: 100% and exactly at end of line -->
       <div class="map-stop" style="left: 100%; transform: translateX(-50%);">
         <div class="map-dot"></div>
-        <div class="map-label">
-          <img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Spain flag">
+        <div class="map-label" style="text-align: center;">
+          <div style="text-align: center; margin-bottom: 8px;">
+            <img src="https://flagcdn.com/w40/es.png" style="display: block; margin: 0 auto; width: 28px; height: 20px;" alt="Spain flag">
+          </div>
           <p class="font-medium">BCN</p>
           <p class="text-xs text-gray-500">End</p>
         </div>
@@ -653,7 +1392,7 @@
     </div>
   </div>
 
-  <!-- Vertical map for mobile with improved spacing and flag emojis -->
+  <!-- Vertical map for mobile - unchanged -->
   <div class="journey-map-vertical">
     <div class="map-line-vertical">
       <!-- BCN (Start) - Position: 0% and exactly at beginning of line -->
@@ -669,7 +1408,9 @@
       <div class="map-stop-vertical" style="top: 12.5%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag"> Seoul</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag"> 
+            <a href="seoul.html" class="hover:text-red-600 transition-colors">Seoul</a>
+          </p>
           <p class="text-xs text-gray-500">4 nights: Jul 31 - Aug 4</p>
         </div>
       </div>
@@ -678,7 +1419,9 @@
       <div class="map-stop-vertical" style="top: 25%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Tokyo</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> 
+            <a href="tokyo.html" class="hover:text-red-600 transition-colors">Tokyo</a>
+          </p>
           <p class="text-xs text-gray-500">4 nights: Aug 4 - 8</p>
         </div>
       </div>
@@ -687,7 +1430,9 @@
       <div class="map-stop-vertical" style="top: 37.5%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Kyoto</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> 
+            <a href="kyoto.html" class="hover:text-red-600 transition-colors">Kyoto</a>
+          </p>
           <p class="text-xs text-gray-500">2 nights: Aug 8 - 10</p>
         </div>
       </div>
@@ -696,7 +1441,9 @@
       <div class="map-stop-vertical" style="top: 50%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> Narita</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag"> 
+            <a href="kyoto.html" class="hover:text-red-600 transition-colors">Narita</a>
+          </p>
           <p class="text-xs text-gray-500">1 night: Aug 10 - 11</p>
         </div>
       </div>
@@ -705,7 +1452,9 @@
       <div class="map-stop-vertical" style="top: 62.5%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag"> Singapore</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag"> 
+            <a href="singapore.html" class="hover:text-red-600 transition-colors">Singapore</a>
+          </p>
           <p class="text-xs text-gray-500">3 nights: Aug 11 - 14</p>
         </div>
       </div>
@@ -714,7 +1463,9 @@
       <div class="map-stop-vertical" style="top: 75%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag"> Kuala Lumpur</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag"> 
+            <a href="kl.html" class="hover:text-red-600 transition-colors">Kuala Lumpur</a>
+          </p>
           <p class="text-xs text-gray-500">2 nights: Aug 14 - 16</p>
         </div>
       </div>
@@ -723,7 +1474,9 @@
       <div class="map-stop-vertical" style="top: 87.5%;">
         <div class="map-dot"></div>
         <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag"> Maldives</p>
+          <p class="font-medium"><img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag"> 
+            <a href="maldives.html" class="hover:text-red-600 transition-colors">Maldives</a>
+          </p>
           <p class="text-xs text-gray-500">4 nights: Aug 16 - 20</p>
         </div>
       </div>
@@ -744,7 +1497,9 @@
     <p>7 flights, 1 bullet train journey, and countless memories</p>
   </div>
 </section>
-</div>
+
+
+
 
   <footer class="brand-bg-red text-white py-8">
     <div class="max-w-6xl mx-auto px-4 text-center">
@@ -755,55 +1510,258 @@
   </footer>
 
 <script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+
+// Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  // Add padding to section IDs for scroll offset with fixed header
+  document.querySelectorAll('section[id]').forEach(function(section) {
+    section.style.scrollMarginTop = '80px'; // Add 80px padding for fixed header
+  });
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+      }
+    });
     
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        if (mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.remove('hidden');
-        } else {
-          mobileMenu.classList.add('hidden');
-        }
-      });
-      
-      // Close menu when clicking on links
-      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
-        });
-      });
-    }
-    
-    // Accordion functionality for itinerary section
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
-    // Add click event to each header
-    accordionHeaders.forEach(header => {
-      header.addEventListener('click', function() {
-        // Toggle the active class
-        this.classList.toggle('active');
-        
-        // Get the content panel
-        const content = this.nextElementSibling;
-        
-        // Toggle the hidden class
-        content.classList.toggle('hidden');
-        
-        // Rotate the arrow icon
-        const arrow = this.querySelector('svg');
-        if (content.classList.contains('hidden')) {
-          arrow.classList.remove('rotate-180');
-        } else {
-          arrow.classList.add('rotate-180');
-        }
+    // Close menu when clicking on links
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
       });
     });
-
-
+  }
+  
+  // Accordion functionality for itinerary section
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  // Add click event to each header
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      // Toggle the active class
+      this.classList.toggle('active');
+      
+      // Get the content panel
+      const content = this.nextElementSibling;
+      
+      // Toggle the hidden class
+      content.classList.toggle('hidden');
+      
+      // Rotate the arrow icon
+      const arrow = this.querySelector('svg');
+      if (content.classList.contains('hidden')) {
+        arrow.classList.remove('rotate-180');
+      } else {
+        arrow.classList.add('rotate-180');
+      }
+    });
   });
+
+  // Mobile submenu toggle functionality
+  window.toggleMobileSubmenu = function(id, event) {
+    event.preventDefault();
+    const submenu = document.getElementById(id);
+    submenu.classList.toggle('show');
+  }
+  
+  // Countdown timer calculation
+  function updateCountdown() {
+    const now = new Date();
+    const tripStart = new Date(2025, 6, 30); // July 30, 2025 (months are 0-indexed)
+    
+    // Calculate difference in days
+    const diffTime = tripStart.getTime() - now.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    // Update the countdown display
+    const countdownElement = document.getElementById('countdown-days');
+    if (countdownElement) {
+      if (diffDays > 0) {
+        countdownElement.textContent = diffDays;
+      } else if (diffDays === 0) {
+        countdownElement.textContent = "Today's the day";
+        countdownElement.parentElement.textContent = "Today's the day!";
+      } else {
+        // Trip is already in progress or finished
+        const tripEnd = new Date(2025, 7, 21); // August 21, 2025
+        if (now <= tripEnd) {
+          // Trip in progress
+          const dayOfTrip = Math.abs(diffDays) + 1;
+          countdownElement.textContent = "Day " + dayOfTrip;
+          countdownElement.parentElement.textContent = "Day " + dayOfTrip + " of our journey!";
+        } else {
+          // Trip is over
+          countdownElement.textContent = "Completed";
+          countdownElement.parentElement.textContent = "Our journey is complete!";
+        }
+      }
+    }
+  }
+  
+  // Run countdown immediately and then update every day
+  updateCountdown();
+  setInterval(updateCountdown, 1000 * 60 * 60 * 24); // Update once per day
+  
+  // Journey map current location highlighting
+  // Get today's date
+  const today = new Date();
+  
+  // Define location date ranges
+  const locations = [
+    { name: 'BCN-Start', start: new Date(2025, 6, 30), end: new Date(2025, 6, 30) },
+    { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
+    { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
+    { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
+    { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
+    { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
+    { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
+    { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) },
+    { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
+  ];
+  
+  // For testing/preview purposes - comment out in production
+  // Uncomment one of these lines to preview each location highlight
+  // const today = new Date(2025, 7, 1); // Seoul
+  // const today = new Date(2025, 7, 5); // Tokyo
+  // const today = new Date(2025, 7, 9); // Kyoto
+  // const today = new Date(2025, 7, 10); // Narita
+  // const today = new Date(2025, 7, 12); // Singapore
+  // const today = new Date(2025, 7, 15); // Kuala Lumpur
+  // const today = new Date(2025, 7, 18); // Maldives
+  
+  // Find current location
+  let currentLocation = null;
+  locations.forEach(location => {
+    if (today >= location.start && today <= location.end) {
+      currentLocation = location.name;
+    }
+  });
+  
+  if (currentLocation) {
+    // Handle special case for start and end
+    let selector = `.map-stop`;
+    if (currentLocation === 'BCN-Start') {
+      selector = `.map-stop:first-child`;
+    } else if (currentLocation === 'BCN-End') {
+      selector = `.map-stop:last-child`;
+    } else {
+      // Find the location in both desktop and mobile versions
+      document.querySelectorAll(`.map-stop .map-label a, .map-stop-vertical .map-label-vertical a`).forEach(element => {
+        if (element.textContent.trim() === currentLocation) {
+          // Add highlighting to parent .map-stop
+          let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
+          if (mapStop) {
+            mapStop.classList.add('current-location');
+          }
+        }
+      });
+    }
+  }
+});
+
+// JavaScript for dynamic highlighting of today's date in calendar and journey map
+document.addEventListener('DOMContentLoaded', function() {
+  // Get today's date
+  const today = new Date();
+  
+  // Define trip start and end dates
+  const tripStart = new Date(2025, 6, 31); // July 31, 2025 (first day in Seoul)
+  const tripEnd = new Date(2025, 7, 21);   // August 21, 2025 (last day, return to BCN)
+  
+  // PART 1: Calendar date highlighting
+  // Format the date as DD/M (e.g., 12/8)
+  const day = today.getDate();
+  const month = today.getMonth() + 1; // JavaScript months are 0-based
+  const dateString = `${day}/${month}`;
+  
+  // Find the table cell corresponding to today's date
+  const cells = document.querySelectorAll('.calendar th');
+  let todayCell = null;
+  
+  // Loop through all header cells to find the matching date
+  cells.forEach(cell => {
+    const cellText = cell.textContent;
+    if (cellText.includes(dateString)) {
+      // Get the column index of this header
+      const index = Array.from(cell.parentNode.children).indexOf(cell);
+      const tbody = cell.closest('thead').nextElementSibling;
+      const row = tbody.querySelector('tr');
+      if (row && row.children[index]) {
+        // Add the "today" class to the corresponding cell in the current row
+        todayCell = row.children[index];
+        todayCell.classList.add('today');
+      }
+    }
+  });
+  
+  // PART 2: Journey map current location highlighting
+  // Define location date ranges
+  const locations = [
+    { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
+    { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
+    { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
+    { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
+    { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
+    { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
+    { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) }
+  ];
+  
+  // For testing purposes - uncomment one line to test a specific date
+  // today = new Date(2025, 6, 15); // Before trip - should highlight BCN-Start
+  // today = new Date(2025, 7, 1);  // Seoul
+  // today = new Date(2025, 7, 5);  // Tokyo
+  // today = new Date(2025, 7, 10); // Narita
+  // today = new Date(2025, 7, 18); // Maldives
+  // today = new Date(2025, 8, 1);  // After trip - should highlight BCN-End
+  
+  // Determine which location to highlight
+  let highlightElement = null;
+  
+  if (today < tripStart) {
+    // Before trip starts - highlight Barcelona start
+    highlightElement = document.querySelector('.map-stop:first-child');
+    const mobileHighlight = document.querySelector('.map-stop-vertical:first-child');
+    if (mobileHighlight) mobileHighlight.classList.add('current-location');
+  } else if (today > tripEnd) {
+    // After trip ends - highlight Barcelona end
+    highlightElement = document.querySelector('.map-stop:last-child');
+    const mobileHighlight = document.querySelector('.map-stop-vertical:last-child');
+    if (mobileHighlight) mobileHighlight.classList.add('current-location');
+  } else {
+    // During trip - find current location
+    let currentLocation = null;
+    locations.forEach(location => {
+      if (today >= location.start && today <= location.end) {
+        currentLocation = location.name;
+      }
+    });
+    
+    if (currentLocation) {
+      // Find the location in both desktop and mobile versions
+      document.querySelectorAll('.map-stop .map-label a, .map-stop-vertical .map-label-vertical a').forEach(element => {
+        if (element.textContent.trim() === currentLocation) {
+          // Add highlighting to parent .map-stop
+          let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
+          if (mapStop) {
+            highlightElement = mapStop;
+          }
+        }
+      });
+    }
+  }
+  
+  // Apply the highlighting
+  if (highlightElement) {
+    highlightElement.classList.add('current-location');
+  }
+});
+
 </script>
 </body>
 </html>
