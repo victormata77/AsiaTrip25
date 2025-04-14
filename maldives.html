@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
   <style>
+    /* Root variables and brand colors */
     :root {
       --mata-red: #c62828;
       --mata-dark-red: #8e0000;
@@ -14,28 +15,18 @@
       --mata-cream: #f5f0e1;
     }
     
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
+    /* Brand styles */
+    .brand-bg-red { background-color: var(--mata-red); }
+    .brand-text-red { color: var(--mata-red); }
+    .brand-border-red { border-color: var(--mata-red); }
     .brand-button {
       background-color: var(--mata-red);
       color: white;
       transition: background-color 0.3s;
     }
+    .brand-button:hover { background-color: var(--mata-dark-red); }
     
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
+    /* Hero section */
     .hero-section {
       background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg');
       background-size: cover;
@@ -52,6 +43,8 @@
       position: relative;
       z-index: 10;
     }
+    
+    /* Navigation */
     .sticky-nav {
       position: sticky;
       top: 0;
@@ -59,6 +52,139 @@
       backdrop-filter: blur(10px);
       background-color: rgba(255, 255, 255, 0.9);
     }
+    .text-red-600.font-bold.text-xl {
+      transition: all 0.3s ease;
+    }
+    .page-title-visible {
+      transform: scale(1.05);
+    }
+    
+    /* Desktop dropdown menu */
+    #desktop-destinations-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 200px;
+      background-color: white;
+      border-radius: 0.375rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      z-index: 50;
+      overflow: hidden;
+      display: none;
+    }
+    #desktop-destinations-menu.visible { display: block; }
+    #desktop-destinations-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #4a5568;
+      transition: all 0.2s;
+    }
+    #desktop-destinations-menu a:hover {
+      background-color: #fee2e2;
+      color: #c62828;
+    }
+    .relative { position: relative; }
+    
+    /* Dropdown button styling */
+    #desktop-dropdown-button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s;
+      height: 40px;
+    }
+    #desktop-dropdown-button:hover { background-color: #f9fafb; }
+    
+    /* Tips dropdown styling (matches destinations dropdown) */
+    #desktop-tips-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 200px;
+      background-color: white;
+      border-radius: 0.375rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      z-index: 50;
+      overflow: hidden;
+      display: none;
+    }
+    
+    #desktop-tips-menu.visible {
+      display: block;
+    }
+    
+    #desktop-tips-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #4a5568;
+      transition: all 0.2s;
+    }
+    
+    #desktop-tips-menu a:hover {
+      background-color: #fee2e2;
+      color: #c62828;
+    }
+    
+    /* Menu alignment fixes */
+    .md\:flex.md\:items-center.md\:space-x-6 > a,
+    .md\:flex.md\:items-center.md\:space-x-6 > div {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+    .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+    
+    /* Card and content styles */
+    .card-content, .day-content {
+      transition: all 0.3s ease-in-out;
+    }
+    .card-header, .day-header {
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-header:hover, .day-header:hover { filter: brightness(0.95); }
+    .card-header.active, .day-header.active {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .card-header svg.rotate-180, .day-header svg.rotate-180 {
+      transform: rotate(180deg);
+    }
+    
+    /* Day indicators - Unified and fixed */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
+    .day-header .bg-gray-500 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    /* Ensure text is visible on gray background */
+    .day-header .bg-gray-500 {
+      color: white;
+    }
+    
+    /* Card hover effects */
+    .info-card {
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Photo gallery */
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -69,18 +195,14 @@
       background-size: cover;
       background-position: center;
       border-radius: 0.5rem;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
     .photo-card:hover {
       transform: scale(1.03);
-    }
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
+    /* Flag icon */
     .flag-icon {
       height: 20px;
       width: 28px;
@@ -90,247 +212,214 @@
       vertical-align: middle;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
-      /* ===== NAVIGATION STYLES ===== */
-      /* Desktop dropdown menu */
-      #desktop-destinations-menu {
-        position: absolute;
-        left: 0;
-        top: 100%;  /* Position directly below the button */
-        width: 200px;
-        background-color: white;
-        border-radius: 0.375rem;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        z-index: 50;
-        overflow: hidden;
-        display: none;  /* Initially hidden */
+    
+    /* Text contrast improvements */
+    .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+    .text-purple-700, .text-indigo-700, .text-yellow-800, 
+    .text-orange-800, .text-purple-800, .text-blue-800 {
+      font-weight: 600;
+    }
+    
+    /* Responsive styles */
+    /* Day indicators oval on wider screens - FIXED with consistent sizes */
+    @media (min-width: 768px) {
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        width: 60px;
+        height: 32px;
+        border-radius: 16px;
+        margin-right: 10px;
       }
-      
-      #desktop-destinations-menu.visible {
-        display: block;
-      }
-      
-      #desktop-destinations-menu a {
-        display: block;
-        padding: 0.5rem 1rem;
-        color: #4a5568;
-        transition: all 0.2s;
-      }
-      
-      #desktop-destinations-menu a:hover {
-        background-color: #fee2e2;
-        color: #c62828;
-      }
-      
-      .relative {
-        position: relative;
-      }
-      
-      /* Dropdown button styling */
-      #desktop-dropdown-button {
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 767px) {
+      /* Day header layout */
+      .day-header {
         display: flex;
         align-items: center;
-        gap: 0.25rem;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-        transition: all 0.2s;
-        height: 40px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
       }
       
-      #desktop-dropdown-button:hover {
-        background-color: #f9fafb;
+      .day-header h3 {
+        flex: 1;
+        padding-right: 8px;
       }
       
-      /* ===== MENU ALIGNMENT FIXES ===== */
-      /* Better menu alignment */
-      .md\:flex.md\:items-center.md\:space-x-6 > a,
-      .md\:flex.md\:items-center.md\:space-x-6 > div {
-        display: flex;
-        align-items: center;
-        height: 40px; /* Fixed height for all menu items */
-      }
-      
-      /* Make sure all top-level items are aligned */
-      .md\:flex.md\:items-center.md\:space-x-6 {
+      /* Day indicators - UPDATED to include gray-500 */
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        min-width: 40px;
         min-height: 40px;
+        border-radius: 20px;
+        margin-right: 8px;
+        flex-shrink: 0;
       }
       
-      /* ===== DYNAMIC TITLE STYLES ===== */
-      /* Styles for the dynamic page title */
-      .text-red-600.font-bold.text-xl {
-        transition: all 0.3s ease;
+      /* Arrow icon */
+      .day-header svg {
+        flex-shrink: 0;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 640px) {
+      .day-header h3 {
+        width: auto; /* Changed from 100% to auto for better layout */
+        flex: 1;
+        font-size: 0.9rem;
       }
       
-      .page-title-visible {
-        transform: scale(1.05);
+      /* Consistent styling for all day indicators including gray */
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        width: 48px;
+        height: 32px;
+        border-radius: 16px;
       }
       
-      /* ===== PHOTO GALLERY STYLES ===== */
-      .photo-card {
-        transition: all 0.3s ease;
+      /* Add more space at bottom of cards */
+      .card-content {
+        padding-bottom: 1.5rem;
       }
       
-      .photo-card:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      /* Better alignment for mobile view */
+      .day-header {
+        flex-wrap: nowrap; /* Changed from wrap to nowrap */
       }
       
-      /* ===== FLAG ICON STYLES ===== */
-      .flag-icon {
-        height: 20px;
-        width: 28px;
-        display: inline-block;
-        margin-right: 6px;
-        margin-bottom: 4px;
-        vertical-align: middle;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      .day-header .flex-shrink-0 {
+        margin-left: 0; /* Removed auto margin */
+        display: flex;
+        align-items: center;
       }
-      
-      /* ===== BRAND COLOR VARIABLES ===== */
-      :root {
-        --mata-red: #c62828;
-        --mata-dark-red: #8e0000;
-        --mata-light-red: #ff5f52;
-        --mata-cream: #f5f0e1;
-      }
-      
-      .brand-bg-red {
-        background-color: var(--mata-red);
-      }
-      
-      .brand-text-red {
-        color: var(--mata-red);
-      }
-      
-      .brand-border-red {
-        border-color: var(--mata-red);
-      }
-      
-      .brand-button {
-        background-color: var(--mata-red);
-        color: white;
-        transition: background-color 0.3s;
-      }
-      
-      .brand-button:hover {
-        background-color: var(--mata-dark-red);
-      }
-      
-      /* ===== HERO SECTION STYLES ===== */
-      .hero-section {
-        background-size: cover;
-        background-position: center;
-        height: 50vh;
-        position: relative;
-      }
-      
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-      }
-      
-      .hero-content {
-        position: relative;
-        z-index: 10;
-      }
-      
-      /* ===== STICKY NAVIGATION ===== */
-      .sticky-nav {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.9);
-      }
-      
-      /* ===== INFO CARD HOVER EFFECT ===== */
-      .info-card {
-        transition: transform 0.2s;
-      }
-      
-      .info-card:hover {
-        transform: translateY(-5px);
-      }
-  
+    }
   </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Fixed Navigation Menu with Better Alignment -->
-    <nav class="sticky-nav shadow-md">
-      <div class="max-w-6xl mx-auto px-4 py-3">
-        <div class="flex justify-between items-center">
-          <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+  <!-- Fixed Navigation Menu with Better Alignment -->
+  <nav class="sticky-nav shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+        
+        <!-- Desktop Navigation Menu with Better Alignment -->
+        <div class="hidden md:flex md:items-center md:space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
+          <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
+          <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
+          <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
+          <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
           
-          <!-- Desktop Navigation Menu with Better Alignment -->
-          <div class="hidden md:flex md:items-center md:space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
+          <!-- Tips Dropdown -->
+<div class="relative flex items-center">
+  <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+    Tips
+    <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div id="desktop-tips-menu" class="hidden">
+    <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+    <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+    <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+    <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+  </div>
+</div>
+
+           
+  <!-- Desktop Destinations Dropdown -->
+<div class="relative flex items-center">
+  <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+    Other Destinations
+    <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div id="desktop-destinations-menu" class="hidden">
+    <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+    <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+    <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+    <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+    <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+    <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+  </div>
+</div>
+        </div>
+        
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
+          <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+          <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+          <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+          <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+          
+          <!-- Tips Accordion -->
+          <div class="relative">
+            <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+              <span>Tips</span>
+              <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
             
-            <!-- Desktop Destinations Dropdown -->
-            <div class="relative flex items-center">
-              <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-                Other Destinations
-                <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="desktop-destinations-menu" class="hidden">
-                <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
-                <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
-                <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
-                <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
-                <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
-                <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
-              </div>
+            <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+              <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+              <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+              <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+              <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
             </div>
           </div>
           
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <!-- Destinations Accordion -->
+          <div class="relative">
+            <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+              <span>Other Destinations</span>
+              <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-          </div>
-        </div>
-        
-        <!-- Mobile Menu (unchanged) -->
-        <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-          <div class="flex flex-col space-y-3">
-            <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
             
-            <!-- Destinations Accordion -->
-            <div class="relative">
-              <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-                <span>Other Destinations</span>
-                <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-                <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-                <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-                <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-                <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-                <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-                <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-              </div>
+            <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+              <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+              <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+              <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+              <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+              <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+              <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
             </div>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-  
   <!-- Hero Section -->
   <section class="hero-section flex items-center justify-center">
     <div class="hero-overlay"></div>
@@ -356,6 +445,13 @@
               <p class="text-sm">Radisson Blu Resort Maldives</p>
               <p class="text-sm text-gray-600">Huruelhi Island, Alifu Dhaalu Atoll</p>
               <p class="text-sm text-gray-600">Luxury overwater villa with direct access to the lagoon and house reef</p>
+              <a href="https://maps.google.com/?q=Radisson+Blu+Resort+Maldives" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                View on Google Maps
+              </a>
             </div>
           </div>
           <div class="w-full md:w-1/3 p-2">
@@ -370,9 +466,9 @@
           <div class="w-full md:w-1/3 p-2">
             <div class="bg-red-50 p-4 rounded-lg h-full">
               <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
-              <p class="text-sm">• Day 1: Arrival via seaplane & resort introduction</p>
-              <p class="text-sm">• Days 2-4: Relaxation and optional activities</p>
-              <p class="text-sm">• Day 5: Final morning in paradise & departure</p>
+              <p class="text-sm">• Day 17: Arrival via seaplane & resort introduction</p>
+              <p class="text-sm">• Days 18-20: Relaxation and optional activities</p>
+              <p class="text-sm">• Day 21: Final morning in paradise & departure</p>
             </div>
           </div>
         </div>
@@ -386,15 +482,20 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Weather Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Weather in August</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="weather-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Average high: 30°C (86°F)</li>
               <li>• Average low: 25°C (77°F)</li>
@@ -409,15 +510,20 @@
         
         <!-- Transportation Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-blue-700">Getting There & Around</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Getting There & Around</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="transport-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Malé to Resort: 30-45 minute seaplane transfer</li>
               <li>• Seaplane Hours: Operates only during daylight (6:00 AM - 4:00 PM)</li>
@@ -431,15 +537,20 @@
         
         <!-- Resort Facilities Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="facilities-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <h3 class="font-bold text-lg text-green-700">Resort Facilities</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Resort Facilities</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="facilities-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Overwater Villa: Private deck, direct ocean access, indoor/outdoor shower</li>
               <li>• Dining: Multiple restaurants including underwater dining experience</li>
@@ -458,15 +569,20 @@
         
         <!-- Water Activities Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="activities-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-red-700">Water Activities</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Water Activities</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="activities-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Snorkeling: House reef accessible directly from villas</li>
               <li>• Diving: PADI-certified dive center with courses for beginners</li>
@@ -484,15 +600,20 @@
         
         <!-- Dining Options Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="dining-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-purple-700">Dining Experiences</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Dining Experiences</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="dining-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Alifaan: All-day dining restaurant with international cuisine</li>
               <li>• Crusoe's: Beach grill serving fresh seafood and steaks</li>
@@ -511,15 +632,20 @@
         
         <!-- Travel Tips Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="travel-tips-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-indigo-700">Essential Travel Tips</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Essential Travel Tips</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="travel-tips-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Currency: USD widely accepted at resorts, credit cards (Visa/Mastercard) preferred</li>
               <li>• Time Zone: Maldives Time (MVT) is UTC+5, 3 hours behind Singapore</li>
@@ -536,54 +662,57 @@
           </div>
         </div>
 
-    <!-- World Clock Widget (Full Width) - Ordered by UTC -->
-    <div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
-      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="bg-gray-50 p-4">
-          <div class="flex items-center">
-            <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <h3 class="font-bold text-lg">Trip World Clock</h3>
+        <!-- World Clock Widget (Full Width) -->
+        <div class="col-span-1 md:col-span-3 lg:col-span-3">
+          <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div id="world-clock-content" class="p-5 card-content">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Barcelona Time (UTC+2) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                  <div class="text-sm text-gray-600">Barcelona</div>
+                  <div class="text-xs text-gray-500">(UTC+2)</div>
+                </div>
+                
+                <!-- Maldives Time (UTC+5) -->
+                <div class="bg-red-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                  <div class="text-sm text-gray-600">Maldives</div>
+                  <div class="text-xs text-gray-500">(UTC+5)</div>
+                </div>
+                
+                <!-- Southeast Asia Time (UTC+8) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Singapore/KL</div>
+                  <div class="text-xs text-gray-500">(UTC+8)</div>
+                </div>
+                
+                <!-- East Asia Time (UTC+9) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+                  <div class="text-xs text-gray-500">(UTC+9)</div>
+                </div>
+              </div>
+              
+              <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+            </div>
           </div>
         </div>
-        <div class="p-5">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Barcelona Time (UTC+2) -->
-            <div class="bg-gray-100 p-3 rounded-lg text-center">
-              <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-              <div class="text-sm text-gray-600">Barcelona</div>
-              <div class="text-xs text-gray-500">(UTC+2)</div>
-            </div>
-            
-            <!-- Maldives Time (UTC+5) -->
-            <div class="bg-red-100 p-3 rounded-lg text-center">
-              <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-              <div class="text-sm text-gray-600">Maldives</div>
-              <div class="text-xs text-gray-500">(UTC+5)</div>
-            </div>
-            
-            <!-- Southeast Asia Time (UTC+8) -->
-            <div class="bg-gray-100 p-3 rounded-lg text-center">
-              <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
-              <div class="text-sm text-gray-600">Singapore/KL</div>
-              <div class="text-xs text-gray-500">(UTC+8)</div>
-            </div>
-            
-            <!-- East Asia Time (UTC+9) -->
-            <div class="bg-gray-100 p-3 rounded-lg text-center">
-              <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
-              <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
-              <div class="text-xs text-gray-500">(UTC+9)</div>
-            </div>
-          </div>
-          
-          <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
-        </div>
-      </div>
-    </div>
-
-        
       </div>
     </section>
 
@@ -592,13 +721,18 @@
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
       
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <!-- Day 1 -->
+        <!-- Day 17 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
-            <h3 class="font-bold">Saturday, August 16, 2025 – Arrival in Paradise</h3>
-            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-17-content">
+            <h3 class="font-bold text-blue-800 pr-3">Saturday, August 16, 2025 – Arrival in Paradise</h3>
+            <div class="flex items-center">
+              <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 17</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-17-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 1 Icon -->
@@ -647,13 +781,18 @@
           </div>
         </div>
         
-        <!-- Days 2-4 -->
+        <!-- Days 18-20 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
-            <h3 class="font-bold">Sunday-Tuesday, August 17-19, 2025 – Paradise at Your Pace</h3>
-            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Days 2-4</span>
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="days-18-20-content">
+            <h3 class="font-bold text-green-800 pr-3">Sunday-Tuesday, August 17-19, 2025 – Paradise at Your Pace</h3>
+            <div class="flex items-center">
+              <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">D 18-20</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="days-18-20-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 2-4 Icon -->
@@ -702,13 +841,18 @@
           </div>
         </div>
         
-        <!-- Day 5 -->
+        <!-- Day 21 -->
         <div>
-          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
-            <h3 class="font-bold">Wednesday, August 20, 2025 – Final Morning & Departure</h3>
-            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 5</span>
+          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-21-content">
+            <h3 class="font-bold text-orange-800 pr-3">Wednesday, August 20, 2025 – Final Morning & Departure</h3>
+            <div class="flex items-center">
+              <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 21</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-21-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
@@ -754,226 +898,299 @@
       </div>
     </section>
 
-    <!-- Culture & Fun Facts -->
-    <section id="culture" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Maldives Overview Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-rose-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              <h3 class="font-bold text-lg">About the Maldives</h3>
-            </div>
+  <!-- Culture & Fun Facts -->
+<section id="culture" class="mb-12">
+  <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Maldives Overview Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-rose-50 p-4 cursor-pointer card-header" data-target="maldives-overview-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">🏝️</span>
+            <h3 class="font-bold text-lg text-rose-700">Maldives Country Profile</h3>
           </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Geography:</span> The Maldives consists of 26 ring-shaped atolls made up of more than 1,000 coral islands, only 200 of which are inhabited.</li>
-              <li><span class="font-medium">Population:</span> Approximately 540,000 people, with about one-third living in the capital city of Malé.</li>
-              <li><span class="font-medium">Language:</span> Dhivehi is the official language, with English widely spoken in tourist areas.</li>
-              <li><span class="font-medium">Religion:</span> Islam is the official religion, and the country follows many Islamic traditions.</li>
-              <li><span class="font-medium">Economy:</span> Tourism and fishing are the main industries, with tourism accounting for nearly 30% of GDP.</li>
-              <li><span class="font-medium">Climate:</span> Tropical monsoon climate with two seasons: dry season (northeast monsoon, November-April) and rainy season (southwest monsoon, May-October).</li>
-            </ul>
-            <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Low-Lying Nation</p>
-              <p>The Maldives is the world's lowest country with an average elevation of just 1.5 meters (4.9 feet) above sea level. The highest natural point in the country is just 2.4 meters (7.9 feet) above sea level, making the Maldives particularly vulnerable to rising sea levels due to climate change.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Marine Life Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-amber-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Incredible Marine Life</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Coral Reefs:</span> The Maldives is home to approximately 5% of the world's coral reefs, supporting over 2,000 species of fish and other marine life.</li>
-              <li><span class="font-medium">Manta Rays:</span> The Maldives has the world's largest population of reef manta rays, which can be seen year-round at various cleaning stations.</li>
-              <li><span class="font-medium">Whale Sharks:</span> The gentle giants of the ocean can be spotted throughout the year, particularly in the South Ari Atoll.</li>
-              <li><span class="font-medium">Sea Turtles:</span> Five of the world's seven species of sea turtles can be found in Maldivian waters, including green turtles and hawksbill turtles.</li>
-              <li><span class="font-medium">Reef Sharks:</span> Several species of non-aggressive reef sharks are common, including blacktip reef sharks, whitetip reef sharks, and nurse sharks.</li>
-              <li><span class="font-medium">Dolphins:</span> Spinner dolphins and bottlenose dolphins are frequently spotted playing in the channels between islands.</li>
-            </ul>
-            <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Snorkeling at Our Resort</p>
-              <p>The house reef at Radisson Blu Resort is known for its diverse marine life, including colorful reef fish, rays, reef sharks, and occasionally turtles. The waters surrounding the resort feature visibility up to 30 meters, creating perfect conditions for underwater exploration.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Cultural Traditions Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-blue-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-              <h3 class="font-bold text-lg">Maldivian Culture & Traditions</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Dhivehi Culture:</span> The Maldivian culture, known as Dhivehi, is a unique blend of influences from South Asia, Arabia, and East Africa.</li>
-              <li><span class="font-medium">Bodu Beru:</span> Traditional Maldivian music featuring drums made of coconut wood, often performed at resorts for guests.</li>
-              <li><span class="font-medium">Libaas:</span> Traditional Maldivian costume consisting of a long dress for women and a sarong paired with a shirt for men.</li>
-              <li><span class="font-medium">Crafts:</span> Traditional crafts include mat weaving (Thundu Kunaa), coir rope making, lacquer work, and traditional boat (dhoni) building.</li>
-              <li><span class="font-medium">Cuisine:</span> Fresh seafood, coconut, and spices form the basis of Maldivian cuisine, with popular dishes including mas huni (tuna and coconut), garudhiya (fish soup), and hedhikaa (savory snacks).</li>
-              <li><span class="font-medium">Hospitality:</span> Maldivians are known for their warm hospitality, reflected in the resort industry's high service standards.</li>
-            </ul>
-            <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Cultural Performances</p>
-              <p>Our resort occasionally offers cultural evenings featuring Bodu Beru performances, where drums start slowly and gradually build to a faster rhythm. Guests are often invited to join in the dancing, making it an interactive cultural experience.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Fun Facts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-green-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Did You Know?</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li>The Maldives is the smallest Asian country both by land area and population.</li>
-              <li>The word "atoll" is derived from the Dhivehi word "atholhu."</li>
-              <li>The Maldives was the first country to hold an underwater cabinet meeting in 2009 to highlight the threat of climate change.</li>
-              <li>Coconut is considered the most important plant in the Maldives and is used in many aspects of daily life, from food and drink to construction materials and handicrafts.</li>
-              <li>The Maldives is home to the world's first underwater restaurant, opened in 2005 at the Conrad Maldives Rangali Island resort.</li>
-              <li>The unique geography of the Maldives means that no island is more than 1.8 meters (5.9 feet) above sea level.</li>
-              <li>The Maldives was the first country in South Asia to introduce private island resorts in the 1970s, pioneering the luxury tourism model that it's famous for today.</li>
-              <li>Every resort in the Maldives occupies its own private island, leading to the concept of "one island, one resort."</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Sustainability Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-purple-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Sustainability in Paradise</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Climate Change:</span> As the world's lowest-lying nation, the Maldives is particularly vulnerable to rising sea levels and has become a vocal advocate for climate action globally.</li>
-              <li><span class="font-medium">Coral Regeneration:</span> Many resorts, including ours, participate in coral regeneration programs to help restore damaged reefs.</li>
-              <li><span class="font-medium">Plastic Reduction:</span> The Maldives has implemented various initiatives to reduce single-use plastics, with many resorts eliminating plastic straws, bottles, and toiletry containers.</li>
-              <li><span class="font-medium">Renewable Energy:</span> Solar power is increasingly being adopted across resorts to reduce dependency on diesel generators.</li>
-              <li><span class="font-medium">Desalination:</span> With no natural freshwater sources, the Maldives relies on desalination technology to produce drinking water.</li>
-              <li><span class="font-medium">Marine Conservation:</span> Protected marine areas and fishing regulations help preserve the rich biodiversity of Maldivian waters.</li>
-            </ul>
-            <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">How You Can Help</p>
-              <p>During our stay, we can contribute to sustainability efforts by using reef-safe sunscreen, avoiding touching or stepping on coral while snorkeling, conserving water, and participating in any conservation activities offered by the resort, such as coral planting or beach clean-ups.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Romantic Experiences Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-teal-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-              <h3 class="font-bold text-lg">Family & Group Activities</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Group Snorkeling:</span> Guided house reef tours tailored for different ages and experience levels.</li>
-              <li><span class="font-medium">Dolphin Cruises:</span> Family-friendly excursions to watch playful dolphins in their natural habitat.</li>
-              <li><span class="font-medium">Fishing Trips:</span> Traditional Maldivian sunset fishing experiences where you can catch your own dinner.</li>
-              <li><span class="font-medium">Beach Games:</span> Volleyball, beach soccer, and other activities organized by the resort.</li>
-              <li><span class="font-medium">Cooking Classes:</span> Learn to prepare Maldivian specialties together as a family.</li>
-              <li><span class="font-medium">Marine Biology Talks:</span> Educational sessions about the resort's marine ecosystem, suitable for all ages.</li>
-              <li><span class="font-medium">Movie Nights:</span> Outdoor cinema experiences under the stars on the beach.</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">The Maldives is perfect for our group of six, offering activities for different ages while allowing everyone to participate in memorable shared experiences. Our spacious villa accommodation will provide both togetherness and privacy for all family members.</p>
-          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       </div>
-    </section>
+      <div id="maldives-overview-content" class="p-5 card-content">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🏛️ Official Name</p>
+            <p>Republic of Maldives (ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🏙️ Capital City</p>
+            <p>Malé (population: 252,000)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">👥 Population</p>
+            <p>540,000 (2025 est.)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🗺️ Area</p>
+            <p>298 km² (115 sq mi)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🗣️ Official Language</p>
+            <p>Dhivehi</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">💵 Currency</p>
+            <p>Maldivian Rufiyaa (MVR)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🏛️ Government</p>
+            <p>Presidential Republic</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">⛪ Religion</p>
+            <p>Sunni Islam (official state religion)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">💰 GDP per Capita</p>
+            <p>$19,450 (vs. Spain: $44,100)</p>
+          </div>
+          <div class="bg-gray-50 p-3 rounded">
+            <p class="font-bold text-sm text-gray-700">🕒 Time Zone</p>
+            <p>MVT (UTC+5)</p>
+          </div>
+        </div>
+        <div class="bg-rose-50 p-3 rounded text-sm">
+          <p class="font-bold mb-1">📉 Low-Lying Nation</p>
+          <p>The Maldives is the world's lowest country with an average elevation of just 1.5 meters (4.9 feet) above sea level. The highest natural point in the country is just 2.4 meters (7.9 feet) above sea level, making the Maldives particularly vulnerable to rising sea levels due to climate change.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Marine Life Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-amber-50 p-4 cursor-pointer card-header" data-target="marine-life-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">🐠</span>
+            <h3 class="font-bold text-lg text-amber-700">Incredible Marine Life</h3>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      <div id="marine-life-content" class="p-5 card-content">
+        <ul class="text-gray-700 space-y-3">
+          <li><span class="font-medium">🪸 Coral Reefs:</span> The Maldives is home to approximately 5% of the world's coral reefs, supporting over 2,000 species of fish and other marine life.</li>
+          <li><span class="font-medium">🦈 Manta Rays:</span> The Maldives has the world's largest population of reef manta rays, which can be seen year-round at various cleaning stations.</li>
+          <li><span class="font-medium">🐋 Whale Sharks:</span> The gentle giants of the ocean can be spotted throughout the year, particularly in the South Ari Atoll.</li>
+          <li><span class="font-medium">🐢 Sea Turtles:</span> Five of the world's seven species of sea turtles can be found in Maldivian waters, including green turtles and hawksbill turtles.</li>
+          <li><span class="font-medium">🦈 Reef Sharks:</span> Several species of non-aggressive reef sharks are common, including blacktip reef sharks, whitetip reef sharks, and nurse sharks.</li>
+          <li><span class="font-medium">🐬 Dolphins:</span> Spinner dolphins and bottlenose dolphins are frequently spotted playing in the channels between islands.</li>
+        </ul>
+        <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
+          <p class="font-bold mb-1">🤿 Snorkeling at Our Resort</p>
+          <p>The house reef at Radisson Blu Resort is known for its diverse marine life, including colorful reef fish, rays, reef sharks, and occasionally turtles. The waters surrounding the resort feature visibility up to 30 meters, creating perfect conditions for underwater exploration.</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Photo Gallery -->
+    <!-- Cultural Traditions Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="cultural-traditions-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">🏮</span>
+            <h3 class="font-bold text-lg text-blue-700">Maldivian Culture & Traditions</h3>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      <div id="cultural-traditions-content" class="p-5 card-content">
+        <ul class="text-gray-700 space-y-3">
+          <li><span class="font-medium">🧠 Dhivehi Culture:</span> The Maldivian culture, known as Dhivehi, is a unique blend of influences from South Asia, Arabia, and East Africa.</li>
+          <li><span class="font-medium">🥁 Bodu Beru:</span> Traditional Maldivian music featuring drums made of coconut wood, often performed at resorts for guests.</li>
+          <li><span class="font-medium">👗 Libaas:</span> Traditional Maldivian costume consisting of a long dress for women and a sarong paired with a shirt for men.</li>
+          <li><span class="font-medium">🧶 Crafts:</span> Traditional crafts include mat weaving (Thundu Kunaa), coir rope making, lacquer work, and traditional boat (dhoni) building.</li>
+          <li><span class="font-medium">🍲 Cuisine:</span> Fresh seafood, coconut, and spices form the basis of Maldivian cuisine, with popular dishes including mas huni (tuna and coconut), garudhiya (fish soup), and hedhikaa (savory snacks).</li>
+          <li><span class="font-medium">🤝 Hospitality:</span> Maldivians are known for their warm hospitality, reflected in the resort industry's high service standards.</li>
+        </ul>
+        <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
+          <p class="font-bold mb-1">🎭 Cultural Performances</p>
+          <p>Our resort occasionally offers cultural evenings featuring Bodu Beru performances, where drums start slowly and gradually build to a faster rhythm. Guests are often invited to join in the dancing, making it an interactive cultural experience.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Fun Facts Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">💡</span>
+            <h3 class="font-bold text-lg text-green-700">Did You Know?</h3>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      <div id="fun-facts-content" class="p-5 card-content">
+        <ul class="text-gray-700 space-y-3">
+          <li>🗺️ The Maldives is the smallest Asian country both by land area and population.</li>
+          <li>📝 The word "atoll" is derived from the Dhivehi word "atholhu."</li>
+          <li>🌊 The Maldives was the first country to hold an underwater cabinet meeting in 2009 to highlight the threat of climate change.</li>
+          <li>🥥 Coconut is considered the most important plant in the Maldives and is used in many aspects of daily life, from food and drink to construction materials and handicrafts.</li>
+          <li>🍽️ The Maldives is home to the world's first underwater restaurant, opened in 2005 at the Conrad Maldives Rangali Island resort.</li>
+          <li>📏 The unique geography of the Maldives means that no island is more than 1.8 meters (5.9 feet) above sea level.</li>
+          <li>🏨 The Maldives was the first country in South Asia to introduce private island resorts in the 1970s, pioneering the luxury tourism model that it's famous for today.</li>
+          <li>🏝️ Every resort in the Maldives occupies its own private island, leading to the concept of "one island, one resort."</li>
+          <li>📆 The Maldives follows both the Islamic calendar and the Gregorian calendar.</li>
+          <li>🐚 The Maldivian rufiyaa, the national currency, gets its name from the cowry shells once used as currency.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Sustainability Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="sustainability-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">♻️</span>
+            <h3 class="font-bold text-lg text-purple-700">Sustainability in Paradise</h3>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      <div id="sustainability-content" class="p-5 card-content">
+        <ul class="text-gray-700 space-y-3">
+          <li><span class="font-medium">🌡️ Climate Change:</span> As the world's lowest-lying nation, the Maldives is particularly vulnerable to rising sea levels and has become a vocal advocate for climate action globally.</li>
+          <li><span class="font-medium">🪸 Coral Regeneration:</span> Many resorts, including ours, participate in coral regeneration programs to help restore damaged reefs.</li>
+          <li><span class="font-medium">🚯 Plastic Reduction:</span> The Maldives has implemented various initiatives to reduce single-use plastics, with many resorts eliminating plastic straws, bottles, and toiletry containers.</li>
+          <li><span class="font-medium">☀️ Renewable Energy:</span> Solar power is increasingly being adopted across resorts to reduce dependency on diesel generators.</li>
+          <li><span class="font-medium">💧 Desalination:</span> With no natural freshwater sources, the Maldives relies on desalination technology to produce drinking water.</li>
+          <li><span class="font-medium">🐠 Marine Conservation:</span> Protected marine areas and fishing regulations help preserve the rich biodiversity of Maldivian waters.</li>
+        </ul>
+        <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
+          <p class="font-bold mb-1">🌿 How You Can Help</p>
+          <p>During our stay, we can contribute to sustainability efforts by using reef-safe sunscreen, avoiding touching or stepping on coral while snorkeling, conserving water, and participating in any conservation activities offered by the resort, such as coral planting or beach clean-ups.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Family & Group Activities Card -->
+    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="bg-teal-50 p-4 cursor-pointer card-header" data-target="family-activities-content">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="mr-2">👨‍👩‍👧‍👦</span>
+            <h3 class="font-bold text-lg text-teal-700">Family & Group Activities</h3>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+      <div id="family-activities-content" class="p-5 card-content">
+        <ul class="text-gray-700 space-y-3">
+          <li><span class="font-medium">🤿 Group Snorkeling:</span> Guided house reef tours tailored for different ages and experience levels.</li>
+          <li><span class="font-medium">🐬 Dolphin Cruises:</span> Family-friendly excursions to watch playful dolphins in their natural habitat.</li>
+          <li><span class="font-medium">🎣 Fishing Trips:</span> Traditional Maldivian sunset fishing experiences where you can catch your own dinner.</li>
+          <li><span class="font-medium">🏐 Beach Games:</span> Volleyball, beach soccer, and other activities organized by the resort.</li>
+          <li><span class="font-medium">👨‍🍳 Cooking Classes:</span> Learn to prepare Maldivian specialties together as a family.</li>
+          <li><span class="font-medium">🐡 Marine Biology Talks:</span> Educational sessions about the resort's marine ecosystem, suitable for all ages.</li>
+          <li><span class="font-medium">🎬 Movie Nights:</span> Outdoor cinema experiences under the stars on the beach.</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-600">The Maldives is perfect for our group of six, offering activities for different ages while allowing everyone to participate in memorable shared experiences. Our spacious villa accommodation will provide both togetherness and privacy for all family members.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Photo Gallery with Wikipedia Links -->
     <section id="photos" class="mb-12">
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Maldives Photo Gallery</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Image 1: Overwater Villa -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://holiyeah.com/wp-content/uploads/2022/10/radisson-blu-resort-maldives-2-870x555.jpg" alt="Overwater Villa" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Radisson Blu Overwater Villa</p>
+        <a href="https://en.wikipedia.org/wiki/Maldives" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://holiyeah.com/wp-content/uploads/2022/10/radisson-blu-resort-maldives-2-870x555.jpg" alt="Overwater Villa" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Radisson Blu Overwater Villa</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 2: Aerial View -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://images.pexels.com/photos/28843937/pexels-photo-28843937.jpeg?cs=srgb&dl=pexels-asadphoto-28843937.jpg&fm=jpg" alt="Aerial View" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Seaplane View of Atolls</p>
+        <a href="https://en.wikipedia.org/wiki/Atoll" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://images.pexels.com/photos/28843937/pexels-photo-28843937.jpeg?cs=srgb&dl=pexels-asadphoto-28843937.jpg&fm=jpg" alt="Aerial View" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Seaplane View of Atolls</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 3: Underwater -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/R.5af2b49f580f96aff64a572b754f0cdf?rik=szD5IzZIraDmnw&pid=ImgRaw&r=0" alt="Underwater Scene" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Vibrant Coral Reef</p>
+        <a href="https://en.wikipedia.org/wiki/Coral_reef" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/R.5af2b49f580f96aff64a572b754f0cdf?rik=szD5IzZIraDmnw&pid=ImgRaw&r=0" alt="Underwater Scene" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Vibrant Coral Reef</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 4: Beach Dining -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://hoteliermaldives.com/wp-content/uploads/Hurawalhi-beach-dinner-lowres.jpg" alt="Beach Dining" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Private Beach Dining</p>
+        <a href="https://en.wikipedia.org/wiki/Tourism_in_the_Maldives" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://hoteliermaldives.com/wp-content/uploads/Hurawalhi-beach-dinner-lowres.jpg" alt="Beach Dining" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Private Beach Dining</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 5: Water Sports -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://www.holidify.com/images/cmsuploads/compressed/79c8148df9e593118721f4da4e295c11_20180813190054.jpg" alt="Water Sports" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Kayaking in Crystal Waters</p>
+        <a href="https://en.wikipedia.org/wiki/Water_sports" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://www.holidify.com/images/cmsuploads/compressed/79c8148df9e593118721f4da4e295c11_20180813190054.jpg" alt="Water Sports" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Kayaking in Crystal Waters</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 6: Sunset -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://wallpaperaccess.com/full/4287258.jpg" alt="Maldives Sunset" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Breathtaking Sunset</p>
+        <a href="https://en.wikipedia.org/wiki/Sunset" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://wallpaperaccess.com/full/4287258.jpg" alt="Maldives Sunset" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Breathtaking Sunset</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
-    
+
     <!-- Call to Action -->
     <section class="text-center mb-8">
       <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
@@ -991,7 +1208,7 @@
   </footer>
 
 <script>
-// Combined script with proper organization and fixed issues
+// Single unified script with complete functionality
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1002,22 +1219,122 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
     });
   }
-  
-  // 2. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 3. Desktop dropdown functionality - FIXED
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // 4. Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
+        
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // 5. Collapsible cards in Essential Information
+  document.querySelectorAll('.card-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg:last-child');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 6. Collapsible days in Itinerary
+  document.querySelectorAll('.day-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 7. World clocks functionality
+  updateWorldClocks();
+  setInterval(updateWorldClocks, 60000);
+  
+  // 8. Desktop dropdown functionality
   const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
   const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
   const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
@@ -1047,7 +1364,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 4. Highlight current page in destinations submenus
+  // 9. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Highlight current page in destinations submenus
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   // For mobile submenu
@@ -1070,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 5. Dynamic page title based on scroll position
+  // 11. Dynamic page title based on scroll position
   const pageTitle = document.querySelector('.hero-content h1')?.textContent;
   const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
   
@@ -1092,15 +1422,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
   }
-  
-  // 6. World clocks functionality
-  updateWorldClocks();
-  
-  // Update every minute
-  setInterval(updateWorldClocks, 60000);
 });
 
-// World clocks function - moved outside the DOMContentLoaded to prevent duplication issues
+// World clocks function
 function updateWorldClocks() {
   const now = new Date();
   
@@ -1144,6 +1468,66 @@ function updateWorldClocks() {
       eastAsiaTime.getMinutes().toString().padStart(2, '0');
   }
 }
+
+// Tips dropdown functionality
+const desktopTipsButton = document.getElementById('desktop-tips-button');
+const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+if (desktopTipsButton && desktopTipsMenu) {
+  // Use class-based toggle instead of hidden attribute
+  desktopTipsButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    desktopTipsMenu.classList.toggle('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.toggle('rotate-180');
+    }
+  });
+  
+  // Close when clicking elsewhere
+  document.addEventListener('click', function() {
+    desktopTipsMenu.classList.remove('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.remove('rotate-180');
+    }
+  });
+  
+  // Prevent menu from closing when clicking inside it
+  desktopTipsMenu.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
+
+// Mobile Tips submenu toggle
+const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+const tipsSubmenu = document.getElementById('tips-submenu');
+const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+if (tipsDropdownButton && tipsSubmenu) {
+  tipsDropdownButton.addEventListener('click', function() {
+    tipsSubmenu.classList.toggle('hidden');
+    if (tipsDropdownArrow) {
+      tipsDropdownArrow.classList.toggle('rotate-180');
+    }
+  });
+}
+
+// Add click handlers for Tips submenu links
+if (tipsSubmenu) {
+  const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+  tipsSubmenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Close both the submenu and the main mobile menu
+      tipsSubmenu.classList.add('hidden');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  });
+}
 </script>
+
 </body>
 </html>
