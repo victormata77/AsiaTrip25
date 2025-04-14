@@ -4,1072 +4,1255 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MATA'S ASIAN TOUR 2025</title>
-  <!-- Fixed: Changed image URL to proper Tailwind CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
-
-  <style>
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-   .hero-section {
-      background-image: url('https://images.unsplash.com/photo-1599153715486-b81feab5f8e6?w=1200&auto=format');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .photo-card {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-    .photo-card:hover {
-      transform: scale(1.03);
-    }
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    /* ===== NAVIGATION STYLES ===== */
-    /* Desktop dropdown menu */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;  /* Position directly below the button */
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;  /* Initially hidden */
-    }
-    
-    #desktop-destinations-menu.visible {
-      display: block;
-    }
-    
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    
-    .relative {
-      position: relative;
-    }
-    
-    /* Dropdown button styling */
-    #desktop-dropdown-button {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s;
-      height: 40px;
-    }
-    
-    #desktop-dropdown-button:hover {
-      background-color: #f9fafb;
-    }
-    
-    /* ===== MENU ALIGNMENT FIXES ===== */
-    /* Better menu alignment */
-    .md\:flex.md\:items-center.md\:space-x-6 > a,
-    .md\:flex.md\:items-center.md\:space-x-6 > div {
-      display: flex;
-      align-items: center;
-      height: 40px; /* Fixed height for all menu items */
-    }
-    
-    /* Make sure all top-level items are aligned */
-    .md\:flex.md\:items-center.md\:space-x-6 {
-      min-height: 40px;
-    }
-    
-    /* ===== DYNAMIC TITLE STYLES ===== */
-    /* Styles for the dynamic page title */
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-    
-    /* ===== PHOTO GALLERY STYLES ===== */
-    .photo-card {
-      transition: all 0.3s ease;
-    }
-    
-    .photo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    /* ===== FLAG ICON STYLES ===== */
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    
-    /* ===== BRAND COLOR VARIABLES ===== */
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-    /* ===== HERO SECTION STYLES ===== */
-    .hero-section {
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* ===== STICKY NAVIGATION ===== */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    
-    /* ===== INFO CARD HOVER EFFECT ===== */
-    .info-card {
-      transition: transform 0.2s;
-    }
-    
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
   
-  </style>
+<style>
+/* Root variables and brand colors */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+/* Brand styles */
+.brand-bg-red { background-color: var(--mata-red); }
+.brand-text-red { color: var(--mata-red); }
+.brand-border-red { border-color: var(--mata-red); }
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+.brand-button:hover { background-color: var(--mata-dark-red); }
+
+/* Hero section */
+.hero-section {
+  background-image: url('https://wallpaperaccess.com/full/1192277.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* Desktop dropdown menu */
+#desktop-destinations-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible { display: block; }
+#desktop-destinations-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover { background-color: #f9fafb; }
+
+/* Tips dropdown styling (matches destinations dropdown) */
+#desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+
+#desktop-tips-menu.visible {
+  display: block;
+}
+
+#desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+
+#desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* Card and content styles */
+.card-content, .day-content {
+  transition: all 0.3s ease-in-out;
+}
+.card-header, .day-header {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-header:hover, .day-header:hover { filter: brightness(0.95); }
+.card-header.active, .day-header.active {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.card-header svg.rotate-180, .day-header svg.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Day indicators - Unified and fixed */
+.day-header .bg-blue-500,
+.day-header .bg-green-500,
+.day-header .bg-yellow-500,
+.day-header .bg-purple-500,
+.day-header .bg-orange-500,
+.day-header .bg-gray-500 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Ensure text is visible on gray background */
+.day-header .bg-gray-500 {
+  color: white;
+}
+
+/* Card hover effects */
+.info-card {
+  transition: transform 0.2s;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Photo gallery */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.photo-card {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.photo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Flag icon */
+.flag-icon {
+  height: 20px;
+  width: 28px;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Text contrast improvements */
+.text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+.text-purple-700, .text-indigo-700, .text-yellow-800, 
+.text-orange-800, .text-purple-800, .text-blue-800 {
+  font-weight: 600;
+}
+
+/* Responsive styles */
+/* Day indicators oval on wider screens - FIXED with consistent sizes */
+@media (min-width: 768px) {
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 60px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: 10px;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  /* Day header layout */
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  
+  .day-header h3 {
+    flex: 1;
+    padding-right: 8px;
+  }
+  
+  /* Day indicators - UPDATED to include gray-500 */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* Arrow icon */
+  .day-header svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 640px) {
+  .day-header h3 {
+    width: auto; /* Changed from 100% to auto for better layout */
+    flex: 1;
+    font-size: 0.9rem;
+  }
+  
+  /* Consistent styling for all day indicators including gray */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 48px;
+    height: 32px;
+    border-radius: 16px;
+  }
+  
+  /* Add more space at bottom of cards */
+  .card-content {
+    padding-bottom: 1.5rem;
+  }
+  
+  /* Better alignment for mobile view */
+  .day-header {
+    flex-wrap: nowrap; /* Changed from wrap to nowrap */
+  }
+  
+  .day-header .flex-shrink-0 {
+    margin-left: 0; /* Removed auto margin */
+    display: flex;
+    align-items: center;
+  }
+}
+</style>
 </head>
 <body class="bg-gray-50">
-    <!-- Fixed Navigation Menu with Better Alignment -->
-    <nav class="sticky-nav shadow-md">
-      <div class="max-w-6xl mx-auto px-4 py-3">
-        <div class="flex justify-between items-center">
-          <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
-          
-          <!-- Desktop Navigation Menu with Better Alignment -->
-          <div class="hidden md:flex md:items-center md:space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
-            
-            <!-- Desktop Destinations Dropdown -->
-            <div class="relative flex items-center">
-              <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-                Other Destinations
-                <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="desktop-destinations-menu" class="hidden">
-                <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
-                <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
-                <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
-                <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
-                <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
-                <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
+
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu with Better Alignment -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
         
-        <!-- Mobile Menu (unchanged) -->
-        <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-          <div class="flex flex-col space-y-3">
-            <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
-            
-            <!-- Destinations Accordion -->
-            <div class="relative">
-              <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-                <span>Other Destinations</span>
-                <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-                <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-                <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-                <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-                <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-                <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-                <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-              </div>
-            </div>
+        <!-- Tips Dropdown -->
+<div class="relative flex items-center">
+  <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+    Tips
+    <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div id="desktop-tips-menu" class="hidden">
+    <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+    <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+    <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+    <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+  </div>
+      
+           
+
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Other Destinations
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-destinations-menu" class="hidden">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
           </div>
         </div>
       </div>
-    </nav>
-  
- <!-- Hero Section with Updated Image -->
-  <section class="hero-section flex items-center justify-center" style="background-image: url('https://wallpaperaccess.com/full/1192277.jpg');">
-    <div class="hero-overlay"></div>
-    <div class="hero-content max-w-4xl text-center text-white px-4">
-      <h1 class="text-5xl font-bold mb-4">Kuala Lumpur, Malaysia</h1>
-      <p class="text-xl mb-2">August 14 - August 16, 2025</p>
-      <p class="text-lg">Where towering skyscrapers meet cultural treasures</p>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+        
+        <!-- Tips Accordion -->
+        <div class="relative">
+          <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Tips</span>
+            <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+            <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+            <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+            <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
+          </div>
+        </div>
+        </div>
+        
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Other Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section flex items-center justify-center">
+  <div class="hero-overlay"></div>
+  <div class="hero-content max-w-4xl text-center text-white px-4">
+    <h1 class="text-5xl font-bold mb-4">Kuala Lumpur, Malaysia</h1>
+    <p class="text-xl mb-2">August 14 - August 16, 2025</p>
+    <p class="text-lg">Where towering skyscrapers meet cultural treasures</p>
+  </div>
+</section>
+
+<div class="max-w-6xl mx-auto px-4 py-12">
+  <!-- Destination Summary -->
+  <section class="mb-12">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-bold mb-4 brand-text-red">Welcome to Kuala Lumpur</h2>
+      <p class="text-gray-700 mb-4">
+        Kuala Lumpur, Malaysia's vibrant capital, offers a fascinating blend of modern urban landscapes and rich cultural heritage. This dynamic city showcases gleaming skyscrapers like the iconic Petronas Twin Towers alongside colorful temples and bustling markets. During our two-night stay, we'll experience the city's diverse attractions, from sacred caves to luxurious shopping malls, enjoying Malaysia's famous multicultural cuisine and warm hospitality.
+      </p>
+      <div class="flex flex-wrap justify-between mt-6">
+        <!-- Accommodation with Google Maps Link -->
+        <div class="w-full md:w-1/3 p-2">
+          <div class="bg-red-50 p-4 rounded-lg h-full">
+            <h3 class="font-bold text-red-800 mb-2">Accommodation</h3>
+            <p class="text-sm">The Ritz-Carlton, Kuala Lumpur</p>
+            <p class="text-sm text-gray-600">168, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</p>
+            <p class="text-sm text-gray-600">Luxury hotel in the heart of the Golden Triangle district with butler service, spa, and fine dining</p>
+            <a href="https://maps.google.com/?q=The+Ritz-Carlton+Kuala+Lumpur" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              View on Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-2">
+          <div class="bg-red-50 p-4 rounded-lg h-full">
+            <h3 class="font-bold text-red-800 mb-2">Highlights</h3>
+            <p class="text-sm">• Iconic Petronas Twin Towers</p>
+            <p class="text-sm">• Sacred Batu Caves temple complex</p>
+            <p class="text-sm">• Vibrant street food scenes</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-2">
+          <div class="bg-red-50 p-4 rounded-lg h-full">
+            <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
+            <p class="text-sm">• Day 15: Arrival & Petronas Towers</p>
+            <p class="text-sm">• Day 16: Batu Caves & cultural exploration</p>
+            <p class="text-sm">• Day 17: Morning departure to Maldives</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="max-w-6xl mx-auto px-4 py-12">
-    <!-- Destination Summary -->
-    <section class="mb-12">
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-2xl font-bold mb-4 brand-text-red">Welcome to Kuala Lumpur</h2>
-        <p class="text-gray-700 mb-4">
-          Kuala Lumpur, Malaysia's vibrant capital, offers a fascinating blend of modern urban landscapes and rich cultural heritage. This dynamic city showcases gleaming skyscrapers like the iconic Petronas Twin Towers alongside colorful temples and bustling markets. During our two-night stay, we'll experience the city's diverse attractions, from sacred caves to luxurious shopping malls, enjoying Malaysia's famous multicultural cuisine and warm hospitality.
-        </p>
-        <div class="flex flex-wrap justify-between mt-6">
-          <div class="w-full md:w-1/3 p-2">
-  <div class="bg-red-50 p-4 rounded-lg h-full">
-    <h3 class="font-bold text-red-800 mb-2">Accommodation</h3>
-    <p class="text-sm">The Ritz-Carlton, Kuala Lumpur</p>
-    <p class="text-sm text-gray-600">168, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</p>
-    <p class="text-sm text-gray-600">Luxury hotel in the heart of the Golden Triangle district with butler service, spa, and fine dining</p>
-  </div>
-</div>
-          <div class="w-full md:w-1/3 p-2">
-            <div class="bg-red-50 p-4 rounded-lg h-full">
-              <h3 class="font-bold text-red-800 mb-2">Highlights</h3>
-              <p class="text-sm">• Iconic Petronas Twin Towers</p>
-              <p class="text-sm">• Sacred Batu Caves temple complex</p>
-              <p class="text-sm">• Vibrant street food scenes</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/3 p-2">
-            <div class="bg-red-50 p-4 rounded-lg h-full">
-              <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
-              <p class="text-sm">• Day 1: Arrival & Petronas Towers</p>
-              <p class="text-sm">• Day 2: Batu Caves & cultural exploration</p>
-              <p class="text-sm">• Day 3: Morning departure to Maldives</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Essential Information -->
-    <section id="essentials" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Weather Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4">
+  <!-- Essential Information -->
+  <section id="essentials" class="mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Weather Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
               </svg>
-              <h3 class="font-bold text-lg">Weather in August</h3>
+              <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Average high: 32-34°C (90-93°F)</li>
-              <li>• Average low: 23-25°C (73-77°F)</li>
-              <li>• Humidity: Very high (80-90%)</li>
-              <li>• Rainfall: Frequent afternoon showers</li>
-              <li>• Daylight: Sunrise ~7:00 AM, Sunset ~7:30 PM</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">Pack lightweight, breathable clothing, a compact umbrella or rain jacket, and stay hydrated in the tropical heat.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Currency Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4">
+        <div id="weather-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-1">
+            <li>• Average high: 32-34°C (90-93°F)</li>
+            <li>• Average low: 23-25°C (73-77°F)</li>
+            <li>• Humidity: Very high (80-90%)</li>
+            <li>• Rainfall: Frequent afternoon showers</li>
+            <li>• Daylight: Sunrise ~7:00 AM, Sunset ~7:30 PM</li>
+          </ul>
+          <p class="mt-3 text-sm text-gray-600">Pack lightweight, breathable clothing, a compact umbrella or rain jacket, and stay hydrated in the tropical heat.</p>
+        </div>
+      </div>
+      
+      <!-- Currency Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="currency-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <h3 class="font-bold text-lg">Currency</h3>
+              <h3 class="font-bold text-lg text-green-700">Currency</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Malaysian Ringgit (RM/MYR)</li>
-              <li>• €1 ≈ RM5.10 (April 2025 rate)</li>
-              <li>• Cash widely used but credit cards accepted in hotels, malls</li>
-              <li>• ATMs readily available throughout the city</li>
-              <li>• Money changers offer good rates at malls and central areas</li>
-            </ul>
-            <div class="mt-3 bg-green-50 p-2 rounded text-sm">
-              <p class="font-bold">Tipping</p>
-              <p>Not generally expected in Malaysia. Most high-end restaurants include a 10% service charge. Taxis don't expect tips but rounding up is appreciated.</p>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Transportation Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4">
+        <div id="currency-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-1">
+            <li>• Malaysian Ringgit (RM/MYR)</li>
+            <li>• €1 ≈ RM5.10 (April 2025 rate)</li>
+            <li>• Cash widely used but credit cards accepted in hotels, malls</li>
+            <li>• ATMs readily available throughout the city</li>
+            <li>• Money changers offer good rates at malls and central areas</li>
+          </ul>
+          <div class="mt-3 bg-green-50 p-2 rounded text-sm">
+            <p class="font-bold">Tipping</p>
+            <p>Not generally expected in Malaysia. Most high-end restaurants include a 10% service charge. Taxis don't expect tips but rounding up is appreciated.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transportation Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
               </svg>
-              <h3 class="font-bold text-lg">Getting Around</h3>
+              <h3 class="font-bold text-lg text-blue-700">Getting Around</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Grab App: Malaysia's popular ride-sharing service</li>
-              <li>• LRT/MRT: Clean, efficient rail network</li>
-              <li>• Monorail: Connects major tourist spots</li>
-              <li>• Taxis: Use metered taxis or pre-arrange through hotel</li>
-              <li>• Walking: Possible in some areas but heat can be challenging</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">Our hotel in Bukit Bintang provides excellent access to shopping and dining. The concierge can arrange transportation for our excursions including premium hotel cars.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Food Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4">
+        <div id="transport-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-1">
+            <li>• Grab App: Malaysia's popular ride-sharing service</li>
+            <li>• LRT/MRT: Clean, efficient rail network</li>
+            <li>• Monorail: Connects major tourist spots</li>
+            <li>• Taxis: Use metered taxis or pre-arrange through hotel</li>
+            <li>• Walking: Possible in some areas but heat can be challenging</li>
+          </ul>
+          <p class="mt-3 text-sm text-gray-600">Our hotel in Bukit Bintang provides excellent access to shopping and dining. The concierge can arrange transportation for our excursions including premium hotel cars.</p>
+        </div>
+      </div>
+      
+      <!-- Food Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="food-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
-              <h3 class="font-bold text-lg">Must-Try Foods</h3>
+              <h3 class="font-bold text-lg text-red-700">Must-Try Foods</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Nasi Lemak: Coconut rice with sambal, fried anchovies, peanuts</li>
-              <li>• Satay: Grilled meat skewers with peanut sauce</li>
-              <li>• Roti Canai: Flaky flatbread with curry dip</li>
-              <li>• Char Kway Teow: Stir-fried flat rice noodles</li>
-              <li>• Laksa: Spicy noodle soup with coconut milk</li>
-              <li>• Durian: The infamous "king of fruits" (very pungent!)</li>
-            </ul>
-            <div class="mt-3 bg-red-50 p-2 rounded text-sm">
-              <p class="font-bold">Dining Etiquette</p>
-              <p>Wash hands before eating; use right hand for eating if using hands; asking for a fork and spoon is perfectly acceptable; halal food is widely available.</p>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Communication Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4">
+        <div id="food-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-1">
+            <li>• Nasi Lemak: Coconut rice with sambal, fried anchovies, peanuts</li>
+            <li>• Satay: Grilled meat skewers with peanut sauce</li>
+            <li>• Roti Canai: Flaky flatbread with curry dip</li>
+            <li>• Char Kway Teow: Stir-fried flat rice noodles</li>
+            <li>• Laksa: Spicy noodle soup with coconut milk</li>
+            <li>• Durian: The infamous "king of fruits" (very pungent!)</li>
+          </ul>
+          <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+            <p class="font-bold">Dining Etiquette</p>
+            <p>Wash hands before eating; use right hand for eating if using hands; asking for a fork and spoon is perfectly acceptable; halal food is widely available.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Communication Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="communication-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
               </svg>
-              <h3 class="font-bold text-lg">Language & Communication</h3>
+              <h3 class="font-bold text-lg text-purple-700">Language & Communication</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <div class="text-gray-700">
-              <p class="mb-2"><span class="font-bold">Useful Malay Phrases:</span></p>
-              <table class="w-full text-sm">
-                <tr>
-                  <td>Hello</td>
-                  <td>Selamat (se-la-mat)</td>
-                </tr>
-                <tr>
-                  <td>Thank you</td>
-                  <td>Terima kasih (te-ri-ma ka-seh)</td>
-                </tr>
-                <tr>
-                  <td>Yes/No</td>
-                  <td>Ya/Tidak (ya/ti-dak)</td>
-                </tr>
-                <tr>
-                  <td>Excuse me</td>
-                  <td>Maaf (ma-af)</td>
-                </tr>
-                <tr>
-                  <td>How much?</td>
-                  <td>Berapa harga? (be-ra-pa har-ga)</td>
-                </tr>
-                <tr>
-                  <td>Delicious</td>
-                  <td>Sedap (se-dap)</td>
-                </tr>
-              </table>
-            </div>
-            <p class="mt-3 text-sm text-gray-600">English is widely spoken in Kuala Lumpur, especially in tourist areas, hotels, and restaurants. Most signs are in both Malay and English.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Cultural Tips Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4">
+        <div id="communication-content" class="p-5 card-content">
+          <div class="text-gray-700">
+            <p class="mb-2"><span class="font-bold">Useful Malay Phrases:</span></p>
+            <table class="w-full text-sm">
+              <tr>
+                <td>Hello</td>
+                <td>Selamat (se-la-mat)</td>
+              </tr>
+              <tr>
+                <td>Thank you</td>
+                <td>Terima kasih (te-ri-ma ka-seh)</td>
+              </tr>
+              <tr>
+                <td>Yes/No</td>
+                <td>Ya/Tidak (ya/ti-dak)</td>
+              </tr>
+              <tr>
+                <td>Excuse me</td>
+                <td>Maaf (ma-af)</td>
+              </tr>
+              <tr>
+                <td>How much?</td>
+                <td>Berapa harga? (be-ra-pa har-ga)</td>
+              </tr>
+              <tr>
+                <td>Delicious</td>
+                <td>Sedap (se-dap)</td>
+              </tr>
+            </table>
+          </div>
+          <p class="mt-3 text-sm text-gray-600">English is widely spoken in Kuala Lumpur, especially in tourist areas, hotels, and restaurants. Most signs are in both Malay and English.</p>
+        </div>
+      </div>
+      
+      <!-- Cultural Tips Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="culture-tips-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
               <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <h3 class="font-bold text-lg">Cultural Tips</h3>
+              <h3 class="font-bold text-lg text-indigo-700">Cultural Tips</h3>
             </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Dress modestly at religious sites (covered shoulders/knees)</li>
-              <li>• Remove shoes when entering mosques, temples, and homes</li>
-              <li>• Use right hand for eating, giving, and receiving</li>
-              <li>• Pointing with index finger is impolite; use thumb instead</li>
-              <li>• Respect Muslim prayer times (particularly on Fridays)</li>
-              <li>• Ask permission before photographing locals</li>
-            </ul>
-            <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
-              <p class="font-bold">Important Note</p>
-              <p>Malaysia is a multicultural society with Malay, Chinese, and Indian influences. Religious tolerance is valued, and the country blends Islamic traditions with modern attitudes.</p>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
+        <div id="culture-tips-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-1">
+            <li>• Dress modestly at religious sites (covered shoulders/knees)</li>
+            <li>• Remove shoes when entering mosques, temples, and homes</li>
+            <li>• Use right hand for eating, giving, and receiving</li>
+            <li>• Pointing with index finger is impolite; use thumb instead</li>
+            <li>• Respect Muslim prayer times (particularly on Fridays)</li>
+            <li>• Ask permission before photographing locals</li>
+          </ul>
+          <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
+            <p class="font-bold">Important Note</p>
+            <p>Malaysia is a multicultural society with Malay, Chinese, and Indian influences. Religious tolerance is valued, and the country blends Islamic traditions with modern attitudes.</p>
+          </div>
+        </div>
+      </div>
 
-        <!-- World Clock Widget (Full Width) - Ordered by UTC -->
-<div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
-  <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-    <div class="bg-gray-50 p-4">
-      <div class="flex items-center">
-        <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <h3 class="font-bold text-lg">Trip World Clock</h3>
+      <!-- World Clock Widget (Full Width) - Collapsible -->
+      <div class="col-span-1 md:col-span-3 lg:col-span-3">
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+          <div id="world-clock-content" class="p-5 card-content">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <!-- Barcelona Time (UTC+2) -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                <div class="text-sm text-gray-600">Barcelona</div>
+                <div class="text-xs text-gray-500">(UTC+2)</div>
+              </div>
+              
+              <!-- Maldives Time (UTC+5) -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                <div class="text-sm text-gray-600">Maldives</div>
+                <div class="text-xs text-gray-500">(UTC+5)</div>
+              </div>
+              
+              <!-- Southeast Asia Time (UTC+8) -->
+              <div class="bg-red-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+                <div class="text-sm text-gray-600">Singapore/KL</div>
+                <div class="text-xs text-gray-500">(UTC+8)</div>
+              </div>
+              
+              <!-- East Asia Time (UTC+9) -->
+              <div class="bg-gray-100 p-3 rounded-lg text-center">
+                <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+                <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+                <div class="text-xs text-gray-500">(UTC+9)</div>
+              </div>
+            </div>
+            
+            <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="p-5">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <!-- Barcelona Time (UTC+2) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-          <div class="text-sm text-gray-600">Barcelona</div>
-          <div class="text-xs text-gray-500">(UTC+2)</div>
+  </section>
+
+  <!-- Activities and Itinerary -->
+  <section id="activities" class="mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
+    
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <!-- Day 15 - Collapsible -->
+      <div class="border-b">
+        <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-15-content">
+          <h3 class="font-bold text-blue-800">Thursday, August 14, 2025 – Arrival</h3>
+          <div class="flex items-center">
+            <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 15</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
-        
-        <!-- Maldives Time (UTC+5) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-          <div class="text-sm text-gray-600">Maldives</div>
-          <div class="text-xs text-gray-500">(UTC+5)</div>
-        </div>
-        
-        <!-- Southeast Asia Time (UTC+8) -->
-        <div class="bg-red-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
-          <div class="text-sm text-gray-600">Singapore/KL</div>
-          <div class="text-xs text-gray-500">(UTC+8)</div>
-        </div>
-        
-        <!-- East Asia Time (UTC+9) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
-          <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
-          <div class="text-xs text-gray-500">(UTC+9)</div>
+        <div id="day-15-content" class="p-5 day-content">
+          <div class="flex flex-col md:flex-row gap-6 mb-4">
+            <div class="md:w-1/3">
+              <div class="bg-blue-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                <div class="text-center p-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  <p class="font-medium mt-2">Petronas Twin Towers</p>
+                  <p class="text-sm text-gray-600">Iconic skyscrapers with stunning views</p>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                <li><span class="font-medium">13:50:</span> Arrive at Kuala Lumpur International Airport (KUL)</li>
+                <li><span class="font-medium">14:00-15:00:</span> Transport to The Ritz-Carlton, Kuala Lumpur</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Pre-arranged hotel limousine service for 6 people</li>
+                  <li>45-60 minute journey depending on traffic</li>
+                </ul>
+                <li><span class="font-medium">15:30:</span> Check-in at The Ritz-Carlton, Kuala Lumpur</li>
+                <li><span class="font-medium">16:00-17:00:</span> Brief rest and hotel orientation</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Explore hotel facilities (spa, pool, fitness center)</li>
+                  <li>Butler service introduction</li>
+                </ul>
+                <li><span class="font-medium">17:30-19:30:</span> Petronas Twin Towers & KLCC Park</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Visit 86th floor Observation Deck for panoramic views</li>
+                  <li>Skybridge experience connecting the towers</li>
+                  <li>Evening stroll through KLCC Park</li>
+                </ul>
+                <li><span class="font-medium">20:00-22:00:</span> Dinner at Marini's on 57</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Luxurious Italian dining with panoramic views</li>
+                  <li>Located on the 57th floor adjacent to Petronas Towers</li>
+                  <li>Smart casual dress code</li>
+                </ul>
+              </ul>
+              <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                <p class="text-sm"><span class="font-bold">Tip:</span> The Petronas Twin Towers were the world's tallest buildings from 1998 to 2004 and remain the tallest twin towers globally. The towers' design incorporates Islamic geometric motifs, reflecting Malaysia's cultural heritage while showcasing its modern aspirations.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
-      <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+      <!-- Day 16 - Collapsible -->
+      <div class="border-b">
+        <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="day-16-content">
+          <h3 class="font-bold text-green-800 pr-3">Friday, August 15, 2025 – Cultural Exploration & Adventure</h3>
+          <div class="flex-shrink-0 flex items-center">
+            <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 16</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="day-16-content" class="p-5 day-content">
+          <div class="flex flex-col md:flex-row gap-6 mb-4">
+            <div class="md:w-1/3">
+              <div class="bg-green-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                <div class="text-center p-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p class="font-medium mt-2">Batu Caves</p>
+                  <p class="text-sm text-gray-600">Sacred Hindu temple complex</p>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                <li><span class="font-medium">07:30-09:00:</span> Breakfast at The Ritz-Carlton</li>
+                <li><span class="font-medium">09:30-12:30:</span> Batu Caves & Cultural Tour</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Climb the 272 rainbow-colored steps to the temple cave</li>
+                  <li>Marvel at the 42.7-meter golden statue of Lord Murugan</li>
+                  <li>Explore the cave temples filled with Hindu shrines</li>
+                  <li>Optional Dark Cave Conservation Site tour</li>
+                </ul>
+                <li><span class="font-medium">13:00-14:30:</span> Lunch at Old China Café</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Authentic Peranakan cuisine in historic setting</li>
+                  <li>Located in a restored 1920s guild hall</li>
+                  <li>Try their signature Nyonya dishes</li>
+                </ul>
+                <li><span class="font-medium">15:00-18:00:</span> Split Activities (choose based on preferences)</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li><strong>Shopping & Culture:</strong> Central Market, Petaling Street, Kasturi Walk</li>
+                  <li><strong>Adventure:</strong> KL Forest Eco Park Canopy Walk</li>
+                  <li><strong>Teens' Choice:</strong> Sunway Lagoon Theme Park</li>
+                </ul>
+                <li><span class="font-medium">18:30-19:30:</span> Return to hotel to freshen up</li>
+                <li><span class="font-medium">20:00-22:00:</span> Jalan Alor Night Food Street</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Famous open-air food street with countless stalls</li>
+                  <li>Try local specialties: satay, char kway teow, durian</li>
+                  <li>Experience the vibrant atmosphere of Malaysian night markets</li>
+                </ul>
+              </ul>
+              <div class="mt-4 bg-green-50 p-3 rounded-lg">
+                <p class="text-sm"><span class="font-bold">Highlight:</span> The 272 steps leading to Batu Caves were painted in a rainbow of vibrant colors in 2018, transforming this spiritual site into one of Malaysia's most Instagram-worthy locations. The stairs lead to Cathedral Cave, a vast cavern housing numerous Hindu shrines beneath a 100-meter high ceiling.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Day 17 - Collapsible -->
+      <div>
+        <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-17-content">
+          <h3 class="font-bold text-orange-800 pr-3">Saturday, August 16, 2025 – Departure to Maldives</h3>
+          <div class="flex-shrink-0 flex items-center">
+            <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 17</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="day-17-content" class="p-5 day-content">
+          <div class="flex flex-col md:flex-row gap-6 mb-4">
+            <div class="md:w-1/3">
+              <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
+                <div class="text-center p-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  <p class="font-medium mt-2">Journey to Paradise</p>
+                  <p class="text-sm text-gray-600">Early departure to the Maldives</p>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                <li><span class="font-medium">06:00-07:00:</span> Early breakfast at The Ritz-Carlton</li>
+                <li><span class="font-medium">07:30:</span> Check-out from hotel</li>
+                <li><span class="font-medium">08:10:</span> Depart for Kuala Lumpur International Airport</li>
+                <ul class="list-disc pl-5 ml-4 text-gray-600">
+                  <li>Private van transfer arranged by hotel</li>
+                  <li>45-60 minute journey allowing for morning traffic</li>
+                </ul>
+                <li><span class="font-medium">10:10-11:25:</span> Flight MH485 to Malé, Maldives</li>
+              </ul>
+              <div class="mt-4 bg-orange-50 p-3 rounded-lg">
+                <p class="text-sm"><span class="font-bold">Next Stop:</span> The Maldives! We'll depart Kuala Lumpur's urban energy for the tranquil paradise of the Maldives. The flight takes approximately 4 hours and 15 minutes, after which we'll take a scenic seaplane transfer to our overwater villa resort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Culture & Fun Facts -->
+  <section id="culture" class="mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Malaysia Country Profile Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="country-profile-content">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="mr-2">🇲🇾</span>
+              <h3 class="font-bold text-lg text-red-700">Malaysia Country Profile</h3>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="country-profile-content" class="p-5 card-content">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🏛️ Official Name</p>
+              <p>Malaysia (Malay: Malaysia)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🏙️ Capital City</p>
+              <p>Kuala Lumpur (population: 1.8 million; metro: 7.2 million)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">👥 Population</p>
+              <p>33.6 million (2025 est.)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🗺️ Area</p>
+              <p>330,803 km² (127,724 sq mi)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🗣️ Official Language</p>
+              <p>Malay (Bahasa Malaysia)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">💵 Currency</p>
+              <p>Malaysian Ringgit (RM/MYR)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🏛️ Government</p>
+              <p>Federal parliamentary constitutional elective monarchy</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">👑 Head of State</p>
+              <p>Yang di-Pertuan Agong (elected monarch)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">⛪ Religion</p>
+              <p>Islam (official), Buddhism, Christianity, Hinduism</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">💰 GDP per Capita</p>
+              <p>$30,800 (vs. Spain: $44,100)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🕒 Time Zone</p>
+              <p>MST (UTC+8)</p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <p class="font-bold text-sm text-gray-700">🚗 Driving Side</p>
+              <p>Left</p>
+            </div>
+          </div>
+          <div class="bg-red-50 p-3 rounded text-sm mb-4">
+            <p class="font-bold mb-1">🇲🇾 vs 🇪🇸 Comparison with Spain</p>
+            <ul class="list-disc pl-4 text-gray-700 space-y-1">
+              <li>Area: 35% smaller than Spain (505,990 km²)</li>
+              <li>Population: Slightly smaller than Spain</li>
+              <li>Population density: Similar to Spain</li>
+              <li>GDP per capita: 30% lower than Spain</li>
+              <li>Climate: Tropical vs. Spain's Mediterranean</li>
+            </ul>
+          </div>
+          <p class="text-sm text-gray-600">Malaysia is divided into two regions: Peninsular Malaysia and East Malaysia (on Borneo island), separated by the South China Sea. The country is known for its cultural diversity, with significant Malay, Chinese, and Indian populations contributing to its rich heritage.</p>
+        </div>
+
 </div>
-        
-      </div>
-    </section>
-
-    <!-- Activities and Itinerary -->
-    <section id="activities" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
       
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <!-- Day 1 -->
-        <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
-            <h3 class="font-bold">Thursday, August 14, 2025 – Arrival</h3>
-            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
-          </div>
-          <div class="p-5">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <!-- Day 1 Icon -->
-                <div class="bg-blue-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                    <p class="font-medium mt-2">Petronas Twin Towers</p>
-                    <p class="text-sm text-gray-600">Iconic skyscrapers with stunning views</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">13:50:</span> Arrive at Kuala Lumpur International Airport (KUL)</li>
-                  <li><span class="font-medium">14:00-15:00:</span> Transport to The Ritz-Carlton, Kuala Lumpur</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Pre-arranged hotel limousine service for 6 people</li>
-                    <li>45-60 minute journey depending on traffic</li>
-                  </ul>
-                  <li><span class="font-medium">15:30:</span> Check-in at The Ritz-Carlton, Kuala Lumpur</li>
-                  <li><span class="font-medium">16:00-17:00:</span> Brief rest and hotel orientation</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Explore hotel facilities (spa, pool, fitness center)</li>
-                    <li>Butler service introduction</li>
-                  </ul>
-                  <li><span class="font-medium">17:30-19:30:</span> Petronas Twin Towers & KLCC Park</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Visit 86th floor Observation Deck for panoramic views</li>
-                    <li>Skybridge experience connecting the towers</li>
-                    <li>Evening stroll through KLCC Park</li>
-                  </ul>
-                  <li><span class="font-medium">20:00-22:00:</span> Dinner at Marini's on 57</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Luxurious Italian dining with panoramic views</li>
-                    <li>Located on the 57th floor adjacent to Petronas Towers</li>
-                    <li>Smart casual dress code</li>
-                  </ul>
-                </ul>
-                <div class="mt-4 bg-blue-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Tip:</span> The Petronas Twin Towers were the world's tallest buildings from 1998 to 2004 and remain the tallest twin towers globally. The towers' design incorporates Islamic geometric motifs, reflecting Malaysia's cultural heritage while showcasing its modern aspirations.</p>
-                </div>
-              </div>
+      <!-- History & Culture Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="history-culture-content">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="mr-2">📚</span>
+              <h3 class="font-bold text-lg text-blue-700">History & Culture</h3>
             </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Day 2 -->
-        <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
-            <h3 class="font-bold">Friday, August 15, 2025 – Cultural Exploration & Adventure</h3>
-            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 2</span>
-          </div>
-          <div class="p-5">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <!-- Day 2 Icon -->
-                <div class="bg-green-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <p class="font-medium mt-2">Batu Caves</p>
-                    <p class="text-sm text-gray-600">Sacred Hindu temple complex</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">07:30-09:00:</span> Breakfast at The Ritz-Carlton</li>
-                  <li><span class="font-medium">09:30-12:30:</span> Batu Caves & Cultural Tour</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Climb the 272 rainbow-colored steps to the temple cave</li>
-                    <li>Marvel at the 42.7-meter golden statue of Lord Murugan</li>
-                    <li>Explore the cave temples filled with Hindu shrines</li>
-                    <li>Optional Dark Cave Conservation Site tour</li>
-                  </ul>
-                  <li><span class="font-medium">13:00-14:30:</span> Lunch at Old China Café</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Authentic Peranakan cuisine in historic setting</li>
-                    <li>Located in a restored 1920s guild hall</li>
-                    <li>Try their signature Nyonya dishes</li>
-                  </ul>
-                  <li><span class="font-medium">15:00-18:00:</span> Split Activities (choose based on preferences)</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li><strong>Shopping & Culture:</strong> Central Market, Petaling Street, Kasturi Walk</li>
-                    <li><strong>Adventure:</strong> KL Forest Eco Park Canopy Walk</li>
-                    <li><strong>Teens' Choice:</strong> Sunway Lagoon Theme Park</li>
-                  </ul>
-                  <li><span class="font-medium">18:30-19:30:</span> Return to hotel to freshen up</li>
-                  <li><span class="font-medium">20:00-22:00:</span> Jalan Alor Night Food Street</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Famous open-air food street with countless stalls</li>
-                    <li>Try local specialties: satay, char kway teow, durian</li>
-                    <li>Experience the vibrant atmosphere of Malaysian night markets</li>
-                  </ul>
-                </ul>
-                <div class="mt-4 bg-green-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Highlight:</span> The 272 steps leading to Batu Caves were painted in a rainbow of vibrant colors in 2018, transforming this spiritual site into one of Malaysia's most Instagram-worthy locations. The stairs lead to Cathedral Cave, a vast cavern housing numerous Hindu shrines beneath a 100-meter high ceiling.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Day 3 -->
-        <div>
-         <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
-            <h3 class="font-bold">Saturday, August 16, 2025 – Departure to Maldives</h3>
-            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 3</span>
-         </div>
-          <div class="p-5">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                    </svg>
-                    <p class="font-medium mt-2">Journey to Paradise</p>
-                    <p class="text-sm text-gray-600">Early departure to the Maldives</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">06:00-07:00:</span> Early breakfast at The Ritz-Carlton</li>
-                  <li><span class="font-medium">07:30:</span> Check-out from hotel</li>
-                  <li><span class="font-medium">08:10:</span> Depart for Kuala Lumpur International Airport</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Private van transfer arranged by hotel</li>
-                    <li>45-60 minute journey allowing for morning traffic</li>
-                  </ul>
-                  <li><span class="font-medium">10:10-11:25:</span> Flight MH485 to Malé, Maldives</li>
-                </ul>
-                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Next Stop:</span> The Maldives! We'll depart Kuala Lumpur's urban energy for the tranquil paradise of the Maldives. The flight takes approximately 4 hours and 15 minutes, after which we'll take a scenic seaplane transfer to our overwater villa resort.</p>
-                </div>
-              </div>
-            </div>
+        <div id="history-culture-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-3">
+            <li><span class="font-medium">🏯 Melting Pot:</span> Malaysia's unique identity emerges from centuries of Malay, Chinese, Indian, and European influences.</li>
+            <li><span class="font-medium">🏛️ Colonial Past:</span> Portuguese, Dutch, and British colonization shaped the country before independence in 1957.</li>
+            <li><span class="font-medium">🇲🇾 Federation:</span> Malaysia was formed in 1963 when Malaya united with Singapore (which later separated), Sabah, and Sarawak.</li>
+            <li><span class="font-medium">🕌 Multicultural Society:</span> While Islam is the official religion, freedom of worship is protected with significant Buddhist, Hindu, and Christian populations.</li>
+            <li><span class="font-medium">🎨 Arts:</span> Traditional crafts include batik (fabric art), pewter crafting, and kite-making (wau).</li>
+            <li><span class="font-medium">🍲 Cuisine:</span> Malaysian food reflects its cultural diversity, combining Malay, Chinese, and Indian culinary traditions.</li>
+            <li><span class="font-medium">🏙️ Architecture:</span> Features a blend of Islamic, Chinese, colonial, and ultramodern influences.</li>
+          </ul>
+          <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
+            <p class="font-bold mb-1">🧩 Cultural Diversity</p>
+            <ul class="text-gray-700 space-y-1">
+              <li>• <strong>Malay:</strong> Indigenous culture, traditional music, Islamic influences</li>
+              <li>• <strong>Chinese:</strong> Significant community since 15th century, maintained cultural traditions</li>
+              <li>• <strong>Indian:</strong> Primarily Tamil heritage, Hindu festivals, distinctive cuisine</li>
+              <li>• <strong>Indigenous:</strong> Orang Asli and other native communities with unique traditions</li>
+              <li>• <strong>Peranakan:</strong> Unique blend of Chinese and Malay cultures with distinctive food and architecture</li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Culture & Fun Facts -->
-    <section id="culture" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Malaysia Country Info Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-red-50 p-4 mb-4">
+      <!-- Fun Facts Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-amber-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag">
-              <h3 class="font-bold text-lg">Malaysia Country Profile</h3>
+              <span class="mr-2">💡</span>
+              <h3 class="font-bold text-lg text-amber-700">Did You Know?</h3>
             </div>
-          </div>
-          <div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Name</p>
-                <p>Malaysia (Malay: Malaysia)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Capital City</p>
-                <p>Kuala Lumpur (population: 1.8 million; metro: 7.2 million)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Population</p>
-                <p>33.6 million (2025 est.)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Area</p>
-                <p>330,803 km² (127,724 sq mi)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Language</p>
-                <p>Malay (Bahasa Malaysia)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Currency</p>
-                <p>Malaysian Ringgit (RM/MYR)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Government</p>
-                <p>Federal parliamentary constitutional elective monarchy</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Head of State</p>
-                <p>Yang di-Pertuan Agong (elected monarch)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Religion</p>
-                <p>Islam (official), Buddhism, Christianity, Hinduism</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">GDP per Capita</p>
-                <p>$30,800 (vs. Spain: $44,100)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Time Zone</p>
-                <p>MST (UTC+8)</p>
-              </div>
-              <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Driving Side</p>
-                <p>Left</p>
-              </div>
-            </div>
-            <div class="bg-red-50 p-3 rounded text-sm mb-4">
-              <p class="font-bold mb-1">Comparison with Spain</p>
-              <ul class="list-disc pl-4 text-gray-700 space-y-1">
-                <li>Area: 35% smaller than Spain (505,990 km²)</li>
-                <li>Population: Slightly smaller than Spain</li>
-                <li>Population density: Similar to Spain</li>
-                <li>GDP per capita: 30% lower than Spain</li>
-                <li>Climate: Tropical vs. Spain's Mediterranean</li>
-              </ul>
-            </div>
-            <p class="text-sm text-gray-600">Malaysia is divided into two regions: Peninsular Malaysia and East Malaysia (on Borneo island), separated by the South China Sea. The country is known for its cultural diversity, with significant Malay, Chinese, and Indian populations contributing to its rich heritage.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- History & Culture Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-rose-50 p-4 mb-4">
+        <div id="fun-facts-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-3">
+            <li>🌳 Malaysia is home to one of the world's oldest rainforests, estimated to be over 130 million years old.</li>
+            <li>🏢 The Petronas Twin Towers were the world's tallest buildings from 1998 to 2004 (452 meters).</li>
+            <li>🦁 Malaysia is one of the 17 megadiverse countries, harboring an estimated 20% of the world's animal species.</li>
+            <li>🌸 The Rafflesia, the world's largest flower (up to 1 meter in diameter), is native to Malaysian rainforests.</li>
+            <li>🌴 Malaysia is the second-largest producer of palm oil globally, after Indonesia.</li>
+            <li>🏙️ Kuala Lumpur means "muddy confluence" in Malay, referring to the meeting of the Gombak and Klang rivers.</li>
+            <li>👑 Malaysia's monarchy is unique—nine hereditary state rulers take turns serving as king (Yang di-Pertuan Agong) for five-year terms.</li>
+            <li>🇲🇾 The Malaysian flag is called "Jalur Gemilang" (Stripes of Glory).</li>
+            <li>🛕 Penang's Kek Lok Si is the largest Buddhist temple in Southeast Asia.</li>
+            <li>⛰️ Mount Kinabalu in Malaysian Borneo is the highest peak in the country at 4,095 meters.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- What to Buy Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-pink-50 p-4 cursor-pointer card-header" data-target="shopping-content">
+          <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              <h3 class="font-bold text-lg">History & Culture</h3>
+              <span class="mr-2">🛍️</span>
+              <h3 class="font-bold text-lg text-pink-700">What to Buy</h3>
             </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Melting Pot:</span> Malaysia's unique identity emerges from centuries of Malay, Chinese, Indian, and European influences.</li>
-              <li><span class="font-medium">Colonial Past:</span> Portuguese, Dutch, and British colonization shaped the country before independence in 1957.</li>
-              <li><span class="font-medium">Federation:</span> Malaysia was formed in 1963 when Malaya united with Singapore (which later separated), Sabah, and Sarawak.</li>
-              <li><span class="font-medium">Multicultural Society:</span> While Islam is the official religion, freedom of worship is protected with significant Buddhist, Hindu, and Christian populations.</li>
-              <li><span class="font-medium">Arts:</span> Traditional crafts include batik (fabric art), pewter crafting, and kite-making (wau).</li>
-              <li><span class="font-medium">Cuisine:</span> Malaysian food reflects its cultural diversity, combining Malay, Chinese, and Indian culinary traditions.</li>
-              <li><span class="font-medium">Architecture:</span> Features a blend of Islamic, Chinese, colonial, and ultramodern influences.</li>
-            </ul>
-            <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Cultural Diversity</p>
-              <ul class="text-gray-700 space-y-1">
-                <li>• <strong>Malay:</strong> Indigenous culture, traditional music (gamelan), Islamic influences</li>
-                <li>• <strong>Chinese:</strong> Significant community since 15th century, maintained cultural traditions</li>
-                <li>• <strong>Indian:</strong> Primarily Tamil heritage, Hindu festivals, distinctive cuisine</li>
-                <li>• <strong>Indigenous:</strong> Orang Asli and other native communities with unique traditions</li>
-                <li>• <strong>Peranakan:</strong> Unique blend of Chinese and Malay cultures with distinctive food and architecture</li>
-              </ul>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
-        
-        <!-- Fun Facts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-amber-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Did You Know?</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li>Malaysia is home to the world's oldest rainforest, Taman Negara, estimated to be over 130 million years old.</li>
-              <li>The Petronas Twin Towers were the world's tallest buildings from 1998 to 2004 (452 meters).</li>
-              <li>Malaysia is one of the 17 megadiverse countries, harboring an estimated 20% of the world's animal species.</li>
-              <li>The Rafflesia, the world's largest flower (up to 1 meter in diameter), is native to Malaysian rainforests.</li>
-              <li>Malaysia is the second-largest producer of palm oil globally, after Indonesia.</li>
-              <li>Kuala Lumpur means "muddy confluence" in Malay, referring to the meeting of the Gombak and Klang rivers.</li>
-              <li>Malaysia's monarchy is unique—nine hereditary state rulers take turns serving as king (Yang di-Pertuan Agong) for five-year terms.</li>
-              <li>The Malaysian flag is called "Jalur Gemilang" (Stripes of Glory).</li>
-              <li>Penang's Kek Lok Si is the largest Buddhist temple in Southeast Asia.</li>
-              <li>Mount Kinabalu in Malaysian Borneo is the highest peak in the country at 4,095 meters.</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- What to Buy Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-pink-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-pink-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">What to Buy</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Batik Fabric:</span> Colorful handcrafted textiles with beautiful patterns and designs.</li>
-              <li><span class="font-medium">Pewter Products:</span> Malaysia (particularly Royal Selangor) is famous for high-quality pewter craftsmanship.</li>
-              <li><span class="font-medium">Handicrafts:</span> Woven items, wood carvings, and songket (gold-threaded fabric).</li>
-              <li><span class="font-medium">Spices & Tea:</span> Exotic spices, specialty teas, and local coffee varieties.</li>
-              <li><span class="font-medium">Tropical Fruits:</span> Packaged durian products, dried fruits, and fruit preserves.</li>
-              <li><span class="font-medium">Fashion:</span> Modern Malaysian designer clothing that incorporates traditional elements.</li>
-              <li><span class="font-medium">Chocolate:</span> Malaysia produces excellent cocoa, with unique local flavors like durian chocolate.</li>
-            </ul>
-            <p class="mt-3 text-sm">Best shopping areas: Bukit Bintang district (near our hotel), Central Market for handicrafts, Suria KLCC mall at Petronas Towers, and Pavilion KL shopping mall.</p>
-            <div class="mt-3 bg-pink-50 p-2 rounded text-sm">
-              <p class="font-bold">Shopping Tips</p>
-              <p>Feel free to bargain at markets like Central Market and Petaling Street (politely), but fixed prices are the norm in malls and department stores. Look for the Malaysian handicraft logo for authentic local crafts.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Health & Safety Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-teal-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Health & Safety</h3>
-            </div>
-          </div>
-          <div>
-            <ul class="text-gray-700 space-y-2">
-              <li><span class="font-medium">Tap Water:</span> Not recommended for drinking; stick to bottled water.</li>
-              <li><span class="font-medium">Healthcare:</span> Excellent medical facilities in Kuala Lumpur, especially private hospitals.</li>
-              <li><span class="font-medium">Safety:</span> Kuala Lumpur is generally safe for tourists; take normal precautions against pickpocketing.</li>
-              <li><span class="font-medium">Weather:</span> Be prepared for sudden tropical downpours and high humidity.</li>
-              <li><span class="font-medium">Emergency Numbers:</span></li>
-              <ul class="list-disc pl-5 ml-4 text-gray-600">
-                <li>Police: 999</li>
-                <li>Ambulance/Fire: 999</li>
-                <li>Tourist Police: 03-2149-6590</li>
-              </ul>
-            </ul>
-            <div class="mt-3 bg-teal-50 p-2 rounded text-sm">
-              <p class="font-bold">Travel Insurance</p>
-              <p>Our family policy (#TRV-2025-61792) covers medical emergencies and evacuation. Keep digital and physical copies of insurance details.</p>
-            </div>
-            <div class="mt-3">
-              <p class="font-medium text-sm mb-1">Recommended Hospitals with English Services:</p>
-              <ul class="list-disc pl-5 text-sm text-gray-700">
-                <li>Gleneagles Kuala Lumpur (5 minutes from our hotel)</li>
-                <li>Prince Court Medical Centre</li>
-                <li>Pantai Hospital Kuala Lumpur</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Tech & Connectivity Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-cyan-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Tech & Connectivity</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <ul class="text-gray-700 space-y-2">
-              <li><span class="font-medium">Internet Speed:</span> Good 4G/5G coverage throughout Kuala Lumpur.</li>
-              <li><span class="font-medium">Wi-Fi Access:</span> Free Wi-Fi available in our hotel, most cafes, shopping malls, and attractions.</li>
-              <li><span class="font-medium">Power Outlets:</span> UK-style three-pin rectangular plugs (Type G), 240V.</li>
-              <li><span class="font-medium">Mobile Data:</span> Our international roaming plan should work well, or tourist SIM cards available at the airport.</li>
-              <li><span class="font-medium">Essential Apps:</span></li>
-              <ul class="list-disc pl-5 ml-4 text-gray-600">
-                <li>Grab: Malaysia's ride-hailing app (like Uber)</li>
-                <li>Google Maps: Works well in Kuala Lumpur</li>
-                <li>Google Translate: Download Malaysian language pack</li>
-                <li>Agoda/Booking.com: For last-minute attraction bookings</li>
-                <li>XE Currency: For currency conversion on the go</li>
-              </ul>
-            </ul>
-            <div class="mt-3 bg-cyan-50 p-2 rounded text-sm">
-              <p class="font-bold">Mobile SIM Options</p>
-              <p>Popular tourist SIM cards include Maxis Hotlink, Digi, and Celcom, available at KLIA airport. Most offer packages with unlimited data for 3-5 days (RM30-50, approximately €6-10).</p>
-            </div>
+        <div id="shopping-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-3">
+            <li><span class="font-medium">🧵 Batik Fabric:</span> Colorful handcrafted textiles with beautiful patterns and designs.</li>
+            <li><span class="font-medium">🍵 Pewter Products:</span> Malaysia (particularly Royal Selangor) is famous for high-quality pewter craftsmanship.</li>
+            <li><span class="font-medium">🧶 Handicrafts:</span> Woven items, wood carvings, and songket (gold-threaded fabric).</li>
+            <li><span class="font-medium">🌶️ Spices & Tea:</span> Exotic spices, specialty teas, and local coffee varieties.</li>
+            <li><span class="font-medium">🍍 Tropical Fruits:</span> Packaged durian products, dried fruits, and fruit preserves.</li>
+            <li><span class="font-medium">👗 Fashion:</span> Modern Malaysian designer clothing that incorporates traditional elements.</li>
+            <li><span class="font-medium">🍫 Chocolate:</span> Malaysia produces excellent cocoa, with unique local flavors like durian chocolate.</li>
+          </ul>
+          <p class="mt-3 text-sm">Best shopping areas: Bukit Bintang district (near our hotel), Central Market for handicrafts, Suria KLCC mall at Petronas Towers, and Pavilion KL shopping mall.</p>
+          <div class="mt-3 bg-pink-50 p-2 rounded text-sm">
+            <p class="font-bold">💸 Shopping Tips</p>
+            <p>Feel free to bargain at markets like Central Market and Petaling Street (politely), but fixed prices are the norm in malls and department stores. Look for the Malaysian handicraft logo for authentic local crafts.</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Photo Gallery -->
-    <section id="photos" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Kuala Lumpur Photo Gallery</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Image 1: Petronas Towers - Updated to match index page -->
+      <!-- Health & Safety Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-teal-50 p-4 cursor-pointer card-header" data-target="health-safety-content">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="mr-2">🛡️</span>
+              <h3 class="font-bold text-lg text-teal-700">Health & Safety</h3>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="health-safety-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-2">
+            <li><span class="font-medium">🚰 Tap Water:</span> Not recommended for drinking; stick to bottled water.</li>
+            <li><span class="font-medium">🏥 Healthcare:</span> Excellent medical facilities in Kuala Lumpur, especially private hospitals.</li>
+            <li><span class="font-medium">🔒 Safety:</span> Kuala Lumpur is generally safe for tourists; take normal precautions against pickpocketing.</li>
+            <li><span class="font-medium">☔ Weather:</span> Be prepared for sudden tropical downpours and high humidity.</li>
+            <li><span class="font-medium">☎️ Emergency Numbers:</span></li>
+            <ul class="list-disc pl-5 ml-4 text-gray-600">
+              <li>Police: 999</li>
+              <li>Ambulance/Fire: 999</li>
+              <li>Tourist Police: 03-2149-6590</li>
+            </ul>
+          </ul>
+          <div class="mt-3 bg-teal-50 p-2 rounded text-sm">
+            <p class="font-bold">🏥 Travel Insurance</p>
+            <p>Our family policy (#TRV-2025-61792) covers medical emergencies and evacuation. Keep digital and physical copies of insurance details.</p>
+          </div>
+          <div class="mt-3">
+            <p class="font-medium text-sm mb-1">Recommended Hospitals with English Services:</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700">
+              <li>Gleneagles Kuala Lumpur (5 minutes from our hotel)</li>
+              <li>Prince Court Medical Centre</li>
+              <li>Pantai Hospital Kuala Lumpur</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tech & Connectivity Card - Collapsible -->
+      <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="bg-cyan-50 p-4 cursor-pointer card-header" data-target="tech-content">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="mr-2">📱</span>
+              <h3 class="font-bold text-lg text-cyan-700">Tech & Connectivity</h3>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div id="tech-content" class="p-5 card-content">
+          <ul class="text-gray-700 space-y-2">
+            <li><span class="font-medium">🌐 Internet Speed:</span> Good 4G/5G coverage throughout Kuala Lumpur.</li>
+            <li><span class="font-medium">📶 Wi-Fi Access:</span> Free Wi-Fi available in our hotel, most cafes, shopping malls, and attractions.</li>
+            <li><span class="font-medium">🔌 Power Outlets:</span> UK-style three-pin rectangular plugs (Type G), 240V.</li>
+            <li><span class="font-medium">📱 Mobile Data:</span> Our international roaming plan should work well, or tourist SIM cards available at the airport.</li>
+            <li><span class="font-medium">📲 Essential Apps:</span></li>
+            <ul class="list-disc pl-5 ml-4 text-gray-600">
+              <li>Grab: Malaysia's ride-hailing app (like Uber)</li>
+              <li>Google Maps: Works well in Kuala Lumpur</li>
+              <li>Google Translate: Download Malaysian language pack</li>
+              <li>Agoda/Booking.com: For last-minute attraction bookings</li>
+              <li>XE Currency: For currency conversion on the go</li>
+            </ul>
+          </ul>
+          <div class="mt-3 bg-cyan-50 p-2 rounded text-sm">
+            <p class="font-bold">📱 Mobile SIM Options</p>
+            <p>Popular tourist SIM cards include Maxis Hotlink, Digi, and Celcom, available at KLIA airport. Most offer packages with unlimited data for 3-5 days (RM30-50, approximately €6-10).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery with Wikipedia Links -->
+  <section id="photos" class="mb-12">
+    <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Kuala Lumpur Photo Gallery</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Image 1: Petronas Towers with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/Petronas_Towers" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
           <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&auto=format" alt="Petronas Twin Towers" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">Petronas Twin Towers</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
-        
-        <!-- Image 2: Batu Caves -->
+      </a>
+      
+      <!-- Image 2: Batu Caves with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/Batu_Caves" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
           <img src="https://cilisos.my/wp-content/uploads/2023/02/Batu_Caves_stairs_2022-05-scaled.jpg" alt="Batu Caves" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">Batu Caves</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
-        
-        <!-- Image 3: Malaysian Food -->
+      </a>
+      
+      <!-- Image 3: Malaysian Food with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/Malaysian_cuisine" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
           <img src="https://foodyoushouldtry.com/wp-content/uploads/2017/02/malaysian-food.jpg" alt="Malaysian Food" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">Malaysian Cuisine</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
+      </a>
 
-        <!-- Image 4: Jalan Alor -->
+      <!-- Image 4: Jalan Alor with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/Jalan_Alor" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
           <img src="https://static.vecteezy.com/system/resources/previews/024/669/895/large_2x/jalan-alor-food-street-in-kuala-lumpur-malaysia-was-once-known-as-a-red-light-district-and-remnants-of-those-activities-still-exist-the-stalls-are-parked-all-along-the-street-free-photo.jpg" alt="Jalan Alor Night Market" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">Jalan Alor Night Market</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
+      </a>
 
-        <!-- Image 5: KL Skyline -->
+      <!-- Image 5: KL Skyline with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/Kuala_Lumpur" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
           <img src="https://velvetescape.com/wp-content/uploads/2018/09/IMG_3823-1280x920.jpg" alt="Kuala Lumpur Skyline" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">Kuala Lumpur Skyline</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
+      </a>
 
-        <!-- Image 6: Ritz Carlton - Fixed URL by removing the extra 'h' -->
+      <!-- Image 6: Ritz Carlton with Wikipedia Link -->
+      <a href="https://en.wikipedia.org/wiki/The_Ritz-Carlton" target="_blank" class="block">
         <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://www.travoh.com/wp-content/uploads/2021/12/001-The-Ritz-Carlton-Kuala-Lumpur-Hotel-Kuala-Lumpur-Malaysia-Hotel-Exterior.jpg" alt="The Ritz-Carlton Kuala Lumpur">
+          <img src="https://www.travoh.com/wp-content/uploads/2021/12/001-The-Ritz-Carlton-Kuala-Lumpur-Hotel-Kuala-Lumpur-Malaysia-Hotel-Exterior.jpg" alt="The Ritz-Carlton Kuala Lumpur" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           <div class="absolute bottom-3 left-3 text-white">
             <p class="font-medium">The Ritz-Carlton Kuala Lumpur</p>
+            <p class="text-xs">Click for Wikipedia 📚</p>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <!-- Call to Action -->
-    <section class="text-center mb-8">
-      <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-        Return to Main Itinerary
       </a>
-    </section>
-  </div>
-
-  <footer class="brand-bg-red text-white py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
-      <p class="mb-4">July 30 - August 21, 2025</p>
-      <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
     </div>
-  </footer>
+  </section>
+  
+  <!-- Call to Action -->
+  <section class="text-center mb-8">
+    <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+      Return to Main Itinerary
+    </a>
+  </section>
+</div>
+
+<footer class="brand-bg-red text-white py-8">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+    <p class="mb-4">July 30 - August 21, 2025</p>
+    <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
+  </div>
+</footer>
 
 <script>
 // Combined script with proper organization and fixed issues
@@ -1083,22 +1266,122 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
     });
   }
-  
-  // 2. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 3. Desktop dropdown functionality - FIXED
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // 4. Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
+        
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // 5. Collapsible cards in Essential Information
+  document.querySelectorAll('.card-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg:last-child');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 6. Collapsible days in Itinerary
+  document.querySelectorAll('.day-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 7. World clocks functionality
+  updateWorldClocks();
+  setInterval(updateWorldClocks, 60000);
+  
+  // 8. Desktop dropdown functionality
   const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
   const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
   const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
@@ -1128,7 +1411,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 4. Highlight current page in destinations submenus
+  // 9. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Highlight current page in destinations submenus
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   // For mobile submenu
@@ -1151,7 +1447,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 5. Dynamic page title based on scroll position
+  // 11. Dynamic page title based on scroll position
   const pageTitle = document.querySelector('.hero-content h1')?.textContent;
   const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
   
@@ -1174,14 +1470,64 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleScroll);
   }
   
-  // 6. World clocks functionality
-  updateWorldClocks();
-  
-  // Update every minute
-  setInterval(updateWorldClocks, 60000);
+  // 12. Tips dropdown functionality
+  const desktopTipsButton = document.getElementById('desktop-tips-button');
+  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+  if (desktopTipsButton && desktopTipsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopTipsButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopTipsMenu.classList.toggle('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere (add to existing document click handler)
+    document.addEventListener('click', function() {
+      desktopTipsMenu.classList.remove('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopTipsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // 13. Mobile Tips submenu toggle
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.addEventListener('click', function() {
+      tipsSubmenu.classList.toggle('hidden');
+      if (tipsDropdownArrow) {
+        tipsDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+
+  // Add click handlers for Tips submenu links
+  if (tipsSubmenu) {
+    const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+    tipsSubmenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        tipsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
 });
 
-// World clocks function - moved outside the DOMContentLoaded to prevent duplication issues
+// World clocks function
 function updateWorldClocks() {
   const now = new Date();
   
@@ -1227,4 +1573,4 @@ function updateWorldClocks() {
 }
 </script>
 </body>
-</html>
+</html>        
