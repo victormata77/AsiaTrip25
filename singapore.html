@@ -6,335 +6,424 @@
   <title>MATA'S ASIAN TOUR 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
-  <style>
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-    .hero-section {
-      background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .photo-card {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      transition: transform 0.3s ease;
-    }
-    .photo-card:hover {
-      transform: scale(1.03);
-    }
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    /* ===== NAVIGATION STYLES ===== */
-    /* Desktop dropdown menu */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;  /* Position directly below the button */
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;  /* Initially hidden */
-    }
-    
-    #desktop-destinations-menu.visible {
-      display: block;
-    }
-    
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    
-    .relative {
-      position: relative;
-    }
-    
-    /* Dropdown button styling */
-    #desktop-dropdown-button {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s;
-      height: 40px;
-    }
-    
-    #desktop-dropdown-button:hover {
-      background-color: #f9fafb;
-    }
-    
-    /* ===== MENU ALIGNMENT FIXES ===== */
-    /* Better menu alignment */
-    .md\:flex.md\:items-center.md\:space-x-6 > a,
-    .md\:flex.md\:items-center.md\:space-x-6 > div {
-      display: flex;
-      align-items: center;
-      height: 40px; /* Fixed height for all menu items */
-    }
-    
-    /* Make sure all top-level items are aligned */
-    .md\:flex.md\:items-center.md\:space-x-6 {
-      min-height: 40px;
-    }
-    
-    /* ===== DYNAMIC TITLE STYLES ===== */
-    /* Styles for the dynamic page title */
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-    
-    /* ===== PHOTO GALLERY STYLES ===== */
-    .photo-card {
-      transition: all 0.3s ease;
-    }
-    
-    .photo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    /* ===== FLAG ICON STYLES ===== */
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    
-    /* ===== BRAND COLOR VARIABLES ===== */
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-    /* ===== HERO SECTION STYLES ===== */
-    .hero-section {
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* ===== STICKY NAVIGATION ===== */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    
-    /* ===== INFO CARD HOVER EFFECT ===== */
-    .info-card {
-      transition: transform 0.2s;
-    }
-    
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
   
-  </style>
+<style>
+/* Root variables and brand colors */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+/* Brand styles */
+.brand-bg-red { background-color: var(--mata-red); }
+.brand-text-red { color: var(--mata-red); }
+.brand-border-red { border-color: var(--mata-red); }
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+.brand-button:hover { background-color: var(--mata-dark-red); }
+
+/* Hero section */
+.hero-section {
+  background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* Desktop dropdown menu */
+#desktop-destinations-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible { display: block; }
+#desktop-destinations-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover { background-color: #f9fafb; }
+
+/* Tips dropdown styling (matches destinations dropdown) */
+#desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+
+#desktop-tips-menu.visible {
+  display: block;
+}
+
+#desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+
+#desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* Card and content styles */
+.card-content, .day-content {
+  transition: all 0.3s ease-in-out;
+}
+.card-header, .day-header {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-header:hover, .day-header:hover { filter: brightness(0.95); }
+.card-header.active, .day-header.active {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.card-header svg.rotate-180, .day-header svg.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Day indicators - Unified and fixed */
+.day-header .bg-blue-500,
+.day-header .bg-green-500,
+.day-header .bg-yellow-500,
+.day-header .bg-purple-500,
+.day-header .bg-orange-500,
+.day-header .bg-gray-500 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Ensure text is visible on gray background */
+.day-header .bg-gray-500 {
+  color: white;
+}
+
+/* Card hover effects */
+.info-card {
+  transition: transform 0.2s;
+}
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Photo gallery */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.photo-card {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.photo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Flag icon */
+.flag-icon {
+  height: 20px;
+  width: 28px;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Text contrast improvements */
+.text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+.text-purple-700, .text-indigo-700, .text-yellow-800, 
+.text-orange-800, .text-purple-800, .text-blue-800 {
+  font-weight: 600;
+}
+
+/* Responsive styles */
+/* Day indicators oval on wider screens - FIXED with consistent sizes */
+@media (min-width: 768px) {
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 60px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: 10px;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  /* Day header layout */
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  
+  .day-header h3 {
+    flex: 1;
+    padding-right: 8px;
+  }
+  
+  /* Day indicators - UPDATED to include gray-500 */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  /* Arrow icon */
+  .day-header svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 640px) {
+  .day-header h3 {
+    width: auto; /* Changed from 100% to auto for better layout */
+    flex: 1;
+    font-size: 0.9rem;
+  }
+  
+  /* Consistent styling for all day indicators including gray */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    width: 48px;
+    height: 32px;
+    border-radius: 16px;
+  }
+  
+  /* Add more space at bottom of cards */
+  .card-content {
+    padding-bottom: 1.5rem;
+  }
+  
+  /* Better alignment for mobile view */
+  .day-header {
+    flex-wrap: nowrap; /* Changed from wrap to nowrap */
+  }
+  
+  .day-header .flex-shrink-0 {
+    margin-left: 0; /* Removed auto margin */
+    display: flex;
+    align-items: center;
+  }
+}
+</style>
 </head>
 <body class="bg-gray-50">
-    
-  
-  <!-- Navigation Menu -->
-    <!-- Fixed Navigation Menu with Better Alignment -->
-    <nav class="sticky-nav shadow-md">
-      <div class="max-w-6xl mx-auto px-4 py-3">
-        <div class="flex justify-between items-center">
-          <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
-          
-          <!-- Desktop Navigation Menu with Better Alignment -->
-          <div class="hidden md:flex md:items-center md:space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
-            
-            <!-- Desktop Destinations Dropdown -->
-            <div class="relative flex items-center">
-              <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-                Other Destinations
-                <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="desktop-destinations-menu" class="hidden">
-                <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
-                <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
-                <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
-                <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
-                <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
-                <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Mobile Menu Button -->
-          <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
+
+<nav class="sticky-nav shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu with Better Alignment -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
         
-        <!-- Mobile Menu (unchanged) -->
-        <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-          <div class="flex flex-col space-y-3">
-            <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
-            <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
-            <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
-            <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
-            <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
-            
-            <!-- Destinations Accordion -->
-            <div class="relative">
-              <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-                <span>Other Destinations</span>
-                <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-                <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-                <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-                <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-                <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-                <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-                <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-              </div>
-            </div>
+        <!-- Tips Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Tips
+            <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-tips-menu" class="hidden">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+          </div>
+        </div>        
+
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Other Destinations
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-destinations-menu" class="hidden">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
           </div>
         </div>
       </div>
-    </nav>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (unchanged) -->
+   
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
+        <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
+        <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
+        <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
+        <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+        
+        <!-- Tips Accordion -->
+        <div class="relative">
+          <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Tips</span>
+            <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+            <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+            <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+            <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
+          </div>
+        </div>
+        
+        <!-- Destinations Accordion (existing) -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Other Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+  
 
   <!-- Hero Section -->
-  <section class="hero-section flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&auto=format');">
+  <section class="hero-section flex items-center justify-center">
     <div class="hero-overlay"></div>
     <div class="hero-content max-w-4xl text-center text-white px-4">
       <h1 class="text-5xl font-bold mb-4">Singapore</h1>
@@ -358,6 +447,13 @@
               <p class="text-sm">Village Hotel Sentosa by Far East Hospitality</p>
               <p class="text-sm text-gray-600">10 Artillery Avenue, #02-01 Sentosa Island</p>
               <p class="text-sm text-gray-600">Resort-style accommodation on Sentosa Island featuring four themed pools, shuttle services, and family-friendly amenities</p>
+              <a href="https://maps.google.com/?q=Village+Hotel+Sentosa+Singapore" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                View on Google Maps
+              </a>
             </div>
           </div>
           <div class="w-full md:w-1/3 p-2">
@@ -372,10 +468,10 @@
           <div class="w-full md:w-1/3 p-2">
             <div class="bg-red-50 p-4 rounded-lg h-full">
               <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
-              <p class="text-sm">• Day 1: Arrival & resort introduction</p>
-              <p class="text-sm">• Day 2: Sentosa adventures & pool day</p>
-              <p class="text-sm">• Day 3: Singapore city exploration</p>
-              <p class="text-sm">• Day 4: Morning relaxation & departure</p>
+              <p class="text-sm">• Day 12: Arrival & resort introduction</p>
+              <p class="text-sm">• Day 13: Sentosa adventures & pool day</p>
+              <p class="text-sm">• Day 14: Singapore city exploration</p>
+              <p class="text-sm">• Day 15: Morning relaxation & departure</p>
             </div>
           </div>
         </div>
@@ -387,17 +483,22 @@
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Weather Card -->
+        <!-- Weather Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Weather in August</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="weather-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Average high: 30-32°C (86-90°F)</li>
               <li>• Average low: 25-27°C (77-81°F)</li>
@@ -409,17 +510,22 @@
           </div>
         </div>
         
-        <!-- Currency Card -->
+        <!-- Currency Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="currency-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-green-700">Currency</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Currency</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="currency-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Singapore Dollar (SGD/S$)</li>
               <li>• €1 ≈ S$1.45 (April 2025 rate)</li>
@@ -434,17 +540,22 @@
           </div>
         </div>
         
-        <!-- Transportation Card -->
+        <!-- Transportation Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-blue-700">Getting Around</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Getting Around</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="transport-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• MRT (Mass Rapid Transit): Efficient and extensive subway system</li>
               <li>• Singapore Tourist Pass: Unlimited travel on public transport</li>
@@ -457,17 +568,22 @@
           </div>
         </div>
         
-        <!-- Must-Try Foods Card -->
+        <!-- Must-Try Foods Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="food-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-red-700">Must-Try Foods</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Must-Try Foods</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="food-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Chicken Rice: Singapore's unofficial national dish</li>
               <li>• Chili Crab: Seafood specialty with sweet-spicy sauce</li>
@@ -483,17 +599,22 @@
           </div>
         </div>
         
-        <!-- Communication Card -->
+        <!-- Communication Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="communication-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-purple-700">Language & Connectivity</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Language & Connectivity</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="communication-content" class="p-5 card-content">
             <div class="text-gray-700">
               <p class="mb-2"><span class="font-bold">Languages:</span></p>
               <ul class="space-y-1">
@@ -514,17 +635,22 @@
           </div>
         </div>
         
-        <!-- Laws & Etiquette Card -->
+        <!-- Laws & Etiquette Card - Collapsible -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="rules-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-indigo-700">Rules & Etiquette</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Rules & Etiquette</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="rules-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Strict littering laws with heavy fines</li>
               <li>• No eating or drinking on public transportation</li>
@@ -540,52 +666,57 @@
           </div>
         </div>
 
-      <!-- World Clock Widget (Full Width) - Ordered by UTC -->
-      <div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-gray-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3 class="font-bold text-lg">Trip World Clock</h3>
-            </div>
-          </div>
-          <div class="p-5">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <!-- Barcelona Time (UTC+2) -->
-              <div class="bg-gray-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-                <div class="text-sm text-gray-600">Barcelona</div>
-                <div class="text-xs text-gray-500">(UTC+2)</div>
-              </div>
-              
-              <!-- Maldives Time (UTC+5) -->
-              <div class="bg-gray-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-                <div class="text-sm text-gray-600">Maldives</div>
-                <div class="text-xs text-gray-500">(UTC+5)</div>
-              </div>
-              
-              <!-- Southeast Asia Time (UTC+8) -->
-              <div class="bg-red-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
-                <div class="text-sm text-gray-600">Singapore/KL</div>
-                <div class="text-xs text-gray-500">(UTC+8)</div>
-              </div>
-              
-              <!-- East Asia Time (UTC+9) -->
-              <div class="bg-gray-100 p-3 rounded-lg text-center">
-                <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
-                <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
-                <div class="text-xs text-gray-500">(UTC+9)</div>
+        <!-- World Clock Widget (Full Width) - Ordered by UTC -->
+        <div class="col-span-1 md:col-span-3 lg:col-span-3">
+          <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
               </div>
             </div>
-            
-            <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+            <div id="world-clock-content" class="p-5 card-content">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Barcelona Time (UTC+2) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                  <div class="text-sm text-gray-600">Barcelona</div>
+                  <div class="text-xs text-gray-500">(UTC+2)</div>
+                </div>
+                
+                <!-- Maldives Time (UTC+5) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                  <div class="text-sm text-gray-600">Maldives</div>
+                  <div class="text-xs text-gray-500">(UTC+5)</div>
+                </div>
+                
+                <!-- Southeast Asia Time (UTC+8) -->
+                <div class="bg-red-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Singapore/KL</div>
+                  <div class="text-xs text-gray-500">(UTC+8)</div>
+                </div>
+                
+                <!-- East Asia Time (UTC+9) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+                  <div class="text-xs text-gray-500">(UTC+9)</div>
+                </div>
+              </div>
+              
+              <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+            </div>
           </div>
         </div>
-      </div>
         
       </div>
     </section>
@@ -595,13 +726,18 @@
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
       
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <!-- Day 1 -->
+        <!-- Day 12 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
-            <h3 class="font-bold">Monday, August 11, 2025 – Arrival & Resort Introduction</h3>
-            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-12-content">
+            <h3 class="font-bold text-blue-800 pr-3">Monday, August 11, 2025 – Arrival & Resort Introduction</h3>
+            <div class="flex items-center">
+              <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 12</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-12-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 1 Icon -->
@@ -647,13 +783,18 @@
           </div>
         </div>
         
-        <!-- Day 2 -->
+        <!-- Day 13 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
-            <h3 class="font-bold">Tuesday, August 12, 2025 – Sentosa Adventures & Hotel Pool Day</h3>
-            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 2</span>
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="day-13-content">
+            <h3 class="font-bold text-green-800 pr-3">Tuesday, August 12, 2025 – Sentosa Adventures & Hotel Pool Day</h3>
+            <div class="flex items-center">
+              <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 13</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-13-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 2 Icon -->
@@ -701,13 +842,18 @@
           </div>
         </div>
         
-        <!-- Day 3 -->
+        <!-- Day 14 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-yellow-50 flex justify-between items-center">
-            <h3 class="font-bold">Wednesday, August 13, 2025 – Singapore City Exploration</h3>
-            <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 3</span>
+          <div class="px-6 py-3 bg-yellow-50 flex justify-between items-center cursor-pointer day-header" data-target="day-14-content">
+            <h3 class="font-bold text-yellow-800 pr-3">Wednesday, August 13, 2025 – Singapore City Exploration</h3>
+            <div class="flex items-center">
+              <span class="bg-yellow-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 14</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-14-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 3 Icon -->
@@ -759,13 +905,18 @@
           </div>
         </div>
         
-        <!-- Day 4 -->
+        <!-- Day 15 -->
         <div>
-          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
-            <h3 class="font-bold">Thursday, August 14, 2025 – Departure Day</h3>
-            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 4</span>
+          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-15-content">
+            <h3 class="font-bold text-orange-800 pr-3">Thursday, August 14, 2025 – Departure Day</h3>
+            <div class="flex items-center">
+              <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 15</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-15-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
@@ -805,7 +956,7 @@
             </div>
           </div>
         </div>
-      </div>
+</div>
     </section>
 
     <!-- Culture & Fun Facts -->
@@ -813,67 +964,72 @@
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Singapore Country Info Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-red-50 p-4 mb-4">
-            <div class="flex items-center">
-              <img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag">
-              <h3 class="font-bold text-lg">Singapore Country Profile</h3>
+        <!-- Singapore Country Profile Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="country-profile-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🇸🇬</span>
+                <h3 class="font-bold text-lg text-red-700">Singapore Country Profile</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
           </div>
-          <div>
+          <div id="country-profile-content" class="p-5 card-content">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Name</p>
+                <p class="font-bold text-sm text-gray-700">🏛️ Official Name</p>
                 <p>Republic of Singapore</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Capital</p>
+                <p class="font-bold text-sm text-gray-700">🏙️ Capital</p>
                 <p>Singapore (city-state)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Population</p>
+                <p class="font-bold text-sm text-gray-700">👥 Population</p>
                 <p>6.0 million (2025 est.)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Area</p>
+                <p class="font-bold text-sm text-gray-700">🗺️ Area</p>
                 <p>728.6 km² (281.3 sq mi)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Official Languages</p>
+                <p class="font-bold text-sm text-gray-700">🗣️ Official Languages</p>
                 <p>English, Mandarin, Malay, Tamil</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Currency</p>
+                <p class="font-bold text-sm text-gray-700">💵 Currency</p>
                 <p>Singapore Dollar (SGD/S$)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Government</p>
+                <p class="font-bold text-sm text-gray-700">🏛️ Government</p>
                 <p>Parliamentary republic</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Major Ethnic Groups</p>
+                <p class="font-bold text-sm text-gray-700">👑 Major Ethnic Groups</p>
                 <p>Chinese (74%), Malay (13%), Indian (9%)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Religion</p>
+                <p class="font-bold text-sm text-gray-700">⛪ Religion</p>
                 <p>Buddhism, Christianity, Islam, Taoism, Hinduism</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">GDP per Capita</p>
+                <p class="font-bold text-sm text-gray-700">💰 GDP per Capita</p>
                 <p>$76,700 (vs. Spain: $44,100)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Time Zone</p>
+                <p class="font-bold text-sm text-gray-700">🕒 Time Zone</p>
                 <p>SGT (UTC+8)</p>
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <p class="font-bold text-sm text-gray-700">Driving Side</p>
+                <p class="font-bold text-sm text-gray-700">🚗 Driving Side</p>
                 <p>Left</p>
               </div>
             </div>
             <div class="bg-red-50 p-3 rounded text-sm mb-4">
-              <p class="font-bold mb-1">Comparison with Spain</p>
+              <p class="font-bold mb-1">🇸🇬 vs 🇪🇸 Comparison with Spain</p>
               <ul class="list-disc pl-4 text-gray-700 space-y-1">
                 <li>Area: 70 times smaller than Spain</li>
                 <li>Population density: 47 times higher than Spain</li>
@@ -886,48 +1042,54 @@
           </div>
         </div>
         
-        <!-- History & Culture Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-rose-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        <!-- History & Culture Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-rose-50 p-4 cursor-pointer card-header" data-target="history-culture-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">📚</span>
+                <h3 class="font-bold text-lg text-rose-700">History & Multiculturalism</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">History & Multiculturalism</h3>
             </div>
           </div>
-          <div>
+          <div id="history-culture-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Ancient Origins:</span> Originally known as Temasek, the island was a trading post for the Srivijaya Empire as early as the 3rd century.</li>
-              <li><span class="font-medium">Colonial Era:</span> Sir Stamford Raffles established a British trading post in 1819, transforming the island into a major port city.</li>
-              <li><span class="font-medium">Japanese Occupation:</span> During WWII, Singapore fell to Japanese forces (1942-1945) in what Winston Churchill called the "worst disaster" in British military history.</li>
-              <li><span class="font-medium">Independence:</span> After briefly joining Malaysia, Singapore became an independent republic on August 9, 1965, under the leadership of Lee Kuan Yew.</li>
-              <li><span class="font-medium">Economic Miracle:</span> In just one generation, Singapore transformed from a third-world country to a first-world nation with virtually no natural resources.</li>
-              <li><span class="font-medium">Cultural Harmony:</span> Singapore embraces its multicultural heritage through policies promoting racial and religious harmony. The "CMIO" model (Chinese, Malay, Indian, Other) forms the basis of many social policies.</li>
+              <li><span class="font-medium">🏯 Ancient Origins:</span> Originally known as Temasek, the island was a trading post for the Srivijaya Empire as early as the 3rd century.</li>
+              <li><span class="font-medium">🏛️ Colonial Era:</span> Sir Stamford Raffles established a British trading post in 1819, transforming the island into a major port city.</li>
+              <li><span class="font-medium">🎌 Japanese Occupation:</span> During WWII, Singapore fell to Japanese forces (1942-1945) in what Winston Churchill called the "worst disaster" in British military history.</li>
+              <li><span class="font-medium">🇸🇬 Independence:</span> After briefly joining Malaysia, Singapore became an independent republic on August 9, 1965, under the leadership of Lee Kuan Yew.</li>
+              <li><span class="font-medium">📈 Economic Miracle:</span> In just one generation, Singapore transformed from a third-world country to a first-world nation with virtually no natural resources.</li>
+              <li><span class="font-medium">🤝 Cultural Harmony:</span> Singapore embraces its multicultural heritage through policies promoting racial and religious harmony. The "CMIO" model (Chinese, Malay, Indian, Other) forms the basis of many social policies.</li>
             </ul>
             <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Cultural Identity</p>
+              <p class="font-bold mb-1">⏳ Cultural Identity</p>
               <p>Singapore's unique identity comes from its blend of Asian cultures with Western influences. This multicultural heritage is reflected in its architecture, festivals, languages, and especially its food, which combines Chinese, Malay, Indian, and Western traditions into unique Singaporean dishes.</p>
             </div>
           </div>
         </div>
         
-        <!-- Food Culture Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-amber-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        <!-- Food Culture Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-amber-50 p-4 cursor-pointer card-header" data-target="food-culture-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🍽️</span>
+                <h3 class="font-bold text-lg text-amber-700">Singapore's Food Culture</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Singapore's Food Culture</h3>
             </div>
           </div>
-          <div>
+          <div id="food-culture-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">National Passion:</span> Food is considered a national obsession in Singapore, with eating being described as the unofficial national pastime.</li>
-              <li><span class="font-medium">Hawker Centers:</span> These open-air food courts are the heart of Singapore's food culture, offering affordable, diverse, and authentic local cuisine. Some hawker stalls have even earned Michelin stars.</li>
-              <li><span class="font-medium">Cultural Fusion:</span> Singaporean cuisine reflects its multicultural heritage, with dishes blending Chinese, Malay, Indian, and Western influences.</li>
-              <li><span class="font-medium">Famous Dishes:</span></li>
+              <li><span class="font-medium">😋 National Passion:</span> Food is considered a national obsession in Singapore, with eating being described as the unofficial national pastime.</li>
+              <li><span class="font-medium">🍜 Hawker Centers:</span> These open-air food courts are the heart of Singapore's food culture, offering affordable, diverse, and authentic local cuisine. Some hawker stalls have even earned Michelin stars.</li>
+              <li><span class="font-medium">🌏 Cultural Fusion:</span> Singaporean cuisine reflects its multicultural heritage, with dishes blending Chinese, Malay, Indian, and Western influences.</li>
+              <li><span class="font-medium">🍗 Famous Dishes:</span></li>
               <ul class="list-disc pl-5 ml-4 text-gray-600 space-y-1">
                 <li>Hainanese Chicken Rice: Poached chicken with fragrant rice</li>
                 <li>Laksa: Spicy coconut milk-based noodle soup</li>
@@ -935,79 +1097,88 @@
                 <li>Char Kway Teow: Stir-fried rice noodles with dark soy sauce</li>
                 <li>Satay: Grilled meat skewers with peanut sauce</li>
               </ul>
-              <li><span class="font-medium">Food Heritage:</span> In 2020, Singapore's hawker culture was added to UNESCO's list of Intangible Cultural Heritage, recognizing its cultural significance.</li>
+              <li><span class="font-medium">🏆 Food Heritage:</span> In 2020, Singapore's hawker culture was added to UNESCO's list of Intangible Cultural Heritage, recognizing its cultural significance.</li>
             </ul>
             <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Hawker Center Etiquette</p>
+              <p class="font-bold mb-1">🍽️ Hawker Center Etiquette</p>
               <p>When visiting hawker centers, look for tables with tissue packets or personal items—they're "choped" (reserved). After ordering, wait for your food to be ready before paying. It's customary to clear your own tray when finished. Follow the locals' lead and join the longest queues—they usually lead to the best food!</p>
             </div>
           </div>
         </div>
         
-        <!-- Garden City Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-green-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <!-- Garden City Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="garden-city-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🌳</span>
+                <h3 class="font-bold text-lg text-green-700">The Garden City Vision</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">The Garden City Vision</h3>
             </div>
           </div>
-          <div>
+          <div id="garden-city-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Green Vision:</span> In 1967, Singapore launched its "Garden City" campaign, transforming a concrete jungle into one of the world's greenest urban environments.</li>
-              <li><span class="font-medium">City in a Garden:</span> Singapore has evolved beyond being a "Garden City" to become a "City in a Garden," where greenery is integrated into the urban landscape.</li>
-              <li><span class="font-medium">Parks Everywhere:</span> Despite its small size, Singapore has over 350 parks and 4 nature reserves, with 80% of residents living within 400m of a green space.</li>
-              <li><span class="font-medium">Vertical Gardens:</span> With limited land, Singapore pioneered vertical greenery, with many buildings featuring green walls and rooftop gardens.</li>
-              <li><span class="font-medium">Sustainable Architecture:</span> Buildings like Parkroyal on Pickering and CapitaGreen incorporate thousands of plants into their designs, creating "hotel-in-a-garden" experiences.</li>
-              <li><span class="font-medium">Gardens by the Bay:</span> This 101-hectare nature park features Supertrees (vertical gardens up to 50m tall), two conservatories (Flower Dome and Cloud Forest), and serves as Singapore's horticultural showcase.</li>
+              <li><span class="font-medium">🌱 Green Vision:</span> In 1967, Singapore launched its "Garden City" campaign, transforming a concrete jungle into one of the world's greenest urban environments.</li>
+              <li><span class="font-medium">🌆 City in a Garden:</span> Singapore has evolved beyond being a "Garden City" to become a "City in a Garden," where greenery is integrated into the urban landscape.</li>
+              <li><span class="font-medium">🏞️ Parks Everywhere:</span> Despite its small size, Singapore has over 350 parks and 4 nature reserves, with 80% of residents living within 400m of a green space.</li>
+              <li><span class="font-medium">🏙️ Vertical Gardens:</span> With limited land, Singapore pioneered vertical greenery, with many buildings featuring green walls and rooftop gardens.</li>
+              <li><span class="font-medium">🌿 Sustainable Architecture:</span> Buildings like Parkroyal on Pickering and CapitaGreen incorporate thousands of plants into their designs, creating "hotel-in-a-garden" experiences.</li>
+              <li><span class="font-medium">🌴 Gardens by the Bay:</span> This 101-hectare nature park features Supertrees (vertical gardens up to 50m tall), two conservatories (Flower Dome and Cloud Forest), and serves as Singapore's horticultural showcase.</li>
             </ul>
             <p class="mt-3 text-sm text-gray-600">Singapore's transformation into a green city wasn't just aesthetic—it was a deliberate strategy to differentiate itself from other Asian cities, provide a high quality of life, and create a sustainable urban environment despite limited natural resources.</p>
           </div>
         </div>
         
-        <!-- Fun Facts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-purple-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+        <!-- Fun Facts Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">💡</span>
+                <h3 class="font-bold text-lg text-purple-700">Did You Know?</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Did You Know?</h3>
             </div>
           </div>
-          <div>
+          <div id="fun-facts-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li>Singapore is one of only three city-states in the world, alongside Monaco and Vatican City.</li>
-              <li>The Singapore Sling cocktail was created at the Long Bar in Raffles Hotel around 1915.</li>
-              <li>Singapore's Changi Airport has been voted the world's best airport for 12 consecutive years (2013-2025).</li>
-              <li>The national symbol of Singapore is the Merlion—a mythical creature with a lion's head and fish's body.</li>
-              <li>Singapore has one of the world's lowest crime rates and is consistently ranked among the safest countries.</li>
-              <li>Despite its tiny size, Singapore is the world's fourth-leading financial center after New York, London, and Hong Kong.</li>
-              <li>Singapore has the world's highest percentage of millionaires, with nearly 10% of households having at least $1 million in disposable wealth.</li>
-              <li>The Singapore Botanic Gardens is the only tropical garden to be honored as a UNESCO World Heritage Site.</li>
-              <li>Singapore's tap water is among the cleanest in the world and is perfectly safe to drink directly from the tap.</li>
-              <li>Singapore's Night Safari was the world's first nocturnal wildlife park when it opened in 1994.</li>
+              <li>🏙️ Singapore is one of only three city-states in the world, alongside Monaco and Vatican City.</li>
+              <li>🍹 The Singapore Sling cocktail was created at the Long Bar in Raffles Hotel around 1915.</li>
+              <li>✈️ Singapore's Changi Airport has been voted the world's best airport for 12 consecutive years (2013-2025).</li>
+              <li>🦁 The national symbol of Singapore is the Merlion—a mythical creature with a lion's head and fish's body.</li>
+              <li>👮 Singapore has one of the world's lowest crime rates and is consistently ranked among the safest countries.</li>
+              <li>💰 Despite its tiny size, Singapore is the world's fourth-leading financial center after New York, London, and Hong Kong.</li>
+              <li>💵 Singapore has the world's highest percentage of millionaires, with nearly 10% of households having at least $1 million in disposable wealth.</li>
+              <li>🌺 The Singapore Botanic Gardens is the only tropical garden to be honored as a UNESCO World Heritage Site.</li>
+              <li>🚰 Singapore's tap water is among the cleanest in the world and is perfectly safe to drink directly from the tap.</li>
+              <li>🦁 Singapore's Night Safari was the world's first nocturnal wildlife park when it opened in 1994.</li>
             </ul>
           </div>
         </div>
         
-        <!-- Sentosa Island Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-teal-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <!-- Sentosa Island Card - Slim Style -->
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-teal-50 p-4 cursor-pointer card-header" data-target="sentosa-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🏝️</span>
+                <h3 class="font-bold text-lg text-teal-700">Sentosa Island: Your Resort Home</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Sentosa Island: Your Resort Home</h3>
             </div>
           </div>
-          <div>
+          <div id="sentosa-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Island Transformation:</span> Once known as Pulau Blakang Mati ("Island of Death from Behind" in Malay), Sentosa was renamed in 1972 to a Sanskrit word meaning "peace and tranquility."</li>
-              <li><span class="font-medium">Man-Made Beaches:</span> Sentosa's beaches (Siloso, Palawan, and Tanjong) feature imported sand from Indonesia and Malaysia to create idyllic shorelines.</li>
-              <li><span class="font-medium">Top Attractions:</span></li>
+              <li><span class="font-medium">🏝️ Island Transformation:</span> Once known as Pulau Blakang Mati ("Island of Death from Behind" in Malay), Sentosa was renamed in 1972 to a Sanskrit word meaning "peace and tranquility."</li>
+              <li><span class="font-medium">🏖️ Man-Made Beaches:</span> Sentosa's beaches (Siloso, Palawan, and Tanjong) feature imported sand from Indonesia and Malaysia to create idyllic shorelines.</li>
+              <li><span class="font-medium">🎡 Top Attractions:</span></li>
               <ul class="list-disc pl-5 ml-4 text-gray-600 space-y-1">
                 <li>Universal Studios Singapore: Southeast Asia's first and only Universal Studios theme park</li>
                 <li>S.E.A. Aquarium: Home to more than 100,000 marine animals</li>
@@ -1015,12 +1186,12 @@
                 <li>Mega Adventure Park: 450m zipline across the jungle canopy</li>
                 <li>Madame Tussauds Singapore: Wax museum featuring local and international celebrities</li>
               </ul>
-              <li><span class="font-medium">Unique Transport:</span> You can reach Sentosa via cable car, monorail (Sentosa Express), walking across the Sentosa Boardwalk, or by car.</li>
-              <li><span class="font-medium">Luxury Hub:</span> Sentosa is home to some of Singapore's most exclusive residences, with beachfront properties commanding premium prices.</li>
-              <li><span class="font-medium">Historical Significance:</span> Fort Siloso on Sentosa is Singapore's only preserved coastal fort and played a significant role during WWII.</li>
+              <li><span class="font-medium">🚠 Unique Transport:</span> You can reach Sentosa via cable car, monorail (Sentosa Express), walking across the Sentosa Boardwalk, or by car.</li>
+              <li><span class="font-medium">💎 Luxury Hub:</span> Sentosa is home to some of Singapore's most exclusive residences, with beachfront properties commanding premium prices.</li>
+              <li><span class="font-medium">🏛️ Historical Significance:</span> Fort Siloso on Sentosa is Singapore's only preserved coastal fort and played a significant role during WWII.</li>
             </ul>
             <div class="mt-4 bg-teal-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Village Hotel Sentosa</p>
+              <p class="font-bold mb-1">🏨 Village Hotel Sentosa</p>
               <p>Your accommodation on Sentosa features four themed pools: Adventure Pool (with water slides), Lazy River Pool, Children's Play Pool, and Pamukkale Pool (adults-only). The hotel offers complimentary shuttles to VivoCity mall, which connects to Singapore's MRT system for easy access to the city.</p>
             </div>
           </div>
@@ -1034,58 +1205,76 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Image 1: Gardens by the Bay -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2019/04/Cover-for-restaurants-near-Gardens-by-the-Bay.jpg" alt="Gardens by the Bay" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Gardens by the Bay</p>
+        <a href="https://en.wikipedia.org/wiki/Gardens_by_the_Bay" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2019/04/Cover-for-restaurants-near-Gardens-by-the-Bay.jpg" alt="Gardens by the Bay" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Gardens by the Bay</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 2: Marina Bay Sands -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&auto=format" alt="Marina Bay Sands" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Marina Bay Sands</p>
+        <a href="https://en.wikipedia.org/wiki/Marina_Bay_Sands" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&auto=format" alt="Marina Bay Sands" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Marina Bay Sands</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 3: Sentosa Island -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://lp-cms-production.imgix.net/2019-06/07df2a0a42f2f2ce17e99c1ef54c199b-universal-studios.jpg" alt="Sentosa Island" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Sentosa Island</p>
+        <a href="https://en.wikipedia.org/wiki/Sentosa" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://lp-cms-production.imgix.net/2019-06/07df2a0a42f2f2ce17e99c1ef54c199b-universal-studios.jpg" alt="Sentosa Island" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Sentosa Island</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Image 4: Singapore Food -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/R.5525a0b1cec4a6aaad870c40759b6905?rik=ElR9X4scvrypNQ&pid=ImgRaw&r=0" alt="Singapore Food Market" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Singapore Hawker Food</p>
+        <!-- Image 4: Singapore Hawker Food -->
+        <a href="https://en.wikipedia.org/wiki/Hawker_centre" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/R.5525a0b1cec4a6aaad870c40759b6905?rik=ElR9X4scvrypNQ&pid=ImgRaw&r=0" alt="Singapore Food Market" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Singapore Hawker Food</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 5: Chinatown -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://www.remotelands.com/travelogues/wp-content/uploads/2018/02/shutterstock_366752108.jpg?x36752" alt="Singapore Chinatown" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Singapore Chinatown</p>
+        <a href="https://en.wikipedia.org/wiki/Chinatown,_Singapore" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://www.remotelands.com/travelogues/wp-content/uploads/2018/02/shutterstock_366752108.jpg?x36752" alt="Singapore Chinatown" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Singapore Chinatown</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 6: Village Hotel Pools -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://www.travelonline.com/singapore/accommodation/village-hotel-sentosa/pool-deck-vantage-view-99484-crop.jpg" alt="Village Hotel Sentosa Pools" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Village Hotel Sentosa Pools</p>
+        <a href="https://en.wikipedia.org/wiki/Sentosa" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://www.travelonline.com/singapore/accommodation/village-hotel-sentosa/pool-deck-vantage-view-99484-crop.jpg" alt="Village Hotel Sentosa Pools" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Village Hotel Sentosa Pools</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
     
@@ -1106,7 +1295,7 @@
   </footer>
 
 <script>
-// Combined script with proper organization and fixed issues
+// Single unified script with complete functionality
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -1117,22 +1306,122 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
     });
   }
-  
-  // 2. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 3. Desktop dropdown functionality - FIXED
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // 4. Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
+        
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // 5. Collapsible cards in Essential Information
+  document.querySelectorAll('.card-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg:last-child');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 6. Collapsible days in Itinerary
+  document.querySelectorAll('.day-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 7. World clocks functionality
+  updateWorldClocks();
+  setInterval(updateWorldClocks, 60000);
+  
+  // 8. Desktop dropdown functionality
   const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
   const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
   const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
@@ -1162,7 +1451,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 4. Highlight current page in destinations submenus
+  // 9. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Highlight current page in destinations submenus
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   // For mobile submenu
@@ -1185,7 +1487,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 5. Dynamic page title based on scroll position
+  // 11. Dynamic page title based on scroll position
   const pageTitle = document.querySelector('.hero-content h1')?.textContent;
   const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
   
@@ -1208,14 +1510,64 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleScroll);
   }
   
-  // 6. World clocks functionality
-  updateWorldClocks();
-  
-  // Update every minute
-  setInterval(updateWorldClocks, 60000);
+  // 12. Tips dropdown functionality
+  const desktopTipsButton = document.getElementById('desktop-tips-button');
+  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+  if (desktopTipsButton && desktopTipsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopTipsButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopTipsMenu.classList.toggle('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere (add to existing document click handler)
+    document.addEventListener('click', function() {
+      desktopTipsMenu.classList.remove('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopTipsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // 13. Mobile Tips submenu toggle
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.addEventListener('click', function() {
+      tipsSubmenu.classList.toggle('hidden');
+      if (tipsDropdownArrow) {
+        tipsDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+
+  // Add click handlers for Tips submenu links
+  if (tipsSubmenu) {
+    const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+    tipsSubmenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        tipsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
 });
 
-// World clocks function - moved outside the DOMContentLoaded to prevent duplication issues
+// World clocks function
 function updateWorldClocks() {
   const now = new Date();
   
