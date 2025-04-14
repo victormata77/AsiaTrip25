@@ -6,308 +6,322 @@
   <title>MATA'S ASIAN TOUR 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
-  <style>
-    /* Root variables and brand colors */
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    /* Brand styles */
-    .brand-bg-red { background-color: var(--mata-red); }
-    .brand-text-red { color: var(--mata-red); }
-    .brand-border-red { border-color: var(--mata-red); }
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    .brand-button:hover { background-color: var(--mata-dark-red); }
-    
-    /* Hero section */
-    .hero-section {
-      background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* Navigation */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-    
-    /* Desktop dropdown menu */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;
-    }
-    #desktop-destinations-menu.visible { display: block; }
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    .relative { position: relative; }
-    
-    /* Dropdown button styling */
-    #desktop-dropdown-button {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s;
-      height: 40px;
-    }
-    #desktop-dropdown-button:hover { background-color: #f9fafb; }
-    
-    /* Tips dropdown styling (matches destinations dropdown) */
-    #desktop-tips-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;
-    }
-    
-    #desktop-tips-menu.visible {
-      display: block;
-    }
-    
-    #desktop-tips-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    
-    #desktop-tips-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    
-    /* Menu alignment fixes */
-    .md\:flex.md\:items-center.md\:space-x-6 > a,
-    .md\:flex.md\:items-center.md\:space-x-6 > div {
-      display: flex;
-      align-items: center;
-      height: 40px;
-    }
-    .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-    
-    /* Card and content styles */
-    .card-content, .day-content {
-      transition: all 0.3s ease-in-out;
-    }
-    .card-header, .day-header {
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .card-header:hover, .day-header:hover { filter: brightness(0.95); }
-    .card-header.active, .day-header.active {
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    .card-header svg.rotate-180, .day-header svg.rotate-180 {
-      transform: rotate(180deg);
-    }
-    
-    /* Day indicators - Unified and fixed */
+
+<style>
+  /* Root variables and brand colors */
+  :root {
+    --mata-red: #c62828;
+    --mata-dark-red: #8e0000;
+    --mata-light-red: #ff5f52;
+    --mata-cream: #f5f0e1;
+  }
+  
+  /* Brand styles */
+  .brand-bg-red { background-color: var(--mata-red); }
+  .brand-text-red { color: var(--mata-red); }
+  .brand-border-red { border-color: var(--mata-red); }
+  .brand-button {
+    background-color: var(--mata-red);
+    color: white;
+    transition: background-color 0.3s;
+  }
+  .brand-button:hover { background-color: var(--mata-dark-red); }
+  
+  /* Hero section */
+  .hero-section {
+    background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    position: relative;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Navigation */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .text-red-600.font-bold.text-xl {
+    transition: all 0.3s ease;
+  }
+  .page-title-visible {
+    transform: scale(1.05);
+  }
+  
+  /* Desktop dropdown menu */
+  #desktop-destinations-menu, #desktop-tips-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 200px;
+    background-color: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+    display: none;
+  }
+  #desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+  #desktop-destinations-menu a, #desktop-tips-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4a5568;
+    transition: all 0.2s;
+  }
+  #desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
+    background-color: #fee2e2;
+    color: #c62828;
+  }
+  .relative { position: relative; }
+  
+  /* Dropdown button styling */
+  #desktop-dropdown-button, #desktop-tips-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+    height: 40px;
+  }
+  #desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
+  
+  /* Menu alignment fixes */
+  .md\:flex.md\:items-center.md\:space-x-6 > a,
+  .md\:flex.md\:items-center.md\:space-x-6 > div {
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+  .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+  
+  /* Card and content styles */
+  .card-content, .day-content {
+    transition: all 0.3s ease-in-out;
+  }
+  .card-header, .day-header {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-header:hover, .day-header:hover { filter: brightness(0.95); }
+  .card-header.active, .day-header.active {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .card-header svg.rotate-180, .day-header svg.rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  /* Enhanced backgrounds for culture cards */
+  .card-header[data-target="kyoto-history-content"] {
+    background-color: rgba(244, 63, 94, 0.15) !important; /* rose-100 */
+  }
+  
+  .card-header[data-target="geisha-content"] {
+    background-color: rgba(251, 191, 36, 0.15) !important; /* amber-100 */
+  }
+  
+  .card-header[data-target="festivals-content"] {
+    background-color: rgba(59, 130, 246, 0.15) !important; /* blue-100 */
+  }
+  
+  .card-header[data-target="fun-facts-content"] {
+    background-color: rgba(34, 197, 94, 0.15) !important; /* green-100 */
+  }
+  
+  .card-header[data-target="arts-content"] {
+    background-color: rgba(168, 85, 247, 0.15) !important; /* purple-100 */
+  }
+  
+  .card-header[data-target="gardens-content"] {
+    background-color: rgba(20, 184, 166, 0.15) !important; /* teal-100 */
+  }
+  
+  /* Day indicators - Unified and fixed */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-red-500,
+  .day-header .bg-gray-500 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  /* Specific day badge colors - force override */
+  .day-header .bg-orange-500 {
+    background-color: rgb(249, 115, 22) !important; /* Force orange-500 */
+  }
+  
+  .day-header .bg-red-500 {
+    background-color: rgb(239, 68, 68) !important; /* Force red-500 */
+  }
+  
+  /* Fix text colors */
+  .text-orange-800 {
+    color: rgb(154, 52, 18) !important; /* Force orange-800 */
+  }
+  
+  .text-red-800 {
+    color: rgb(153, 27, 27) !important; /* Force red-800 */
+  }
+  
+  /* Card hover effects */
+  .info-card {
+    transition: transform 0.2s;
+  }
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Photo gallery */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .photo-card {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  .photo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Flag icon */
+  .flag-icon {
+    height: 20px;
+    width: 28px;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    vertical-align: middle;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  /* Text contrast improvements */
+  .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+  .text-purple-700, .text-indigo-700, .text-yellow-800, 
+  .text-orange-800, .text-purple-800, .text-blue-800 {
+    font-weight: 600;
+  }
+  
+  /* Responsive styles */
+  /* Day indicators oval on wider screens */
+  @media (min-width: 768px) {
     .day-header .bg-blue-500,
     .day-header .bg-green-500,
     .day-header .bg-yellow-500,
     .day-header .bg-purple-500,
     .day-header .bg-orange-500,
+    .day-header .bg-red-500,
     .day-header .bg-gray-500 {
+      width: 60px !important;
+      height: 32px !important;
+      border-radius: 16px !important;
+      margin-right: 10px;
+    }
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 767px) {
+    /* Day header layout */
+    .day-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
+      justify-content: space-between;
+      flex-wrap: nowrap;
     }
     
-    /* Ensure text is visible on gray background */
+    .day-header h3 {
+      flex: 1;
+      padding-right: 8px;
+    }
+    
+    /* Day indicators for mobile */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
+    .day-header .bg-red-500,
     .day-header .bg-gray-500 {
-      color: white;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      border-radius: 20px !important;
+      margin-right: 8px;
+      flex-shrink: 0;
     }
     
-    /* Card hover effects */
-    .info-card {
-      transition: transform 0.2s;
+    /* Arrow icon */
+    .day-header svg {
+      flex-shrink: 0;
     }
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    /* Photo gallery */
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    .photo-card {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    .photo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Small mobile devices */
+  @media (max-width: 640px) {
+    .day-header h3 {
+      width: auto; /* Changed from 100% to auto for better layout */
+      flex: 1;
+      font-size: 0.9rem;
     }
     
-    /* Flag icon */
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    /* Consistent styling for all day indicators */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
+    .day-header .bg-red-500,
+    .day-header .bg-gray-500 {
+      width: 48px !important;
+      height: 32px !important;
+      border-radius: 16px !important;
     }
     
-    /* Text contrast improvements */
-    .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
-    .text-purple-700, .text-indigo-700, .text-yellow-800, 
-    .text-orange-800, .text-purple-800, .text-blue-800 {
-      font-weight: 600;
+    /* Add more space at bottom of cards */
+    .card-content {
+      padding-bottom: 1.5rem;
     }
     
-    /* Responsive styles */
-    /* Day indicators oval on wider screens - FIXED with consistent sizes */
-    @media (min-width: 768px) {
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        width: 60px;
-        height: 32px;
-        border-radius: 16px;
-        margin-right: 10px;
-      }
+    /* Better alignment for mobile view */
+    .day-header {
+      flex-wrap: nowrap; /* Changed from wrap to nowrap */
     }
     
-    /* Mobile optimizations */
-    @media (max-width: 767px) {
-      /* Day header layout */
-      .day-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-      }
-      
-      .day-header h3 {
-        flex: 1;
-        padding-right: 8px;
-      }
-      
-      /* Day indicators - UPDATED to include gray-500 */
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 20px;
-        margin-right: 8px;
-        flex-shrink: 0;
-      }
-      
-      /* Arrow icon */
-      .day-header svg {
-        flex-shrink: 0;
-      }
+    .day-header .flex-shrink-0 {
+      margin-left: 0; /* Removed auto margin */
+      display: flex;
+      align-items: center;
     }
-    
-    /* Small mobile devices */
-    @media (max-width: 640px) {
-      .day-header h3 {
-        width: auto; /* Changed from 100% to auto for better layout */
-        flex: 1;
-        font-size: 0.9rem;
-      }
-      
-      /* Consistent styling for all day indicators including gray */
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        width: 48px;
-        height: 32px;
-        border-radius: 16px;
-      }
-      
-      /* Add more space at bottom of cards */
-      .card-content {
-        padding-bottom: 1.5rem;
-      }
-      
-      /* Better alignment for mobile view */
-      .day-header {
-        flex-wrap: nowrap; /* Changed from wrap to nowrap */
-      }
-      
-      .day-header .flex-shrink-0 {
-        margin-left: 0; /* Removed auto margin */
-        display: flex;
-        align-items: center;
-      }
-    }
-  </style>
+  }
+</style>
+  
 </head>
 <body class="bg-gray-50">
 
@@ -860,12 +874,13 @@
               <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-11-content">
                 <h3 class="font-bold text-orange-800 pr-3">Sunday, August 10, 2025 – Final Morning & Departure</h3>
                 <div class="flex-shrink-0 flex items-center">
-                  <span class="bg-orange-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 11</span>
+                  <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 11</span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
               </div>
+            
               <div id="day-11-content" class="p-5 day-content">
                 <div class="flex flex-col md:flex-row gap-6 mb-4">
                   <div class="md:w-1/3">
