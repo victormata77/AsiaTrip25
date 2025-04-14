@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
   <style>
+    /* Root variables and brand colors */
     :root {
       --mata-red: #c62828;
       --mata-dark-red: #8e0000;
@@ -14,28 +15,18 @@
       --mata-cream: #f5f0e1;
     }
     
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
+    /* Brand styles */
+    .brand-bg-red { background-color: var(--mata-red); }
+    .brand-text-red { color: var(--mata-red); }
+    .brand-border-red { border-color: var(--mata-red); }
     .brand-button {
       background-color: var(--mata-red);
       color: white;
       transition: background-color 0.3s;
     }
+    .brand-button:hover { background-color: var(--mata-dark-red); }
     
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
+    /* Hero section */
     .hero-section {
       background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format');
       background-size: cover;
@@ -52,6 +43,8 @@
       position: relative;
       z-index: 10;
     }
+    
+    /* Navigation */
     .sticky-nav {
       position: sticky;
       top: 0;
@@ -59,6 +52,139 @@
       backdrop-filter: blur(10px);
       background-color: rgba(255, 255, 255, 0.9);
     }
+    .text-red-600.font-bold.text-xl {
+      transition: all 0.3s ease;
+    }
+    .page-title-visible {
+      transform: scale(1.05);
+    }
+    
+    /* Desktop dropdown menu */
+    #desktop-destinations-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 200px;
+      background-color: white;
+      border-radius: 0.375rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      z-index: 50;
+      overflow: hidden;
+      display: none;
+    }
+    #desktop-destinations-menu.visible { display: block; }
+    #desktop-destinations-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #4a5568;
+      transition: all 0.2s;
+    }
+    #desktop-destinations-menu a:hover {
+      background-color: #fee2e2;
+      color: #c62828;
+    }
+    .relative { position: relative; }
+    
+    /* Dropdown button styling */
+    #desktop-dropdown-button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s;
+      height: 40px;
+    }
+    #desktop-dropdown-button:hover { background-color: #f9fafb; }
+    
+    /* Tips dropdown styling (matches destinations dropdown) */
+    #desktop-tips-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 200px;
+      background-color: white;
+      border-radius: 0.375rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      z-index: 50;
+      overflow: hidden;
+      display: none;
+    }
+    
+    #desktop-tips-menu.visible {
+      display: block;
+    }
+    
+    #desktop-tips-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #4a5568;
+      transition: all 0.2s;
+    }
+    
+    #desktop-tips-menu a:hover {
+      background-color: #fee2e2;
+      color: #c62828;
+    }
+    
+    /* Menu alignment fixes */
+    .md\:flex.md\:items-center.md\:space-x-6 > a,
+    .md\:flex.md\:items-center.md\:space-x-6 > div {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+    .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+    
+    /* Card and content styles */
+    .card-content, .day-content {
+      transition: all 0.3s ease-in-out;
+    }
+    .card-header, .day-header {
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-header:hover, .day-header:hover { filter: brightness(0.95); }
+    .card-header.active, .day-header.active {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .card-header svg.rotate-180, .day-header svg.rotate-180 {
+      transform: rotate(180deg);
+    }
+    
+    /* Day indicators - Unified and fixed */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
+    .day-header .bg-gray-500 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    /* Ensure text is visible on gray background */
+    .day-header .bg-gray-500 {
+      color: white;
+    }
+    
+    /* Card hover effects */
+    .info-card {
+      transition: transform 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Photo gallery */
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -69,18 +195,14 @@
       background-size: cover;
       background-position: center;
       border-radius: 0.5rem;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
     .photo-card:hover {
       transform: scale(1.03);
-    }
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
+    /* Flag icon */
     .flag-icon {
       height: 20px;
       width: 28px;
@@ -90,83 +212,101 @@
       vertical-align: middle;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
-    /* Add these styles to your existing style section */
-  
-    /* Desktop dropdown styles */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;  /* Position directly below the button */
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;  /* Initially hidden */
+    
+    /* Text contrast improvements */
+    .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+    .text-purple-700, .text-indigo-700, .text-yellow-800, 
+    .text-orange-800, .text-purple-800, .text-blue-800 {
+      font-weight: 600;
     }
     
-    #desktop-destinations-menu.visible {
-      display: block;
+    /* Responsive styles */
+    /* Day indicators oval on wider screens - FIXED with consistent sizes */
+    @media (min-width: 768px) {
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        width: 60px;
+        height: 32px;
+        border-radius: 16px;
+        margin-right: 10px;
+      }
     }
     
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
+    /* Mobile optimizations */
+    @media (max-width: 767px) {
+      /* Day header layout */
+      .day-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+      
+      .day-header h3 {
+        flex: 1;
+        padding-right: 8px;
+      }
+      
+      /* Day indicators - UPDATED to include gray-500 */
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 20px;
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
+      
+      /* Arrow icon */
+      .day-header svg {
+        flex-shrink: 0;
+      }
     }
     
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
+    /* Small mobile devices */
+    @media (max-width: 640px) {
+      .day-header h3 {
+        width: auto; /* Changed from 100% to auto for better layout */
+        flex: 1;
+        font-size: 0.9rem;
+      }
+      
+      /* Consistent styling for all day indicators including gray */
+      .day-header .bg-blue-500,
+      .day-header .bg-green-500,
+      .day-header .bg-yellow-500,
+      .day-header .bg-purple-500,
+      .day-header .bg-orange-500,
+      .day-header .bg-gray-500 {
+        width: 48px;
+        height: 32px;
+        border-radius: 16px;
+      }
+      
+      /* Add more space at bottom of cards */
+      .card-content {
+        padding-bottom: 1.5rem;
+      }
+      
+      /* Better alignment for mobile view */
+      .day-header {
+        flex-wrap: nowrap; /* Changed from wrap to nowrap */
+      }
+      
+      .day-header .flex-shrink-0 {
+        margin-left: 0; /* Removed auto margin */
+        display: flex;
+        align-items: center;
+      }
     }
-    
-    .relative {
-      position: relative;
-    }
-    
-    /* Make dropdown button more obvious */
-    #desktop-dropdown-button {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s;
-    }
-    
-    #desktop-dropdown-button:hover {
-      background-color: #f9fafb;
-    }
-    
-    /* Styles for the dynamic page title */
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-/* Better menu alignment */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  display: flex;
-  align-items: center;
-  height: 40px; /* Fixed height for all menu items */
-}
-
-/* Fix dropdown alignment */
-#desktop-dropdown-button {
-  height: 40px;
-  display: flex;
-  align-items: center;
-}
-
-/* Make sure all top-level items are aligned */
-.md\:flex.md\:items-center.md\:space-x-6 {
-  min-height: 40px;
-}
   </style>
 </head>
 <body class="bg-gray-50">
@@ -179,12 +319,28 @@
           
           <!-- Desktop Navigation Menu with Better Alignment -->
           <div class="hidden md:flex md:items-center md:space-x-6">
-            <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Overview</a>
+            <a href="index.html" class="text-gray-700 hover:text-red-600">← Home</a>
             <a href="#essentials" class="text-gray-700 hover:text-red-600">Essentials</a>
             <a href="#activities" class="text-gray-700 hover:text-red-600">Activities</a>
             <a href="#culture" class="text-gray-700 hover:text-red-600">Culture</a>
             <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
             
+            <!-- Tips Dropdown -->
+            <div class="relative flex items-center">
+              <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+                Tips
+                <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="desktop-tips-menu" class="hidden">
+                <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+                <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+                <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+                <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+              </div>
+            </div>        
+
             <!-- Desktop Destinations Dropdown -->
             <div class="relative flex items-center">
               <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
@@ -214,14 +370,31 @@
           </div>
         </div>
         
-        <!-- Mobile Menu (unchanged) -->
+        <!-- Mobile Menu (updated) -->
         <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
           <div class="flex flex-col space-y-3">
-            <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Overview</a>
+            <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
             <a href="#essentials" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Essentials</a>
             <a href="#activities" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Activities</a>
             <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
             <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
+            
+            <!-- Tips Accordion -->
+            <div class="relative">
+              <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+                <span>Tips</span>
+                <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+                <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+                <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+                <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+                <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
+              </div>
+            </div>
             
             <!-- Destinations Accordion -->
             <div class="relative">
@@ -271,6 +444,13 @@
               <p class="text-sm">MIMARU SUITES Kyoto Shijo</p>
               <p class="text-sm text-gray-600">52-2 Takatsujiomiya-cho, Shimogyo-ku, Kyoto</p>
               <p class="text-sm text-gray-600">Spacious suite-style accommodation in central Kyoto with excellent access to major sights</p>
+              <a href="https://maps.google.com/?q=MIMARU+SUITES+Kyoto+Shijo" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                View on Google Maps
+              </a>
             </div>
           </div>
           <div class="w-full md:w-1/3 p-2">
@@ -301,15 +481,20 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Weather Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Weather in August</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="weather-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Average high: 33°C (91°F)</li>
               <li>• Average low: 24°C (75°F)</li>
@@ -323,15 +508,20 @@
         
         <!-- Transportation Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-blue-700">Getting Around</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Getting Around</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="transport-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• One-Day Bus Pass: ¥700 (~€4.30) for unlimited city bus travel</li>
               <li>• Subway: Two main lines (Karasuma and Tozai), convenient for certain sites</li>
@@ -345,15 +535,20 @@
         
         <!-- Must-Visit Sites Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="sites-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <h3 class="font-bold text-lg text-green-700">Must-Visit Sites</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Must-Visit Sites</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="sites-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Fushimi Inari Shrine: Thousands of vermilion torii gates</li>
               <li>• Kinkaku-ji (Golden Pavilion): Gold-leaf covered temple</li>
@@ -371,15 +566,20 @@
         
         <!-- Food Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="food-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-red-700">Kyoto Cuisine</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Kyoto Cuisine</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="food-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Kaiseki: Traditional multi-course haute cuisine</li>
               <li>• Yudofu: Tofu hot pot (Kyoto specialty due to pure water)</li>
@@ -397,15 +597,20 @@
         
         <!-- Cultural Experiences Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="cultural-exp-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-purple-700">Cultural Experiences</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Cultural Experiences</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="cultural-exp-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Kimono Rental: Experience Kyoto in traditional dress</li>
               <li>• Maiko/Geisha Spotting: Early evening in Gion district</li>
@@ -422,15 +627,20 @@
         
         <!-- Cultural Tips Card -->
         <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="etiquette-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="font-bold text-lg text-indigo-700">Etiquette in Kyoto</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Etiquette in Kyoto</h3>
             </div>
           </div>
-          <div class="p-5">
+          <div id="etiquette-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-1">
               <li>• Temple Etiquette: Remove shoes where indicated, speak quietly</li>
               <li>• Photography: Many temples prohibit photos of their interiors</li>
@@ -446,55 +656,57 @@
           </div>
         </div>
 
-        
-
-<!-- World Clock Widget (Full Width) - Ordered by UTC -->
-<div class="col-span-1 md:col-span-3 lg:col-span-3"> <!-- This ensures full width -->
-  <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-    <div class="bg-gray-50 p-4">
-      <div class="flex items-center">
-        <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <h3 class="font-bold text-lg">Trip World Clock</h3>
-      </div>
-    </div>
-    <div class="p-5">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <!-- Barcelona Time (UTC+2) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-          <div class="text-sm text-gray-600">Barcelona</div>
-          <div class="text-xs text-gray-500">(UTC+2)</div>
+        <!-- World Clock Widget (Full Width) -->
+        <div class="col-span-1 md:col-span-3 lg:col-span-3">
+          <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div id="world-clock-content" class="p-5 card-content">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Barcelona Time (UTC+2) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
+                  <div class="text-sm text-gray-600">Barcelona</div>
+                  <div class="text-xs text-gray-500">(UTC+2)</div>
+                </div>
+                
+                <!-- Maldives Time (UTC+5) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
+                  <div class="text-sm text-gray-600">Maldives</div>
+                  <div class="text-xs text-gray-500">(UTC+5)</div>
+                </div>
+                
+                <!-- Southeast Asia Time (UTC+8) -->
+                <div class="bg-gray-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Singapore/KL</div>
+                  <div class="text-xs text-gray-500">(UTC+8)</div>
+                </div>
+                
+                <!-- East Asia Time (UTC+9) -->
+                <div class="bg-red-100 p-3 rounded-lg text-center">
+                  <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
+                  <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
+                  <div class="text-xs text-gray-500">(UTC+9)</div>
+                </div>
+              </div>
+              
+              <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
+            </div>
+          </div>
         </div>
-        
-        <!-- Maldives Time (UTC+5) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-          <div class="text-sm text-gray-600">Maldives</div>
-          <div class="text-xs text-gray-500">(UTC+5)</div>
-        </div>
-        
-        <!-- Southeast Asia Time (UTC+8) -->
-        <div class="bg-gray-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
-          <div class="text-sm text-gray-600">Singapore/KL</div>
-          <div class="text-xs text-gray-500">(UTC+8)</div>
-        </div>
-        
-        <!-- East Asia Time (UTC+9) -->
-        <div class="bg-red-100 p-3 rounded-lg text-center">
-          <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
-          <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
-          <div class="text-xs text-gray-500">(UTC+9)</div>
-        </div>
-      </div>
-      
-      <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
-    </div>
-  </div>
-</div>
-        
       </div>
     </section>
 
@@ -505,11 +717,16 @@
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
         <!-- Day 1 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center">
-            <h3 class="font-bold">Friday, August 8, 2025 – Arrival & Southern Kyoto</h3>
-            <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 1</span>
+          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-1-content">
+            <h3 class="font-bold text-blue-800">Friday, August 8, 2025 – Arrival & Southern Kyoto</h3>
+            <div class="flex items-center">
+              <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 1</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-1-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 1 Icon -->
@@ -551,11 +768,16 @@
         
         <!-- Day 2 -->
         <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center">
-            <h3 class="font-bold">Saturday, August 9, 2025 – Kyoto Cultural Immersion</h3>
-            <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 2</span>
+          <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="day-2-content">
+            <h3 class="font-bold text-green-800 pr-3">Saturday, August 9, 2025 – Kyoto Cultural Immersion</h3>
+            <div class="flex-shrink-0 flex items-center">
+              <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 2</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-2-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <!-- Day 2 Icon -->
@@ -612,11 +834,16 @@
         
         <!-- Day 3 -->
         <div>
-          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center">
-            <h3 class="font-bold">Sunday, August 10, 2025 – Final Morning & Departure</h3>
-            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">Day 3</span>
+          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-3-content">
+            <h3 class="font-bold text-orange-800 pr-3">Sunday, August 10, 2025 – Final Morning & Departure</h3>
+            <div class="flex-shrink-0 flex items-center">
+              <span class="bg-orange-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 3</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
-          <div class="p-5">
+          <div id="day-3-content" class="p-5 day-content">
             <div class="flex flex-col md:flex-row gap-6 mb-4">
               <div class="md:w-1/3">
                 <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
@@ -668,26 +895,29 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Kyoto History Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-rose-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-rose-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-rose-50 p-4 cursor-pointer card-header" data-target="kyoto-history-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🏯</span>
+                <h3 class="font-bold text-lg text-rose-700">Kyoto's Unique History</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Kyoto's Unique History</h3>
             </div>
           </div>
-          <div>
+          <div id="kyoto-history-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Imperial Capital:</span> Kyoto served as Japan's capital and the emperor's residence from 794 to 1868 (over 1,000 years).</li>
-              <li><span class="font-medium">WWII Preservation:</span> Kyoto was deliberately spared from air raids during World War II due to its cultural significance, preserving its historic treasures.</li>
-              <li><span class="font-medium">Cultural Treasure:</span> The city is home to 17 UNESCO World Heritage Sites, more than any other city in Japan.</li>
-              <li><span class="font-medium">Religious Center:</span> Kyoto has over 1,600 Buddhist temples and 400 Shinto shrines.</li>
-              <li><span class="font-medium">Traditional Arts:</span> Many traditional Japanese arts and crafts originated in Kyoto, including ikebana (flower arrangement), tea ceremony, and Kyo-yuzen dyeing.</li>
-              <li><span class="font-medium">Urban Planning:</span> The city was designed using principles of Chinese feng shui, with a grid pattern modeled after the ancient Chinese capital of Chang'an (Xi'an).</li>
+              <li><span class="font-medium">🏛️ Imperial Capital:</span> Kyoto served as Japan's capital and the emperor's residence from 794 to 1868 (over 1,000 years).</li>
+              <li><span class="font-medium">🪖 WWII Preservation:</span> Kyoto was deliberately spared from air raids during World War II due to its cultural significance, preserving its historic treasures.</li>
+              <li><span class="font-medium">🏆 Cultural Treasure:</span> The city is home to 17 UNESCO World Heritage Sites, more than any other city in Japan.</li>
+              <li><span class="font-medium">⛩️ Religious Center:</span> Kyoto has over 1,600 Buddhist temples and 400 Shinto shrines.</li>
+              <li><span class="font-medium">🎨 Traditional Arts:</span> Many traditional Japanese arts and crafts originated in Kyoto, including ikebana (flower arrangement), tea ceremony, and Kyo-yuzen dyeing.</li>
+              <li><span class="font-medium">🏙️ Urban Planning:</span> The city was designed using principles of Chinese feng shui, with a grid pattern modeled after the ancient Chinese capital of Chang'an (Xi'an).</li>
             </ul>
             <div class="mt-4 bg-rose-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Historical Timeline</p>
+              <p class="font-bold mb-1">⏳ Historical Timeline</p>
               <ul class="text-gray-700 space-y-1">
                 <li>• 794: Kyoto established as "Heian-kyo," Japan's new capital</li>
                 <li>• 794-1185: Heian Period (golden age of court aristocracy and culture)</li>
@@ -702,124 +932,139 @@
         </div>
         
         <!-- Geisha & Maiko Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-amber-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-amber-50 p-4 cursor-pointer card-header" data-target="geisha-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">👘</span>
+                <h3 class="font-bold text-lg text-amber-700">Geisha Culture in Kyoto</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Geisha Culture in Kyoto</h3>
             </div>
           </div>
-          <div>
+          <div id="geisha-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Geiko & Maiko:</span> In Kyoto, fully-trained geisha are called "geiko" (meaning "arts child"), while apprentices are "maiko" (dancing child).</li>
-              <li><span class="font-medium">Rigorous Training:</span> Maiko typically begin training at 15-16 and spend about 5 years as apprentices before becoming full geiko.</li>
-              <li><span class="font-medium">Traditional Arts:</span> Geiko study traditional Japanese arts including dance, music (especially shamisen), conversation, games, and tea ceremony.</li>
-              <li><span class="font-medium">Hanamachi:</span> Kyoto has five geisha districts called "hanamachi" (flower towns), with Gion Kobu being the most famous.</li>
-              <li><span class="font-medium">Appearance:</span> Maiko wear more elaborate kimono, hairstyles, and makeup than geiko. The iconic white makeup has its origins in stage lighting before electricity.</li>
-              <li><span class="font-medium">Modern Numbers:</span> While there were once thousands of geisha in Kyoto, today there are only about 100 geiko and 100 maiko actively working.</li>
+              <li><span class="font-medium">💃 Geiko & Maiko:</span> In Kyoto, fully-trained geisha are called "geiko" (meaning "arts child"), while apprentices are "maiko" (dancing child).</li>
+              <li><span class="font-medium">📚 Rigorous Training:</span> Maiko typically begin training at 15-16 and spend about 5 years as apprentices before becoming full geiko.</li>
+              <li><span class="font-medium">🎭 Traditional Arts:</span> Geiko study traditional Japanese arts including dance, music (especially shamisen), conversation, games, and tea ceremony.</li>
+              <li><span class="font-medium">🏮 Hanamachi:</span> Kyoto has five geisha districts called "hanamachi" (flower towns), with Gion Kobu being the most famous.</li>
+              <li><span class="font-medium">💄 Appearance:</span> Maiko wear more elaborate kimono, hairstyles, and makeup than geiko. The iconic white makeup has its origins in stage lighting before electricity.</li>
+              <li><span class="font-medium">📊 Modern Numbers:</span> While there were once thousands of geisha in Kyoto, today there are only about 100 geiko and 100 maiko actively working.</li>
             </ul>
             <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Spotting Authentic Geiko & Maiko</p>
+              <p class="font-bold mb-1">👀 Spotting Authentic Geiko & Maiko</p>
               <p>The best time to see geiko and maiko is early evening (5:30-6:00 PM) as they travel to their appointments in Gion, particularly on Hanami-koji Street. Be respectful—observe from a distance and do not chase or obstruct them. Remember that many women in kimono are tourists in costume, not actual geiko or maiko.</p>
             </div>
           </div>
         </div>
         
         <!-- Festivals & Events Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-blue-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="festivals-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🎭</span>
+                <h3 class="font-bold text-lg text-blue-700">Kyoto's Major Festivals</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Kyoto's Major Festivals</h3>
             </div>
           </div>
-          <div>
+          <div id="festivals-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Gion Matsuri:</span> One of Japan's most famous festivals, held throughout July with the highlight being the grand procession of floats on July 17th.</li>
-              <li><span class="font-medium">Aoi Matsuri:</span> Held on May 15th, featuring a procession of people in Heian Period costumes from the Imperial Palace to Shimogamo and Kamigamo Shrines.</li>
-              <li><span class="font-medium">Jidai Matsuri:</span> The "Festival of Ages" on October 22nd showcases Kyoto's history with a costume procession representing different historical periods.</li>
-              <li><span class="font-medium">Gozan no Okuribi:</span> Also known as "Daimonji," this August 16th event features five giant bonfires lit on mountains surrounding Kyoto to guide ancestral spirits home after Obon.</li>
-              <li><span class="font-medium">Setsubun:</span> February 3rd ceremonies at Yoshida Shrine include the throwing of beans to drive away evil spirits.</li>
+              <li><span class="font-medium">🏮 Gion Matsuri:</span> One of Japan's most famous festivals, held throughout July with the highlight being the grand procession of floats on July 17th.</li>
+              <li><span class="font-medium">🌿 Aoi Matsuri:</span> Held on May 15th, featuring a procession of people in Heian Period costumes from the Imperial Palace to Shimogamo and Kamigamo Shrines.</li>
+              <li><span class="font-medium">👑 Jidai Matsuri:</span> The "Festival of Ages" on October 22nd showcases Kyoto's history with a costume procession representing different historical periods.</li>
+              <li><span class="font-medium">🔥 Gozan no Okuribi:</span> Also known as "Daimonji," this August 16th event features five giant bonfires lit on mountains surrounding Kyoto to guide ancestral spirits home after Obon.</li>
+              <li><span class="font-medium">👹 Setsubun:</span> February 3rd ceremonies at Yoshida Shrine include the throwing of beans to drive away evil spirits.</li>
             </ul>
             <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">August Events</p>
+              <p class="font-bold mb-1">📅 August Events</p>
               <p>During our visit in August, we might witness preparations for Gozan no Okuribi (August 16th) and potentially smaller local festivals. August in Kyoto also features evening illuminations at certain temples and special night openings to combat the summer heat.</p>
             </div>
           </div>
         </div>
         
         <!-- Fun Facts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-green-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">💡</span>
+                <h3 class="font-bold text-lg text-green-700">Did You Know?</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Did You Know?</h3>
             </div>
           </div>
-          <div>
+          <div id="fun-facts-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li>The Golden Pavilion (Kinkaku-ji) is actually covered in gold leaf, with the top two floors completely gilded with an estimated 20 pounds of gold.</li>
-              <li>The name "Kyoto" is actually an anagram of "Tokyo"—when the capital moved to Tokyo (meaning "Eastern Capital"), Kyoto (meaning "Capital City") maintained its cultural importance.</li>
-              <li>Nintendo was founded in Kyoto in 1889 as a playing card company and still has its headquarters in the city.</li>
-              <li>Kyoto is surrounded by mountains on three sides, which creates a basin effect that makes it one of the hottest cities in Japan during summer.</li>
-              <li>Unlike Tokyo, which was heavily bombed during World War II, Kyoto was deliberately removed from the target list due to its cultural significance—the U.S. Secretary of War Henry Stimson had honeymooned in Kyoto and appreciated its historical importance.</li>
-              <li>The torii gates at Fushimi Inari Shrine number over 10,000 and would stretch over 4 kilometers if placed end to end.</li>
-              <li>Kyoto is known for its superior water quality from natural springs, which contributed to the development of its famous tea ceremony culture, sake brewing, and tofu production.</li>
-              <li>Nijo Castle's "nightingale floors" were specifically designed to squeak when walked upon as a security measure against intruders.</li>
+              <li>✨ The Golden Pavilion (Kinkaku-ji) is actually covered in gold leaf, with the top two floors completely gilded with an estimated 20 pounds of gold.</li>
+              <li>🔤 The name "Kyoto" is actually an anagram of "Tokyo"—when the capital moved to Tokyo (meaning "Eastern Capital"), Kyoto (meaning "Capital City") maintained its cultural importance.</li>
+              <li>🎮 Nintendo was founded in Kyoto in 1889 as a playing card company and still has its headquarters in the city.</li>
+              <li>🌡️ Kyoto is surrounded by mountains on three sides, which creates a basin effect that makes it one of the hottest cities in Japan during summer.</li>
+              <li>🏯 Unlike Tokyo, which was heavily bombed during World War II, Kyoto was deliberately removed from the target list due to its cultural significance—the U.S. Secretary of War Henry Stimson had honeymooned in Kyoto and appreciated its historical importance.</li>
+              <li>⛩️ The torii gates at Fushimi Inari Shrine number over 10,000 and would stretch over 4 kilometers if placed end to end.</li>
+              <li>💧 Kyoto is known for its superior water quality from natural springs, which contributed to the development of its famous tea ceremony culture, sake brewing, and tofu production.</li>
+              <li>🔊 Nijo Castle's "nightingale floors" were specifically designed to squeak when walked upon as a security measure against intruders.</li>
             </ul>
           </div>
         </div>
         
         <!-- Traditional Arts Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-purple-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="arts-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🎨</span>
+                <h3 class="font-bold text-lg text-purple-700">Traditional Kyoto Arts & Crafts</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Traditional Kyoto Arts & Crafts</h3>
             </div>
           </div>
-          <div>
+          <div id="arts-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Kyo-yuzen:</span> A dyeing technique for creating elaborate designs on kimono fabric, developed in the 17th century.</li>
-              <li><span class="font-medium">Kiyomizu-yaki:</span> Pottery made in the Kiyomizu area, known for its bright colors and intricate designs.</li>
-              <li><span class="font-medium">Nishijin-ori:</span> Exquisite silk weaving tradition dating back over 1,200 years, used for high-quality kimono and obi (sashes).</li>
-              <li><span class="font-medium">Kyo-shikki:</span> Kyoto-style lacquerware, often featuring gold or silver inlay (maki-e) decoration.</li>
-              <li><span class="font-medium">Kyoto Dolls:</span> Traditional handcrafted dolls that represent the refined aesthetic of the imperial court.</li>
-              <li><span class="font-medium">Kyo-sensu:</span> Decorative folding fans with designs reflecting the seasons and Kyoto landscapes.</li>
+              <li><span class="font-medium">🧵 Kyo-yuzen:</span> A dyeing technique for creating elaborate designs on kimono fabric, developed in the 17th century.</li>
+              <li><span class="font-medium">🏺 Kiyomizu-yaki:</span> Pottery made in the Kiyomizu area, known for its bright colors and intricate designs.</li>
+              <li><span class="font-medium">👘 Nishijin-ori:</span> Exquisite silk weaving tradition dating back over 1,200 years, used for high-quality kimono and obi (sashes).</li>
+              <li><span class="font-medium">🍽️ Kyo-shikki:</span> Kyoto-style lacquerware, often featuring gold or silver inlay (maki-e) decoration.</li>
+              <li><span class="font-medium">👧 Kyoto Dolls:</span> Traditional handcrafted dolls that represent the refined aesthetic of the imperial court.</li>
+              <li><span class="font-medium">🌸 Kyo-sensu:</span> Decorative folding fans with designs reflecting the seasons and Kyoto landscapes.</li>
             </ul>
             <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
-              <p class="font-bold mb-1">Souvenir Shopping</p>
+              <p class="font-bold mb-1">🛍️ Souvenir Shopping</p>
               <p>The best places to purchase authentic Kyoto crafts include Shinmonzen and Furumonzen Streets in Gion (known as "museum streets"), traditional specialty shops around Nishiki Market, and the Kyoto Handicraft Center. Look for the official "Kyo" seal certifying authentic Kyoto-made products.</p>
             </div>
           </div>
         </div>
         
         <!-- Unique Kyoto Gardens Card -->
-        <div class="bg-white p-5 rounded-lg shadow-md">
-          <div class="bg-teal-50 p-4 mb-4">
-            <div class="flex items-center">
-              <svg class="w-6 h-6 text-teal-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-teal-50 p-4 cursor-pointer card-header" data-target="gardens-content">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="mr-2">🪴</span>
+                <h3 class="font-bold text-lg text-teal-700">Kyoto's Famous Gardens</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <h3 class="font-bold text-lg">Kyoto's Famous Gardens</h3>
             </div>
           </div>
-          <div>
+          <div id="gardens-content" class="p-5 card-content">
             <ul class="text-gray-700 space-y-3">
-              <li><span class="font-medium">Zen Gardens:</span> Kyoto is famous for its karesansui (dry landscape) gardens featuring carefully arranged rocks, pruned trees, and raked gravel or sand.</li>
-              <li><span class="font-medium">Ryoanji Temple:</span> Home to Japan's most famous rock garden, consisting of 15 rocks arranged on white gravel—a masterpiece of Zen minimalism.</li>
-              <li><span class="font-medium">Ginkaku-ji (Silver Pavilion):</span> Features the unique "Sea of Silver Sand," a meticulously raked sand garden with a sculpted sand cone called "Moon Viewing Platform."</li>
-              <li><span class="font-medium">Tenryu-ji:</span> A UNESCO World Heritage site with a stunning landscape garden designed by Zen master Muso Soseki that harmonizes with the Arashiyama mountains.</li>
-              <li><span class="font-medium">Saiho-ji:</span> Known as the "Moss Temple," featuring over 120 species of moss creating a lush green carpet. Requires advance reservation.</li>
-              <li><span class="font-medium">Shisen-do:</span> A secluded temple garden with a beautiful combination of Japanese and Chinese influences, particularly famous for its autumn colors.</li>
+              <li><span class="font-medium">🧘 Zen Gardens:</span> Kyoto is famous for its karesansui (dry landscape) gardens featuring carefully arranged rocks, pruned trees, and raked gravel or sand.</li>
+              <li><span class="font-medium">⛰️ Ryoanji Temple:</span> Home to Japan's most famous rock garden, consisting of 15 rocks arranged on white gravel—a masterpiece of Zen minimalism.</li>
+              <li><span class="font-medium">🥈 Ginkaku-ji (Silver Pavilion):</span> Features the unique "Sea of Silver Sand," a meticulously raked sand garden with a sculpted sand cone called "Moon Viewing Platform."</li>
+              <li><span class="font-medium">🌳 Tenryu-ji:</span> A UNESCO World Heritage site with a stunning landscape garden designed by Zen master Muso Soseki that harmonizes with the Arashiyama mountains.</li>
+              <li><span class="font-medium">🌿 Saiho-ji:</span> Known as the "Moss Temple," featuring over 120 species of moss creating a lush green carpet. Requires advance reservation.</li>
+              <li><span class="font-medium">🍁 Shisen-do:</span> A secluded temple garden with a beautiful combination of Japanese and Chinese influences, particularly famous for its autumn colors.</li>
             </ul>
             <p class="mt-3 text-sm text-gray-600">Japanese gardens are designed as microcosms of nature, arranged to reveal new perspectives from different viewing points. Each element has symbolic meaning, and gardens change dramatically with the seasons.</p>
           </div>
@@ -831,64 +1076,84 @@
     <section id="photos" class="mb-12">
       <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Kyoto Photo Gallery</h2>
       
+      <!-- Wikipedia-linked Photo Gallery -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Image 1: Fushimi Inari -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.e48aaXl-5uW6aNXeFibG8gHaE7?rs=1&pid=ImgDetMain" alt="Fushimi Inari Shrine" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Fushimi Inari Shrine</p>
+        <a href="https://en.wikipedia.org/wiki/Fushimi_Inari-taisha" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.e48aaXl-5uW6aNXeFibG8gHaE7?rs=1&pid=ImgDetMain" alt="Fushimi Inari Shrine" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Fushimi Inari Shrine</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 2: Golden Pavilion -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.Ngm1yer0LHLMIgisam1E-QHaE8?rs=1&pid=ImgDetMain" alt="Kinkaku-ji Golden Pavilion" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Kinkaku-ji (Golden Pavilion)</p>
+        <a href="https://en.wikipedia.org/wiki/Kinkaku-ji" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.Ngm1yer0LHLMIgisam1E-QHaE8?rs=1&pid=ImgDetMain" alt="Kinkaku-ji Golden Pavilion" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Kinkaku-ji (Golden Pavilion)</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
         
         <!-- Image 3: Bamboo Grove -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://th.bing.com/th/id/OIP.loozosPUYYCnJHIQy9q_YgHaEk?rs=1&pid=ImgDetMain" alt="Arashiyama Bamboo Grove" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Arashiyama Bamboo Grove</p>
+        <a href="https://en.wikipedia.org/wiki/Bamboo_Forest_(Kyoto,_Japan)" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://th.bing.com/th/id/OIP.loozosPUYYCnJHIQy9q_YgHaEk?rs=1&pid=ImgDetMain" alt="Arashiyama Bamboo Grove" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Arashiyama Bamboo Grove</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Image 4: Maiko/Geisha -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://www.agoda.com/wp-content/uploads/2020/02/Gion-Traditional-houses-in-Gion-district.jpg">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Maiko in Gion District</p>
+        <!-- Image 4: Geisha/Maiko -->
+        <a href="https://en.wikipedia.org/wiki/Gion" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://www.agoda.com/wp-content/uploads/2020/02/Gion-Traditional-houses-in-Gion-district.jpg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Gion District</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 5: Nijo Castle -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://asset.japan.travel/image/upload/v1648006526/kyoto/M_00212_001.jpg" alt="Nijo Castle" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Nijo Castle</p>
+        <a href="https://en.wikipedia.org/wiki/Nij%C5%8D_Castle" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://asset.japan.travel/image/upload/v1648006526/kyoto/M_00212_001.jpg" alt="Nijo Castle" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Nijo Castle</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Image 6: Kyoto Cuisine -->
-        <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-          <img src="https://lp-cms-production.imgix.net/image_browser/Traditional%20Kaiseki%20ry%C5%8Dri.jpg?auto=format&fit=crop&q=40&sharp=10&vib=20&ixlib=react-8.6.4" alt="Traditional Kyoto Cuisine" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <div class="absolute bottom-3 left-3 text-white">
-            <p class="font-medium">Traditional Kyoto Cuisine</p>
+        <a href="https://en.wikipedia.org/wiki/Kyoto_cuisine" target="_blank" class="block">
+          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
+            <img src="https://lp-cms-production.imgix.net/image_browser/Traditional%20Kaiseki%20ry%C5%8Dri.jpg?auto=format&fit=crop&q=40&sharp=10&vib=20&ixlib=react-8.6.4" alt="Traditional Kyoto Cuisine" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <div class="absolute bottom-3 left-3 text-white">
+              <p class="font-medium">Traditional Kyoto Cuisine</p>
+              <p class="text-xs">Click for Wikipedia 📚</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
     
     <!-- Call to Action -->
+
     <section class="text-center mb-8">
       <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
         Return to Main Itinerary
@@ -905,7 +1170,8 @@
   </footer>
 
 <script>
-// Combined script with proper organization and fixed issues
+
+// Single unified script with complete functionality
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -916,22 +1182,122 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.toggle('hidden');
     });
   }
-  
-  // 2. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 3. Desktop dropdown functionality - FIXED
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+  
+  // 4. NEW: Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
+        
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // 5. Collapsible cards in Essential Information
+  document.querySelectorAll('.card-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg:last-child');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 6. Collapsible days in Itinerary
+  document.querySelectorAll('.day-header').forEach(header => {
+    const targetId = header.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    
+    if (targetContent) {
+      // Start with content collapsed
+      targetContent.style.display = 'none';
+      
+      // Add click event with specific targeting
+      header.addEventListener('click', function(event) {
+        // Prevent event bubbling
+        event.stopPropagation();
+        
+        // Toggle only this specific content
+        const isHidden = targetContent.style.display === 'none';
+        targetContent.style.display = isHidden ? 'block' : 'none';
+        
+        // Toggle only this specific arrow
+        const arrow = header.querySelector('svg');
+        if (arrow) {
+          if (isHidden) {
+            arrow.classList.add('rotate-180');
+          } else {
+            arrow.classList.remove('rotate-180');
+          }
+        }
+      });
+    }
+  });
+  
+  // 7. World clocks functionality
+  updateWorldClocks();
+  setInterval(updateWorldClocks, 60000);
+  
+  // 8. Desktop dropdown functionality
   const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
   const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
   const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
@@ -961,7 +1327,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 4. Highlight current page in destinations submenus
+  // 9. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Highlight current page in destinations submenus
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   // For mobile submenu
@@ -984,7 +1363,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 5. Dynamic page title based on scroll position
+  // 11. Dynamic page title based on scroll position
   const pageTitle = document.querySelector('.hero-content h1')?.textContent;
   const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
   
@@ -1006,15 +1385,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
   }
-  
-  // 6. World clocks functionality
-  updateWorldClocks();
-  
-  // Update every minute
-  setInterval(updateWorldClocks, 60000);
 });
 
-// World clocks function - moved outside the DOMContentLoaded to prevent duplication issues
+// World clocks function
 function updateWorldClocks() {
   const now = new Date();
   
@@ -1058,4 +1431,67 @@ function updateWorldClocks() {
       eastAsiaTime.getMinutes().toString().padStart(2, '0');
   }
 }
+
+// Tips dropdown functionality
+const desktopTipsButton = document.getElementById('desktop-tips-button');
+const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+if (desktopTipsButton && desktopTipsMenu) {
+  // Use class-based toggle instead of hidden attribute
+  desktopTipsButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    desktopTipsMenu.classList.toggle('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.toggle('rotate-180');
+    }
+  });
+  
+  // Close when clicking elsewhere (add to existing document click handler)
+  document.addEventListener('click', function() {
+    desktopTipsMenu.classList.remove('visible');
+    if (desktopTipsArrow) {
+      desktopTipsArrow.classList.remove('rotate-180');
+    }
+  });
+  
+  // Prevent menu from closing when clicking inside it
+  desktopTipsMenu.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+}
+
+// Mobile Tips submenu toggle
+const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+const tipsSubmenu = document.getElementById('tips-submenu');
+const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+if (tipsDropdownButton && tipsSubmenu) {
+  tipsDropdownButton.addEventListener('click', function() {
+    tipsSubmenu.classList.toggle('hidden');
+    if (tipsDropdownArrow) {
+      tipsDropdownArrow.classList.toggle('rotate-180');
+    }
+  });
+}
+
+// Add click handlers for Tips submenu links
+if (tipsSubmenu) {
+  const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+  tipsSubmenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Close both the submenu and the main mobile menu
+      tipsSubmenu.classList.add('hidden');
+      mobileMenu.classList.add('hidden');
+    });
+  });
+}
+
 </script>
+</body>
+</html>
+
+
+
+
