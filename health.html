@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Safety - Mata Family Asian Adventure 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --mata-red: #c62828;
+            --mata-dark-red: #8e0000;
+            --mata-light-red: #ff5f52;
+            --mata-cream: #f5f0e1;
+        }
+        
+        .brand-bg-red {
+            background-color: var(--mata-red);
+        }
+        
+        .brand-text-red {
+            color: var(--mata-red);
+        }
+        
+        .brand-border-red {
+            border-color: var(--mata-red);
+        }
+        
+        .brand-button {
+            background-color: var(--mata-red);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .brand-button:hover {
+            background-color: var(--mata-dark-red);
+        }
+        
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .info-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .country-card {
+            transition: all 0.3s ease;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .flag-icon {
+            height: 20px;
+            width: 28px;
+            display: inline-block;
+            margin-right: 6px;
+            vertical-align: middle;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            .printable {
+                display: block !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                color: #000;
+                background-color: #fff;
+            }
+            
+            @page {
+                margin: 1.5cm;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Menu -->
+    <nav class="sticky-nav shadow-md no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600">← Back to Main</a>
+                    <a href="#visas-vaccines" class="text-gray-700 hover:text-red-600">Visas & Vaccines</a>
+                    <a href="#insurance" class="text-gray-700 hover:text-red-600">Insurance</a>
+                    <a href="#embassies" class="text-gray-700 hover:text-red-600">Embassies</a>
+                    <a href="#country-guide" class="text-gray-700 hover:text-red-600">Country Guide</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">← Back to Main</a>
+                    <a href="#visas-vaccines" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Visas & Vaccines</a>
+                    <a href="#insurance" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Insurance</a>
+                    <a href="#embassies" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Embassies</a>
+                    <a href="#country-guide" class="text-gray-700 hover:text-red-600 py-2">Country Guide</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-green-600 text-white py-10 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-3">Health & Safety</h1>
+            <p class="text-xl">Essential information for a safe and worry-free journey</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        <!-- Quick Actions -->
+        <div class="flex flex-wrap justify-center gap-4 mb-10 no-print">
+            <button id="print-guide" class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                <i class="fas fa-print mr-2"></i> Print Emergency Guide
+            </button>
+            <a href="https://www.exteriores.gob.es/es/ServiciosAlCiudadano/Paginas/Recomendaciones-de-viaje.aspx" target="_blank" class="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                <i class="fas fa-globe mr-2"></i> Spain Travel Advisory
+            </a>
+            <a href="https://www.who.int/travel-advice" target="_blank" class="flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                <i class="fas fa-medkit mr-2"></i> WHO Travel Health
+            </a>
+        </div>
+
+        <!-- General Safety Overview -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Safety Overview</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-7/12">
+                        <p class="text-gray-700 mb-4">Our trip will take us through some of the safest destinations in Asia. All countries on our itinerary are considered safe for tourists with normal precautions. Each destination has its own unique considerations, but overall, these are well-developed tourism destinations with good infrastructure and healthcare facilities.</p>
+                        
+                        <p class="text-gray-700 mb-4">While our trip is planned for July-August 2025, which generally offers favorable weather conditions, it's important to note this is the rainy season in some destinations. The main health considerations will be:</p>
+                        
+                        <ul class="list-disc pl-5 mb-4 text-gray-700 space-y-1">
+                            <li>Heat and humidity management, particularly in Singapore, Malaysia, and the Maldives</li>
+                            <li>Protection against mosquito-borne illnesses</li>
+                            <li>Food and water safety practices</li>
+                            <li>Sun protection, especially in the Maldives</li>
+                        </ul>
+                        
+                        <p class="text-gray-700">Each family member has been assigned a safety buddy, and we'll use the WhatsApp group "Mata Asia 2025" for all communications during the trip.</p>
+                    </div>
+                    
+                    <div class="md:w-5/12">
+                        <div class="bg-green-50 p-4 rounded-lg mb-4">
+                            <h3 class="font-bold text-green-800 mb-2 flex items-center">
+                                <i class="fas fa-shield-alt mr-2"></i> Safety Rating by Destination
+                            </h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700 flex items-center">
+                                            <img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="South Korea flag">
+                                            South Korea
+                                        </span>
+                                        <span class="text-sm text-green-700">Very Safe</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700 flex items-center">
+                                            <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="Japan flag">
+                                            Japan
+                                        </span>
+                                        <span class="text-sm text-green-700">Very Safe</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 98%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700 flex items-center">
+                                            <img src="https://flagcdn.com/w40/sg.png" class="flag-icon" alt="Singapore flag">
+                                            Singapore
+                                        </span>
+                                        <span class="text-sm text-green-700">Extremely Safe</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 99%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700 flex items-center">
+                                            <img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag">
+                                            Malaysia
+                                        </span>
+                                        <span class="text-sm text-green-700">Safe</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700 flex items-center">
+                                            <img src="https://flagcdn.com/w40/mv.png" class="flag-icon" alt="Maldives flag">
+                                            Maldives
+                                        </span>
+                                        <span class="text-sm text-green-700">Very Safe</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-blue-800 mb-2">Family Safety Contacts</h3>
+                            <ul class="space-y-1 text-sm">
+                                <li class="flex justify-between">
+                                    <span class="font-medium">Trip Leader:</span>
+                                    <span>Dad (+34 XXX XXX XXX)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="font-medium">Medical Lead:</span>
+                                    <span>Mom (+34 XXX XXX XXX)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="font-medium">Teens Group Lead:</span>
+                                    <span>Oldest Son (+34 XXX XXX XXX)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="font-medium">WhatsApp Group:</span>
+                                    <span>Mata Asia 2025</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span class="font-medium">Check-in Schedule:</span>
+                                    <span>Daily at 10 AM & 8 PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visas & Vaccinations -->
+        <section id="visas-vaccines" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Visas & Vaccinations</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Visa Requirements -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-indigo-100 p-4">
+                        <h3 class="font-bold text-lg flex items-center">
+                            <i class="fas fa-passport text-indigo-600 mr-2"></i> Visa Requirements for Spanish Citizens
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <img src="https://flagcdn.com/w40/kr.png" class="flag-icon mt-1" alt="South Korea flag">
+                                <div class="ml-2">
+                                    <h4 class="font-bold">South Korea</h4>
+                                    <p class="text-sm text-green-600 font-medium">Visa-free for 90 days</p>
+                                    <p class="text-sm text-gray-600">Spanish passport holders can enter South Korea without a visa for tourism up to 90 days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://flagcdn.com/w40/jp.png" class="flag-icon mt-1" alt="Japan flag">
+                                <div class="ml-2">
+                                    <h4 class="font-bold">Japan</h4>
+                                    <p class="text-sm text-green-600 font-medium">Visa-free for 90 days</p>
+                                    <p class="text-sm text-gray-600">Spanish passport holders can enter Japan without a visa for tourism up to 90 days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://flagcdn.com/w40/sg.png" class="flag-icon mt-1" alt="Singapore flag">
+                                <div class="ml-2">
+                                    <h4 class="font-bold">Singapore</h4>
+                                    <p class="text-sm text-green-600 font-medium">Visa-free for 90 days</p>
+                                    <p class="text-sm text-gray-600">Spanish passport holders can enter Singapore without a visa for tourism up to 90 days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://flagcdn.com/w40/my.png" class="flag-icon mt-1" alt="Malaysia flag">
+                                <div class="ml-2">
+                                    <h4 class="font-bold">Malaysia</h4>
+                                    <p class="text-sm text-green-600 font-medium">Visa-free for 90 days</p>
+                                    <p class="text-sm text-gray-600">Spanish passport holders can enter Malaysia without a visa for tourism up to 90 days.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <img src="https://flagcdn.com/w40/mv.png" class="flag-icon mt-1" alt="Maldives flag">
+                                <div class="ml-2">
+                                    <h4 class="font-bold">Maldives</h4>
+                                    <p class="text-sm text-green-600 font-medium">Visa on arrival for 30 days</p>
+                                    <p class="text-sm text-gray-600">Spanish passport holders receive a 30-day tourist visa upon arrival. Must show hotel reservation and return ticket.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-yellow-50 p-3 rounded text-sm">
+                            <p class="font-bold flex items-center text-yellow-800">
+                                <i class="fas fa-exclamation-triangle mr-2"></i> Important Notes
+                            </p>
+                            <ul class="list-disc pl-5 mt-1 text-gray-700">
+                                <li>Ensure passports are valid for at least 6 months beyond our return date (February 2026).</li>
+                                <li>Carry at least 2 blank pages in each passport.</li>
+                                <li>Keep physical and digital copies of all travel documents.</li>
+                                <li>Register with the Spanish Ministry of Foreign Affairs RIAS program before departure.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vaccinations -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-green-100 p-4">
+                        <h3 class="font-bold text-lg flex items-center">
+                            <i class="fas fa-syringe text-green-600 mr-2"></i> Recommended Vaccinations
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-3">
+                            <p class="text-gray-700">For travel to all our destinations, ensure routine vaccinations are up-to-date:</p>
+                            
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-gray-50 p-3 rounded flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-gray-700">COVID-19</span>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-gray-700">Tetanus-Diphtheria</span>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-gray-700">Measles-Mumps-Rubella</span>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    <span class="text-gray-700">Seasonal Flu</span>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-700 mt-4">Additional recommended vaccinations for our specific itinerary:</p>
+                            
+                            <div class="mt-2 space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-virus text-yellow-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <h4 class="font-bold">Hepatitis A</h4>
+                                        <p class="text-sm text-gray-600">Recommended for all destinations. Transmitted through contaminated food and water.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-virus text-yellow-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <h4 class="font-bold">Hepatitis B</h4>
+                                        <p class="text-sm text-gray-600">Consider for longer stays. Transmitted through blood and body fluids.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-virus text-yellow-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <h4 class="font-bold">Typhoid</h4>
+                                        <p class="text-sm text-gray-600">Recommended particularly for Malaysia and less developed areas.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-virus text-blue-500 mt-1 mr-2 text-lg"></i>
+                                    <div>
+                                        <h4 class="font-bold">Japanese Encephalitis</h4>
+                                        <p class="text-sm text-gray-600">Optional. Consider for rural areas in Japan and South Korea.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-red-50 p-3 rounded text-sm">
+                            <p class="font-bold flex items-center text-red-800">
+                                <i class="fas fa-clock mr-2"></i> Vaccination Timeline
+                            </p>
+                            <p class="text-gray-700 mt-1">Consult with your healthcare provider at least 6-8 weeks before departure. Some vaccines require multiple doses over time.</p>
+                            <p class="font-medium mt-2">Family Appointment at International Vaccination Center:</p>
+                            <p class="text-gray-700">June 2, 2025 at 10:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Health Preparation -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-blue-100 p-4">
+                        <h3 class="font-bold text-lg flex items-center">
+                            <i class="fas fa-heartbeat text-blue-600 mr-2"></i> Health Preparation
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-pills text-blue-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Prescription Medications</h4>
+                                    <p class="text-sm text-gray-600">Pack enough for the entire trip plus a 1-week buffer. Carry prescriptions with generic names. Keep medications in original packaging with labels.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-briefcase-medical text-blue-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">First Aid Kit</h4>
+                                    <p class="text-sm text-gray-600">Our family travel kit includes pain relievers, anti-diarrheal medication, antihistamines, motion sickness remedies, band-aids, antiseptic wipes, and digital thermometer.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-mosquito text-blue-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Insect-Borne Disease Prevention</h4>
+                                    <p class="text-sm text-gray-600">Use insect repellent with 20-30% DEET, especially in Malaysia and the Maldives. Wear long sleeves and pants at dawn/dusk when mosquitoes are most active.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-water text-blue-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Food & Water Safety</h4>
+                                    <p class="text-sm text-gray-600">Drink bottled or purified water. Be cautious with street food, especially in Malaysia. Avoid raw or undercooked meat, fish, and eggs.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-sun text-blue-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Sun Protection</h4>
+                                    <p class="text-sm text-gray-600">Use broad-spectrum SPF 50+ sunscreen, especially in the Maldives where UV index is extremely high. Reapply every 2 hours when outdoors.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
+                            <p class="font-bold flex items-center text-blue-800">
+                                <i class="fas fa-notes-medical mr-2"></i> Pre-Trip Medical Checklist
+                            </p>
+                            <ul class="list-disc pl-5 mt-1 text-gray-700">
+                                <li>General check-up for all family members (scheduled: June 1, 2025)</li>
+                                <li>Dental check-up (scheduled: June 5, 2025)</li>
+                                <li>Renew all prescriptions with 3-month supply</li>
+                                <li>Prepare medical history summary for each person</li>
+                                <li>Check if insurance covers pre-existing conditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Considerations -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-purple-100 p-4">
+                        <h3 class="font-bold text-lg flex items-center">
+                            <i class="fas fa-user-check text-purple-600 mr-2"></i> Special Health Considerations
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-temperature-high text-purple-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Heat & Humidity</h4>
+                                    <p class="text-sm text-gray-600">All destinations will be hot and humid in July-August. Plan for frequent hydration and rest breaks. Carry electrolyte packets to prevent dehydration.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-plane text-purple-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Jet Lag Management</h4>
+                                    <p class="text-sm text-gray-600">East Asia is 7 hours ahead of Spain. Begin adjusting sleep schedules 3 days before departure. Stay hydrated during flights and avoid alcohol.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-swimming-pool text-purple-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Water Activities Safety</h4>
+                                    <p class="text-sm text-gray-600">For Maldives snorkeling, always use buddy system and never swim alone. Be aware of currents and follow resort safety guidelines.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-utensils text-purple-500 mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold">Food Allergies</h4>
+                                    <p class="text-sm text-gray-600">Mom's shellfish allergy: Carry EpiPen in carry-on luggage. Learn to communicate this allergy in local languages (translation cards prepared).</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
+                            <p class="font-bold flex items-center text-purple-800">
+                                <i class="fas fa-hand-holding-medical mr-2"></i> Teen-Specific Health Notes
+                            </p>
+                            <ul class="list-disc pl-5 mt-1 text-gray-700">
+                                <li>Ensure teens drink sufficient water (aim for 2-3 liters daily)</li>
+                                <li>Protect electronics from heat and humidity damage</li>
+                                <li>Review sun safety with everyone, especially for water activities</li>
+                                <li>Daily check-ins about any health concerns</li>
+                                <li>Remind teens to alert parents about any symptoms promptly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Travel Insurance -->
+        <section id="insurance" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Travel Insurance</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-2/3">
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <h3 class="font-bold text-blue-800 mb-2 flex items-center">
+                                <i class="fas fa-shield-alt mr-2"></i> Our Insurance Coverage
+                            </h3>
+                            <div class="space-y-2">
+                                <p><span class="font-medium">Provider:</span> Global Travel Protect Premium</p>
+                                <p><span class="font-medium">Policy Number:</span> TRV-2025-61792</p>
+                                <p><span class="font-medium">Coverage Period:</span> July 29 - August 23, 2025</p>
+                                <p><span class="font-medium">Emergency Assistance:</span> +1-800-555-1234 (24/7 multilingual support)</p>
+                                <p><span class="font-medium">Email:</span> assistance@globaltravelprotect.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h3 class="font-bold text-lg mb-3">Key Coverage Details</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Medical Expenses</p>
+                                    <p class="text-gray-700">Up to €1,000,000 per person</p>
+                                    <p class="text-sm text-gray-600">Includes hospitalization, emergency care, doctor visits</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Emergency Evacuation</p>
+                                    <p class="text-gray-700">Up to €500,000 per person</p>
+                                    <p class="text-sm text-gray-600">Medical transport, repatriation if necessary</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Trip Cancellation/Interruption</p>
+                                    <p class="text-gray-700">Up to €10,000 per person</p>
+                                    <p class="text-sm text-gray-600">Covers non-refundable expenses if trip is cancelled</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Baggage Loss/Delay</p>
+                                    <p class="text-gray-700">Up to €3,000 per person</p>
+                                    <p class="text-sm text-gray-600">€500 emergency purchase allowance for delays over 12 hours</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Travel Delay</p>
+                                    <p class="text-gray-700">€300 per day, up to €1,500</p>
+                                    <p class="text-sm text-gray-600">For delays over 6 hours due to covered reasons</p>
+                                </div>
+                                
+                                <div class="bg-gray-50 p-3 rounded">
+                                    <p class="font-medium text-gray-800">Personal Liability</p>
+                                    <p class="text-gray-700">Up to €2,000,000</p>
+                                    <p class="text-sm text-gray-600">Covers damage to property or injury to others</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/3">
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-yellow-800 mb-3 flex items-center">
+                                <i class="fas fa-exclamation-triangle mr-2"></i> Making a Claim
+                            </h3>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-200 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-2">
+                                        <span class="font-bold text-yellow-800">1</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">Contact emergency assistance number immediately for medical emergencies.</p>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-200 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-2">
+                                        <span class="font-bold text-yellow-800">2</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">For non-emergencies, document everything: take photos, keep all receipts, and obtain police reports if applicable.</p>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-200 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-2">
+                                        <span class="font-bold text-yellow-800">3</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">File claim within 30 days of incident. Online claims portal: globalprotect.com/claims</p>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-200 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 mr-2">
+                                        <span class="font-bold text-yellow-800">4</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">Keep copies of all submitted documents and correspondence.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-yellow-200">
+                                <p class="font-bold text-sm mb-2">Important App Access</p>
+                                <p class="flex items-center text-sm text-gray-700">
+                                    <i class="fas fa-mobile-alt mr-2 text-yellow-700"></i>
+                                    Global Travel Protect app installed on Dad's and Mom's phones
+                                </p>
+                                <p class="flex items-center text-sm text-gray-700 mt-1">
+                                    <i class="fas fa-key mr-2 text-yellow-700"></i>
+                                    Login credentials in secure family document folder
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-red-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-red-800 mb-2 flex items-center">
+                                <i class="fas fa-clipboard-list mr-2"></i> Pre-Existing Conditions
+                            </h3>
+                            <p class="text-sm text-gray-700 mb-3">Our policy covers pre-existing conditions if the policy was purchased within 14 days of initial trip payment.</p>
+                            
+                            <div class="text-sm">
+                                <p class="font-medium">Special Notes:</p>
+                                <ul class="list-disc pl-5 mt-1 text-gray-700">
+                                    <li>Mom's shellfish allergy is covered</li>
+                                    <li>Dad's hypertension medication is covered</li>
+                                    <li>Youngest son's asthma is covered</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Digital Insurance Cards -->
+                <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fas fa-id-card mr-2 text-gray-700"></i> Digital Insurance Cards
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Dad</p>
+                            <p class="text-sm text-blue-800">ID: TRV-A1</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                        
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Mom</p>
+                            <p class="text-sm text-blue-800">ID: TRV-A2</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                        
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Son (17)</p>
+                            <p class="text-sm text-blue-800">ID: TRV-C1</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                        
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Son (15)</p>
+                            <p class="text-sm text-blue-800">ID: TRV-C2</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                        
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Daughter (13)</p>
+                            <p class="text-sm text-blue-800">ID: TRV-C3</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                        
+                        <div class="bg-blue-100 rounded-lg p-3 text-center">
+                            <p class="font-bold">Girlfriend (17)</p>
+                            <p class="text-sm text-blue-800">ID: TRV-G1</p>
+                            <i class="fas fa-qrcode text-3xl my-2 text-blue-500"></i>
+                            <p class="text-xs">Scan for details</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-3 text-center">Insurance cards are also available in the Global Travel Protect app and saved as PDFs in our shared trip folder.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spanish Embassies & Consulates -->
+        <section id="embassies" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Spanish Embassies & Consulates</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- South Korea -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-red-100 p-4 flex items-center">
+                        <img src="https://flagcdn.com/w40/kr.png" class="w-8 h-6 mr-2" alt="South Korea flag">
+                        <h3 class="font-bold text-lg">South Korea (Seoul)</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-2">
+                            <p class="font-medium">Embassy of Spain in Seoul</p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                17, Hannam-daero 36-gil, Yongsan-gu, Seoul
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +82-2-3703-7700
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-envelope text-red-500 mr-2"></i>
+                                emb.seul@maec.es
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-globe text-red-500 mr-2"></i>
+                                <a href="http://www.exteriores.gob.es/embajadas/seul" target="_blank" class="text-blue-600 hover:underline">www.exteriores.gob.es/embajadas/seul</a>
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-clock text-red-500 mr-2"></i>
+                                Emergency: +82-10-3148-8105 (24/7)
+                            </p>
+                        </div>
+                        <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+                            <p class="font-bold">Distance from our hotel:</p>
+                            <p>7.5 km (20 minutes by taxi)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Japan -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-red-100 p-4 flex items-center">
+                        <img src="https://flagcdn.com/w40/jp.png" class="w-8 h-6 mr-2" alt="Japan flag">
+                        <h3 class="font-bold text-lg">Japan (Tokyo)</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-2">
+                            <p class="font-medium">Embassy of Spain in Tokyo</p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                1-3-29 Roppongi, Minato-ku, Tokyo 106-0032
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +81-3-3583-8531
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-envelope text-red-500 mr-2"></i>
+                                emb.tokio@maec.es
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-globe text-red-500 mr-2"></i>
+                                <a href="http://www.exteriores.gob.es/embajadas/tokio" target="_blank" class="text-blue-600 hover:underline">www.exteriores.gob.es/embajadas/tokio</a>
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-clock text-red-500 mr-2"></i>
+                                Emergency: +81-80-4940-3754 (24/7)
+                            </p>
+                        </div>
+                        <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+                            <p class="font-bold">Distance from our hotel:</p>
+                            <p>5.3 km (15 minutes by taxi)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Singapore -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-red-100 p-4 flex items-center">
+                        <img src="https://flagcdn.com/w40/sg.png" class="w-8 h-6 mr-2" alt="Singapore flag">
+                        <h3 class="font-bold text-lg">Singapore</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-2">
+                            <p class="font-medium">Embassy of Spain in Singapore</p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                7 Temasek Boulevard, #39-00 Suntec Tower One, Singapore 038987
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +65-6725-9220
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-envelope text-red-500 mr-2"></i>
+                                emb.singapur@maec.es
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-globe text-red-500 mr-2"></i>
+                                <a href="http://www.exteriores.gob.es/embajadas/singapur" target="_blank" class="text-blue-600 hover:underline">www.exteriores.gob.es/embajadas/singapur</a>
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-clock text-red-500 mr-2"></i>
+                                Emergency: +65-9235-7485 (24/7)
+                            </p>
+                        </div>
+                        <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+                            <p class="font-bold">Distance from our hotel:</p>
+                            <p>4.2 km (15 minutes by taxi)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Malaysia -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-red-100 p-4 flex items-center">
+                        <img src="https://flagcdn.com/w40/my.png" class="w-8 h-6 mr-2" alt="Malaysia flag">
+                        <h3 class="font-bold text-lg">Malaysia (Kuala Lumpur)</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-2">
+                            <p class="font-medium">Embassy of Spain in Kuala Lumpur</p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                200 Jalan Ampang, 50450 Kuala Lumpur
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +60-3-2148-4868
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-envelope text-red-500 mr-2"></i>
+                                emb.kualalumpur@maec.es
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-globe text-red-500 mr-2"></i>
+                                <a href="http://www.exteriores.gob.es/embajadas/kualalumpur" target="_blank" class="text-blue-600 hover:underline">www.exteriores.gob.es/embajadas/kualalumpur</a>
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-clock text-red-500 mr-2"></i>
+                                Emergency: +60-12-203-8462 (24/7)
+                            </p>
+                        </div>
+                        <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+                            <p class="font-bold">Distance from our hotel:</p>
+                            <p>3.5 km (10 minutes by taxi)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Maldives -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-red-100 p-4 flex items-center">
+                        <img src="https://flagcdn.com/w40/mv.png" class="w-8 h-6 mr-2" alt="Maldives flag">
+                        <h3 class="font-bold text-lg">Maldives</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-2">
+                            <p class="font-medium">Honorary Consulate of Spain in Malé</p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                H. Thuniya, 4th Floor, Boduthakurufaanu Magu, Malé
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +960-330-1307
+                            </p>
+                            <p class="flex items-center text-gray-700">
+                                <i class="fas fa-envelope text-red-500 mr-2"></i>
+                                con.male@maec.es
+                            </p>
+                            <p class="text-sm mt-2 font-medium text-gray-700">Embassy with jurisdiction over Maldives:</p>
+                            <p class="text-sm text-gray-700">Spanish Embassy in New Delhi, India</p>
+                            <p class="flex items-center text-sm text-gray-700">
+                                <i class="fas fa-phone text-red-500 mr-2"></i>
+                                +91-11-4129-3000
+                            </p>
+                        </div>
+                        <div class="mt-3 bg-red-50 p-2 rounded text-sm">
+                            <p class="font-bold">Note:</p>
+                            <p>Direct assistance from resort in emergencies; they coordinate with consular services</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Consular Services -->
+                <div class="country-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-blue-100 p-4 flex items-center">
+                        <i class="fas fa-passport text-blue-600 text-xl mr-2"></i>
+                        <h3 class="font-bold text-lg">Consular Services</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-id-card-alt text-blue-500 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">Lost/Stolen Passport</p>
+                                    <p class="text-sm text-gray-700">Report immediately to local police and Spanish embassy for emergency travel document.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-volume text-blue-500 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">24/7 Consular Emergency Line</p>
+                                    <p class="text-sm text-gray-700">+34 91 394 8900 (Spain Ministry of Foreign Affairs)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-file-signature text-blue-500 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-medium">RIAS Registration</p>
+                                    <p class="text-sm text-gray-700">Register our trip with the Spanish Registry of Travelers (RIAS) before departure: <a href="https://registroviajeros.exteriores.gob.es" target="_blank" class="text-blue-600 hover:underline">registroviajeros.exteriores.gob.es</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Country-Specific Health & Safety Guide -->
+        <section id="country-guide" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Country Health & Safety Guide</h2>
+            
+            <div class="overflow-hidden bg-white rounded-lg shadow-md">
+                <div class="px-6 py-3 bg-purple-50 flex justify-between items-center">
+                    <h3 class="font-bold">Detailed Country Information</h3>
+                    <span class="text-purple-600 text-sm font-medium">Click on tabs to view details</span>
+                </div>
+                
+                <!-- Country Tabs -->
+                <div class="border-b border-gray-200">
+                    <div class="flex overflow-x-auto">
+                        <button class="country-tab px-6 py-3 text-red-600 border-b-2 border-red-600 font-medium" data-country="korea">
+                            <img src="https://flagcdn.com/w40/kr.png" class="w-6 h-4 inline-block mr-2" alt="South Korea flag">
+                            South Korea
+                        </button>
+                        <button class="country-tab px-6 py-3 text-gray-500 font-medium" data-country="japan">
+                            <img src="https://flagcdn.com/w40/jp.png" class="w-6 h-4 inline-block mr-2" alt="Japan flag">
+                            Japan
+                        </button>
+                        <button class="country-tab px-6 py-3 text-gray-500 font-medium" data-country="singapore">
+                            <img src="https://flagcdn.com/w40/sg.png" class="w-6 h-4 inline-block mr-2" alt="Singapore flag">
+                            Singapore
+                        </button>
+                        <button class="country-tab px-6 py-3 text-gray-500 font-medium" data-country="malaysia">
+                            <img src="https://flagcdn.com/w40/my.png" class="w-6 h-4 inline-block mr-2" alt="Malaysia flag">
+                            Malaysia
+                        </button>
+                        <button class="country-tab px-6 py-3 text-gray-500 font-medium" data-country="maldives">
+                            <img src="https://flagcdn.com/w40/mv.png" class="w-6 h-4 inline-block mr-2" alt="Maldives flag">
+                            Maldives
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="p-6">
+                    <!-- South Korea Content -->
+                    <div id="korea-content" class="country-content">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Health Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-hospital text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Healthcare Quality</p>
+                                            <p class="text-sm text-gray-700">Excellent. South Korea has a world-class healthcare system with many English-speaking doctors in major cities.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-pills text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Medications</p>
+                                            <p class="text-sm text-gray-700">Well-stocked pharmacies. Bring prescription medications in original packaging with prescription.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-temperature-high text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Weather-related Health Concerns</p>
+                                            <p class="text-sm text-gray-700">Hot and humid in summer (30-33°C). Heat exhaustion risk. Stay hydrated and use sun protection.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-glass-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Food & Water Safety</p>
+                                            <p class="text-sm text-gray-700">High standards. Tap water is generally safe but bottled water is widely available and recommended for tourists.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-red-50 p-3 rounded">
+                                    <p class="font-bold">Recommended Hospitals in Seoul</p>
+                                    <ul class="list-disc pl-5 mt-1 text-sm text-gray-700">
+                                        <li>Seoul National University Hospital (English services)</li>
+                                        <li>Severance Hospital (International Health Care Center)</li>
+                                        <li>Samsung Medical Center (International Health Services)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Safety Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-shield-alt text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Crime</p>
+                                            <p class="text-sm text-gray-700">Very low crime rate. Seoul is one of the safest major cities in the world. Exercise normal precautions.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-car-crash text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Transportation</p>
+                                            <p class="text-sm text-gray-700">Well-maintained roads and excellent public transportation. Use official taxis and public transit when possible.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-exclamation-triangle text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Areas to Avoid</p>
+                                            <p class="text-sm text-gray-700">No specific areas to avoid. DMZ tours must be with authorized tour operators only.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-language text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Communication</p>
+                                            <p class="text-sm text-gray-700">English is spoken at major tourist sites and hotels. Download Papago translation app (better than Google Translate for Korean).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-blue-50 p-3 rounded">
+                                    <p class="font-bold">Emergency Numbers</p>
+                                    <ul class="grid grid-cols-2 gap-2 mt-1 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-ambulance text-red-500 mr-1"></i>
+                                            Ambulance: 119
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-fire-extinguisher text-red-500 mr-1"></i>
+                                            Fire: 119
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-shield text-blue-500 mr-1"></i>
+                                            Police: 112
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone text-green-500 mr-1"></i>
+                                            Tourist Help: 1330
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Japan Content -->
+                    <div id="japan-content" class="country-content hidden">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Health Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-hospital text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Healthcare Quality</p>
+                                            <p class="text-sm text-gray-700">Excellent. Japan has a top-tier healthcare system, though English may be limited in smaller facilities.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-pills text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Medications</p>
+                                            <p class="text-sm text-gray-700">Some medications common in Spain may be restricted. Bring doctor's note for prescription medications.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-temperature-high text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Weather-related Health Concerns</p>
+                                            <p class="text-sm text-gray-700">Hot and humid in summer (28-33°C). Heat stroke risk. Stay hydrated and take breaks in air-conditioned spaces.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-glass-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Food & Water Safety</p>
+                                            <p class="text-sm text-gray-700">Very high standards. Tap water is safe to drink. Food hygiene standards are excellent.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-red-50 p-3 rounded">
+                                    <p class="font-bold">Recommended Hospitals in Tokyo</p>
+                                    <ul class="list-disc pl-5 mt-1 text-sm text-gray-700">
+                                        <li>St. Luke's International Hospital (English services)</li>
+                                        <li>Tokyo Medical University Hospital</li>
+                                        <li>Juntendo University Hospital</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Safety Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-shield-alt text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Crime</p>
+                                            <p class="text-sm text-gray-700">Extremely low crime rate. Tokyo regularly ranks as one of the world's safest cities. Pickpocketing is rare.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-earthquake text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Natural Disasters</p>
+                                            <p class="text-sm text-gray-700">Japan is prone to earthquakes. Follow hotel staff instructions if one occurs. Download Japan Meteorological Agency app for alerts.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-car-crash text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Transportation</p>
+                                            <p class="text-sm text-gray-700">Excellent public transportation. Trains are punctual and safe. Taxis are reliable but expensive.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-language text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Communication</p>
+                                            <p class="text-sm text-gray-700">English is limited outside tourist areas. Major train stations have English signage. Download Google Translate with Japanese offline package.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-blue-50 p-3 rounded">
+                                    <p class="font-bold">Emergency Numbers</p>
+                                    <ul class="grid grid-cols-2 gap-2 mt-1 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-ambulance text-red-500 mr-1"></i>
+                                            Ambulance: 119
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-fire-extinguisher text-red-500 mr-1"></i>
+                                            Fire: 119
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-shield text-blue-500 mr-1"></i>
+                                            Police: 110
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone text-green-500 mr-1"></i>
+                                            Tourist Info: 03-5369-6004
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Singapore Content -->
+                    <div id="singapore-content" class="country-content hidden">
+                        <!-- Singapore health and safety content would go here, similar structure to above -->
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Health Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-hospital text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Healthcare Quality</p>
+                                            <p class="text-sm text-gray-700">World-class. Singapore has one of the best healthcare systems globally with English widely spoken.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-temperature-high text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Weather-related Health Concerns</p>
+                                            <p class="text-sm text-gray-700">Hot and humid year-round (30-32°C). Heat exhaustion is common among tourists. Stay hydrated and limit outdoor activities during peak sun hours.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-glass-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Food & Water Safety</p>
+                                            <p class="text-sm text-gray-700">Excellent standards. Tap water is safe to drink. Food stalls (hawker centers) are regularly inspected and generally safe.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-bug text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Mosquito-borne Diseases</p>
+                                            <p class="text-sm text-gray-700">Dengue fever occurs in Singapore. Use insect repellent and wear long sleeves in the evening.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-red-50 p-3 rounded">
+                                    <p class="font-bold">Recommended Hospitals in Singapore</p>
+                                    <ul class="list-disc pl-5 mt-1 text-sm text-gray-700">
+                                        <li>Singapore General Hospital</li>
+                                        <li>Raffles Hospital (private, popular with foreigners)</li>
+                                        <li>Mount Elizabeth Hospital (private)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Safety Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-shield-alt text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Crime</p>
+                                            <p class="text-sm text-gray-700">Extremely low crime rate. Singapore is one of the safest countries in the world with strict enforcement of laws.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-gavel text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Local Laws</p>
+                                            <p class="text-sm text-gray-700">Very strict laws. Heavy fines for littering, jaywalking, and eating/drinking on public transport. Drug offenses carry severe penalties.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-car-crash text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Transportation</p>
+                                            <p class="text-sm text-gray-700">Excellent public transportation. MRT (subway) is clean, efficient, and extensive. Taxis are regulated and safe.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-language text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Communication</p>
+                                            <p class="text-sm text-gray-700">English is one of the official languages and widely spoken. Signs are in English.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-blue-50 p-3 rounded">
+                                    <p class="font-bold">Emergency Numbers</p>
+                                    <ul class="grid grid-cols-2 gap-2 mt-1 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-ambulance text-red-500 mr-1"></i>
+                                            Ambulance: 995
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-fire-extinguisher text-red-500 mr-1"></i>
+                                            Fire: 995
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-shield text-blue-500 mr-1"></i>
+                                            Police: 999
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone text-green-500 mr-1"></i>
+                                            Tourist Hotline: 1800-736-2000
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Malaysia Content -->
+                    <div id="malaysia-content" class="country-content hidden">
+                        <!-- Malaysia health and safety content would go here -->
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Health Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-hospital text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Healthcare Quality</p>
+                                            <p class="text-sm text-gray-700">Good in major cities. Kuala Lumpur has several international-standard hospitals with English-speaking staff.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-temperature-high text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Weather-related Health Concerns</p>
+                                            <p class="text-sm text-gray-700">Hot and humid (30-34°C) with afternoon thunderstorms. Heat exhaustion risk. Air quality can be poor during haze season.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-glass-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Food & Water Safety</p>
+                                            <p class="text-sm text-gray-700">Drink bottled water. Food from established restaurants and food courts is generally safe. Exercise caution with street food.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-bug text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Mosquito-borne Diseases</p>
+                                            <p class="text-sm text-gray-700">Dengue fever risk in urban areas. Malaria risk is low in Kuala Lumpur but exists in rural areas. Use insect repellent.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-red-50 p-3 rounded">
+                                    <p class="font-bold">Recommended Hospitals in Kuala Lumpur</p>
+                                    <ul class="list-disc pl-5 mt-1 text-sm text-gray-700">
+                                        <li>Gleneagles Kuala Lumpur (private, international patients)</li>
+                                        <li>Prince Court Medical Centre</li>
+                                        <li>Pantai Hospital Kuala Lumpur</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Safety Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-shield-alt text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Crime</p>
+                                            <p class="text-sm text-gray-700">Exercise normal precautions. Petty theft and bag snatching can occur in tourist areas. Keep valuables secure and be aware in crowded areas.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-car-crash text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Transportation</p>
+                                            <p class="text-sm text-gray-700">Use official taxis or rideshare apps like Grab. The metro system (MRT/LRT) is efficient and safe for tourist areas.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-exclamation-triangle text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Areas to Be Cautious</p>
+                                            <p class="text-sm text-gray-700">Exercise increased caution in less touristy areas at night. Stick to well-lit, populated areas.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-language text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Communication</p>
+                                            <p class="text-sm text-gray-700">English is widely spoken in Kuala Lumpur, especially in tourist areas, hotels, and restaurants.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-blue-50 p-3 rounded">
+                                    <p class="font-bold">Emergency Numbers</p>
+                                    <ul class="grid grid-cols-2 gap-2 mt-1 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-ambulance text-red-500 mr-1"></i>
+                                            Ambulance: 999
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-fire-extinguisher text-red-500 mr-1"></i>
+                                            Fire: 994
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-shield text-blue-500 mr-1"></i>
+                                            Police: 999
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone text-green-500 mr-1"></i>
+                                            Tourist Police: 03-2149-6590
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Maldives Content -->
+                    <div id="maldives-content" class="country-content hidden">
+                        <!-- Maldives health and safety content would go here -->
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Health Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-hospital text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Healthcare Quality</p>
+                                            <p class="text-sm text-gray-700">Limited outside of Malé. Our resort (Radisson Blu) has a resident doctor and basic medical facilities. Complex cases require evacuation.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-sun text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Sun Exposure</p>
+                                            <p class="text-sm text-gray-700">Very high UV index near the equator. Sunburn risk is extreme. Use SPF 50+ sunscreen and reapply frequently. Limit sun exposure between 10AM-4PM.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-glass-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Food & Water Safety</p>
+                                            <p class="text-sm text-gray-700">Resort food and bottled water are safe. Tap water is desalinated seawater and not recommended for drinking.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-water text-red-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Marine Hazards</p>
+                                            <p class="text-sm text-gray-700">Be aware of strong currents while swimming. Some coral reef fish and creatures can sting or bite. Follow local advice about safe areas for snorkeling.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-red-50 p-3 rounded">
+                                    <p class="font-bold">Medical Facilities</p>
+                                    <ul class="list-disc pl-5 mt-1 text-sm text-gray-700">
+                                        <li>Radisson Blu Resort Doctor (on-site) - Our primary resource</li>
+                                        <li>ADK Hospital (Malé) - Main private hospital in the capital</li>
+                                        <li>IGMH Hospital (Malé) - Main government hospital</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="md:w-1/2">
+                                <h4 class="font-bold text-lg mb-3">Safety Considerations</h4>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-shield-alt text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Resort Safety</p>
+                                            <p class="text-sm text-gray-700">Resort islands are extremely safe with good security. Crime is very rare at international resorts.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-swimming-pool text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Water Activities Safety</p>
+                                            <p class="text-sm text-gray-700">Always use the buddy system when snorkeling. Follow resort safety guidelines. Wear life jackets during water sports. Never swim alone or at night.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-cloud-sun-rain text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Weather</p>
+                                            <p class="text-sm text-gray-700">Tropical storms can occur. The resort has weather monitoring and emergency procedures. August generally has good weather.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <i class="fas fa-plane text-blue-500 mt-1 mr-2"></i>
+                                        <div>
+                                            <p class="font-medium">Transportation</p>
+                                            <p class="text-sm text-gray-700">Seaplane transfers are weather-dependent and may be delayed. Schedule flexibility is advised.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 bg-blue-50 p-3 rounded">
+                                    <p class="font-bold">Emergency Information</p>
+                                    <ul class="space-y-2 mt-1 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-phone text-green-500 mr-1"></i>
+                                            <span>Resort Emergency Line: Will be provided upon check-in</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-ambulance text-red-500 mr-1"></i>
+                                            <span>Maldives Emergency: 102</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-shield text-blue-500 mr-1"></i>
+                                            <span>Police: 119</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-helicopter text-blue-500 mr-1"></i>
+                                            <span>Our insurance covers emergency evacuation if needed</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Response Plan -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Family Emergency Response Plan</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="mb-6 bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-red-800 mb-2 flex items-center">
+                            <i class="fas fa-exclamation-circle mr-2"></i> Family Emergency Protocol
+                        </h3>
+                        <p class="text-gray-700 mb-3">In case of separation or emergency, we will follow these steps:</p>
+                        
+                        <ol class="list-decimal pl-8 space-y-2 text-gray-700">
+                            <li>Stay calm and assess the situation</li>
+                            <li>Call or message the family WhatsApp group "Mata Asia 2025"</li>
+                            <li>If separated, return to the most recent hotel or predetermined meeting point</li>
+                            <li>If unable to reach family members, contact the Spanish embassy or consulate</li>
+                            <li>For medical emergencies, first call local emergency number, then notify family</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Medical Emergencies -->
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="font-bold flex items-center mb-2">
+                                <i class="fas fa-ambulance text-red-600 mr-2"></i> Medical Emergencies
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li><span class="font-medium">Step 1:</span> Call local emergency number or hotel medical service</li>
+                                <li><span class="font-medium">Step 2:</span> Notify family via WhatsApp group</li>
+                                <li><span class="font-medium">Step 3:</span> Contact insurance emergency line: +1-800-555-1234</li>
+                                <li><span class="font-medium">Step 4:</span> Have insurance card, passport, and medical history ready</li>
+                                <li><span class="font-medium">Step 5:</span> One adult stays with patient, one handles communications</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Lost Passport/Documents -->
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="font-bold flex items-center mb-2">
+                                <i class="fas fa-passport text-yellow-600 mr-2"></i> Lost Documents
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li><span class="font-medium">Step 1:</span> Report to local police immediately</li>
+                                <li><span class="font-medium">Step 2:</span> Contact nearest Spanish embassy/consulate</li>
+                                <li><span class="font-medium">Step 3:</span> Access digital copies from secure cloud folder</li>
+                                <li><span class="font-medium">Step 4:</span> Follow embassy procedures for emergency documentation</li>
+                                <li><span class="font-medium">Step 5:</span> Notify airline/hotel of situation if travel is affected</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Natural Disaster -->
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold flex items-center mb-2">
+                                <i class="fas fa-cloud-showers-heavy text-blue-600 mr-2"></i> Natural Disasters
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li><span class="font-medium">Step 1:</span> Follow hotel staff/local authorities' instructions</li>
+                                <li><span class="font-medium">Step 2:</span> Stay together as a family at all times</li>
+                                <li><span class="font-medium">Step 3:</span> Contact embassy using emergency contact numbers</li>
+                                <li><span class="font-medium">Step 4:</span> Monitor local news and embassy alerts</li>
+                                <li><span class="font-medium">Step 5:</span> Have "go bag" with essentials ready at all times</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2">Emergency Contact Card</h3>
+                        <p class="text-sm text-gray-700 mb-3">Each family member will carry an emergency card with the following information:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-medium">Front:</p>
+                                <ul class="list-disc pl-5 text-sm text-gray-700">
+                                    <li>Family contact information (Spanish & English)</li>
+                                    <li>Hotel names and addresses for each destination</li>
+                                    <li>Travel insurance information</li>
+                                    <li>Parent's phone numbers</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <p class="font-medium">Back:</p>
+                                <ul class="list-disc pl-5 text-sm text-gray-700">
+                                    <li>Embassy contact details for each country</li>
+                                    <li>Insurance emergency assistance number</li>
+                                    <li>Medical conditions/allergies</li>
+                                    <li>Blood type</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-700 mt-3">Cards are waterproof and will be distributed before departure. Digital copies available in our shared travel folder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="text-center mb-8 no-print">
+            <a href="index.html" class="inline-block brand-button hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                Return to Main Itinerary
+            </a>
+        </section>
+    </div>
+
+    <footer class="brand-bg-red text-white py-8 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
+            <p class="mb-4">July 30 - August 21, 2025</p>
+            <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Country tabs functionality
+            const countryTabs = document.querySelectorAll('.country-tab');
+            const countryContents = document.querySelectorAll('.country-content');
+            
+            countryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const country = this.getAttribute('data-country');
+                    
+                    // Hide all content sections
+                    countryContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show selected content
+                    document.getElementById(country + '-content').classList.remove('hidden');
+                    
+                    // Update active tab styling
+                    countryTabs.forEach(tab => {
+                        tab.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                        tab.classList.add('text-gray-500');
+                    });
+                    
+                    this.classList.remove('text-gray-500');
+                    this.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                });
+            });
+            
+            // Print functionality
+            const printGuideButton = document.getElementById('print-guide');
+            
+            if (printGuideButton) {
+                printGuideButton.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
