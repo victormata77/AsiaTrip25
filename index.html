@@ -717,69 +717,209 @@
           </div>
         </div>
       </div>
-    </section>
-
-      <!-- Travel Tips Section -->
-    <section id="tips" class="mb-16">
-      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Essential Travel Tips</h2>
-      <p class="text-center text-gray-600 mb-8">Click on any category to view detailed information</p>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Packing Tips -->
-        <a href="packing.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-red-600 p-4 flex flex-col items-center justify-center text-center h-32">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </svg>
-            <h3 class="text-white font-bold">Packing Essentials</h3>
-          </div>
-          <div class="p-3 text-center">
-            <p class="text-sm text-gray-600">Climate-appropriate clothing, adapters, medications</p>
-          </div>
-        </a>
-        
-        <!-- Health & Safety -->
-        <a href="health.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-green-600 p-4 flex flex-col items-center justify-center text-center h-32">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-            <h3 class="text-white font-bold">Health & Safety</h3>
-          </div>
-          <div class="p-3 text-center">
-            <p class="text-sm text-gray-600">Insurance, vaccinations, emergency contacts</p>
-          </div>
-        </a>
-        
-        <!-- Technology & Connectivity -->
-        <a href="connectivity.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-blue-600 p-4 flex flex-col items-center justify-center text-center h-32">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-            <h3 class="text-white font-bold">Connectivity</h3>
-          </div>
-          <div class="p-3 text-center">
-            <p class="text-sm text-gray-600">SIM cards, Wi-Fi, essential travel apps</p>
-          </div>
-        </a>
-        
-        <!-- Money & Payments -->
-        <a href="money.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="bg-yellow-600 p-4 flex flex-col items-center justify-center text-center h-32">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <h3 class="text-white font-bold">Money & Payments</h3>
-          </div>
-          <div class="p-3 text-center">
-            <p class="text-sm text-gray-600">Currency exchange, cards, tipping customs</p>
-          </div>
-        </a>
-      </div>
-      
-      <!-- Complete Travel Guide button removed -->
-    </section>
+    </
+<!-- Calendar View (MOBILE-FRIENDLY VERSION) -->
+<section id="calendar" class="mb-16">
+  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Trip Calendar</h2>
+  <p class="text-center text-gray-600 mb-8">Day-by-day overview of our journey</p>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>M 29/7</th>
+          <th>T 30/7</th>
+          <th>W 31/7</th>
+          <th>T 1/8</th>
+          <th>F 2/8</th>
+          <th>S 3/8</th>
+          <th>S 4/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="out-of-range">
+            <div class="date">Pre-trip</div>
+          </td>
+          <td>
+            <div class="date">Day 0</div>
+            <div class="text-xs text-gray-700">Departure from BCN</div>
+          </td>
+          <td>
+            <div class="date">Day 1</div>
+            <a href="seoul.html#day1" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 2</div>
+            <a href="seoul.html#day2" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 3</div>
+            <a href="seoul.html#day3" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 4</div>
+            <a href="seoul.html#day4" class="destination-tag seoul-tag">Seoul</a>
+          </td>
+          <td>
+            <div class="date">Day 5</div>
+            <a href="seoul.html#day5" class="destination-tag seoul-tag">Seoul</a>
+            <a href="tokyo.html#day5" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>M 5/8</th>
+          <th>T 6/8</th>
+          <th>W 7/8</th>
+          <th>T 8/8</th>
+          <th>F 9/8</th>
+          <th>S 10/8</th>
+          <th>S 11/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 6</div>
+            <a href="tokyo.html#day6" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 7</div>
+            <a href="tokyo.html#day7" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 8</div>
+            <a href="tokyo.html#day8" class="destination-tag tokyo-tag">Tokyo</a>
+          </td>
+          <td>
+            <div class="date">Day 9</div>
+            <a href="tokyo.html#day9" class="destination-tag tokyo-tag">Tokyo</a>
+            <a href="kyoto.html#day9" class="destination-tag kyoto-tag">Kyoto</a>
+          </td>
+          <td>
+            <div class="date">Day 10</div>
+            <a href="kyoto.html#day10" class="destination-tag kyoto-tag">Kyoto</a>
+          </td>
+          <td>
+            <div class="date">Day 11</div>
+            <a href="kyoto.html#day11" class="destination-tag kyoto-tag">Kyoto</a>
+            <a href="kyoto.html#day11" class="destination-tag kyoto-tag">Narita</a>
+          </td>
+          <td>
+            <div class="date">Day 12</div>
+            <a href="kyoto.html#day12" class="destination-tag kyoto-tag">Narita</a>
+            <a href="singapore.html#day12" class="destination-tag singapore-tag">SG</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto mb-8">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>M 12/8</th>
+          <th>T 13/8</th>
+          <th>W 14/8</th>
+          <th>T 15/8</th>
+          <th>F 16/8</th>
+          <th>S 17/8</th>
+          <th>S 18/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 13</div>
+            <a href="singapore.html#day13" class="destination-tag singapore-tag">SG</a>
+          </td>
+          <td>
+            <div class="date">Day 14</div>
+            <a href="singapore.html#day14" class="destination-tag singapore-tag">SG</a>
+          </td>
+          <td>
+            <div class="date">Day 15</div>
+            <a href="singapore.html#day15" class="destination-tag singapore-tag">SG</a>
+            <a href="kl.html#day15" class="destination-tag kl-tag">KL</a>
+          </td>
+          <td>
+            <div class="date">Day 16</div>
+            <a href="kl.html#day16" class="destination-tag kl-tag">KL</a>
+          </td>
+          <td>
+            <div class="date">Day 17</div>
+            <a href="kl.html#day17" class="destination-tag kl-tag">KL</a>
+            <a href="maldives.html#day17" class="destination-tag maldives-tag">MLD</a>
+          </td>
+          <td>
+            <div class="date">Day 18</div>
+            <a href="maldives.html#day18" class="destination-tag maldives-tag">MLD</a>
+          </td>
+          <td>
+            <div class="date">Day 19</div>
+            <a href="maldives.html#day19" class="destination-tag maldives-tag">MLD</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="overflow-x-auto">
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>M 19/8</th>
+          <th>T 20/8</th>
+          <th>W 21/8</th>
+          <th>T 22/8</th>
+          <th>F 23/8</th>
+          <th>S 24/8</th>
+          <th>S 25/8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="date">Day 20</div>
+            <a href="maldives.html#day20" class="destination-tag maldives-tag">MLD</a>
+          </td>
+          <td>
+            <div class="date">Day 21</div>
+            <a href="maldives.html#day21" class="destination-tag maldives-tag">MLD</a>
+          </td>
+          <td>
+            <div class="date">Day 22</div>
+            <div class="text-xs text-gray-700">Arrival in BCN</div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+          <td class="out-of-range">
+            <div class="date"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="mt-6 text-center text-sm text-gray-600">
+    <p>Each day is linked to its detailed itinerary</p>
+  </div>
+</section>
 
 
 <!-- Flight Information Section -->
@@ -1065,208 +1205,73 @@
 
 
 
-<!-- Calendar View (MOBILE-FRIENDLY VERSION) -->
-<section id="calendar" class="mb-16">
-  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Trip Calendar</h2>
-  <p class="text-center text-gray-600 mb-8">Day-by-day overview of our journey</p>
-  
-  <div class="overflow-x-auto mb-8">
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th>M 29/7</th>
-          <th>T 30/7</th>
-          <th>W 31/7</th>
-          <th>T 1/8</th>
-          <th>F 2/8</th>
-          <th>S 3/8</th>
-          <th>S 4/8</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="out-of-range">
-            <div class="date">Pre-trip</div>
-          </td>
-          <td>
-            <div class="date">Day 0</div>
-            <div class="text-xs text-gray-700">Departure from BCN</div>
-          </td>
-          <td>
-            <div class="date">Day 1</div>
-            <a href="seoul.html#day1" class="destination-tag seoul-tag">Seoul</a>
-          </td>
-          <td>
-            <div class="date">Day 2</div>
-            <a href="seoul.html#day2" class="destination-tag seoul-tag">Seoul</a>
-          </td>
-          <td>
-            <div class="date">Day 3</div>
-            <a href="seoul.html#day3" class="destination-tag seoul-tag">Seoul</a>
-          </td>
-          <td>
-            <div class="date">Day 4</div>
-            <a href="seoul.html#day4" class="destination-tag seoul-tag">Seoul</a>
-          </td>
-          <td>
-            <div class="date">Day 5</div>
-            <a href="seoul.html#day5" class="destination-tag seoul-tag">Seoul</a>
-            <a href="tokyo.html#day5" class="destination-tag tokyo-tag">Tokyo</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="overflow-x-auto mb-8">
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th>M 5/8</th>
-          <th>T 6/8</th>
-          <th>W 7/8</th>
-          <th>T 8/8</th>
-          <th>F 9/8</th>
-          <th>S 10/8</th>
-          <th>S 11/8</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="date">Day 6</div>
-            <a href="tokyo.html#day6" class="destination-tag tokyo-tag">Tokyo</a>
-          </td>
-          <td>
-            <div class="date">Day 7</div>
-            <a href="tokyo.html#day7" class="destination-tag tokyo-tag">Tokyo</a>
-          </td>
-          <td>
-            <div class="date">Day 8</div>
-            <a href="tokyo.html#day8" class="destination-tag tokyo-tag">Tokyo</a>
-          </td>
-          <td>
-            <div class="date">Day 9</div>
-            <a href="tokyo.html#day9" class="destination-tag tokyo-tag">Tokyo</a>
-            <a href="kyoto.html#day9" class="destination-tag kyoto-tag">Kyoto</a>
-          </td>
-          <td>
-            <div class="date">Day 10</div>
-            <a href="kyoto.html#day10" class="destination-tag kyoto-tag">Kyoto</a>
-          </td>
-          <td>
-            <div class="date">Day 11</div>
-            <a href="kyoto.html#day11" class="destination-tag kyoto-tag">Kyoto</a>
-            <a href="kyoto.html#day11" class="destination-tag kyoto-tag">Narita</a>
-          </td>
-          <td>
-            <div class="date">Day 12</div>
-            <a href="kyoto.html#day12" class="destination-tag kyoto-tag">Narita</a>
-            <a href="singapore.html#day12" class="destination-tag singapore-tag">SG</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="overflow-x-auto mb-8">
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th>M 12/8</th>
-          <th>T 13/8</th>
-          <th>W 14/8</th>
-          <th>T 15/8</th>
-          <th>F 16/8</th>
-          <th>S 17/8</th>
-          <th>S 18/8</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="date">Day 13</div>
-            <a href="singapore.html#day13" class="destination-tag singapore-tag">SG</a>
-          </td>
-          <td>
-            <div class="date">Day 14</div>
-            <a href="singapore.html#day14" class="destination-tag singapore-tag">SG</a>
-          </td>
-          <td>
-            <div class="date">Day 15</div>
-            <a href="singapore.html#day15" class="destination-tag singapore-tag">SG</a>
-            <a href="kl.html#day15" class="destination-tag kl-tag">KL</a>
-          </td>
-          <td>
-            <div class="date">Day 16</div>
-            <a href="kl.html#day16" class="destination-tag kl-tag">KL</a>
-          </td>
-          <td>
-            <div class="date">Day 17</div>
-            <a href="kl.html#day17" class="destination-tag kl-tag">KL</a>
-            <a href="maldives.html#day17" class="destination-tag maldives-tag">MLD</a>
-          </td>
-          <td>
-            <div class="date">Day 18</div>
-            <a href="maldives.html#day18" class="destination-tag maldives-tag">MLD</a>
-          </td>
-          <td>
-            <div class="date">Day 19</div>
-            <a href="maldives.html#day19" class="destination-tag maldives-tag">MLD</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="overflow-x-auto">
-    <table class="calendar">
-      <thead>
-        <tr>
-          <th>M 19/8</th>
-          <th>T 20/8</th>
-          <th>W 21/8</th>
-          <th>T 22/8</th>
-          <th>F 23/8</th>
-          <th>S 24/8</th>
-          <th>S 25/8</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="date">Day 20</div>
-            <a href="maldives.html#day20" class="destination-tag maldives-tag">MLD</a>
-          </td>
-          <td>
-            <div class="date">Day 21</div>
-            <a href="maldives.html#day21" class="destination-tag maldives-tag">MLD</a>
-          </td>
-          <td>
-            <div class="date">Day 22</div>
-            <div class="text-xs text-gray-700">Arrival in BCN</div>
-          </td>
-          <td class="out-of-range">
-            <div class="date"></div>
-          </td>
-          <td class="out-of-range">
-            <div class="date"></div>
-          </td>
-          <td class="out-of-range">
-            <div class="date"></div>
-          </td>
-          <td class="out-of-range">
-            <div class="date"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="mt-6 text-center text-sm text-gray-600">
-    <p>Each day is linked to its detailed itinerary</p>
-  </div>
-</section>
+
+      <!-- Travel Tips Section -->
+    <section id="tips" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Essential Travel Tips</h2>
+      <p class="text-center text-gray-600 mb-8">Click on any category to view detailed information</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Packing Tips -->
+        <a href="packing.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="bg-red-600 p-4 flex flex-col items-center justify-center text-center h-32">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+            <h3 class="text-white font-bold">Packing Essentials</h3>
+          </div>
+          <div class="p-3 text-center">
+            <p class="text-sm text-gray-600">Climate-appropriate clothing, adapters, medications</p>
+          </div>
+        </a>
+        
+        <!-- Health & Safety -->
+        <a href="health.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="bg-green-600 p-4 flex flex-col items-center justify-center text-center h-32">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <h3 class="text-white font-bold">Health & Safety</h3>
+          </div>
+          <div class="p-3 text-center">
+            <p class="text-sm text-gray-600">Insurance, vaccinations, emergency contacts</p>
+          </div>
+        </a>
+        
+        <!-- Technology & Connectivity -->
+        <a href="connectivity.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="bg-blue-600 p-4 flex flex-col items-center justify-center text-center h-32">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            <h3 class="text-white font-bold">Connectivity</h3>
+          </div>
+          <div class="p-3 text-center">
+            <p class="text-sm text-gray-600">SIM cards, Wi-Fi, essential travel apps</p>
+          </div>
+        </a>
+        
+        <!-- Money & Payments -->
+        <a href="money.html" class="tip-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="bg-yellow-600 p-4 flex flex-col items-center justify-center text-center h-32">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <h3 class="text-white font-bold">Money & Payments</h3>
+          </div>
+          <div class="p-3 text-center">
+            <p class="text-sm text-gray-600">Currency exchange, cards, tipping customs</p>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Complete Travel Guide button removed -->
+    </section>
+
+
+
+
+
 
 <!-- Horizontal map for desktop with flags ABOVE city names - SIMPLIFIED VERSION -->
 <section id="journey" class="mb-16">
