@@ -1,21 +1,20 @@
 {
   "name": "Mata's Asian Tour 2025",
-  "short_name": "Mata Tour",
-  "description": "A comprehensive guide for the Mata family's unforgettable 23-day journey across Asia",
-  "start_url": "/AsiaTrip25/index.html",
-  "scope": "/AsiaTrip25/",
+  "short_name": "Mata's Asian Tour 25",
+  "description": "The Mata Family's journey across Asia in 2025",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#eeeada",
+  "background_color": "#ffffff",
   "theme_color": "#c62828",
   "icons": [
     {
-      "src": "/AsiaTrip25/icons/icon-192x192.png",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/AsiaTrip25/icons/icon-512x512.png",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
