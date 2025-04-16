@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mata Family Asian Adventure 2025</title>
@@ -9,11 +10,11 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   
   <!-- Favicons - Multiple sizes for different devices -->
-  
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
   <link rel="icon" href="icons/icon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="icons/icon-32x32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="icons/icon-96x96.png" type="image/png" sizes="96x96">
-  
+  <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
   
   <!-- iOS Icons -->
   <link rel="apple-touch-icon" href="icons/icon-180x180.png">
@@ -28,7 +29,7 @@
   <link rel="icon" sizes="512x512" href="icons/icon-512x512.png">
   
   <!-- Web App Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
   
   <!-- iOS PWA Meta Tags -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,6 +53,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://flagcdn.com">
   <link rel="preconnect" href="https://images.unsplash.com">
+
 
     <style>
     :root {
@@ -2367,10 +2369,11 @@
       // Call the function to highlight current hotel
       highlightCurrentHotel();
       
+           
       // Register service worker for PWA functionality
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('service-worker.js')
+          navigator.serviceWorker.register('./service-worker.js')
             .then(registration => {
               console.log('Service Worker registered with scope:', registration.scope);
             })
