@@ -1,48 +1,47 @@
 const CACHE_NAME = 'mata-tour-cache-v1';
-const BASE_PATH = '/AsiaTrip25';
 const urlsToCache = [
   // HTML files
-  `${BASE_PATH}/`,
-  `${BASE_PATH}/index.html`,
-  `${BASE_PATH}/seoul.html`,
-  `${BASE_PATH}/tokyo.html`,
-  `${BASE_PATH}/kyoto.html`,
-  `${BASE_PATH}/singapore.html`,
-  `${BASE_PATH}/kl.html`,
-  `${BASE_PATH}/maldives.html`,
-  `${BASE_PATH}/packing.html`,
-  `${BASE_PATH}/health.html`,
-  `${BASE_PATH}/connectivity.html`,
-  `${BASE_PATH}/money.html`,
+  '/',
+  '/index.html',
+  '/seoul.html',
+  '/tokyo.html',
+  '/kyoto.html',
+  '/singapore.html',
+  '/kl.html',
+  '/maldives.html',
+  '/packing.html',
+  '/health.html',
+  '/connectivity.html',
+  '/money.html',
   
   // CSS files
   'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
   
-  // JavaScript files
+  // JavaScript files - add any other JS files your site uses
   
   // Images
-  `${BASE_PATH}/logowide.png`,
-  `${BASE_PATH}/icon2.png`,
-  `${BASE_PATH}/icons/icon-192x192.png`,
-  `${BASE_PATH}/icons/icon-512x512.png`,
+  '/logowide.png',
+  '/icon2.png',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
   
   // Manifest
-  `${BASE_PATH}/manifest.json`
+  '/manifest.json'
 ];
 
-// Install service worker
+// Install service worker and cache all content
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
+        console.log('Cache opened');
         return cache.addAll(urlsToCache);
       })
   );
 });
 
-// Activate and clean up old caches
+// Activate event - clean up old caches
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   
@@ -61,13 +60,8 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Serve from cache, falling back to network
+// Fetch event - serve resources from cache when offline
 self.addEventListener('fetch', event => {
-  // Skip cross-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-  
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -79,6 +73,7 @@ self.addEventListener('fetch', event => {
         // Clone the request
         const fetchRequest = event.request.clone();
         
+        // Make network request and cache the response
         return fetch(fetchRequest)
           .then(response => {
             // Check if valid response
@@ -89,6 +84,7 @@ self.addEventListener('fetch', event => {
             // Clone the response
             const responseToCache = response.clone();
             
+            // Add to cache for future use
             caches.open(CACHE_NAME)
               .then(cache => {
                 cache.put(event.request, responseToCache);
@@ -96,10 +92,10 @@ self.addEventListener('fetch', event => {
               
             return response;
           })
-          .catch(() => {
-            // If offline and requesting an HTML page, show index.html
+          .catch(error => {
+            // If offline and requesting an HTML page, show offline page
             if (event.request.headers.get('accept').includes('text/html')) {
-              return caches.match(`${BASE_PATH}/index.html`);
+              return caches.match('/index.html');
             }
           });
       })

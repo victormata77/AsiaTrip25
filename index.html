@@ -7,13 +7,11 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
   <link rel="shortcut icon" href="icon2.png" type="image/png">
-    <!-- Ensure the icon is loaded even if browser caches old versions -->
+  <link rel="apple-touch-icon" href="icon2.png">
+  <!-- Ensure the icon is loaded even if browser caches old versions -->
   <link rel="icon" href="icon2.png?v=2" type="image/png" sizes="32x32">
   <!-- Web App Manifest -->
-  <!-- In the <head> section -->
-  <link rel="manifest" href="/AsiaTrip25/manifest.json">
-  <link rel="apple-touch-icon" href="/AsiaTrip25/icons/icon-192x192.png">
-
+  <link rel="manifest" href="/manifest.json">
   <!-- iOS PWA Meta Tags -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -2350,9 +2348,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Call the function to highlight current hotel
+  highlightCurrentHotel();
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/AsiaTrip25/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })
@@ -2361,40 +2360,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
   }
- // Installation banner code
- document.addEventListener('DOMContentLoaded', function() {
+});
+
+ // Wait for page to load
+ window.addEventListener('load', function() {
     // Only show for iOS
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-      // Check if not already installed
+      // Check if in standalone mode (already installed)
       if (!window.matchMedia('(display-mode: standalone)').matches) {
-        // Check if user hasn't dismissed it before
+        // Don't show if user previously closed the banner
         if (localStorage.getItem('install-banner-closed') !== 'true') {
-          // Show banner after 3 seconds
+          // Wait 5 seconds before showing the banner
           setTimeout(function() {
-            const banner = document.getElementById('ios-install-banner');
-            if (banner) banner.classList.remove('hidden');
-          }, 3000);
+            document.getElementById('ios-install-banner').classList.remove('hidden');
+          }, 5000);
         }
       }
     }
     
-    // Install button click handler
-    const installButton = document.getElementById('install-button');
-    if (installButton) {
-      installButton.addEventListener('click', function() {
-        alert('To install this app:\n\n1. Tap the Share button (square with arrow)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" in the top right');
-      });
-    }
+    // Install instructions
+    document.getElementById('install-button').addEventListener('click', function() {
+      alert('To install this app:\n\n1. Tap the Share button (square with arrow)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" in the top right');
+    });
     
-    // Close button click handler
-    const closeButton = document.getElementById('close-banner');
-    if (closeButton) {
-      closeButton.addEventListener('click', function() {
-        const banner = document.getElementById('ios-install-banner');
-        if (banner) banner.classList.add('hidden');
-        localStorage.setItem('install-banner-closed', 'true');
-      });
-    }
+    // Close button
+    document.getElementById('close-banner').addEventListener('click', function() {
+      document.getElementById('ios-install-banner').classList.add('hidden');
+      localStorage.setItem('install-banner-closed', 'true');
+    });
   });
 
 </script>
