@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+  <base href="https://yourusername.github.io/AsiaTrip25/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mata Family Asian Adventure 2025</title>
@@ -2371,17 +2372,17 @@
       
            
       // Register service worker for PWA functionality
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./service-worker.js')
-            .then(registration => {
-              console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(err => {
-              console.error('Service Worker registration failed:', err);
-            });
-        });
-      }
+              if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js', {scope: './'})
+              .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+              })
+              .catch(err => {
+                console.error('Service Worker registration failed:', err);
+              });
+          });
+        }
       
       // Show install banner for iOS users
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
