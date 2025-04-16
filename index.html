@@ -380,9 +380,69 @@
       box-shadow: 0 0 0 0 rgba(56, 178, 172, 0);
     }
   }
+    /* Additional styles for the hotel section */
+.hotel-row.bg-red-50 {
+  position: relative;
+}
+
+.hotel-row.bg-red-50::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--mata-red);
+}
+
+/* Responsive adjustments for hotel table */
+@media (max-width: 768px) {
+  #hotels table {
+    display: block;
+  }
+  
+  #hotels th {
+    font-size: 0.65rem;
+    padding: 6px 2px;
+  }
+  
+  #hotels td {
+    font-size: 0.75rem;
+    padding: 6px 4px;
+  }
+  
+  /* Show only essential columns on mobile */
+  #hotels th:nth-child(3),
+  #hotels td:nth-child(3),
+  #hotels th:nth-child(6),
+  #hotels td:nth-child(6),
+  #hotels th:nth-child(8),
+  #hotels td:nth-child(8) {
+    display: none;
+  }
+}
+
+/* Animation for current hotel marker */
+@keyframes pulse-red {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hotel-row .current-marker {
+  animation: pulse-red 2s infinite;
+}
   </style>
 </head>
 <body class="bg-gray-50">
+ 
+  
   <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
@@ -394,7 +454,7 @@
       </div>
       
       <!-- Desktop Menu (with Flight Info added) -->
-      <div class="hidden md:flex space-x-4">
+ <div class="hidden md:flex space-x-4">
         <div class="menu-item">
           <a href="#destinations" class="text-gray-700 hover:brand-text-red flex items-center">
             Destinations
@@ -414,6 +474,7 @@
         <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:brand-text-red">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:brand-text-red">Hotels</a>
         <div class="menu-item">
           <a href="#tips" class="text-gray-700 hover:brand-text-red flex items-center">
             Tips
@@ -426,7 +487,7 @@
             <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
             <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
             <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-            </div>
+          </div>
         </div>
         <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
       </div>
@@ -463,6 +524,7 @@
         <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
         <div>
           <a href="#tips" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
             Tips
@@ -475,7 +537,7 @@
             <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
             <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
             <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-            </div>
+          </div>
         </div>
         <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
       </div>
@@ -1271,7 +1333,234 @@
     </section>
 
 
-
+<!-- Hotel Information Section -->
+<section id="hotels" class="mb-16">
+  <h2 class="text-3xl font-bold mb-2 text-center brand-text-red">Hotel Information</h2>
+  <p class="text-center text-gray-600 mb-8">Detailed information for all accommodations throughout our journey</p>
+  
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+      <thead class="bg-red-600 text-white">
+        <tr>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Check-in</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Check-out</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Country</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">City</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Hotel</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Address</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Telephone</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Email</th>
+          <th class="py-3 px-4 text-left text-xs font-medium uppercase">Notes</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <!-- Seoul -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-07-31" data-check-out="2025-08-04">
+          <td class="py-4 px-4 text-sm">Jul 31, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 4, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/kr.png" class="mr-2" alt="South Korea">
+              <span>South Korea</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Seoul</td>
+          <td class="py-4 px-4 text-sm font-medium">UH Suite The Coex</td>
+          <td class="py-4 px-4 text-sm">524 Bongeunsa-ro, Gangnam-gu</td>
+          <td class="py-4 px-4 text-sm">+82-2-6282-6282</td>
+          <td class="py-4 px-4 text-sm">info@uhsuite.com</td>
+          <td class="py-4 px-4 text-sm">Spacious suite for whole family near COEX Mall</td>
+        </tr>
+        
+        <!-- Tokyo -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-04" data-check-out="2025-08-08">
+          <td class="py-4 px-4 text-sm">Aug 4, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 8, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/jp.png" class="mr-2" alt="Japan">
+              <span>Japan</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Tokyo</td>
+          <td class="py-4 px-4 text-sm font-medium">MIMARU SUITES Tokyo Nihombashi</td>
+          <td class="py-4 px-4 text-sm">2-10-2 Nihonbashi Kakigara-cho, Chuo-ku</td>
+          <td class="py-4 px-4 text-sm">+81-3-5542-1576</td>
+          <td class="py-4 px-4 text-sm">info-e@hip.mimaruhotels.com</td>
+          <td class="py-4 px-4 text-sm">Apartment-style accommodation for the entire family</td>
+        </tr>
+        
+        <!-- Kyoto -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-08" data-check-out="2025-08-10">
+          <td class="py-4 px-4 text-sm">Aug 8, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 10, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/jp.png" class="mr-2" alt="Japan">
+              <span>Japan</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Kyoto</td>
+          <td class="py-4 px-4 text-sm font-medium">MIMARU SUITES Kyoto Shijo</td>
+          <td class="py-4 px-4 text-sm">52-2 Takatsujiomiya-cho, Shimogyo-ku</td>
+          <td class="py-4 px-4 text-sm">+81-75-353-8701</td>
+          <td class="py-4 px-4 text-sm">info-e@hip.mimaruhotels.com</td>
+          <td class="py-4 px-4 text-sm">Centrally located near Shijo area</td>
+        </tr>
+        
+        <!-- Narita Airport -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-10" data-check-out="2025-08-11">
+          <td class="py-4 px-4 text-sm">Aug 10, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 11, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/jp.png" class="mr-2" alt="Japan">
+              <span>Japan</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Narita</td>
+          <td class="py-4 px-4 text-sm font-medium">9h nine hours Narita Airport</td>
+          <td class="py-4 px-4 text-sm">Terminal 2, Narita International Airport</td>
+          <td class="py-4 px-4 text-sm">+81-476-33-5109</td>
+          <td class="py-4 px-4 text-sm">info@ninehours.co.jp</td>
+          <td class="py-4 px-4 text-sm">Transit hotel with 6 individual pod rooms</td>
+        </tr>
+        
+        <!-- Singapore -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-11" data-check-out="2025-08-14">
+          <td class="py-4 px-4 text-sm">Aug 11, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 14, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/sg.png" class="mr-2" alt="Singapore">
+              <span>Singapore</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Sentosa Island</td>
+          <td class="py-4 px-4 text-sm font-medium">Village Hotel Sentosa</td>
+          <td class="py-4 px-4 text-sm">10 Artillery Avenue, #02-01 Sentosa Island</td>
+          <td class="py-4 px-4 text-sm">+65 6722 0800</td>
+          <td class="py-4 px-4 text-sm">reservations.vhs@fareast.com.sg</td>
+          <td class="py-4 px-4 text-sm">Resort hotel with 4 themed pools, 2 rooms booked</td>
+        </tr>
+        
+        <!-- Kuala Lumpur -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-14" data-check-out="2025-08-16">
+          <td class="py-4 px-4 text-sm">Aug 14, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 16, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/my.png" class="mr-2" alt="Malaysia">
+              <span>Malaysia</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Kuala Lumpur</td>
+          <td class="py-4 px-4 text-sm font-medium">The Ritz-Carlton</td>
+          <td class="py-4 px-4 text-sm">168, Jalan Imbi, Bukit Bintang</td>
+          <td class="py-4 px-4 text-sm">+60 3-2142 8000</td>
+          <td class="py-4 px-4 text-sm">ritzkl@ritzcarlton.com.my</td>
+          <td class="py-4 px-4 text-sm">Luxury hotel, 2 rooms booked</td>
+        </tr>
+        
+        <!-- Maldives -->
+        <tr class="hotel-row hover:bg-gray-50" data-check-in="2025-08-16" data-check-out="2025-08-20">
+          <td class="py-4 px-4 text-sm">Aug 16, 2025</td>
+          <td class="py-4 px-4 text-sm">Aug 20, 2025</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex items-center">
+              <img src="https://flagcdn.com/w20/mv.png" class="mr-2" alt="Maldives">
+              <span>Maldives</span>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-sm">Huruelhi Island</td>
+          <td class="py-4 px-4 text-sm font-medium">Radisson Blu Resort Maldives</td>
+          <td class="py-4 px-4 text-sm">Huruelhi Island, Alifu Dhaalu Atoll</td>
+          <td class="py-4 px-4 text-sm">+960 668 0077</td>
+          <td class="py-4 px-4 text-sm">reservations.maldives@radisson.com</td>
+          <td class="py-4 px-4 text-sm">Overwater villa with 50% off seaplane transfer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Additional notes and tips -->
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Check-in/out tips -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Check-in/out Tips</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Standard check-in time is 3:00 PM at most hotels</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Standard check-out time is 11:00 AM or 12:00 PM</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Early check-in/late check-out can be requested in advance</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Accommodation Features -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Accommodation Features</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>All accommodations have free Wi-Fi available</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>MIMARU Suites & UH Suite offer kitchen facilities</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Radisson Blu & Ritz-Carlton offer 24-hour room service</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Travel Documents -->
+    <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-600">
+      <h3 class="font-bold text-lg text-red-700 mb-2">Travel Documents</h3>
+      <ul class="text-gray-700 space-y-2 text-sm">
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Keep hotel confirmations on your phone and as printouts</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>ID is required for check-in at all accommodations</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Maldives resort requires advance seaplane booking</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 
 
@@ -1762,7 +2051,50 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightElement.classList.add('current-location');
   }
 });
+// Function to highlight current hotel
+function highlightCurrentHotel() {
+  // Get today's date in YYYY-MM-DD format
+  const today = new Date();
+  const formattedDate = today.getFullYear() + '-' + 
+                        String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                        String(today.getDate()).padStart(2, '0');
+  
+  // For testing purposes - uncomment one of these lines to test the highlighting
+  // const formattedDate = '2025-08-01'; // Seoul
+  // const formattedDate = '2025-08-05'; // Tokyo
+  // const formattedDate = '2025-08-09'; // Kyoto
+  // const formattedDate = '2025-08-10'; // Narita
+  // const formattedDate = '2025-08-12'; // Singapore
+  // const formattedDate = '2025-08-15'; // Kuala Lumpur
+  // const formattedDate = '2025-08-18'; // Maldives
+  
+  // Check each hotel row
+  document.querySelectorAll('.hotel-row').forEach(row => {
+    const checkIn = row.getAttribute('data-check-in');
+    const checkOut = row.getAttribute('data-check-out');
+    
+    // If today is between check-in and check-out (inclusive of check-in, exclusive of check-out)
+    if (formattedDate >= checkIn && formattedDate < checkOut) {
+      // Add highlighting classes
+      row.classList.add('bg-red-50');
+      row.classList.add('font-medium');
+      
+      // Add a marker to show it's the current hotel
+      const currentMarker = document.createElement('div');
+      currentMarker.className = 'inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-full ml-2';
+      currentMarker.innerText = 'Current Stay';
+      
+      // Add the marker to the hotel name cell
+      const hotelCell = row.querySelector('td:nth-child(5)');
+      hotelCell.appendChild(currentMarker);
+    }
+  });
+}
 
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+  highlightCurrentHotel();
+});
 </script>
 </body>
 </html>
