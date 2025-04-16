@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
-  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+  <link rel="apple-touch-icon" href="/AsiaTrip25/icons/icon-192x192.png">
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
   <style>
@@ -519,13 +519,7 @@
   
   <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
-  <div id="install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex justify-between items-center">
-    <div>
-      <p class="font-bold">Take Mata's Tour offline!</p>
-      <p class="text-sm">Install this app on your device</p>
-    </div>
-    <button id="install-button" class="brand-button px-4 py-2 rounded-lg">Install</button>
-  </div>
+  
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="flex items-center">
@@ -2361,5 +2355,23 @@ document.addEventListener('DOMContentLoaded', function() {
     alert('To install this app: tap the Share button in Safari, then "Add to Home Screen"');
   });
 </script>
+
+<div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
+  <div class="flex justify-between items-center max-w-6xl mx-auto">
+    <div>
+      <p class="font-bold text-red-700">Take Mata's Tour with you!</p>
+      <p class="text-sm text-gray-600">Install this app on your device to use it offline during your trip</p>
+    </div>
+    <div class="flex">
+      <button id="install-button" class="px-4 py-2 bg-red-600 text-white rounded-lg">
+        How to Install
+      </button>
+      <button id="close-banner" class="ml-2 text-gray-500 px-2">
+        ✕
+      </button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
