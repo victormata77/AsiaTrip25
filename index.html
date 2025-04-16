@@ -519,25 +519,13 @@
   
   <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
-  
-
-  <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
-    <div class="flex justify-between items-center max-w-6xl mx-auto">
-      <div>
-        <p class="font-bold text-red-700">Take Mata's Tour with you!</p>
-        <p class="text-sm text-gray-600">Install this app on your device to use it offline during your trip</p>
-      </div>
-      <div class="flex">
-        <button id="install-button" class="px-4 py-2 bg-red-600 text-white rounded-lg">
-          How to Install
-        </button>
-        <button id="close-banner" class="ml-2 text-gray-500 px-2">
-          ✕
-        </button>
-      </div>
+  <div id="install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 flex justify-between items-center">
+    <div>
+      <p class="font-bold">Take Mata's Tour offline!</p>
+      <p class="text-sm">Install this app on your device</p>
     </div>
+    <button id="install-button" class="brand-button px-4 py-2 rounded-lg">Install</button>
   </div>
-  
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="flex items-center">
@@ -2361,35 +2349,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
- // Wait for page to load
- window.addEventListener('load', function() {
-    // Only show for iOS
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-      // Check if in standalone mode (already installed)
-      if (!window.matchMedia('(display-mode: standalone)').matches) {
-        // Don't show if user previously closed the banner
-        if (localStorage.getItem('install-banner-closed') !== 'true') {
-          // Wait 5 seconds before showing the banner
-          setTimeout(function() {
-            document.getElementById('ios-install-banner').classList.remove('hidden');
-          }, 5000);
-        }
-      }
-    }
-    
-    // Install instructions
-    document.getElementById('install-button').addEventListener('click', function() {
-      alert('To install this app:\n\n1. Tap the Share button (square with arrow)\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" in the top right');
-    });
-    
-    // Close button
-    document.getElementById('close-banner').addEventListener('click', function() {
-      document.getElementById('ios-install-banner').classList.add('hidden');
-      localStorage.setItem('install-banner-closed', 'true');
-    });
+ // Show install banner for iOS users
+ const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  
+  if (isIOS && !isStandalone) {
+    document.getElementById('install-banner').classList.remove('hidden');
+  }
+  
+  document.getElementById('install-button').addEventListener('click', () => {
+    alert('To install this app: tap the Share button in Safari, then "Add to Home Screen"');
   });
-
 </script>
 </body>
 </html>
