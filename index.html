@@ -548,7 +548,34 @@
       min-width: 45px;
     }
   }
+  /* Fix for navigation styling and z-index */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white; /* Clean white background */
+  border-bottom: 3px solid var(--mata-red); /* Red accent line at bottom */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
 
+/* Fix for scrolling issue - adjust z-index for all potential elements */
+section, .destination-card, .map-line, .journey-map-horizontal, 
+.journey-map-vertical, .calendar, .tip-card, #mobile-menu,
+.sub-menu, .mobile-sub-menu {
+  z-index: 10;
+  position: relative;
+}
+
+/* For the scrolling issue with specific sections that might appear above the menu */
+#calendar, #flights, #hotels, #journey {
+  z-index: 10;
+  position: relative;
+}
+
+/* Add scroll padding to prevent content being hidden behind the navbar */
+html {
+  scroll-padding-top: 80px; /* Adjust based on your navbar height */
+}
   </style>
 </head>
 <body class="bg-gray-50">
