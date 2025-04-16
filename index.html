@@ -1,24 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mata Family Asian Adventure 2025</title>
+  
+  <!-- Core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- Favicons - Multiple sizes for different devices -->
   <link rel="icon" href="icon2.png" type="image/png">
+  <link rel="icon" href="icon2.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="icon2.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="icon2.png" type="image/png" sizes="96x96">
   <link rel="shortcut icon" href="icon2.png" type="image/png">
+  
+  <!-- iOS Icons -->
   <link rel="apple-touch-icon" href="icon2.png">
-  <!-- Ensure the icon is loaded even if browser caches old versions -->
-  <link rel="icon" href="icon2.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="120x120" href="icon2.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icon2.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icon2.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon2.png">
+  <link rel="mask-icon" href="icon2.png" color="#c62828">
+  
+  <!-- Android/Chrome Icons -->
+  <link rel="icon" sizes="192x192" href="icon2.png">
+  <link rel="icon" sizes="512x512" href="icon2.png">
+  
   <!-- Web App Manifest -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="manifest.json">
+  
   <!-- iOS PWA Meta Tags -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
-  <link rel="apple-touch-icon" href="/AsiaTrip25/icons/icon-192x192.png">
-  <!-- Theme color for browser UI -->
+  
+  <!-- SEO and Social Meta Tags -->
+  <meta name="description" content="The Mata Family's 23-day journey across Asia in 2025, from Seoul to the Maldives.">
+  <meta name="application-name" content="Mata's Asian Tour">
   <meta name="theme-color" content="#c62828">
+  
+  <!-- Microsoft Tiles (for Windows) -->
+  <meta name="msapplication-TileColor" content="#c62828">
+  <meta name="msapplication-TileImage" content="icon2.png">
+  <meta name="msapplication-config" content="none">
+  
+  <!-- Prevent iOS from detecting phone numbers -->
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Preconnect to CDNs for performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://flagcdn.com">
+  <link rel="preconnect" href="https://images.unsplash.com">
   <style>
     :root {
       --mata-red: #c62828;
@@ -1966,395 +1999,420 @@
     </div>
   </footer>
 
-<script>
-// Mobile menu toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  // Add padding to section IDs for scroll offset with fixed header
-  document.querySelectorAll('section[id]').forEach(function(section) {
-    section.style.scrollMarginTop = '80px'; // Add 80px padding for fixed header
-  });
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  }
-  
-  // Accordion functionality for itinerary section
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
-  
-  // Add click event to each header
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function() {
-      // Toggle the active class
-      this.classList.toggle('active');
-      
-      // Get the content panel
-      const content = this.nextElementSibling;
-      
-      // Toggle the hidden class
-      content.classList.toggle('hidden');
-      
-      // Rotate the arrow icon
-      const arrow = this.querySelector('svg');
-      if (content.classList.contains('hidden')) {
-        arrow.classList.remove('rotate-180');
-      } else {
-        arrow.classList.add('rotate-180');
-      }
-    });
-  });
 
-  // Mobile submenu toggle functionality
-  window.toggleMobileSubmenu = function(id, event) {
-    event.preventDefault();
-    const submenu = document.getElementById(id);
-    submenu.classList.toggle('show');
-  }
-  
-  // UNIFICADO: Función calculadora de tiempo para ambos contadores
-  function getTimeUntilTrip() {
-    const now = new Date();
-    // Fecha de inicio del viaje - 30 de julio de 2025
-    const tripStart = new Date(2025, 6, 30, 0, 0, 0); // July 30, 2025 at 00:00:00
-    
-    // Calcular diferencia de tiempo en milisegundos
-    const diffTime = tripStart.getTime() - now.getTime();
-    
-    // Si el viaje ya comenzó
-    if (diffTime <= 0) {
-      const tripEnd = new Date(2025, 7, 21); // August 21, 2025
-      if (now <= tripEnd) {
-        // Viaje en progreso
-        const dayOfTrip = Math.floor(Math.abs(diffTime) / (1000 * 60 * 60 * 24)) + 1;
-        return {
-          status: 'in-progress',
-          days: dayOfTrip,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-          text: `Day ${dayOfTrip} of our journey!`
-        };
-      } else {
-        // Viaje terminado
-        return {
-          status: 'completed',
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-          text: 'Our journey is complete!'
-        };
-      }
-    }
-    
-    // Calcular componentes de tiempo
-    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
-    
-    return {
-      status: 'countdown',
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
-      text: `${days} days until departure!`
-    };
-  }
-  
-  // Actualizar contador de texto (original)
-  function updateTextCountdown() {
-    const timeData = getTimeUntilTrip();
-    const countdownElement = document.getElementById('text-countdown-days');
-    
-    if (countdownElement) {
-      if (timeData.status === 'countdown') {
-        countdownElement.textContent = timeData.days;
-      } else if (timeData.status === 'in-progress') {
-        countdownElement.textContent = "Day " + timeData.days;
-        countdownElement.parentElement.textContent = timeData.text;
-      } else {
-        countdownElement.textContent = "Completed";
-        countdownElement.parentElement.textContent = timeData.text;
-      }
-    }
-  }
-  
-  // Actualizar contador estilo YouTube
-  function updateYouTubeStyleCountdown() {
-    const timeData = getTimeUntilTrip();
-    
-    // Si el elemento del contador existe
-    const daysElement = document.getElementById('countdown-days');
-    const hoursElement = document.getElementById('countdown-hours');
-    const minutesElement = document.getElementById('countdown-minutes');
-    const secondsElement = document.getElementById('countdown-seconds');
-    
-    if (daysElement && hoursElement && minutesElement && secondsElement) {
-      // Formatear números con ceros iniciales
-      const formattedDays = timeData.days.toString().padStart(3, '0');
-      const formattedHours = timeData.hours.toString().padStart(2, '0');
-      const formattedMinutes = timeData.minutes.toString().padStart(2, '0');
-      const formattedSeconds = timeData.seconds.toString().padStart(2, '0');
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
       
-      // Actualizar el contador
-      daysElement.textContent = formattedDays;
-      hoursElement.textContent = formattedHours;
-      minutesElement.textContent = formattedMinutes;
-      secondsElement.textContent = formattedSeconds;
-    }
-  }
-  
-  // Función principal para actualizar ambos contadores
-  function updateAllCountdowns() {
-    updateTextCountdown();
-    updateYouTubeStyleCountdown();
-  }
-  
-  // Iniciar contadores inmediatamente
-  updateAllCountdowns();
-  
-  // Actualizar contadores: texto cada día, YouTube cada segundo
-  setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // texto: una vez al día
-  setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: cada segundo
-  
-  // Journey map current location highlighting
-  // Get today's date
-  const today = new Date();
-  
-  // Define location date ranges
-  const locations = [
-    { name: 'BCN-Start', start: new Date(2025, 6, 30), end: new Date(2025, 6, 30) },
-    { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
-    { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
-    { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
-    { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
-    { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
-    { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
-    { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) },
-    { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
-  ];
-  
-  // For testing/preview purposes - comment out in production
-  // Uncomment one of these lines to preview each location highlight
-  // const today = new Date(2025, 7, 1); // Seoul
-  // const today = new Date(2025, 7, 5); // Tokyo
-  // const today = new Date(2025, 7, 9); // Kyoto
-  // const today = new Date(2025, 7, 10); // Narita
-  // const today = new Date(2025, 7, 12); // Singapore
-  // const today = new Date(2025, 7, 15); // Kuala Lumpur
-  // const today = new Date(2025, 7, 18); // Maldives
-  
-  // Find current location
-  let currentLocation = null;
-  locations.forEach(location => {
-    if (today >= location.start && today <= location.end) {
-      currentLocation = location.name;
-    }
-  });
-  
-  if (currentLocation) {
-    // Handle special case for start and end
-    let selector = `.map-stop`;
-    if (currentLocation === 'BCN-Start') {
-      selector = `.map-stop:first-child`;
-    } else if (currentLocation === 'BCN-End') {
-      selector = `.map-stop:last-child`;
-    } else {
-      // Find the location in both desktop and mobile versions
-      document.querySelectorAll(`.map-stop .map-label a, .map-stop-vertical .map-label-vertical a`).forEach(element => {
-        if (element.textContent.trim() === currentLocation) {
-          // Add highlighting to parent .map-stop
-          let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
-          if (mapStop) {
-            mapStop.classList.add('current-location');
-          }
-        }
+      // Add padding to section IDs for scroll offset with fixed header
+      document.querySelectorAll('section[id]').forEach(function(section) {
+        section.style.scrollMarginTop = '80px'; // Add 80px padding for fixed header
       });
-    }
-  }
-});
-
-// JavaScript for dynamic highlighting of today's date in calendar and journey map
-document.addEventListener('DOMContentLoaded', function() {
-  // Get today's date
-  const today = new Date();
-  
-  // Define trip start and end dates
-  const tripStart = new Date(2025, 6, 31); // July 31, 2025 (first day in Seoul)
-  const tripEnd = new Date(2025, 7, 21);   // August 21, 2025 (last day, return to BCN)
-  
-  // PART 1: Calendar date highlighting
-  // Format the date as DD/M (e.g., 12/8)
-  const day = today.getDate();
-  const month = today.getMonth() + 1; // JavaScript months are 0-based
-  const dateString = `${day}/${month}`;
-  
-  // Find the table cell corresponding to today's date
-  const cells = document.querySelectorAll('.calendar th');
-  let todayCell = null;
-  
-  // Loop through all header cells to find the matching date
-  cells.forEach(cell => {
-    const cellText = cell.textContent;
-    if (cellText.includes(dateString)) {
-      // Get the column index of this header
-      const index = Array.from(cell.parentNode.children).indexOf(cell);
-      const tbody = cell.closest('thead').nextElementSibling;
-      const row = tbody.querySelector('tr');
-      if (row && row.children[index]) {
-        // Add the "today" class to the corresponding cell in the current row
-        todayCell = row.children[index];
-        todayCell.classList.add('today');
-      }
-    }
-  });
-  
-  // PART 2: Journey map current location highlighting
-  // Define location date ranges
-  const locations = [
-    { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
-    { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
-    { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
-    { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
-    { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
-    { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
-    { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) }
-  ];
-  
-  // For testing purposes - uncomment one line to test a specific date
-  // today = new Date(2025, 6, 15); // Before trip - should highlight BCN-Start
-  // today = new Date(2025, 7, 1);  // Seoul
-  // today = new Date(2025, 7, 5);  // Tokyo
-  // today = new Date(2025, 7, 10); // Narita
-  // today = new Date(2025, 7, 18); // Maldives
-  // today = new Date(2025, 8, 1);  // After trip - should highlight BCN-End
-  
-  // Determine which location to highlight
-  let highlightElement = null;
-  
-  if (today < tripStart) {
-    // Before trip starts - highlight Barcelona start
-    highlightElement = document.querySelector('.map-stop:first-child');
-    const mobileHighlight = document.querySelector('.map-stop-vertical:first-child');
-    if (mobileHighlight) mobileHighlight.classList.add('current-location');
-  } else if (today > tripEnd) {
-    // After trip ends - highlight Barcelona end
-    highlightElement = document.querySelector('.map-stop:last-child');
-    const mobileHighlight = document.querySelector('.map-stop-vertical:last-child');
-    if (mobileHighlight) mobileHighlight.classList.add('current-location');
-  } else {
-    // During trip - find current location
-    let currentLocation = null;
-    locations.forEach(location => {
-      if (today >= location.start && today <= location.end) {
-        currentLocation = location.name;
-      }
-    });
-    
-    if (currentLocation) {
-      // Find the location in both desktop and mobile versions
-      document.querySelectorAll('.map-stop .map-label a, .map-stop-vertical .map-label-vertical a').forEach(element => {
-        if (element.textContent.trim() === currentLocation) {
-          // Add highlighting to parent .map-stop
-          let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
-          if (mapStop) {
-            highlightElement = mapStop;
-          }
-        }
-      });
-    }
-  }
-  
-  // Apply the highlighting
-  if (highlightElement) {
-    highlightElement.classList.add('current-location');
-  }
-  
-  // Function to highlight current hotel
-  function highlightCurrentHotel() {
-    // Get today's date in YYYY-MM-DD format
-    const today = new Date();
-    const formattedDate = today.getFullYear() + '-' + 
-                          String(today.getMonth() + 1).padStart(2, '0') + '-' + 
-                          String(today.getDate()).padStart(2, '0');
-    
-    // For testing purposes - uncomment one of these lines to test the highlighting
-    // const formattedDate = '2025-08-01'; // Seoul
-    // const formattedDate = '2025-08-05'; // Tokyo
-    // const formattedDate = '2025-08-09'; // Kyoto
-    // const formattedDate = '2025-08-10'; // Narita
-    // const formattedDate = '2025-08-12'; // Singapore
-    // const formattedDate = '2025-08-15'; // Kuala Lumpur
-    // const formattedDate = '2025-08-18'; // Maldives
-    
-    // Check each hotel row
-    document.querySelectorAll('.hotel-row').forEach(row => {
-      const checkIn = row.getAttribute('data-check-in');
-      const checkOut = row.getAttribute('data-check-out');
       
-      // If today is between check-in and check-out (inclusive of check-in, exclusive of check-out)
-      if (formattedDate >= checkIn && formattedDate < checkOut) {
-        // Add highlighting classes
-        row.classList.add('bg-red-50');
-        row.classList.add('font-medium');
-        
-        // Add a marker to show it's the current hotel
-        const currentMarker = document.createElement('div');
-        currentMarker.className = 'inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-full ml-2 current-marker';
-        currentMarker.innerText = 'Current Stay';
-        
-        // Add the marker to the hotel name cell
-        const hotelCell = row.querySelector('td:nth-child(5)');
-        if (hotelCell && !hotelCell.querySelector('.current-marker')) {
-          hotelCell.appendChild(currentMarker);
-        }
-      }
-    });
-  }
-  
-  // Call the function to highlight current hotel
-  highlightCurrentHotel();
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(err => {
-          console.error('Service Worker registration failed:', err);
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+          } else {
+            mobileMenu.classList.add('hidden');
+          }
         });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+      
+      // Accordion functionality for itinerary section
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      
+      // Add click event to each header
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          // Toggle the active class
+          this.classList.toggle('active');
+          
+          // Get the content panel
+          const content = this.nextElementSibling;
+          
+          // Toggle the hidden class
+          content.classList.toggle('hidden');
+          
+          // Rotate the arrow icon
+          const arrow = this.querySelector('svg');
+          if (content.classList.contains('hidden')) {
+            arrow.classList.remove('rotate-180');
+          } else {
+            arrow.classList.add('rotate-180');
+          }
+        });
+      });
+    
+      // Mobile submenu toggle functionality
+      window.toggleMobileSubmenu = function(id, event) {
+        event.preventDefault();
+        const submenu = document.getElementById(id);
+        submenu.classList.toggle('show');
+      }
+      
+      // Time calculator function for both counters
+      function getTimeUntilTrip() {
+        const now = new Date();
+        // Trip start date - July 30, 2025
+        const tripStart = new Date(2025, 6, 30, 0, 0, 0); // July 30, 2025 at 00:00:00
+        
+        // Calculate time difference in milliseconds
+        const diffTime = tripStart.getTime() - now.getTime();
+        
+        // If the trip has already started
+        if (diffTime <= 0) {
+          const tripEnd = new Date(2025, 7, 21); // August 21, 2025
+          if (now <= tripEnd) {
+            // Trip in progress
+            const dayOfTrip = Math.floor(Math.abs(diffTime) / (1000 * 60 * 60 * 24)) + 1;
+            return {
+              status: 'in-progress',
+              days: dayOfTrip,
+              hours: 0,
+              minutes: 0,
+              seconds: 0,
+              text: `Day ${dayOfTrip} of our journey!`
+            };
+          } else {
+            // Trip completed
+            return {
+              status: 'completed',
+              days: 0,
+              hours: 0,
+              minutes: 0,
+              seconds: 0,
+              text: 'Our journey is complete!'
+            };
+          }
+        }
+        
+        // Calculate time components
+        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        return {
+          status: 'countdown',
+          days: days,
+          hours: hours,
+          minutes: minutes,
+          seconds: seconds,
+          text: `${days} days until departure!`
+        };
+      }
+      
+      // Update text countdown (original)
+      function updateTextCountdown() {
+        const timeData = getTimeUntilTrip();
+        const countdownElement = document.getElementById('text-countdown-days');
+        
+        if (countdownElement) {
+          if (timeData.status === 'countdown') {
+            countdownElement.textContent = timeData.days;
+          } else if (timeData.status === 'in-progress') {
+            countdownElement.textContent = "Day " + timeData.days;
+            countdownElement.parentElement.textContent = timeData.text;
+          } else {
+            countdownElement.textContent = "Completed";
+            countdownElement.parentElement.textContent = timeData.text;
+          }
+        }
+      }
+      
+      // Update YouTube-style countdown
+      function updateYouTubeStyleCountdown() {
+        const timeData = getTimeUntilTrip();
+        
+        // If countdown elements exist
+        const daysElement = document.getElementById('countdown-days');
+        const hoursElement = document.getElementById('countdown-hours');
+        const minutesElement = document.getElementById('countdown-minutes');
+        const secondsElement = document.getElementById('countdown-seconds');
+        
+        if (daysElement && hoursElement && minutesElement && secondsElement) {
+          // Format numbers with leading zeros
+          const formattedDays = timeData.days.toString().padStart(3, '0');
+          const formattedHours = timeData.hours.toString().padStart(2, '0');
+          const formattedMinutes = timeData.minutes.toString().padStart(2, '0');
+          const formattedSeconds = timeData.seconds.toString().padStart(2, '0');
+          
+          // Update the counter
+          daysElement.textContent = formattedDays;
+          hoursElement.textContent = formattedHours;
+          minutesElement.textContent = formattedMinutes;
+          secondsElement.textContent = formattedSeconds;
+        }
+      }
+      
+      // Main function to update all countdowns
+      function updateAllCountdowns() {
+        updateTextCountdown();
+        updateYouTubeStyleCountdown();
+      }
+      
+      // Start countdowns immediately
+      updateAllCountdowns();
+      
+      // Update countdowns: text once a day, YouTube every second
+      setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // text: once a day
+      setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
+      
+      // Journey map current location highlighting
+      // Get today's date
+      const today = new Date();
+      
+      // Define location date ranges
+      const locations = [
+        { name: 'BCN-Start', start: new Date(2025, 6, 30), end: new Date(2025, 6, 30) },
+        { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
+        { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
+        { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
+        { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
+        { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
+        { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
+        { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) },
+        { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
+      ];
+      
+      // For testing/preview purposes - comment out in production
+      // Uncomment one of these lines to preview each location highlight
+      // const today = new Date(2025, 7, 1); // Seoul
+      // const today = new Date(2025, 7, 5); // Tokyo
+      // const today = new Date(2025, 7, 9); // Kyoto
+      // const today = new Date(2025, 7, 10); // Narita
+      // const today = new Date(2025, 7, 12); // Singapore
+      // const today = new Date(2025, 7, 15); // Kuala Lumpur
+      // const today = new Date(2025, 7, 18); // Maldives
+      
+      // Find current location
+      let currentLocation = null;
+      locations.forEach(location => {
+        if (today >= location.start && today <= location.end) {
+          currentLocation = location.name;
+        }
+      });
+      
+      if (currentLocation) {
+        // Handle special case for start and end
+        let selector = `.map-stop`;
+        if (currentLocation === 'BCN-Start') {
+          selector = `.map-stop:first-child`;
+        } else if (currentLocation === 'BCN-End') {
+          selector = `.map-stop:last-child`;
+        } else {
+          // Find the location in both desktop and mobile versions
+          document.querySelectorAll(`.map-stop .map-label a, .map-stop-vertical .map-label-vertical a`).forEach(element => {
+            if (element.textContent.trim() === currentLocation) {
+              // Add highlighting to parent .map-stop
+              let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
+              if (mapStop) {
+                mapStop.classList.add('current-location');
+              }
+            }
+          });
+        }
+      }
     });
-  }
-});
- // Show install banner for iOS users
- const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-  
-  if (isIOS && !isStandalone) {
-    document.getElementById('install-banner').classList.remove('hidden');
-  }
-  
-  document.getElementById('install-button').addEventListener('click', () => {
-    alert('To install this app: tap the Share button in Safari, then "Add to Home Screen"');
-  });
-</script>
+    
+    // JavaScript for dynamic highlighting of today's date in calendar and journey map
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get today's date
+      const today = new Date();
+      
+      // Define trip start and end dates
+      const tripStart = new Date(2025, 6, 31); // July 31, 2025 (first day in Seoul)
+      const tripEnd = new Date(2025, 7, 21);   // August 21, 2025 (last day, return to BCN)
+      
+      // PART 1: Calendar date highlighting
+      // Format the date as DD/M (e.g., 12/8)
+      const day = today.getDate();
+      const month = today.getMonth() + 1; // JavaScript months are 0-based
+      const dateString = `${day}/${month}`;
+      
+      // Find the table cell corresponding to today's date
+      const cells = document.querySelectorAll('.calendar th');
+      let todayCell = null;
+      
+      // Loop through all header cells to find the matching date
+      cells.forEach(cell => {
+        const cellText = cell.textContent;
+        if (cellText.includes(dateString)) {
+          // Get the column index of this header
+          const index = Array.from(cell.parentNode.children).indexOf(cell);
+          const tbody = cell.closest('thead').nextElementSibling;
+          const row = tbody.querySelector('tr');
+          if (row && row.children[index]) {
+            // Add the "today" class to the corresponding cell in the current row
+            todayCell = row.children[index];
+            todayCell.classList.add('today');
+          }
+        }
+      });
+      
+      // PART 2: Journey map current location highlighting
+      // Define location date ranges
+      const locations = [
+        { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
+        { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
+        { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
+        { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
+        { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
+        { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
+        { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) }
+      ];
+      
+      // For testing purposes - uncomment one line to test a specific date
+      // today = new Date(2025, 6, 15); // Before trip - should highlight BCN-Start
+      // today = new Date(2025, 7, 1);  // Seoul
+      // today = new Date(2025, 7, 5);  // Tokyo
+      // today = new Date(2025, 7, 10); // Narita
+      // today = new Date(2025, 7, 18); // Maldives
+      // today = new Date(2025, 8, 1);  // After trip - should highlight BCN-End
+      
+      // Determine which location to highlight
+      let highlightElement = null;
+      
+      if (today < tripStart) {
+        // Before trip starts - highlight Barcelona start
+        highlightElement = document.querySelector('.map-stop:first-child');
+        const mobileHighlight = document.querySelector('.map-stop-vertical:first-child');
+        if (mobileHighlight) mobileHighlight.classList.add('current-location');
+      } else if (today > tripEnd) {
+        // After trip ends - highlight Barcelona end
+        highlightElement = document.querySelector('.map-stop:last-child');
+        const mobileHighlight = document.querySelector('.map-stop-vertical:last-child');
+        if (mobileHighlight) mobileHighlight.classList.add('current-location');
+      } else {
+        // During trip - find current location
+        let currentLocation = null;
+        locations.forEach(location => {
+          if (today >= location.start && today <= location.end) {
+            currentLocation = location.name;
+          }
+        });
+        
+        if (currentLocation) {
+          // Find the location in both desktop and mobile versions
+          document.querySelectorAll('.map-stop .map-label a, .map-stop-vertical .map-label-vertical a').forEach(element => {
+            if (element.textContent.trim() === currentLocation) {
+              // Add highlighting to parent .map-stop
+              let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
+              if (mapStop) {
+                highlightElement = mapStop;
+              }
+            }
+          });
+        }
+      }
+      
+      // Apply the highlighting
+      if (highlightElement) {
+        highlightElement.classList.add('current-location');
+      }
+      
+      // Function to highlight current hotel
+      function highlightCurrentHotel() {
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date();
+        const formattedDate = today.getFullYear() + '-' + 
+                              String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                              String(today.getDate()).padStart(2, '0');
+        
+        // For testing purposes - uncomment one of these lines to test the highlighting
+        // const formattedDate = '2025-08-01'; // Seoul
+        // const formattedDate = '2025-08-05'; // Tokyo
+        // const formattedDate = '2025-08-09'; // Kyoto
+        // const formattedDate = '2025-08-10'; // Narita
+        // const formattedDate = '2025-08-12'; // Singapore
+        // const formattedDate = '2025-08-15'; // Kuala Lumpur
+        // const formattedDate = '2025-08-18'; // Maldives
+        
+        // Check each hotel row
+        document.querySelectorAll('.hotel-row').forEach(row => {
+          const checkIn = row.getAttribute('data-check-in');
+          const checkOut = row.getAttribute('data-check-out');
+          
+          // If today is between check-in and check-out (inclusive of check-in, exclusive of check-out)
+          if (formattedDate >= checkIn && formattedDate < checkOut) {
+            // Add highlighting classes
+            row.classList.add('bg-red-50');
+            row.classList.add('font-medium');
+            
+            // Add a marker to show it's the current hotel
+            const currentMarker = document.createElement('div');
+            currentMarker.className = 'inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-full ml-2 current-marker';
+            currentMarker.innerText = 'Current Stay';
+            
+            // Add the marker to the hotel name cell
+            const hotelCell = row.querySelector('td:nth-child(5)');
+            if (hotelCell && !hotelCell.querySelector('.current-marker')) {
+              hotelCell.appendChild(currentMarker);
+            }
+          }
+        });
+      }
+      
+      // Call the function to highlight current hotel
+      highlightCurrentHotel();
+      
+      // Register service worker for PWA functionality
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(err => {
+              console.error('Service Worker registration failed:', err);
+            });
+        });
+      }
+      
+      // Show install banner for iOS users
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      
+      if (isIOS && !isStandalone) {
+        const iosBanner = document.getElementById('ios-install-banner');
+        if (iosBanner) {
+          iosBanner.classList.remove('hidden');
+        }
+      }
+      
+      // Set up install button click handler
+      const installButton = document.getElementById('install-button');
+      if (installButton) {
+        installButton.addEventListener('click', () => {
+          alert('To install this app: tap the Share button in Safari, then "Add to Home Screen"');
+        });
+      }
+      
+      // Set up close banner button
+      const closeBannerButton = document.getElementById('close-banner');
+      if (closeBannerButton) {
+        closeBannerButton.addEventListener('click', () => {
+          const banner = document.getElementById('ios-install-banner');
+          if (banner) {
+            banner.classList.add('hidden');
+            // Optionally store preference in localStorage
+            localStorage.setItem('installBannerClosed', 'true');
+          }
+        });
+      }
+    });
+  </script>
+
 
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
   <div class="flex justify-between items-center max-w-6xl mx-auto">
