@@ -6,6 +6,17 @@
     <title>Health & Safety - Mata Family Asian Adventure 2025</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+    <!-- Theme color for browser UI -->
+    <meta name="theme-color" content="#c62828">
     <style>
         :root {
             --mata-red: #c62828;
@@ -1883,6 +1894,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(err => {
+          console.error('Service Worker registration failed:', err);
+        });
+    });
+  }
 </script>
 </body>
 </html>

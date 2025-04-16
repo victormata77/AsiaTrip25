@@ -10,6 +10,15 @@
   <link rel="apple-touch-icon" href="icon2.png">
   <!-- Ensure the icon is loaded even if browser caches old versions -->
   <link rel="icon" href="icon2.png?v=2" type="image/png" sizes="32x32">
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- iOS PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+  <!-- Theme color for browser UI -->
+  <meta name="theme-color" content="#c62828">
   <style>
     :root {
       --mata-red: #c62828;
@@ -2321,6 +2330,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Call the function to highlight current hotel
   highlightCurrentHotel();
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(err => {
+          console.error('Service Worker registration failed:', err);
+        });
+    });
+  }
 });
 </script>
 </body>
