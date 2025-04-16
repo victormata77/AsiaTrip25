@@ -1,23 +1,21 @@
 {
   "name": "Mata's Asian Tour 2025",
-  "short_name": "Mata's Asian Tour 25",
-  "description": "The Mata Family's journey across Asia in 2025",
+  "short_name": "Mata's Tour",
+  "description": "Your family's 2025 journey through Asia",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#c62828",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "icon2.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "icon2.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
