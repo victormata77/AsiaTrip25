@@ -1,32 +1,29 @@
 const CACHE_NAME = 'mata-tour-cache-v1';
 const urlsToCache = [
   // HTML files
-  '/',
-  '/index.html',
-  '/seoul.html',
-  '/tokyo.html',
-  '/kyoto.html',
-  '/singapore.html',
-  '/kl.html',
-  '/maldives.html',
-  '/packing.html',
-  '/health.html',
-  '/connectivity.html',
-  '/money.html',
+  './',
+  './index.html',
+  './seoul.html',
+  './tokyo.html',
+  './kyoto.html',
+  './singapore.html',
+  './kl.html',
+  './maldives.html',
+  './packing.html',
+  './health.html',
+  './connectivity.html',
+  './money.html',
   
   // CSS files
   'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
   
-  // JavaScript files - add any other JS files your site uses
-  
   // Images
-  '/logowide.png',
-  '/icon2.png',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  './logowide.png',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
   
   // Manifest
-  '/manifest.json'
+  './manifest.json'
 ];
 
 // Install service worker and cache all content
@@ -95,7 +92,7 @@ self.addEventListener('fetch', event => {
           .catch(error => {
             // If offline and requesting an HTML page, show offline page
             if (event.request.headers.get('accept').includes('text/html')) {
-              return caches.match('/index.html');
+              return caches.match('./index.html');
             }
           });
       })
