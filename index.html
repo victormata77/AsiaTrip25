@@ -622,43 +622,163 @@
         scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
       }
     }
+    
+    /* Add this to your existing <style> section in the head */
+/* iOS Standalone App Specific Styles */
+@media all and (display-mode: standalone) {
+  /* Fix for navigation */
+  .sticky-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+    background-color: white !important;
+    border-bottom: 3px solid var(--mata-red) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  }
+  
+  /* Adjust body to account for fixed navbar */
+  body {
+    padding-top: 60px !important;
+  }
+  
+  /* Fix for mobile menu in standalone mode */
+  #mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* Make touchable areas larger for iOS */
+  button, .menu-item, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+    
   </style>
   
   <!-- Detect standalone mode and adjust layout -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if running in standalone mode (added to home screen)
-      if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
-        document.body.classList.add('standalone-mode');
-        
-        // Fix section padding for standalone mode
-        const navbar = document.querySelector('.sticky-nav');
-        if (navbar) {
-          const navbarHeight = navbar.offsetHeight;
-          document.body.style.paddingTop = (navbarHeight) + 'px';
-        }
-        
-        // Adjust scroll behavior for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-              const headerOffset = navbar ? navbar.offsetHeight : 0;
-              const elementPosition = targetElement.getBoundingClientRect().top;
-              const offsetPosition = elementPosition - headerOffset;
-              
-              window.scrollBy({
-                top: offsetPosition,
-                behavior: 'smooth'
-              });
-            }
-          });
+    
+    // Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if running in standalone mode (added to home screen)
+  const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  
+  // iOS-specific adjustments for standalone mode
+  if (isStandalone) {
+    document.body.classList.add('standalone-mode');
+    
+    // Fix navigation for standalone mode
+    const navbar = document.querySelector('.sticky-nav');
+    if (navbar) {
+      // Set fixed positioning for navbar in iOS standalone mode
+      navbar.style.position = 'fixed';
+      navbar.style.top = '0';
+      navbar.style.left = '0';
+      navbar.style.right = '0';
+      navbar.style.zIndex = '9999';
+      
+      // Add padding to body to prevent content from going under navbar
+      const navbarHeight = navbar.offsetHeight;
+      document.body.style.paddingTop = navbarHeight + 'px';
+    }
+    
+    // Fix menu toggle in standalone mode
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      // Remove existing listeners and replace with iOS-specific one
+      const newButton = mobileMenuButton.cloneNode(true);
+      mobileMenuButton.parentNode.replaceChild(newButton, mobileMenuButton);
+      
+      // Add iOS-specific touch event listener
+      newButton.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        mobileMenu.classList.toggle('hidden');
+      }, {passive: false});
+      
+      // Make menu appear below navbar
+      if (navbar) {
+        mobileMenu.style.top = navbar.offsetHeight + 'px';
+      }
+      
+      // Close menu when clicking on links
+      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
         });
+      });
+    }
+  } else {
+    // Standard browser behavior (not iOS standalone)
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close menu when clicking on links
+      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+  }
+  
+  // Add padding to section IDs for scroll offset with fixed header
+  document.querySelectorAll('section[id]').forEach(function(section) {
+    section.style.scrollMarginTop = isStandalone ? '80px' : '60px';
+  });
+  
+  // Accordion functionality for itinerary section
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  // Add click event to each header
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      // Toggle the active class
+      this.classList.toggle('active');
+      
+      // Get the content panel
+      const content = this.nextElementSibling;
+      
+      // Toggle the hidden class
+      content.classList.toggle('hidden');
+      
+      // Rotate the arrow icon
+      const arrow = this.querySelector('svg');
+      if (arrow) {
+        if (content.classList.contains('hidden')) {
+          arrow.classList.remove('rotate-180');
+        } else {
+          arrow.classList.add('rotate-180');
+        }
       }
     });
+  });
+
+  // Mobile submenu toggle functionality
+  window.toggleMobileSubmenu = function(id, event) {
+    event.preventDefault();
+    const submenu = document.getElementById(id);
+    if (submenu) {
+      submenu.classList.toggle('show');
+    }
+  }
+    
   </script>
 </head>
 
