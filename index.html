@@ -623,43 +623,60 @@
       }
     }
     
-    /* Add this to your existing <style> section in the head */
-/* iOS Standalone App Specific Styles */
+/* Navbar adjustments - add to your existing style section */
 @media all and (display-mode: standalone) {
-  /* Fix for navigation */
+  /* Account for Dynamic Island and status bar on newer iPhones */
+  :root {
+    --safe-area-inset-top: env(safe-area-inset-top, 0px);
+    --navbar-height: 60px;
+    --total-top-space: calc(var(--safe-area-inset-top) + var(--navbar-height));
+  }
+  
+  /* Fixed navbar with correct spacing for Dynamic Island */
   .sticky-nav {
     position: fixed !important;
-    top: 0 !important;
+    top: var(--safe-area-inset-top) !important;
     left: 0 !important;
     right: 0 !important;
+    height: var(--navbar-height) !important;
     width: 100% !important;
     z-index: 9999 !important;
     background-color: white !important;
     border-bottom: 3px solid var(--mata-red) !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
   }
   
-  /* Adjust body to account for fixed navbar */
+  /* Properly space the content below navbar */
   body {
-    padding-top: 60px !important;
+    padding-top: var(--total-top-space) !important;
+    margin-top: 0 !important;
   }
   
-  /* Fix for mobile menu in standalone mode */
+  /* Handle hero images and headers */
+  .hero-image, .destination-header {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Adjust landing page logo/hero section */
+  section:first-of-type {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Fix mobile menu positioning */
   #mobile-menu {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    z-index: 9998;
-    background-color: white;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  
-  /* Make touchable areas larger for iOS */
-  button, .menu-item, a {
-    min-height: 44px;
-    min-width: 44px;
+    position: fixed !important;
+    top: var(--total-top-space) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9998 !important;
+    background-color: white !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
   }
 }
     
@@ -668,114 +685,84 @@
   <!-- Detect standalone mode and adjust layout -->
   <script>
     
-    // Mobile menu toggle functionality
+    // Add this at the beginning of your main script
 document.addEventListener('DOMContentLoaded', function() {
   // Check if running in standalone mode (added to home screen)
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  const isModernIPhone = /iPhone/.test(navigator.userAgent) && window.screen.height >= 812;
   
-  // iOS-specific adjustments for standalone mode
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
     
     // Fix navigation for standalone mode
     const navbar = document.querySelector('.sticky-nav');
     if (navbar) {
-      // Set fixed positioning for navbar in iOS standalone mode
+      // Detect if page is a destination page or home page
+      const isDestinationPage = document.querySelector('.destination-header') !== null;
+      
+      // Get the status bar height (different for iPhone models with notch/Dynamic Island)
+      let statusBarHeight = 0;
+      
+      if (isModernIPhone) {
+        // For iPhone X and newer (with notch or Dynamic Island)
+        statusBarHeight = 47; // Approximate height for the status bar area
+      } else {
+        statusBarHeight = 20; // Standard status bar height for older devices
+      }
+      
+      // Set navbar position with correct spacing
       navbar.style.position = 'fixed';
-      navbar.style.top = '0';
+      navbar.style.top = `${statusBarHeight}px`;
       navbar.style.left = '0';
       navbar.style.right = '0';
       navbar.style.zIndex = '9999';
+      navbar.style.height = '60px';
+      navbar.style.display = 'flex';
+      navbar.style.alignItems = 'center';
       
-      // Add padding to body to prevent content from going under navbar
-      const navbarHeight = navbar.offsetHeight;
-      document.body.style.paddingTop = navbarHeight + 'px';
-    }
-    
-    // Fix menu toggle in standalone mode
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      // Remove existing listeners and replace with iOS-specific one
-      const newButton = mobileMenuButton.cloneNode(true);
-      mobileMenuButton.parentNode.replaceChild(newButton, mobileMenuButton);
+      // Add padding to body based on navbar height plus status bar
+      const totalTopSpace = statusBarHeight + 60; // status bar + navbar height
+      document.body.style.paddingTop = `${totalTopSpace}px`;
       
-      // Add iOS-specific touch event listener
-      newButton.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        mobileMenu.classList.toggle('hidden');
-      }, {passive: false});
-      
-      // Make menu appear below navbar
-      if (navbar) {
-        mobileMenu.style.top = navbar.offsetHeight + 'px';
+      // Fix mobile menu
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        mobileMenu.style.position = 'fixed';
+        mobileMenu.style.top = `${totalTopSpace}px`;
+        mobileMenu.style.left = '0';
+        mobileMenu.style.right = '0';
+        mobileMenu.style.zIndex = '9998';
       }
       
-      // Close menu when clicking on links
-      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
+      // Mobile menu toggle functionality
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      if (mobileMenuButton && mobileMenu) {
+        // Use touchend for better response on iOS
+        mobileMenuButton.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+          } else {
+            mobileMenu.classList.add('hidden');
+          }
+        }, {passive: false});
+        
+        // Also keep click for compatibility
+        mobileMenuButton.addEventListener('click', function(e) {
+          if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+          } else {
+            mobileMenu.classList.add('hidden');
+          }
         });
-      });
-    }
-  } else {
-    // Standard browser behavior (not iOS standalone)
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-      });
-      
-      // Close menu when clicking on links
-      document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
         });
-      });
-    }
-  }
-  
-  // Add padding to section IDs for scroll offset with fixed header
-  document.querySelectorAll('section[id]').forEach(function(section) {
-    section.style.scrollMarginTop = isStandalone ? '80px' : '60px';
-  });
-  
-  // Accordion functionality for itinerary section
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
-  
-  // Add click event to each header
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function() {
-      // Toggle the active class
-      this.classList.toggle('active');
-      
-      // Get the content panel
-      const content = this.nextElementSibling;
-      
-      // Toggle the hidden class
-      content.classList.toggle('hidden');
-      
-      // Rotate the arrow icon
-      const arrow = this.querySelector('svg');
-      if (arrow) {
-        if (content.classList.contains('hidden')) {
-          arrow.classList.remove('rotate-180');
-        } else {
-          arrow.classList.add('rotate-180');
-        }
       }
-    });
-  });
-
-  // Mobile submenu toggle functionality
-  window.toggleMobileSubmenu = function(id, event) {
-    event.preventDefault();
-    const submenu = document.getElementById(id);
-    if (submenu) {
-      submenu.classList.toggle('show');
     }
   }
     
