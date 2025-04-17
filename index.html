@@ -680,91 +680,166 @@
   }
 }
     
+    
+/* 1. Fix wide margins on hamburger menu and text */
+@media all and (display-mode: standalone) {
+  /* Navbar layout improvements */
+  .sticky-nav .max-w-6xl {
+    width: 100%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Better hamburger button positioning */
+  #mobile-menu-button {
+    padding: 8px !important;
+    margin-right: -8px !important;
+  }
+  
+  /* Title text proper size and spacing */
+  .sticky-nav h1.brand-text-red, 
+  .sticky-nav .brand-text-red {
+    font-size: 1.5rem !important;
+    margin-left: 0 !important;
+  }
+  
+  /* 2. Prevent images from appearing above menu */
+  body {
+    padding-top: var(--total-top-space, 100px) !important;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .destination-card, 
+  img, 
+  .hero-image,
+  .countdown-container,
+  .journey-map-horizontal,
+  .journey-map-vertical {
+    z-index: 1 !important;
+    position: relative !important;
+  }
+  
+  /* Create a barrier to prevent images from scrolling above navbar */
+  .sticky-nav::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--total-top-space, 100px);
+    background-color: white;
+    z-index: -1;
+  }
+  
+  /* 3. Add margins to submenu text */
+  #mobile-menu {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  
+  #mobile-menu .flex-col {
+    padding: 0 16px !important;
+  }
+  
+  #mobile-menu a {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    width: calc(100% + 32px) !important;
+  }
+  
+  /* Proper submenu styling */
+  .mobile-sub-menu a {
+    padding-left: 32px !important;
+  }
+  
+  /* Make menu visually cleaner */
+  #mobile-menu {
+    background-color: white !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    border-bottom: 1px solid #eee !important;
+  }
+  
+  /* Ensure logo is visible but not too large */
+  .logo-container, 
+  .logo-container img {
+    max-height: 45px !important;
+  }
+}
+    
   </style>
   
   <!-- Detect standalone mode and adjust layout -->
   <script>
     
-    // Add this at the beginning of your main script
 document.addEventListener('DOMContentLoaded', function() {
-  // Check if running in standalone mode (added to home screen)
+  // Check if running in standalone mode
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
-  const isModernIPhone = /iPhone/.test(navigator.userAgent) && window.screen.height >= 812;
   
   if (isStandalone) {
-    document.body.classList.add('standalone-mode');
-    
-    // Fix navigation for standalone mode
+    // Fix mobile menu appearance and behavior
+    const mobileMenu = document.getElementById('mobile-menu');
     const navbar = document.querySelector('.sticky-nav');
-    if (navbar) {
-      // Detect if page is a destination page or home page
-      const isDestinationPage = document.querySelector('.destination-header') !== null;
+    
+    if (mobileMenu && navbar) {
+      // Calculate proper top position based on navbar height
+      const navbarHeight = navbar.offsetHeight;
+      mobileMenu.style.top = `${navbarHeight}px`;
+      mobileMenu.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
+      mobileMenu.style.overflowY = 'auto';
       
-      // Get the status bar height (different for iPhone models with notch/Dynamic Island)
-      let statusBarHeight = 0;
+      // Ensure menu is properly styled
+      mobileMenu.style.padding = '0';
+      mobileMenu.style.width = '100%';
       
-      if (isModernIPhone) {
-        // For iPhone X and newer (with notch or Dynamic Island)
-        statusBarHeight = 47; // Approximate height for the status bar area
-      } else {
-        statusBarHeight = 20; // Standard status bar height for older devices
-      }
-      
-      // Set navbar position with correct spacing
-      navbar.style.position = 'fixed';
-      navbar.style.top = `${statusBarHeight}px`;
-      navbar.style.left = '0';
-      navbar.style.right = '0';
-      navbar.style.zIndex = '9999';
-      navbar.style.height = '60px';
-      navbar.style.display = 'flex';
-      navbar.style.alignItems = 'center';
-      
-      // Add padding to body based on navbar height plus status bar
-      const totalTopSpace = statusBarHeight + 60; // status bar + navbar height
-      document.body.style.paddingTop = `${totalTopSpace}px`;
-      
-      // Fix mobile menu
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu) {
-        mobileMenu.style.position = 'fixed';
-        mobileMenu.style.top = `${totalTopSpace}px`;
-        mobileMenu.style.left = '0';
-        mobileMenu.style.right = '0';
-        mobileMenu.style.zIndex = '9998';
-      }
-      
-      // Mobile menu toggle functionality
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      if (mobileMenuButton && mobileMenu) {
+      // Make submenus touchable
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.style.display = 'block';
+        link.style.width = '100%';
+        link.style.padding = '12px 16px';
+        
         // Use touchend for better response on iOS
-        mobileMenuButton.addEventListener('touchend', function(e) {
-          e.preventDefault();
-          if (mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.remove('hidden');
+        link.addEventListener('touchend', function(e) {
+          // If this is a submenu toggle, prevent default behavior
+          if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('toggleMobileSubmenu')) {
+            // Let the toggleMobileSubmenu function handle it
           } else {
-            mobileMenu.classList.add('hidden');
-          }
-        }, {passive: false});
-        
-        // Also keep click for compatibility
-        mobileMenuButton.addEventListener('click', function(e) {
-          if (mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.remove('hidden');
-          } else {
+            // Otherwise, hide the menu when clicking a regular link
             mobileMenu.classList.add('hidden');
           }
         });
+      });
+      
+      // Fix submenu toggle functionality
+      window.toggleMobileSubmenu = function(id, event) {
+        event.preventDefault();
+        event.stopPropagation();
         
-        // Close menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-          link.addEventListener('click', function() {
-            mobileMenu.classList.add('hidden');
-          });
-        });
-      }
+        const submenu = document.getElementById(id);
+        if (submenu) {
+          submenu.classList.toggle('show');
+          
+          // Toggle arrow direction
+          const arrow = event.currentTarget.querySelector('svg');
+          if (arrow) {
+            arrow.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : 'none';
+            arrow.style.transition = 'transform 0.3s';
+          }
+        }
+        
+        return false;
+      };
     }
+    
+    // Fix z-index issues with images and content
+    document.querySelectorAll('img, .destination-card, .journey-map-horizontal, .journey-map-vertical').forEach(el => {
+      el.style.zIndex = '1';
+      el.style.position = 'relative';
+    });
   }
+});
     
   </script>
 </head>
