@@ -18,306 +18,347 @@
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
   <style>
-    /* Root variables and brand colors */
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    /* Brand styles */
-    .brand-bg-red { background-color: var(--mata-red); }
-    .brand-text-red { color: var(--mata-red); }
-    .brand-border-red { border-color: var(--mata-red); }
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    .brand-button:hover { background-color: var(--mata-dark-red); }
-    
-    /* Hero section */
-    .hero-section {
-      background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      position: relative;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* Navigation */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .text-red-600.font-bold.text-xl {
-      transition: all 0.3s ease;
-    }
-    .page-title-visible {
-      transform: scale(1.05);
-    }
-    
-    /* Desktop dropdown menu */
-    #desktop-destinations-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;
-    }
-    #desktop-destinations-menu.visible { display: block; }
-    #desktop-destinations-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    #desktop-destinations-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    .relative { position: relative; }
-    
-    /* Dropdown button styling */
-    #desktop-dropdown-button {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      transition: all 0.2s;
-      height: 40px;
-    }
-    #desktop-dropdown-button:hover { background-color: #f9fafb; }
-    
-    /* Tips dropdown styling (matches destinations dropdown) */
-    #desktop-tips-menu {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 200px;
-      background-color: white;
-      border-radius: 0.375rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      z-index: 50;
-      overflow: hidden;
-      display: none;
-    }
-    
-    #desktop-tips-menu.visible {
-      display: block;
-    }
-    
-    #desktop-tips-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #4a5568;
-      transition: all 0.2s;
-    }
-    
-    #desktop-tips-menu a:hover {
-      background-color: #fee2e2;
-      color: #c62828;
-    }
-    
-    /* Menu alignment fixes */
-    .md\:flex.md\:items-center.md\:space-x-6 > a,
-    .md\:flex.md\:items-center.md\:space-x-6 > div {
-      display: flex;
-      align-items: center;
-      height: 40px;
-    }
-    .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-    
-    /* Card and content styles */
-    .card-content, .day-content {
-      transition: all 0.3s ease-in-out;
-    }
-    .card-header, .day-header {
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .card-header:hover, .day-header:hover { filter: brightness(0.95); }
-    .card-header.active, .day-header.active {
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    .card-header svg.rotate-180, .day-header svg.rotate-180 {
-      transform: rotate(180deg);
-    }
-    
-    /* Day indicators - Unified and fixed */
+ <!-- Replace the existing STYLE section in your maldives.html with this updated version -->
+<style>
+  /* Root variables and brand colors */
+  :root {
+    --mata-red: #c62828;
+    --mata-dark-red: #8e0000;
+    --mata-light-red: #ff5f52;
+    --mata-cream: #f5f0e1;
+  }
+  
+  /* Brand styles */
+  .brand-bg-red { background-color: var(--mata-red); }
+  .brand-text-red { color: var(--mata-red); }
+  .brand-border-red { border-color: var(--mata-red); }
+  .brand-button {
+    background-color: var(--mata-red);
+    color: white;
+    transition: background-color 0.3s;
+  }
+  .brand-button:hover { background-color: var(--mata-dark-red); }
+  
+  /* Hero section */
+  .hero-section {
+    background-image: url('https://1.bp.blogspot.com/-ZFpDqT41_OI/XsqrbzVnCQI/AAAAAAAAzYE/_Lyy8dQkUIcBIW5_drX3QWaRbYhpYxQpwCLcBGAsYHQ/s1600/radisson_blu_maldives_resort.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    position: relative;
+    margin-top: 60px; /* Added to create space for fixed navigation */
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Navigation - FIXED FOR iOS */
+  .sticky-nav {
+    position: fixed; /* Changed from sticky to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000; /* Increased z-index */
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9);
+    height: auto; /* Ensure proper height */
+  }
+  .text-red-600.font-bold.text-xl {
+    transition: all 0.3s ease;
+  }
+  .page-title-visible {
+    transform: scale(1.05);
+  }
+  
+  /* Body adjustment for fixed header */
+  body {
+    padding-top: 0; /* Navigation offset is handled by margin-top on hero section */
+  }
+  
+  /* Desktop dropdown menu */
+  #desktop-destinations-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 200px;
+    background-color: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+    display: none;
+  }
+  #desktop-destinations-menu.visible { display: block; }
+  #desktop-destinations-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4a5568;
+    transition: all 0.2s;
+  }
+  #desktop-destinations-menu a:hover {
+    background-color: #fee2e2;
+    color: #c62828;
+  }
+  .relative { position: relative; }
+  
+  /* Dropdown button styling */
+  #desktop-dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+    height: 40px;
+  }
+  #desktop-dropdown-button:hover { background-color: #f9fafb; }
+  
+  /* Tips dropdown styling (matches destinations dropdown) */
+  #desktop-tips-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 200px;
+    background-color: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 50;
+    overflow: hidden;
+    display: none;
+  }
+  
+  #desktop-tips-menu.visible {
+    display: block;
+  }
+  
+  #desktop-tips-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4a5568;
+    transition: all 0.2s;
+  }
+  
+  #desktop-tips-menu a:hover {
+    background-color: #fee2e2;
+    color: #c62828;
+  }
+  
+  /* Menu alignment fixes */
+  .md\:flex.md\:items-center.md\:space-x-6 > a,
+  .md\:flex.md\:items-center.md\:space-x-6 > div {
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+  .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+  
+  /* Card and content styles */
+  .card-content, .day-content {
+    transition: all 0.3s ease-in-out;
+  }
+  .card-header, .day-header {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-header:hover, .day-header:hover { filter: brightness(0.95); }
+  .card-header.active, .day-header.active {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .card-header svg.rotate-180, .day-header svg.rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  /* Day indicators - Unified and fixed */
+  .day-header .bg-blue-500,
+  .day-header .bg-green-500,
+  .day-header .bg-yellow-500,
+  .day-header .bg-purple-500,
+  .day-header .bg-orange-500,
+  .day-header .bg-gray-500 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  /* Ensure text is visible on gray background */
+  .day-header .bg-gray-500 {
+    color: white;
+  }
+  
+  /* Card hover effects */
+  .info-card {
+    transition: transform 0.2s;
+  }
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Photo gallery */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .photo-card {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  .photo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Flag icon */
+  .flag-icon {
+    height: 20px;
+    width: 28px;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    vertical-align: middle;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  /* Text contrast improvements */
+  .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
+  .text-purple-700, .text-indigo-700, .text-yellow-800, 
+  .text-orange-800, .text-purple-800, .text-blue-800 {
+    font-weight: 600;
+  }
+  
+  /* Responsive styles */
+  /* Day indicators oval on wider screens - FIXED with consistent sizes */
+  @media (min-width: 768px) {
     .day-header .bg-blue-500,
     .day-header .bg-green-500,
     .day-header .bg-yellow-500,
     .day-header .bg-purple-500,
     .day-header .bg-orange-500,
     .day-header .bg-gray-500 {
+      width: 60px;
+      height: 32px;
+      border-radius: 16px;
+      margin-right: 10px;
+    }
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 767px) {
+    /* Day header layout */
+    .day-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
+      justify-content: space-between;
+      flex-wrap: nowrap;
     }
     
-    /* Ensure text is visible on gray background */
+    .day-header h3 {
+      flex: 1;
+      padding-right: 8px;
+    }
+    
+    /* Day indicators - UPDATED to include gray-500 */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
     .day-header .bg-gray-500 {
-      color: white;
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 20px;
+      margin-right: 8px;
+      flex-shrink: 0;
     }
     
-    /* Card hover effects */
-    .info-card {
-      transition: transform 0.2s;
-    }
-    .info-card:hover {
-      transform: translateY(-5px);
+    /* Arrow icon */
+    .day-header svg {
+      flex-shrink: 0;
     }
     
-    /* Photo gallery */
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+    /* Adjust the hero section margin-top for mobile */
+    .hero-section {
+      margin-top: 52px; /* Slightly smaller for mobile */
     }
-    .photo-card {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    .photo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Small mobile devices */
+  @media (max-width: 640px) {
+    .day-header h3 {
+      width: auto; /* Changed from 100% to auto for better layout */
+      flex: 1;
+      font-size: 0.9rem;
     }
     
-    /* Flag icon */
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    /* Consistent styling for all day indicators including gray */
+    .day-header .bg-blue-500,
+    .day-header .bg-green-500,
+    .day-header .bg-yellow-500,
+    .day-header .bg-purple-500,
+    .day-header .bg-orange-500,
+    .day-header .bg-gray-500 {
+      width: 48px;
+      height: 32px;
+      border-radius: 16px;
     }
     
-    /* Text contrast improvements */
-    .text-amber-700, .text-green-700, .text-blue-700, .text-red-700, 
-    .text-purple-700, .text-indigo-700, .text-yellow-800, 
-    .text-orange-800, .text-purple-800, .text-blue-800 {
-      font-weight: 600;
+    /* Add more space at bottom of cards */
+    .card-content {
+      padding-bottom: 1.5rem;
     }
     
-    /* Responsive styles */
-    /* Day indicators oval on wider screens - FIXED with consistent sizes */
-    @media (min-width: 768px) {
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        width: 60px;
-        height: 32px;
-        border-radius: 16px;
-        margin-right: 10px;
-      }
+    /* Better alignment for mobile view */
+    .day-header {
+      flex-wrap: nowrap; /* Changed from wrap to nowrap */
     }
     
-    /* Mobile optimizations */
-    @media (max-width: 767px) {
-      /* Day header layout */
-      .day-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-      }
-      
-      .day-header h3 {
-        flex: 1;
-        padding-right: 8px;
-      }
-      
-      /* Day indicators - UPDATED to include gray-500 */
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 20px;
-        margin-right: 8px;
-        flex-shrink: 0;
-      }
-      
-      /* Arrow icon */
-      .day-header svg {
-        flex-shrink: 0;
-      }
+    .day-header .flex-shrink-0 {
+      margin-left: 0; /* Removed auto margin */
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* iOS-specific fixes for PWA */
+  @supports (-webkit-touch-callout: none) {
+    /* iOS-specific styles */
+    .sticky-nav {
+      position: fixed;
+      top: env(safe-area-inset-top, 0);
+      padding-top: env(safe-area-inset-top, 0);
+      /* Add support for iOS safe areas */
     }
     
-    /* Small mobile devices */
-    @media (max-width: 640px) {
-      .day-header h3 {
-        width: auto; /* Changed from 100% to auto for better layout */
-        flex: 1;
-        font-size: 0.9rem;
-      }
-      
-      /* Consistent styling for all day indicators including gray */
-      .day-header .bg-blue-500,
-      .day-header .bg-green-500,
-      .day-header .bg-yellow-500,
-      .day-header .bg-purple-500,
-      .day-header .bg-orange-500,
-      .day-header .bg-gray-500 {
-        width: 48px;
-        height: 32px;
-        border-radius: 16px;
-      }
-      
-      /* Add more space at bottom of cards */
-      .card-content {
-        padding-bottom: 1.5rem;
-      }
-      
-      /* Better alignment for mobile view */
-      .day-header {
-        flex-wrap: nowrap; /* Changed from wrap to nowrap */
-      }
-      
-      .day-header .flex-shrink-0 {
-        margin-left: 0; /* Removed auto margin */
-        display: flex;
-        align-items: center;
-      }
+    /* Adjust the hero section for iOS notch */
+    .hero-section {
+      margin-top: calc(60px + env(safe-area-inset-top, 0));
     }
+    
+    /* Fixing ios momentum scrolling issues */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+  
+  
   </style>
 </head>
 <body class="bg-gray-50">
