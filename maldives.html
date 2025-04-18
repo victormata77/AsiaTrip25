@@ -392,12 +392,11 @@
     }
   }
 
-    /* Navigation container layout fix */
+/* Navigation container layout fix */
 .sticky-nav > div {
   height: 100%;
   display: flex;
-  flex-direction: column; /* Stack children vertically when mobile menu is open */
-  justify-content: center;
+  align-items: center;
 }
 
 /* Fix the header row to maintain proper layout */
@@ -414,18 +413,22 @@
   flex-shrink: 0; /* Prevent title from shrinking */
 }
 
-/* Fix mobile menu positioning */
-#mobile-menu {
-  width: 100%;
-  margin-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 /* Mobile menu button alignment */
 .md\:hidden {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+/* Fix mobile menu positioning */
+#mobile-menu {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Mobile menu hidden by default */
+#mobile-menu.hidden {
+  display: none;
 }
 
 /* Better hamburger button */
@@ -442,27 +445,12 @@
   background-color: rgba(0,0,0,0.05);
 }
 
-/* Fix for expanded mobile menu not pushing content down */
-body.menu-open {
-  padding-top: var(--expanded-nav-height, 250px);
-}
-
-@media (min-width: 768px) {
-  body.menu-open {
-    padding-top: var(--nav-height);
-  }
-  
-  /* On desktop, keep flex-row layout */
-  .sticky-nav > div {
-    flex-direction: row;
-  }
-}
-
-/* Mobile menu item vertical spacing */
+/* Mobile menu spacing */
 #mobile-menu .py-2 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+    
 </style>
   
 </head>
@@ -1362,13 +1350,15 @@ body.menu-open {
 
 <script>
 // Single unified script with complete functionality
+// Mobile menu toggle - simplified version
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   
   if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent event from bubbling
       mobileMenu.classList.toggle('hidden');
     });
   }
@@ -1378,26 +1368,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuLinks = mobileMenu.querySelectorAll('a');
     mobileMenuLinks.forEach(link => {
       link.addEventListener('click', function() {
-        // Don't close menu for the destinations dropdown
-        if (!this.closest('#destinations-dropdown-button')) {
+        // Don't close menu for dropdown toggles
+        if (!this.closest('#destinations-dropdown-button') && 
+            !this.closest('#tips-dropdown-button')) {
           mobileMenu.classList.add('hidden');
         }
       });
     });
   }
   
-  // 3. Handle destinations submenu
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  if (destinationsSubmenu) {
-    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
-    submenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Close both the submenu and the main mobile menu
-        destinationsSubmenu.classList.add('hidden');
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  }
+  // 3. Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (mobileMenu && 
+        !mobileMenu.classList.contains('hidden') && 
+        !mobileMenu.contains(event.target) && 
+        !mobileMenuButton.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
   
   // 4. Fix scroll position for section links to show section titles
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
