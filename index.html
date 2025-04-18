@@ -952,6 +952,7 @@ a[onclick] {
 #mobile-menu {
   z-index: 9998 !important;
 }
+
 	
  </style>
 	
@@ -2948,6 +2949,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Function to toggle desktop submenus properly
+function toggleDesktopSubmenu(menuId, event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  // Close all other submenus first
+  document.querySelectorAll('.sub-menu').forEach(submenu => {
+    if (submenu.id !== menuId && submenu.classList.contains('active-submenu')) {
+      submenu.classList.remove('active-submenu');
+    }
+  });
+  
+  // Toggle the clicked submenu
+  const menu = document.getElementById(menuId);
+  if (menu) {
+    menu.classList.toggle('active-submenu');
+    
+    // Toggle arrow rotation
+    const button = event.currentTarget;
+    const arrow = button.querySelector('svg');
+    if (arrow) {
+      arrow.style.transform = menu.classList.contains('active-submenu') ? 'rotate(180deg)' : '';
+    }
+  }
+}
+// Function to toggle mobile submenus properly
+function toggleMobileSubmenu(menuId, event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const submenu = document.getElementById(menuId);
+  if (submenu) {
+    submenu.classList.toggle('show');
+    
+    // Toggle arrow rotation
+    const button = event.currentTarget;
+    const arrow = button.querySelector('svg');
+    if (arrow) {
+      arrow.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : '';
+    }
+  }
+}
+// Close submenus when clicking outside
+document.addEventListener('click', function() {
+  document.querySelectorAll('.sub-menu').forEach(submenu => {
+    submenu.classList.remove('active-submenu');
+  });
+  
+  // Reset all arrows
+  document.querySelectorAll('.menu-item svg').forEach(arrow => {
+    arrow.style.transform = '';
+  });
+});
+	
   </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
