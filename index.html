@@ -2251,6 +2251,23 @@ html {
 
 
 <script>
+
+// Debugging for mobile menu
+console.log("Script loaded");
+console.log("Mobile menu button exists:", !!document.getElementById('mobile-menu-button'));
+console.log("Mobile menu exists:", !!document.getElementById('mobile-menu'));
+
+// Try to identify if the click event is being intercepted
+document.addEventListener('click', function(e) {
+  const path = e.composedPath ? e.composedPath() : e.path;
+  if (path && path.some(el => el.id === 'mobile-menu-button')) {
+    console.log("Button clicked in capture phase");
+  }
+}, true);
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle - FIXED VERSION
 const mobileMenuButton = document.getElementById('mobile-menu-button');
