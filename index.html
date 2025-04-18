@@ -71,11 +71,23 @@
 
 
 <style>
+
 :root {
   --mata-red: #c62828;
   --mata-dark-red: #8e0000;
   --mata-light-red: #ff5f52;
   --mata-cream: #f5f0e1;
+  --nav-height: 60px;
+  --nav-height-mobile: 52px;
+}
+
+/* iOS PWA body adjustments */
+body {
+  -webkit-overflow-scrolling: touch;
+  padding-top: var(--nav-height); /* Space for fixed navbar */
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .destination-card {
@@ -110,16 +122,186 @@
   width: 100%;
 }
 
-/* Improved navigation styling for all modes */
+/* Navigation - Heavy-duty iOS PWA fix */
 .sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: white;
+  position: fixed !important; /* Force fixed positioning */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important; /* Extremely high z-index */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* iOS support */
+  background-color: rgba(255, 255, 255, 0.95); /* More opaque */
+  height: var(--nav-height); /* Fixed height */
+  transform: translateZ(0); /* Force hardware acceleration */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden; /* Prevent rendering issues */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Visible shadow to distinguish */
   border-bottom: 3px solid var(--mata-red);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Nav container needs vertical centering when height is fixed */
+.sticky-nav > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Allow mobile menu to stack below */
+  justify-content: center;
+}
+
+/* Main nav row (title and menu items) */
+.sticky-nav > div > div.flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Mobile menu - COMPLETELY REDONE */
+#mobile-menu {
+  position: absolute;
+  top: var(--nav-height); /* Position exactly below navbar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile menu items need to be full width */
+#mobile-menu .flex.flex-col.space-y-3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile menu links should be left-aligned */
+#mobile-menu a,
+#mobile-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Fix submenus in mobile menu */
+#tips-submenu,
+#destinations-submenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#tips-submenu a,
+#destinations-submenu a {
+  padding-left: 32px; /* Indent submenu items */
+  background-color: #f9fafb;
+}
+
+/* Content container needs adjustment since body has padding */
+.max-w-6xl.mx-auto.px-4.py-12 {
+  padding-top: 1rem; /* Reduced padding since body already has space */
+}
+
+/* Site title styling */
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* Desktop dropdown menu */
+#desktop-destinations-menu, #desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+#desktop-destinations-menu a, #desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button, #desktop-tips-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* Fix mobile menu dropdown button alignment */
+#tips-dropdown-button,
+#destinations-dropdown-button {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure span and svg are on the same line */
+#tips-dropdown-button span,
+#destinations-dropdown-button span {
+  display: inline-block;
+}
+
+#tips-dropdown-button svg,
+#destinations-dropdown-button svg,
+#dropdown-arrow,
+#tips-dropdown-arrow {
+  flex-shrink: 0;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Remove any flexbox adjustments that might be causing issues */
+#tips-dropdown-button.w-full.flex.justify-between.items-center,
+#destinations-dropdown-button.w-full.flex.justify-between.items-center {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Journey map */
 .journey-map-horizontal {
   display: flex;
   flex-direction: column;
@@ -385,8 +567,44 @@
   background-color: var(--mata-red);
 }
 
-/* Responsive adjustments for hotel table */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  /* Adjust body padding for mobile nav height */
+  body {
+    padding-top: var(--nav-height-mobile);
+  }
+  
+  /* Adjust nav height for mobile */
+  .sticky-nav {
+    height: var(--nav-height-mobile);
+  }
+  
+  /* Mobile menu position for smaller devices */
+  #mobile-menu {
+    top: var(--nav-height-mobile);
+    max-height: calc(100vh - var(--nav-height-mobile));
+  }
+  
+  /* Fix mobile menu spacing */
+  #mobile-menu .flex.flex-col.space-y-3 {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Adjust spacing for mobile menu items */
+  #mobile-menu a, 
+  #mobile-menu button {
+    margin: 0;
+    padding: 12px 16px;
+  }
+  
+  /* Fix space-y-3 override */
+  #mobile-menu .flex.flex-col.space-y-3 > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
   #hotels table {
     display: block;
   }
@@ -518,182 +736,35 @@
   }
 }
 
-/* iOS home screen app specific styles */
-@media all and (display-mode: standalone) {
+/* iOS-specific fixes for PWA */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific styles */
   body {
-    /* Account for status bar */
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+  }
+  
+  .sticky-nav {
     padding-top: env(safe-area-inset-top, 0);
+    height: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
   
-  .sticky-nav {
-    position: fixed;
-    top: env(safe-area-inset-top, 0);
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
-  
-  /* Add padding to body to prevent content from going under the fixed header */
-  body {
-    padding-top: 70px; /* Adjust based on your navbar height */
-  }
-  
-  /* Adjust scroll behavior */
-  html {
-    scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
-  }
-  
-  /* Fix for iOS standalone mode */
-  .sticky-nav .menu-item > a, 
-  .sticky-nav .sub-menu a {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-}
-
-/* Navbar adjustments - add to your existing style section */
-@media all and (display-mode: standalone) {
-  /* Account for Dynamic Island and status bar on newer iPhones */
-  :root {
-    --safe-area-inset-top: env(safe-area-inset-top, 0px);
-    --navbar-height: 60px;
-    --total-top-space: calc(var(--safe-area-inset-top) + var(--navbar-height));
-  }
-  
-  /* Fixed navbar with correct spacing for Dynamic Island */
-  .sticky-nav {
-    position: fixed !important;
-    top: var(--safe-area-inset-top) !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: var(--navbar-height) !important;
-    width: 100% !important;
-    z-index: 9999 !important;
-    background-color: white !important;
-    border-bottom: 3px solid var(--mata-red) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-  
-  /* Properly space the content below navbar */
-  body {
-    padding-top: var(--total-top-space) !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Handle hero images and headers */
-  .hero-image, .destination-header {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  
-  /* Adjust landing page logo/hero section */
-  section:first-of-type {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Fix mobile menu positioning */
   #mobile-menu {
-    position: fixed !important;
-    top: var(--total-top-space) !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 9998 !important;
-    background-color: white !important;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-  }
-}
-
-/* Fix wide margins on hamburger menu and text */
-@media all and (display-mode: standalone) {
-  /* Navbar layout improvements */
-  .sticky-nav .max-w-6xl {
-    width: 100%;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
   
-  /* Better hamburger button positioning */
-  #mobile-menu-button {
-    padding: 8px !important;
-    margin-right: -8px !important;
+  @media (max-width: 767px) {
+    body {
+      padding-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    .sticky-nav {
+      height: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    #mobile-menu {
+      top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
   }
-  
-  /* Title text proper size and spacing */
-  .sticky-nav h1.brand-text-red, 
-  .sticky-nav .brand-text-red {
-    font-size: 1.5rem !important;
-    margin-left: 0 !important;
-  }
-  
-  /* Prevent images from appearing above menu */
-  body {
-    padding-top: var(--total-top-space, 100px) !important;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .destination-card, 
-  img, 
-  .hero-image,
-  .countdown-container,
-  .journey-map-horizontal,
-  .journey-map-vertical {
-    z-index: 1 !important;
-    position: relative !important;
-  }
-  
-  /* Create a barrier to prevent images from scrolling above navbar */
-  .sticky-nav::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--total-top-space, 100px);
-    background-color: white;
-    z-index: -1;
-  }
-  
-  /* Add margins to submenu text */
-  #mobile-menu {
-    padding: 0 !important;
-    width: 100% !important;
-  }
-  
-  #mobile-menu .flex-col {
-    padding: 0 16px !important;
-  }
-  
-  #mobile-menu a {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    margin-left: -16px !important;
-    margin-right: -16px !important;
-    width: calc(100% + 32px) !important;
-  }
-  
-  /* Make menu visually cleaner */
-  #mobile-menu {
-    background-color: white !important;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-    border-bottom: 1px solid #eee !important;
-  }
-  
-  /* Ensure logo is visible but not too large */
-  .logo-container, 
-  .logo-container img {
-    max-height: 45px !important;
-  }
-}
-
-/* Add scroll padding to prevent content being hidden behind the navbar */
-html {
-  scroll-padding-top: 80px;
 }
 
 /* Fix for scrolling issue - adjust z-index for all potential elements */
@@ -709,107 +780,10 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   position: relative;
 }
 
-/* Root variables and brand colors */
-:root {
-  --mata-red: #c62828;
-  --mata-dark-red: #8e0000;
-  --mata-light-red: #ff5f52;
-  --mata-cream: #f5f0e1;
-}
-
-/* Navigation */
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.text-red-600.font-bold.text-xl {
-  transition: all 0.3s ease;
-}
-.page-title-visible {
-  transform: scale(1.05);
-}
-
-/* Desktop dropdown menu */
-#desktop-destinations-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 50;
-  overflow: hidden;
-  display: none;
-}
-#desktop-destinations-menu.visible { display: block; }
-#desktop-destinations-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-#desktop-destinations-menu a:hover {
-  background-color: #fee2e2;
-  color: #c62828;
-}
-.relative { position: relative; }
-
-/* Dropdown button styling */
-#desktop-dropdown-button {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  transition: all 0.2s;
-  height: 40px;
-}
-#desktop-dropdown-button:hover { background-color: #f9fafb; }
-
-/* Tips dropdown styling (matches destinations dropdown) */
-#desktop-tips-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 50;
-  overflow: hidden;
-  display: none;
-}
-
-#desktop-tips-menu.visible {
-  display: block;
-}
-
-#desktop-tips-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-
-#desktop-tips-menu a:hover {
-  background-color: #fee2e2;
-  color: #c62828;
-}
-
-/* Menu alignment fixes */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  display: flex;
-  align-items: center;
-  height: 40px;
-}
-.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-	
-	
+/* Add scroll padding to prevent content being hidden behind the navbar */
+html {
+  scroll-padding-top: 80px;
+}	
 </style>
 	
 </head>
@@ -842,7 +816,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
           </div>
         </div>
         
-	<a href="#itinerary" class="text-gray-700 hover:text-red-600">Itinerary</a>
+        <a href="#itinerary" class="text-gray-700 hover:text-red-600">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:text-red-600">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:text-red-600">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:text-red-600">Hotels</a>
@@ -863,7 +837,6 @@ section, .destination-card, .map-line, .journey-map-horizontal,
           </div>
         </div>
         
-        
         <a href="#journey" class="text-gray-700 hover:text-red-600">Journey</a>
       </div>
       
@@ -878,30 +851,9 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     </div>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+    <div id="mobile-menu" class="hidden md:hidden">
       <div class="flex flex-col space-y-3">
-	
-	      <!-- Destinations Accordion -->
-	        <div class="relative">
-	          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-	            <span>Destinations</span>
-	            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-	              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-	            </svg>
-	          </button>
-	          
-	          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-	            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-	            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-	            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-	            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-	            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-	            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-	          </div>
-	        </div>
-	
-	      
-	      <a href="#itinerary" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Itinerary</a>
+        <a href="#itinerary" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Hotels</a>
@@ -922,13 +874,32 @@ section, .destination-card, .map-line, .journey-map-horizontal,
             <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
           </div>
         </div>
+
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
+        </div>
         
-                
         <a href="#journey" class="text-gray-700 hover:text-red-600 py-2">Journey</a>
       </div>
     </div>
   </div>
 </nav>
+
 	
 <!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
 <section style="background-color: #eeeada;" class="py-10">
@@ -2280,7 +2251,6 @@ section, .destination-card, .map-line, .journey-map-horizontal,
 
 
 <script>
-// Complete script for index.html with navigation and other functionality
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -2328,8 +2298,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        // Calculate scroll position - offset by 80px to show the header
-        const scrollPosition = targetElement.offsetTop - 80;
+        // Calculate scroll position - offset by the navbar height plus some padding
+        const navHeight = window.innerWidth <= 768 ? 
+                         parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height-mobile')) : 
+                         parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'));
+        
+        // Get safe area inset for iOS devices
+        const safeAreaInset = window.getComputedStyle(document.documentElement).getPropertyValue('env(safe-area-inset-top)') || '0px';
+        const safeAreaInsetValue = parseInt(safeAreaInset) || 0;
+        
+        // Calculate final offset with safe area consideration
+        const scrollPosition = targetElement.offsetTop - (navHeight + safeAreaInsetValue + 10);
         
         // Scroll to the adjusted position
         window.scrollTo({
@@ -2457,15 +2436,22 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', function() {
         // Close both the submenu and the main mobile menu
         tipsSubmenu.classList.add('hidden');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) {
-          mobileMenu.classList.add('hidden');
-        }
+        mobileMenu.classList.add('hidden');
       });
     });
   }
 
-  // 11. ACCORDION FUNCTIONALITY
+  // 11. Fix mobile menu dropdown button alignment
+  document.querySelectorAll('#tips-dropdown-button, #destinations-dropdown-button').forEach(button => {
+    if (button) {
+      button.style.display = "flex";
+      button.style.justifyContent = "space-between";
+      button.style.alignItems = "center";
+      button.style.width = "100%";
+    }
+  });
+
+  // 12. ACCORDION FUNCTIONALITY
   // Accordion functionality for itinerary section
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   
@@ -2493,7 +2479,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // 12. COUNTDOWN FUNCTIONALITY
+  // 13. COUNTDOWN FUNCTIONALITY
   // Time calculator function for both counters
   function getTimeUntilTrip() {
     const now = new Date();
@@ -2602,7 +2588,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // text: once a day
   setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
   
-  // 13. LOCATION HIGHLIGHTING
+  // 14. LOCATION HIGHLIGHTING
   // Journey map current location highlighting
   // Get today's date
   const today = new Date();
@@ -2649,7 +2635,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // 14. CALENDAR DATE HIGHLIGHTING
+  // 15. CALENDAR DATE HIGHLIGHTING
   // Calendar date highlighting
   // Format the date as DD/M (e.g., 12/8)
   const day = today.getDate();
@@ -2676,7 +2662,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // 15. HOTEL HIGHLIGHTING
+  // 16. HOTEL HIGHLIGHTING
   // Function to highlight current hotel
   function highlightCurrentHotel() {
     // Get today's date in YYYY-MM-DD format
@@ -2713,7 +2699,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call the function to highlight current hotel
   highlightCurrentHotel();
   
-  // 16. SERVICE WORKER REGISTRATION
+  // 17. SERVICE WORKER REGISTRATION
   // Register service worker for PWA functionality
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -2727,7 +2713,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 17. iOS INSTALL BANNER
+  // 18. iOS INSTALL BANNER
   // Show install banner for iOS users
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
