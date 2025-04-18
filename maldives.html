@@ -442,6 +442,79 @@
       }
     }
   }
+
+/* Fix the flex layout in the navigation container */
+.sticky-nav > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Allow mobile menu to stack below */
+  align-items: flex-start; /* Left alignment */
+  justify-content: center;
+}
+
+/* Main nav row needs to be full width */
+.sticky-nav > div > div.flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Mobile menu should be full width */
+#mobile-menu {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  margin-top: 0;
+  padding-top: 0.5rem;
+  z-index: 9998; /* High but below main nav */
+}
+
+/* Mobile menu items - ensure left alignment */
+#mobile-menu .flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Style mobile menu items more like Kyoto */
+#mobile-menu a, 
+#mobile-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0;
+}
+
+/* Style dropdown submenus */
+#tips-submenu a,
+#destinations-submenu a {
+  padding-left: 1rem !important; /* Indent submenu items */
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Ensure .hidden actually hides the menu */
+#mobile-menu.hidden,
+#destinations-submenu.hidden,
+#tips-submenu.hidden {
+  display: none !important;
+}
+
+/* Make dropdowns match Kyoto style */
+#destinations-submenu,
+#tips-submenu {
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+/* Fix desktop menu items alignment on mobile */
+@media (max-width: 767px) {
+  .sticky-nav > div {
+    align-items: stretch;
+  }
+}
 </style>
   </style>
   
@@ -509,6 +582,9 @@
       </div>
       
       <!-- Mobile Menu -->
+     <!-- Replace the mobile menu section with this structure to match Kyoto's left-aligned style -->
+
+<!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
         <div class="flex flex-col space-y-3">
           <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
@@ -517,7 +593,7 @@
           <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
           <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
           
-          <!-- Tips Accordion -->
+          <!-- Tips Accordion - Matches Kyoto structure -->
           <div class="relative">
             <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
               <span>Tips</span>
@@ -534,7 +610,7 @@
             </div>
           </div>
           
-          <!-- Destinations Accordion -->
+          <!-- Destinations Accordion - Matches Kyoto structure -->
           <div class="relative">
             <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
               <span>Other Destinations</span>
