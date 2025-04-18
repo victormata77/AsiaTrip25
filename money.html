@@ -2145,7 +2145,7 @@ body {
 
   <script>
 
-    // Mobile menu toggle
+   // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -2272,10 +2272,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Print functionality
-    const printGuideButton = document.getElementById('print-guide');
+    const printPageButton = document.getElementById('print-page');
     
-    if (printGuideButton) {
-        printGuideButton.addEventListener('click', function() {
+    if (printPageButton) {
+        printPageButton.addEventListener('click', function() {
             window.print();
         });
     }
@@ -2302,6 +2302,141 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add scroll event listener
         window.addEventListener('scroll', handleScroll);
     }
+    
+    // Currency Converter Functionality
+    const amount = document.getElementById('amount');
+    const fromCurrency = document.getElementById('from-currency');
+    const toCurrency = document.getElementById('to-currency');
+    const result = document.getElementById('result');
+    const swapButton = document.getElementById('swap-button');
+    
+    // Exchange rates data - April 2025 estimates
+    const exchangeRates = {
+        EUR: {
+            EUR: 1,
+            KRW: 1465,
+            JPY: 165,
+            SGD: 1.45,
+            MYR: 5.05,
+            MVR: 16.8,
+            USD: 1.07
+        },
+        KRW: {
+            EUR: 0.000683,
+            KRW: 1,
+            JPY: 0.1126,
+            SGD: 0.00099,
+            MYR: 0.00345,
+            MVR: 0.01147,
+            USD: 0.00073
+        },
+        JPY: {
+            EUR: 0.00606,
+            KRW: 8.88,
+            JPY: 1,
+            SGD: 0.00879,
+            MYR: 0.0306,
+            MVR: 0.1018,
+            USD: 0.00649
+        },
+        SGD: {
+            EUR: 0.6896,
+            KRW: 1010.34,
+            JPY: 113.79,
+            SGD: 1,
+            MYR: 3.48,
+            MVR: 11.59,
+            USD: 0.738
+        },
+        MYR: {
+            EUR: 0.198,
+            KRW: 290.1,
+            JPY: 32.67,
+            SGD: 0.287,
+            MYR: 1,
+            MVR: 3.327,
+            USD: 0.212
+        },
+        MVR: {
+            EUR: 0.0595,
+            KRW: 87.2,
+            JPY: 9.82,
+            SGD: 0.0863,
+            MYR: 0.301,
+            MVR: 1,
+            USD: 0.0637
+        },
+        USD: {
+            EUR: 0.935,
+            KRW: 1369.16,
+            JPY: 154.21,
+            SGD: 1.355,
+            MYR: 4.72,
+            MVR: 15.7,
+            USD: 1
+        }
+    };
+    
+    // Function to convert currency
+    function convertCurrency() {
+        if (!amount || !fromCurrency || !toCurrency || !result) return;
+        
+        const amountValue = parseFloat(amount.value);
+        const fromValue = fromCurrency.value;
+        const toValue = toCurrency.value;
+        
+        if (isNaN(amountValue)) {
+            result.value = 'Please enter a valid amount';
+            return;
+        }
+        
+        const rate = exchangeRates[fromValue][toValue];
+        const convertedAmount = amountValue * rate;
+        
+        // Format the result based on the currency
+        let formattedResult;
+        
+        if (toValue === 'KRW' || toValue === 'JPY') {
+            // No decimal places for KRW and JPY
+            formattedResult = Math.round(convertedAmount).toLocaleString();
+        } else {
+            // 2 decimal places for other currencies
+            formattedResult = convertedAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+        
+        // Add the appropriate currency symbol
+        const currencySymbols = {
+            EUR: '€',
+            KRW: '₩',
+            JPY: '¥',
+            SGD: 'S$',
+            MYR: 'RM',
+            MVR: 'Rf',
+            USD: '$'
+        };
+        
+        result.value = currencySymbols[toValue] + formattedResult;
+    }
+    
+    // Add event listeners
+    if (amount && fromCurrency && toCurrency) {
+        amount.addEventListener('input', convertCurrency);
+        fromCurrency.addEventListener('change', convertCurrency);
+        toCurrency.addEventListener('change', convertCurrency);
+    }
+    
+    // Swap currencies functionality
+    if (swapButton && fromCurrency && toCurrency) {
+        swapButton.addEventListener('click', function() {
+            const temp = fromCurrency.value;
+            fromCurrency.value = toCurrency.value;
+            toCurrency.value = temp;
+            convertCurrency();
+        });
+    }
+    
+    // Initialize the converter with default values
+    convertCurrency();
 });
 
 if ('serviceWorker' in navigator) {
@@ -2314,8 +2449,7 @@ if ('serviceWorker' in navigator) {
           console.error('Service Worker registration failed:', err);
         });
     });
-  }
-    
+  } 
   </script>
 </body>
 </html>
