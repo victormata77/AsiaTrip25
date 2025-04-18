@@ -2252,15 +2252,24 @@ html {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  // 1. Mobile menu toggle - FIXED VERSION
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (mobileMenuButton && mobileMenu) {
+  // Remove any existing event listeners by cloning and replacing
+  const newButton = mobileMenuButton.cloneNode(true);
+  mobileMenuButton.parentNode.replaceChild(newButton, mobileMenuButton);
   
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
+  // Add click event with explicit prevention
+  newButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    mobileMenu.classList.toggle('hidden');
+  });
+}
+
+
 
   // 2. Close menu when links are clicked
   if (mobileMenu) {
