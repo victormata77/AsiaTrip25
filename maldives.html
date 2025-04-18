@@ -17,8 +17,8 @@
 
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
-  <style>
-  <style>
+
+<style>
   /* Root variables and brand colors */
   :root {
     --mata-red: #c62828;
@@ -71,7 +71,7 @@
     z-index: 10;
   }
   
-  /* Navigation - Fixed for PWA and proper mobile menu */
+  /* Navigation - Heavy-duty iOS PWA fix */
   .sticky-nav {
     position: fixed !important; /* Force fixed positioning */
     top: 0 !important;
@@ -81,25 +81,12 @@
     z-index: 9999 !important; /* Extremely high z-index */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* iOS support */
-    background-color: rgba(255, 255, 255, 0.95); /* More opaque background */
+    background-color: rgba(255, 255, 255, 0.95); /* More opaque */
     height: var(--nav-height); /* Fixed height */
     transform: translateZ(0); /* Force hardware acceleration */
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden; /* Prevent rendering issues */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Visible shadow to distinguish */
-  }
-  
-  /* Mobile menu fixes */
-  #mobile-menu {
-    position: absolute; /* Changed from static position */
-    top: 100%; /* Position right below the navbar */
-    left: 0;
-    width: 100%;
-    background-color: white; /* Solid background */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    z-index: 9998; /* Just below the navbar z-index */
-    max-height: calc(100vh - var(--nav-height)); /* Prevent overflow */
-    overflow-y: auto; /* Allow scrolling if menu is too tall */
   }
   
   /* Nav container needs vertical centering when height is fixed */
@@ -116,6 +103,57 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+  }
+  
+  /* Mobile menu - COMPLETELY REDONE */
+  #mobile-menu {
+    position: absolute;
+    top: var(--nav-height); /* Position exactly below navbar */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 9998;
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Mobile menu items need to be full width */
+  #mobile-menu .flex.flex-col.space-y-3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Mobile menu links should be left-aligned */
+  #mobile-menu a,
+  #mobile-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* Fix submenus in mobile menu */
+  #tips-submenu,
+  #destinations-submenu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #tips-submenu a,
+  #destinations-submenu a {
+    padding-left: 32px; /* Indent submenu items */
+    background-color: #f9fafb;
   }
   
   /* Content container needs adjustment since body has padding */
@@ -312,10 +350,30 @@
       height: var(--nav-height-mobile);
     }
     
-    /* Mobile menu specific styles */
+    /* Mobile menu position for smaller devices */
     #mobile-menu {
+      top: var(--nav-height-mobile);
       max-height: calc(100vh - var(--nav-height-mobile));
-      padding-bottom: env(safe-area-inset-bottom, 0); /* Safe area for iPhone X+ */
+    }
+    
+    /* Fix mobile menu spacing */
+    #mobile-menu .flex.flex-col.space-y-3 {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    
+    /* Adjust spacing for mobile menu items */
+    #mobile-menu a, 
+    #mobile-menu button {
+      margin: 0;
+      padding: 12px 16px;
+    }
+    
+    /* Fix space-y-3 override */
+    #mobile-menu .flex.flex-col.space-y-3 > * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
     }
     
     /* Day header layout */
@@ -402,6 +460,10 @@
       height: calc(var(--nav-height) + env(safe-area-inset-top, 0));
     }
     
+    #mobile-menu {
+      top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+    }
+    
     @media (max-width: 767px) {
       body {
         padding-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
@@ -410,11 +472,15 @@
       .sticky-nav {
         height: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
       }
+      
+      #mobile-menu {
+        top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+      }
     }
   }
 </style>
-  </style>
-</head>
+  
+ </head>
 <body class="bg-gray-50">
   <!-- Fixed Navigation Menu with Better Alignment -->
   <nav class="sticky-nav shadow-md">
