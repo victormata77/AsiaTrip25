@@ -820,11 +820,29 @@ section, .destination-card, .map-line, .journey-map-horizontal,
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
-      <div class="text-red-600 font-bold text-xl">MATA's ASIAN TOUR 2025</div>
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
       
       <!-- Desktop Navigation Menu -->
       <div class="hidden md:flex md:items-center md:space-x-6">
-        <a href="#itinerary" class="text-gray-700 hover:text-red-600">Itinerary</a>
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Destinations
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-destinations-menu" class="hidden">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+          </div>
+        </div>
+        
+	<a href="#itinerary" class="text-gray-700 hover:text-red-600">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:text-red-600">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:text-red-600">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:text-red-600">Hotels</a>
@@ -845,23 +863,6 @@ section, .destination-card, .map-line, .journey-map-horizontal,
           </div>
         </div>
         
-        <!-- Desktop Destinations Dropdown -->
-        <div class="relative flex items-center">
-          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-            Destinations
-            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div id="desktop-destinations-menu" class="hidden">
-            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
-            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
-            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
-            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
-            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
-            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
-          </div>
-        </div>
         
         <a href="#journey" class="text-gray-700 hover:text-red-600">Journey</a>
       </div>
@@ -879,7 +880,28 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
       <div class="flex flex-col space-y-3">
-        <a href="#itinerary" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Itinerary</a>
+	
+	      <!-- Destinations Accordion -->
+	        <div class="relative">
+	          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+	            <span>Destinations</span>
+	            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+	              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+	            </svg>
+	          </button>
+	          
+	          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+	            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+	            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+	            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+	            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+	            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+	            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+	          </div>
+	        </div>
+	
+	      
+	      <a href="#itinerary" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Itinerary</a>
         <a href="#calendar" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Calendar</a>
         <a href="#flights" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Hotels</a>
@@ -901,25 +923,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
           </div>
         </div>
         
-        <!-- Destinations Accordion -->
-        <div class="relative">
-          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
-            <span>Destinations</span>
-            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          
-          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
-            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
-            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
-            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
-            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
-            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
-            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
-          </div>
-        </div>
-        
+                
         <a href="#journey" class="text-gray-700 hover:text-red-600 py-2">Journey</a>
       </div>
     </div>
