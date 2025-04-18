@@ -2252,7 +2252,31 @@ document.addEventListener('DOMContentLoaded', function() {
             window.print();
         });
     }
+    
+    // Dynamic page title based on scroll position
+    const pageTitle = document.querySelector('.hero-content h1')?.textContent;
+    const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+    
+    if (pageTitle && navTitle) {
+        const originalTitle = navTitle.textContent;
+        
+        // Function to handle scroll events
+        function handleScroll() {
+            // Change the title when scrolled down (e.g., 100px from top)
+            if (window.scrollY > 100) {
+                navTitle.textContent = pageTitle;
+                navTitle.classList.add('page-title-visible');
+            } else {
+                navTitle.textContent = originalTitle;
+                navTitle.classList.remove('page-title-visible');
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    }
 });
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
