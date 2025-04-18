@@ -816,7 +816,92 @@
     max-height: 45px !important;
   }
 }
+
+/* Add these additional styles to your existing CSS in the style section */
+
+/* Enhanced mobile submenu styles for better iOS behavior */
+@media (max-width: 768px) {
+  .mobile-sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  
+  .mobile-sub-menu.show {
+    max-height: 500px; /* This will be overridden by JS for precise height */
+    opacity: 1;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-left: 2px solid var(--mata-red);
+  }
+  
+  /* Make submenu items more tappable on iOS */
+  .mobile-sub-menu a {
+    display: block;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-left: 16px;
+    position: relative;
+  }
+  
+  .mobile-sub-menu a:last-child {
+    border-bottom: none;
+  }
+  
+  /* Add visual indicators for submenu items */
+  .mobile-sub-menu a::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--mata-red);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+  }
+  
+  /* Improve touch targets for iOS standalone mode */
+  @media all and (display-mode: standalone) {
+    #mobile-menu-button {
+      /* Increase touch target size for hamburger button */
+      padding: 12px !important;
+      margin: -8px -8px -8px 0 !important;
+    }
     
+    /* Make the mobile menu full-width in standalone mode */
+    #mobile-menu {
+      width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+    }
+    
+    /* Fix iOS hover states on menu items */
+    #mobile-menu a {
+      -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+    }
+    
+    /* Fix submenu toggle spacing */
+    #mobile-menu a svg {
+      margin-right: 8px;
+    }
+  }
+}
+
+/* Fix for iOS tapping issues with submenu toggles */
+a[onclick] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+}
+
+/* Ensure mobile menu doesn't get hidden behind other elements */
+#mobile-menu {
+  z-index: 9998 !important;
+}	
  </style>
 	
 </head>
@@ -884,46 +969,47 @@
       </div>
     </div>
     
-    <!-- Mobile Menu Dropdown with improved behavior -->
-    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-      <div class="flex flex-col space-y-3">
-        <div>
-          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
-            Destinations
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div id="destinations-submenu" class="mobile-sub-menu">
-            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
-            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
-            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
-            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
-            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
-            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
-          </div>
-        </div>
-        <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
-        <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
-        <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
-        <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
-        <div>
-          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
-            Tips
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div id="tips-submenu" class="mobile-sub-menu">
-            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-          </div>
-        </div>
-        <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
-      </div>
-    </div>
+   <!-- Mobile Menu Dropdown with improved behavior -->
+	<div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+	  <div class="flex flex-col space-y-3">
+	    <div>
+	      <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
+	        Destinations
+	        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+	          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+	        </svg>
+	      </a>
+	      <div id="destinations-submenu" class="mobile-sub-menu">
+	        <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
+	        <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
+	        <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
+	        <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
+	        <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
+	        <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
+	      </div>
+	    </div>
+	    <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
+	    <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
+	    <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
+	    <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
+	    <div>
+	      <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
+	        Tips
+	        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+	          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+	        </svg>
+	      </a>
+	      <div id="tips-submenu" class="mobile-sub-menu">
+	        <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
+	        <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
+	        <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
+	        <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+	      </div>
+	    </div>
+	    <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
+	  </div>
+	</div>
+
   </div>
 </nav>
 	
@@ -2275,13 +2361,30 @@
     </div>
   </footer>
 
+
 <script>
-    
-// Enhanced initialization script with improved iOS Safari navigation support
+// Enhanced initialization script with fixed iOS navigation issues
 document.addEventListener('DOMContentLoaded', function() {
   // Check if running in standalone mode (added to home screen)
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  
+  // Mobile menu toggle functionality - fixed for iOS standalone mode
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    // Ensure hamburger button works in all modes
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+      
+      // For debugging in iOS
+      console.log('Mobile menu button clicked, menu is now:', 
+                 mobileMenu.classList.contains('hidden') ? 'hidden' : 'visible');
+    });
+  }
   
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
@@ -2305,8 +2408,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Fix mobile menu appearance and behavior
-    const mobileMenu = document.getElementById('mobile-menu');
-    
     if (mobileMenu && navbar) {
       // Calculate proper top position based on navbar height
       const navbarHeight = navbar.offsetHeight;
@@ -2317,49 +2418,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // Ensure menu is properly styled
       mobileMenu.style.padding = '0';
       mobileMenu.style.width = '100%';
-      
-      // Make submenus touchable
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.style.display = 'block';
-        link.style.width = '100%';
-        link.style.padding = '12px 16px';
-      });
     }
+    
+    // Fix z-index issues with images and content
+    document.querySelectorAll('img, .destination-card, .journey-map-horizontal, .journey-map-vertical').forEach(el => {
+      el.style.zIndex = '1';
+      el.style.position = 'relative';
+    });
   }
-  
-  // Mobile menu toggle functionality
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
   
   // Add padding to section IDs for scroll offset with fixed header
   document.querySelectorAll('section[id]').forEach(function(section) {
     section.style.scrollMarginTop = isStandalone ? '100px' : '80px';
   });
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-    
-    // Close menu when clicking on links that aren't submenu toggles
-    document.querySelectorAll('#mobile-menu a:not([onclick])').forEach(function(link) {
-      link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-  }
   
   // Accordion functionality for itinerary section
   const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -2388,24 +2459,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // For iOS devices, fix hover issues with click/touch events
-  if (isIOS) {
-    document.querySelectorAll('.menu-item').forEach(menuItem => {
-      const parentLink = menuItem.querySelector('a');
-      const submenu = menuItem.querySelector('.sub-menu');
-      
-      if (parentLink && submenu) {
-        // Close other submenus when a new one is opened
-        document.addEventListener('click', function(e) {
-          if (!menuItem.contains(e.target) && submenu.classList.contains('active-submenu')) {
-            submenu.classList.remove('active-submenu');
-            submenu.style.opacity = '0';
-            submenu.style.visibility = 'hidden';
-          }
-        });
-      }
+  // Close mobile menu when clicking regular links (not submenu toggles)
+  document.querySelectorAll('#mobile-menu a:not([onclick])').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
     });
-  }
+  });
   
   // Time calculator function for both counters
   function getTimeUntilTrip() {
@@ -2532,16 +2591,6 @@ document.addEventListener('DOMContentLoaded', function() {
     { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
   ];
   
-  // For testing/preview purposes - comment out in production
-  // Uncomment one of these lines to preview each location highlight
-  // const today = new Date(2025, 7, 1); // Seoul
-  // const today = new Date(2025, 7, 5); // Tokyo
-  // const today = new Date(2025, 7, 9); // Kyoto
-  // const today = new Date(2025, 7, 10); // Narita
-  // const today = new Date(2025, 7, 12); // Singapore
-  // const today = new Date(2025, 7, 15); // Kuala Lumpur
-  // const today = new Date(2025, 7, 18); // Maldives
-  
   // Find current location
   let currentLocation = null;
   locations.forEach(location => {
@@ -2604,15 +2653,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const formattedDate = today.getFullYear() + '-' + 
                           String(today.getMonth() + 1).padStart(2, '0') + '-' + 
                           String(today.getDate()).padStart(2, '0');
-    
-    // For testing purposes - uncomment one of these lines to test the highlighting
-    // const formattedDate = '2025-08-01'; // Seoul
-    // const formattedDate = '2025-08-05'; // Tokyo
-    // const formattedDate = '2025-08-09'; // Kyoto
-    // const formattedDate = '2025-08-10'; // Narita
-    // const formattedDate = '2025-08-12'; // Singapore
-    // const formattedDate = '2025-08-15'; // Kuala Lumpur
-    // const formattedDate = '2025-08-18'; // Maldives
     
     // Check each hotel row
     document.querySelectorAll('.hotel-row').forEach(row => {
@@ -2715,7 +2755,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// =====  NEW FUNCTIONS FOR IMPROVED MENU BEHAVIOR =====
+// =====  IMPROVED MENU TOGGLE FUNCTIONS =====
 
 // Desktop submenu toggle for iOS and other touch devices
 function toggleDesktopSubmenu(submenuId, event) {
@@ -2775,10 +2815,13 @@ function toggleDesktopSubmenu(submenuId, event) {
   return false;
 }
 
-// Mobile submenu toggle with improved behavior
+// Mobile submenu toggle - FIXED to prevent menu closing
 function toggleMobileSubmenu(id, event) {
+  // Critical fix: Stop event propagation to prevent menu closing
   event.preventDefault();
   event.stopPropagation();
+  
+  console.log('Toggle mobile submenu for:', id);
   
   const submenu = document.getElementById(id);
   if (submenu) {
@@ -2799,17 +2842,34 @@ function toggleMobileSubmenu(id, event) {
                         .reduce((acc, child) => acc + child.offsetHeight, 0);
       submenu.style.maxHeight = `${height + 20}px`; // Add some padding
       submenu.style.opacity = '1';
+      
+      // Add click handlers to submenu items to close the parent menu when clicked
+      submenu.querySelectorAll('a').forEach(link => {
+        // Remove any existing handlers to prevent duplicates
+        link.removeEventListener('click', closeParentMenuOnClick);
+        // Add the handler
+        link.addEventListener('click', closeParentMenuOnClick);
+      });
     } else {
       submenu.style.maxHeight = '0';
       submenu.style.opacity = '0';
     }
   }
   
+  // Important: Return false to prevent any default actions
   return false;
 }
 
+// Helper function to close the mobile menu when clicking a submenu item
+function closeParentMenuOnClick() {
+  // Close the mobile menu when clicking on a submenu link
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    mobileMenu.classList.add('hidden');
+  }
+}
   </script>
-
+	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
   <div class="flex justify-between items-center max-w-6xl mx-auto">
     <div>
