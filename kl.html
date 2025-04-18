@@ -18,7 +18,8 @@
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
 <style>
-/* Root variables and brand colors */
+
+  /* Root variables and brand colors */
 :root {
   --mata-red: #c62828;
   --mata-dark-red: #8e0000;
@@ -51,7 +52,7 @@ body {
 
 /* Hero section */
 .hero-section {
-  background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format');
+  /* Remove the background-image from here */
   background-size: cover;
   background-position: center;
   height: 50vh;
@@ -533,8 +534,8 @@ body {
   flex-direction: row !important;
   flex-wrap: nowrap !important;
 }
-
 </style>
+
 </head>
 <body class="bg-gray-50">
 
@@ -648,8 +649,9 @@ body {
 </nav>
 
 <!-- Hero Section -->
-<section class="hero-section flex items-center justify-center">
-  <div class="hero-overlay"></div>
+<section class="hero-section flex items-center justify-center" style="background-image: url('YOUR_PAGE_SPECIFIC_IMAGE_URL');">
+  <!-- Hero content here -->
+</section>  <div class="hero-overlay"></div>
   <div class="hero-content max-w-4xl text-center text-white px-4">
     <h1 class="text-5xl font-bold mb-4">Kuala Lumpur, Malaysia</h1>
     <p class="text-xl mb-2">August 14 - August 16, 2025</p>
