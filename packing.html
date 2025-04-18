@@ -1469,8 +1469,11 @@ body {
 </footer>
 
 <script>
-// Mobile menu toggle
+
+// Complete script for packing.html
 document.addEventListener('DOMContentLoaded', function() {
+    // ============ NAVIGATION FUNCTIONALITY ============
+    // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -1595,7 +1598,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Print functionality
+    // Print functionality for print guide button
     const printGuideButton = document.getElementById('print-guide');
     
     if (printGuideButton) {
@@ -1626,6 +1629,253 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add scroll event listener
         window.addEventListener('scroll', handleScroll);
     }
+    
+    // ============ PACKING CHECKLIST FUNCTIONALITY ============
+    
+    // Elements for checklist functionality
+    const checkboxes = document.querySelectorAll('.checklist-checkbox');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const resetButton = document.getElementById('reset-all');
+    const filterAll = document.getElementById('filter-all');
+    const filterUnpacked = document.getElementById('filter-unpacked');
+    const filterPacked = document.getElementById('filter-packed');
+    const searchInput = document.getElementById('search-input');
+    const clearSearch = document.getElementById('clear-search');
+    const checklistItems = document.querySelectorAll('.checklist-item');
+    const viewChecklistButton = document.getElementById('view-checklist');
+    const printChecklistButton = document.getElementById('print-checklist');
+    
+    // Function to update progress
+    function updateProgress() {
+        const total = checkboxes.length;
+        let checked = 0;
+        
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                checked++;
+            }
+        });
+        
+        const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+        
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+        }
+        if (progressText) {
+            progressText.textContent = `${percentage}% packed (${checked}/${total} items)`;
+        }
+        
+        // Save progress to localStorage
+        saveChecklistState();
+    }
+    
+    // Function to save checklist state to localStorage
+    function saveChecklistState() {
+        const checkedItems = {};
+        
+        checkboxes.forEach(checkbox => {
+            checkedItems[checkbox.id] = checkbox.checked;
+        });
+        
+        localStorage.setItem('packingChecklist', JSON.stringify(checkedItems));
+    }
+    
+    // Function to load checklist state from localStorage
+    function loadChecklistState() {
+        const savedState = localStorage.getItem('packingChecklist');
+        
+        if (savedState) {
+            const checkedItems = JSON.parse(savedState);
+            
+            checkboxes.forEach(checkbox => {
+                if (checkedItems[checkbox.id] !== undefined) {
+                    checkbox.checked = checkedItems[checkbox.id];
+                }
+            });
+            
+            updateProgress();
+        }
+    }
+    
+    // Add change event listeners to checkboxes
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateProgress);
+    });
+    
+    // Reset button functionality
+    if (resetButton) {
+        resetButton.addEventListener('click', function() {
+            if (confirm('Are you sure you want to reset all checkboxes? This cannot be undone.')) {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updateProgress();
+            }
+        });
+    }
+    
+    // Filter functionality
+    if (filterAll && filterUnpacked && filterPacked) {
+        // Filter: Show all items
+        filterAll.addEventListener('click', function() {
+            filterAll.classList.remove('bg-gray-200', 'text-gray-800');
+            filterAll.classList.add('bg-red-600', 'text-white');
+            
+            filterUnpacked.classList.remove('bg-red-600', 'text-white');
+            filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
+            
+            filterPacked.classList.remove('bg-red-600', 'text-white');
+            filterPacked.classList.add('bg-gray-200', 'text-gray-800');
+            
+            checklistItems.forEach(item => {
+                item.style.display = '';
+            });
+            
+            // Also apply search filter if there's a search term
+            if (searchInput && searchInput.value.trim() !== '') {
+                applySearchFilter();
+            }
+        });
+        
+        // Filter: Show only unpacked items
+        filterUnpacked.addEventListener('click', function() {
+            filterUnpacked.classList.remove('bg-gray-200', 'text-gray-800');
+            filterUnpacked.classList.add('bg-red-600', 'text-white');
+            
+            filterAll.classList.remove('bg-red-600', 'text-white');
+            filterAll.classList.add('bg-gray-200', 'text-gray-800');
+            
+            filterPacked.classList.remove('bg-red-600', 'text-white');
+            filterPacked.classList.add('bg-gray-200', 'text-gray-800');
+            
+            checklistItems.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = '';
+                }
+            });
+            
+            // Also apply search filter if there's a search term
+            if (searchInput && searchInput.value.trim() !== '') {
+                applySearchFilter();
+            }
+        });
+        
+        // Filter: Show only packed items
+        filterPacked.addEventListener('click', function() {
+            filterPacked.classList.remove('bg-gray-200', 'text-gray-800');
+            filterPacked.classList.add('bg-red-600', 'text-white');
+            
+            filterAll.classList.remove('bg-red-600', 'text-white');
+            filterAll.classList.add('bg-gray-200', 'text-gray-800');
+            
+            filterUnpacked.classList.remove('bg-red-600', 'text-white');
+            filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
+            
+            checklistItems.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (checkbox && !checkbox.checked) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = '';
+                }
+            });
+            
+            // Also apply search filter if there's a search term
+            if (searchInput && searchInput.value.trim() !== '') {
+                applySearchFilter();
+            }
+        });
+    }
+    
+    // Search functionality
+    function applySearchFilter() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        
+        if (searchTerm === '') {
+            // If search is cleared, just apply the current category filter
+            if (filterUnpacked.classList.contains('bg-red-600')) {
+                filterUnpacked.click();
+            } else if (filterPacked.classList.contains('bg-red-600')) {
+                filterPacked.click();
+            } else {
+                filterAll.click();
+            }
+            return;
+        }
+        
+        checklistItems.forEach(item => {
+            const label = item.querySelector('label');
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            
+            // First check if it should be visible based on packed/unpacked filters
+            let visibleByFilter = true;
+            if (filterUnpacked.classList.contains('bg-red-600')) {
+                visibleByFilter = checkbox && !checkbox.checked;
+            } else if (filterPacked.classList.contains('bg-red-600')) {
+                visibleByFilter = checkbox && checkbox.checked;
+            }
+            
+            // Then apply the search filter
+            if (label && label.textContent.toLowerCase().includes(searchTerm) && visibleByFilter) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.trim();
+            
+            // Show/hide clear button
+            if (clearSearch) {
+                clearSearch.style.display = searchTerm ? 'block' : 'none';
+            }
+            
+            applySearchFilter();
+        });
+    }
+    
+    if (clearSearch) {
+        clearSearch.addEventListener('click', function() {
+            if (searchInput) {
+                searchInput.value = '';
+                searchInput.focus();
+                clearSearch.style.display = 'none';
+                
+                // Reset display to current filter
+                if (filterUnpacked.classList.contains('bg-red-600')) {
+                    filterUnpacked.click();
+                } else if (filterPacked.classList.contains('bg-red-600')) {
+                    filterPacked.click();
+                } else {
+                    filterAll.click();
+                }
+            }
+        });
+    }
+    
+    // View and print checklist buttons
+    if (viewChecklistButton) {
+        viewChecklistButton.addEventListener('click', function() {
+            document.getElementById('interactive-checklist').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    
+    if (printChecklistButton) {
+        printChecklistButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+    
+    // Initialize the checklist
+    loadChecklistState();
+    updateProgress();
 });
 
 if ('serviceWorker' in navigator) {
@@ -1638,7 +1888,8 @@ if ('serviceWorker' in navigator) {
           console.error('Service Worker registration failed:', err);
         });
     });
-  }
+}
+
 </script>
 </body>
 </html>
