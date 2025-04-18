@@ -478,6 +478,37 @@
       }
     }
   }
+
+  /* Fix mobile menu dropdown button alignment */
+#tips-dropdown-button,
+#destinations-dropdown-button {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure span and svg are on the same line */
+#tips-dropdown-button span,
+#destinations-dropdown-button span {
+  display: inline-block;
+}
+
+#tips-dropdown-button svg,
+#destinations-dropdown-button svg,
+#dropdown-arrow,
+#tips-dropdown-arrow {
+  flex-shrink: 0;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Remove any flexbox adjustments that might be causing issues */
+#tips-dropdown-button.w-full.flex.justify-between.items-center,
+#destinations-dropdown-button.w-full.flex.justify-between.items-center {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
 </style>
   
  </head>
