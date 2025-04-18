@@ -71,606 +71,607 @@
 
 
 <style>
-    :root {
-      --mata-red: #c62828;
-      --mata-dark-red: #8e0000;
-      --mata-light-red: #ff5f52;
-      --mata-cream: #f5f0e1;
-    }
-    
-    .destination-card {
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .destination-card:hover {
-      transform: scale(1.02);
-    }
-    .destination-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 70%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    }
-    .destination-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      padding: 1.5rem;
-      color: white;
-      z-index: 10;
-      width: 100%;
-    }
-    
-    /* Improved navigation styling for all modes */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: white;
-      border-bottom: 3px solid var(--mata-red);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .journey-map-horizontal {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-    .journey-map-vertical {
-      display: none;
-      flex-direction: column;
-      padding: 20px;
-      width: 100%;
-    }
-    .map-line {
-      height: 5px;
-      background-color: var(--mata-red);
-      margin: 30px 0;
-      position: relative;
-    }
-    .map-line-vertical {
-      width: 5px;
-      background-color: var(--mata-red);
-      margin: 0 auto;
-      position: relative;
-      height: 600px;
-    }
-    .map-stop {
-      position: absolute;
-      top: -8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .map-stop-vertical {
-      position: absolute;
-      left: -8px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    .map-dot {
-      width: 20px;
-      height: 20px;
-      background-color: var(--mata-red);
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 0 0 2px var(--mata-red);
-    }
-    .map-label {
-      margin-top: 12px;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .map-label-vertical {
-      margin-left: 12px;
-      text-align: left;
-      white-space: nowrap;
-    }
-    .tip-card {
-      transition: transform 0.3s ease;
-    }
-    .tip-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .brand-bg-red {
-      background-color: var(--mata-red);
-    }
-    
-    .brand-text-red {
-      color: var(--mata-red);
-    }
-    
-    .brand-border-red {
-      border-color: var(--mata-red);
-    }
-    
-    .brand-button {
-      background-color: var(--mata-red);
-      color: white;
-      transition: background-color 0.3s;
-    }
-    
-    .brand-button:hover {
-      background-color: var(--mata-dark-red);
-    }
-    
-    .logo-container {
-      height: 50px;
-    }
-    
-    .flag-icon {
-      width: 24px;
-      height: 16px;
-      display: inline-block;
-      margin-right: 6px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    
-    /* Calendar styles */
-    .calendar {
-      table-layout: fixed;
-      width: 100%;
-      border-collapse: collapse;
-    }
-    
-    .calendar th {
-      background-color: #e57373; /* Softer red for headers */
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      border: 1px solid #e5e7eb;
-      font-size: 0.85rem;
-    }
-    
-    .calendar td {
-      height: 80px;
-      border: 1px solid #e5e7eb;
-      vertical-align: top;
-      padding: 8px;
-    }
-    
-    .calendar .date {
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-      color: #e57373; /* Softer red for day numbers */
-    }
-    
-    .calendar .today {
-      background-color: #fef2f2;
-      border: 2px solid #e57373;
-    }
-    
-    .calendar .out-of-range {
-      background-color: #f3f4f6;
-      color: #9ca3af;
-    }
-    
-    .destination-tag {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      color: white;
-      margin-top: 2px;
-      text-decoration: none;
-      transition: transform 0.2s ease;
-      margin-bottom: 3px;
-    }
-    
-    .destination-tag:hover {
-      transform: scale(1.05);
-    }
-    
-    .seoul-tag {
-      background-color: #e53e3e;
-    }
-    
-    .tokyo-tag {
-      background-color: #3182ce;
-    }
-    
-    .kyoto-tag {
-      background-color: #805ad5;
-    }
-    
-    .singapore-tag {
-      background-color: #38a169;
-    }
-    
-    .kl-tag {
-      background-color: #dd6b20;
-    }
-    
-    .maldives-tag {
-      background-color: #0d9488;
-    }
-    
-    @media (max-width: 768px) {
-      .calendar th {
-        font-size: 0.7rem;
-        padding: 6px 2px;
-      }
-      
-      .calendar .date {
-        font-size: 0.8rem;
-      }
-      
-      .destination-tag {
-        font-size: 10px;
-        padding: 2px 6px;
-      }
-    }
-    
-    /* ===== IMPROVED SUBMENU STYLES ===== */
-    /* Sub-menu styles */
-    .sub-menu {
-      position: absolute;
-      background-color: white;
-      min-width: 200px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      border-radius: 0.5rem;
-      padding: 0.5rem 0;
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(10px);
-    }
-    
-    /* Active submenu state for touch devices */
-    .sub-menu.active-submenu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    /* Keep hover functionality for non-touch devices */
-    @media (hover: hover) {
-      .menu-item:hover .sub-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-    }
-    
-    .menu-item {
-      position: relative;
-    }
-    
-    /* Animation for the arrow rotation */
-    .transform {
-      transition-property: transform;
-    }
-    
-    .transition-transform {
-      transition-duration: 200ms;
-    }
-    
-    @media (max-width: 768px) {
-      .journey-map-horizontal {
-        display: none;
-      }
-      .journey-map-vertical {
-        display: flex;
-      }
-      .logo-container {
-        height: 40px;
-      }
-      
-      .sub-menu {
-        position: static;
-        box-shadow: none;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        padding-left: 1rem;
-        background-color: #f9fafb;
-        border-radius: 0;
-        margin: 0.5rem 0;
-      }
-      
-      .mobile-sub-menu {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
-      }
-      
-      .mobile-sub-menu.show {
-        max-height: 500px; /* This will be overridden by JS for precise height */
-        opacity: 1;
-      }
-    }
-    
-    /* Specific iOS/Safari fixes */
-    @supports (-webkit-touch-callout: none) {
-      /* iOS-specific modifications */
-      .sub-menu {
-        -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);
-      }
-      
-      /* Better touch targets for iOS */
-      .menu-item > a, 
-      .mobile-sub-menu a,
-      .sub-menu a {
-        padding: 12px 16px;
-        margin: 0;
-        min-height: 44px; /* Apple recommends 44px minimum touch target */
-      }
-    }
-    
-    .custom-journey-map {
-      overflow-x: auto;
-      padding: 20px 0;
-    }
-    .journey-line {
-      height: 4px;
-      background-color: var(--mata-red);
-      position: relative;
-    }
-    .journey-stop {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .journey-dot {
-      width: 16px;
-      height: 16px;
-      background-color: white;
-      border: 3px solid var(--mata-red);
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    .journey-label {
-      white-space: nowrap;
-      text-align: center;
-      font-weight: 500;
-      margin-top: 5px;
-    }
-    .journey-nights {
-      font-size: 12px;
-      color: #666;
-    }
-    
-    .flag-icon {
-      height: 20px;
-      width: 28px;
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      vertical-align: middle;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }
-    
-    .current-location .map-dot {
-      background-color: white;
-      border: 3px solid #38b2ac; /* Teal color */
-      box-shadow: 0 0 0 2px #38b2ac, 0 0 10px rgba(56, 178, 172, 0.5);
-      animation: pulse 2s infinite;
-    }
-    
-    .current-location a,
-    .current-location p.font-medium {
-      color: #38b2ac;
-      font-weight: bold;
-    }
-    
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(56, 178, 172, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 6px rgba(56, 178, 172, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(56, 178, 172, 0);
-      }
-    }
-    
-    /* Additional styles for the hotel section */
-    .hotel-row.bg-red-50 {
-      position: relative;
-    }
-    
-    .hotel-row.bg-red-50::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background-color: var(--mata-red);
-    }
-    
-    /* Responsive adjustments for hotel table */
-    @media (max-width: 768px) {
-      #hotels table {
-        display: block;
-      }
-      
-      #hotels th {
-        font-size: 0.65rem;
-        padding: 6px 2px;
-      }
-      
-      #hotels td {
-        font-size: 0.75rem;
-        padding: 6px 4px;
-      }
-      
-      /* Show only essential columns on mobile */
-      #hotels th:nth-child(3),
-      #hotels td:nth-child(3),
-      #hotels th:nth-child(6),
-      #hotels td:nth-child(6),
-      #hotels th:nth-child(8),
-      #hotels td:nth-child(8) {
-        display: none;
-      }
-    }
-    
-    /* Animation for current hotel marker */
-    @keyframes pulse-red {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    
-    .hotel-row .current-marker {
-      animation: pulse-red 2s infinite;
-    }
-    
-    /* Estilos para el contador estilo YouTube */
-    .countdown-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
-    
-    .countdown-box {
-      background: #000;
-      border-radius: 8px;
-      color: white;
-      padding: 15px 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .countdown-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 60px;
-    }
-    
-    .countdown-value {
-      font-size: 28px;
-      font-weight: bold;
-      font-family: 'Roboto Mono', monospace;
-      line-height: 1;
-    }
-    
-    .countdown-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-top: 4px;
-    }
-    
-    .countdown-separator {
-      font-size: 28px;
-      font-weight: bold;
-      color: #FF0000;
-      line-height: 1;
-      margin-top: -8px;
-    }
-    
-    @media (max-width: 480px) {
-      .countdown-value {
-        font-size: 20px;
-      }
-      
-      .countdown-label {
-        font-size: 10px;
-      }
-      
-      .countdown-separator {
-        font-size: 20px;
-      }
-      
-      .countdown-unit {
-        min-width: 45px;
-      }
-    }
-    
-    /* Fix for navigation styling and z-index */
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: white;
-      border-bottom: 3px solid var(--mata-red);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    /* Fix for scrolling issue - adjust z-index for all potential elements */
-    section, .destination-card, .map-line, .journey-map-horizontal, 
-    .journey-map-vertical, .calendar, .tip-card, #mobile-menu,
-    .sub-menu, .mobile-sub-menu {
-      z-index: 10;
-      position: relative;
-    }
-    
-    /* For the scrolling issue with specific sections that might appear above the menu */
-    #calendar, #flights, #hotels, #journey {
-      z-index: 10;
-      position: relative;
-    }
-    
-    /* Add scroll padding to prevent content being hidden behind the navbar */
-    html {
-      scroll-padding-top: 80px;
-    }
-    
-    /* iOS home screen app specific styles */
-    @media all and (display-mode: standalone) {
-      body {
-        /* Account for status bar */
-        padding-top: env(safe-area-inset-top, 0);
-      }
-      
-      .sticky-nav {
-        position: fixed;
-        top: env(safe-area-inset-top, 0);
-        left: 0;
-        right: 0;
-        width: 100%;
-      }
-      
-      /* Add padding to body to prevent content from going under the fixed header */
-      body {
-        padding-top: 70px; /* Adjust based on your navbar height */
-      }
-      
-      /* Adjust scroll behavior */
-      html {
-        scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
-      }
-      
-      /* Fix for iOS standalone mode */
-      .sticky-nav .menu-item > a, 
-      .sticky-nav .sub-menu a {
-        padding-top: 14px;
-        padding-bottom: 14px;
-      }
-    }
-    
+
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+.destination-card {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.destination-card:hover {
+  transform: scale(1.02);
+}
+.destination-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+.destination-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem;
+  color: white;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Improved navigation styling for all modes */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  border-bottom: 3px solid var(--mata-red);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.journey-map-horizontal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.journey-map-vertical {
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+}
+.map-line {
+  height: 5px;
+  background-color: var(--mata-red);
+  margin: 30px 0;
+  position: relative;
+}
+.map-line-vertical {
+  width: 5px;
+  background-color: var(--mata-red);
+  margin: 0 auto;
+  position: relative;
+  height: 600px;
+}
+.map-stop {
+  position: absolute;
+  top: -8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.map-stop-vertical {
+  position: absolute;
+  left: -8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.map-dot {
+  width: 20px;
+  height: 20px;
+  background-color: var(--mata-red);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--mata-red);
+}
+.map-label {
+  margin-top: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+.map-label-vertical {
+  margin-left: 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+.tip-card {
+  transition: transform 0.3s ease;
+}
+.tip-card:hover {
+  transform: translateY(-5px);
+}
+
+.brand-bg-red {
+  background-color: var(--mata-red);
+}
+
+.brand-text-red {
+  color: var(--mata-red);
+}
+
+.brand-border-red {
+  border-color: var(--mata-red);
+}
+
+.brand-button {
+  background-color: var(--mata-red);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.brand-button:hover {
+  background-color: var(--mata-dark-red);
+}
+
+.logo-container {
+  height: 50px;
+}
+
+.flag-icon {
+  width: 24px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Calendar styles */
+.calendar {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th {
+  background-color: #e57373; /* Softer red for headers */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+}
+
+.calendar td {
+  height: 80px;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+  padding: 8px;
+}
+
+.calendar .date {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #e57373; /* Softer red for day numbers */
+}
+
+.calendar .today {
+  background-color: #fef2f2;
+  border: 2px solid #e57373;
+}
+
+.calendar .out-of-range {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+.destination-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: white;
+  margin-top: 2px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  margin-bottom: 3px;
+}
+
+.destination-tag:hover {
+  transform: scale(1.05);
+}
+
+.seoul-tag {
+  background-color: #e53e3e;
+}
+
+.tokyo-tag {
+  background-color: #3182ce;
+}
+
+.kyoto-tag {
+  background-color: #805ad5;
+}
+
+.singapore-tag {
+  background-color: #38a169;
+}
+
+.kl-tag {
+  background-color: #dd6b20;
+}
+
+.maldives-tag {
+  background-color: #0d9488;
+}
+
+@media (max-width: 768px) {
+  .calendar th {
+    font-size: 0.7rem;
+    padding: 6px 2px;
+  }
+  
+  .calendar .date {
+    font-size: 0.8rem;
+  }
+  
+  .destination-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .journey-map-horizontal {
+    display: none;
+  }
+  .journey-map-vertical {
+    display: flex;
+  }
+  .logo-container {
+    height: 40px;
+  }
+}
+
+/* ===== IMPROVED SUBMENU STYLES ===== */
+/* Sub-menu styles */
+.sub-menu {
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+}
+
+/* Active submenu state for touch devices */
+.sub-menu.active-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Keep hover functionality for non-touch devices */
+@media (hover: hover) {
+  .menu-item:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.menu-item {
+  position: relative;
+}
+
+/* Animation for the arrow rotation */
+.transform {
+  transition-property: transform;
+}
+
+.transition-transform {
+  transition-duration: 200ms;
+}
+
+@media (max-width: 768px) {
+  .sub-menu {
+    position: static;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding-left: 1rem;
+    background-color: #f9fafb;
+    border-radius: 0;
+    margin: 0.5rem 0;
+  }
+  
+  .mobile-sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .mobile-sub-menu.show {
+    max-height: 500px; /* This will be overridden by JS for precise height */
+    opacity: 1;
+  }
+}
+
+/* Specific iOS/Safari fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific modifications */
+  .sub-menu {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Better touch targets for iOS */
+  .menu-item > a, 
+  .mobile-sub-menu a,
+  .sub-menu a {
+    padding: 12px 16px;
+    margin: 0;
+    min-height: 44px; /* Apple recommends 44px minimum touch target */
+  }
+}
+
+.custom-journey-map {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+.journey-line {
+  height: 4px;
+  background-color: var(--mata-red);
+  position: relative;
+}
+.journey-stop {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.journey-dot {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 3px solid var(--mata-red);
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.journey-label {
+  white-space: nowrap;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 5px;
+}
+.journey-nights {
+  font-size: 12px;
+  color: #666;
+}
+
+.flag-icon {
+  height: 20px;
+  width: 28px;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.current-location .map-dot {
+  background-color: white;
+  border: 3px solid #38b2ac; /* Teal color */
+  box-shadow: 0 0 0 2px #38b2ac, 0 0 10px rgba(56, 178, 172, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.current-location a,
+.current-location p.font-medium {
+  color: #38b2ac;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 178, 172, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(56, 178, 172, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 178, 172, 0);
+  }
+}
+
+/* Additional styles for the hotel section */
+.hotel-row.bg-red-50 {
+  position: relative;
+}
+
+.hotel-row.bg-red-50::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--mata-red);
+}
+
+/* Responsive adjustments for hotel table */
+@media (max-width: 768px) {
+  #hotels table {
+    display: block;
+  }
+  
+  #hotels th {
+    font-size: 0.65rem;
+    padding: 6px 2px;
+  }
+  
+  #hotels td {
+    font-size: 0.75rem;
+    padding: 6px 4px;
+  }
+  
+  /* Show only essential columns on mobile */
+  #hotels th:nth-child(3),
+  #hotels td:nth-child(3),
+  #hotels th:nth-child(6),
+  #hotels td:nth-child(6),
+  #hotels th:nth-child(8),
+  #hotels td:nth-child(8) {
+    display: none;
+  }
+}
+
+/* Animation for current hotel marker */
+@keyframes pulse-red {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hotel-row .current-marker {
+  animation: pulse-red 2s infinite;
+}
+
+/* Estilos para el contador estilo YouTube */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.countdown-box {
+  background: #000;
+  border-radius: 8px;
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdown-value {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.countdown-separator {
+  font-size: 28px;
+  font-weight: bold;
+  color: #FF0000;
+  line-height: 1;
+  margin-top: -8px;
+}
+
+@media (max-width: 480px) {
+  .countdown-value {
+    font-size: 20px;
+  }
+  
+  .countdown-label {
+    font-size: 10px;
+  }
+  
+  .countdown-separator {
+    font-size: 20px;
+  }
+  
+  .countdown-unit {
+    min-width: 45px;
+  }
+}
+
+/* Fix for navigation styling and z-index */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  border-bottom: 3px solid var(--mata-red);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Fix for scrolling issue - adjust z-index for all potential elements */
+section, .destination-card, .map-line, .journey-map-horizontal, 
+.journey-map-vertical, .calendar, .tip-card, #mobile-menu,
+.sub-menu, .mobile-sub-menu {
+  z-index: 10;
+  position: relative;
+}
+
+/* For the scrolling issue with specific sections that might appear above the menu */
+#calendar, #flights, #hotels, #journey {
+  z-index: 10;
+  position: relative;
+}
+
+/* Add scroll padding to prevent content being hidden behind the navbar */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* iOS home screen app specific styles */
+@media all and (display-mode: standalone) {
+  body {
+    /* Account for status bar */
+    padding-top: env(safe-area-inset-top, 0);
+  }
+  
+  .sticky-nav {
+    position: fixed;
+    top: env(safe-area-inset-top, 0);
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  
+  /* Add padding to body to prevent content from going under the fixed header */
+  body {
+    padding-top: 70px; /* Adjust based on your navbar height */
+  }
+  
+  /* Adjust scroll behavior */
+  html {
+    scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
+  }
+  
+  /* Fix for iOS standalone mode */
+  .sticky-nav .menu-item > a, 
+  .sticky-nav .sub-menu a {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+}
+
 /* Navbar adjustments - add to your existing style section */
 @media all and (display-mode: standalone) {
   /* Account for Dynamic Island and status bar on newer iPhones */
@@ -727,8 +728,7 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
   }
 }
-    
-    
+
 /* 1. Fix wide margins on hamburger menu and text */
 @media all and (display-mode: standalone) {
   /* Navbar layout improvements */
@@ -817,8 +817,6 @@
   }
 }
 
-/* Add these additional styles to your existing CSS in the style section */
-
 /* Enhanced mobile submenu styles for better iOS behavior */
 @media (max-width: 768px) {
   .mobile-sub-menu {
@@ -901,67 +899,13 @@ a[onclick] {
 /* Ensure mobile menu doesn't get hidden behind other elements */
 #mobile-menu {
   z-index: 9998 !important;
-}	
-
-
-/* Extra CSS needed for proper submenu behavior */
-/* Add these styles to your existing CSS styles */
-
-/* Enhanced submenu visibility controls */
-.sub-menu.active-submenu {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
 }
-
-/* Mobile submenu animation */
-.mobile-sub-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-
-.mobile-sub-menu.show {
-  max-height: 500px; /* This will be overridden by JS for precise height */
-  opacity: 1;
-}
-
-/* Improved touch targets for mobile devices */
-@media (max-width: 768px) {
-  .mobile-sub-menu a {
-    display: block;
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-left: 16px;
-    position: relative;
-  }
-  
-  .mobile-sub-menu a:last-child {
-    border-bottom: none;
-  }
-}
-
-/* Fix for iOS tapping issues with submenu toggles */
-a[onclick] {
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-}
-
-/* Ensure mobile menu doesn't get hidden behind other elements */
-#mobile-menu {
-  z-index: 9998 !important;
-}
-
 	
- </style>
+</style>
 	
 </head>
 
 <body class="bg-gray-50">
- 
-  
-  <!-- Navigation Menu -->
 <!-- Navigation Menu with improved behavior for iOS Safari -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
@@ -971,97 +915,104 @@ a[onclick] {
           <h1 class="font-bold text-2xl brand-text-red">MATA'S ASIAN TOUR 2025</h1>
         </div>
       </div>
-<!-- Desktop Menu (with improved behavior) -->
-<div class="hidden md:flex space-x-4">
-  <div class="menu-item">
-	   <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
-	    Destinations
-	    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="dropdown-arrow">
-	      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-	    </svg>
-	  </a>
-	  <div id="destinations-submenu" class="mobile-sub-menu">
-	    <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
-	    <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
-	    <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
-	    <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
-	    <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
-	    <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
-	  </div>
-  </div>
-  <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
-  <a href="#calendar" class="text-gray-700 hover:brand-text-red">Calendar</a>
-  <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
-  <a href="#hotels" class="text-gray-700 hover:brand-text-red">Hotels</a>
-  <div class="menu-item">
-    <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-tips-submenu', event)">
-      Tips
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="desktop-tips-arrow">
-	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
-    </a>
-    <div id="desktop-tips-submenu" class="sub-menu">
-      <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-      <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-      <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-      <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-    </div>
-  </div>
-  <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
-</div>
+      
+      <!-- Desktop Menu (with improved behavior) -->
+      <div class="hidden md:flex space-x-4">
+        <div class="menu-item relative">
+          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-destinations-menu', event)">
+            Destinations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="desktop-destinations-arrow">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="desktop-destinations-menu" class="sub-menu">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
+          </div>
+        </div>
+        <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:brand-text-red">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:brand-text-red">Hotels</a>
+        <div class="menu-item relative">
+          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-tips-menu', event)">
+            Tips
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="desktop-tips-arrow">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="desktop-tips-menu" class="sub-menu">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+          </div>
+        </div>
+        <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
+      </div>
 
-<!-- Mobile Menu Button -->
-<div class="md:hidden">
-  <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
-</div>
-</div>
-
-<!-- Mobile Menu Dropdown with improved behavior -->
-<div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
-  <div class="flex flex-col space-y-3">
-	    <div>
-	  <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
-	    Tips
-	    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="tips-dropdown-arrow">
-	      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-	    </svg>
-	  </a>
-	  <div id="tips-submenu" class="mobile-sub-menu">
-	    <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-	    <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-	    <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-	    <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-	  </div>
-	</div>
-    <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
-    <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
-    <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
-    <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
-    <div>
-      <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
-	Tips
-	<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="tips-dropdown-arrow">
-	  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-	</svg>
-      </a>
-      <div id="tips-submenu" class="mobile-sub-menu">
-	<a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-	<a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-	<a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-	<a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
-    <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
-  </div>
-</div>
 
-   
+    <!-- Mobile Menu Dropdown with improved behavior -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
+      <div class="flex flex-col space-y-3">
+        <!-- Destinations dropdown -->
+        <div class="relative">
+          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
+            <span>Destinations</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="destinations-dropdown-arrow">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="destinations-submenu" class="mobile-sub-menu">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
+          </div>
+        </div>
+        
+        <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
+        
+        <!-- Tips dropdown -->
+        <div class="relative">
+          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
+            <span>Tips</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="tips-dropdown-arrow">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <div id="tips-submenu" class="mobile-sub-menu">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+          </div>
+        </div>
+        
+        <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
+      </div>
+    </div>
   </div>
 </nav>
+
 	
 <!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
 <section style="background-color: #eeeada;" class="py-10">
@@ -2503,13 +2454,52 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // 3. SECTION NAVIGATION AND SCROLLING
+  // 3. HANDLE CLOSING MENU WHEN CLICKING SUBMENU LINKS
+  // For destinations submenu
+  document.querySelectorAll('#destinations-submenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+  
+  // For tips submenu
+  document.querySelectorAll('#tips-submenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+  
+  // 4. DOCUMENT CLICK TO CLOSE DESKTOP DROPDOWNS
+  document.addEventListener('click', function(e) {
+    // Close all desktop submenus when clicking outside
+    document.querySelectorAll('.sub-menu').forEach(function(menu) {
+      if (menu.classList.contains('active-submenu')) {
+        menu.classList.remove('active-submenu');
+        
+        // Reset arrow rotation
+        const button = menu.previousElementSibling;
+        if (button) {
+          const arrow = button.querySelector('svg');
+          if (arrow) arrow.style.transform = '';
+        }
+      }
+    });
+  });
+  
+  // Prevent clicks inside submenus from closing the menu
+  document.querySelectorAll('.sub-menu, .menu-item').forEach(function(element) {
+    element.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+  
+  // 5. SECTION NAVIGATION AND SCROLLING
   // Add padding to section IDs for scroll offset with fixed header
   document.querySelectorAll('section[id]').forEach(function(section) {
     section.style.scrollMarginTop = isStandalone ? '100px' : '80px';
   });
   
-  // 4. ACCORDION FUNCTIONALITY
+  // 6. ACCORDION FUNCTIONALITY
   // Accordion functionality for itinerary section
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   
@@ -2537,7 +2527,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // 5. COUNTDOWN FUNCTIONALITY
+  // 7. COUNTDOWN FUNCTIONALITY
   // Time calculator function for both counters
   function getTimeUntilTrip() {
     const now = new Date();
@@ -2646,7 +2636,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // text: once a day
   setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
   
-  // 6. LOCATION HIGHLIGHTING
+  // 8. LOCATION HIGHLIGHTING
   // Journey map current location highlighting
   // Get today's date
   const today = new Date();
@@ -2693,7 +2683,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // 7. CALENDAR DATE HIGHLIGHTING
+  // 9. CALENDAR DATE HIGHLIGHTING
   // Calendar date highlighting
   // Format the date as DD/M (e.g., 12/8)
   const day = today.getDate();
@@ -2720,7 +2710,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // 8. HOTEL HIGHLIGHTING
+  // 10. HOTEL HIGHLIGHTING
   // Function to highlight current hotel
   function highlightCurrentHotel() {
     // Get today's date in YYYY-MM-DD format
@@ -2757,7 +2747,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call the function to highlight current hotel
   highlightCurrentHotel();
   
-  // 9. SERVICE WORKER REGISTRATION
+  // 11. SERVICE WORKER REGISTRATION
   // Register service worker for PWA functionality
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -2771,7 +2761,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 10. iOS INSTALL BANNER
+  // 12. iOS INSTALL BANNER
   // Show install banner for iOS users
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   
@@ -2806,7 +2796,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
+});	
 	
 </script>
 	  
