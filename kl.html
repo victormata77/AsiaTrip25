@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 
   <title>MATA'S ASIAN TOUR 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
@@ -11,7 +11,7 @@
 
   <!-- iOS PWA Meta Tags -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">  
   <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
   <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
 
@@ -24,6 +24,18 @@
   --mata-dark-red: #8e0000;
   --mata-light-red: #ff5f52;
   --mata-cream: #f5f0e1;
+  --nav-height: 60px;
+  --nav-height-mobile: 52px;
+}
+
+/* iOS PWA body adjustments */
+body {
+  /* Prevent scroll issues */
+  -webkit-overflow-scrolling: touch;
+  padding-top: var(--nav-height); /* Space for fixed navbar */
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Brand styles */
@@ -39,39 +51,127 @@
 
 /* Hero section */
 .hero-section {
-  background-image: url('https://wallpaperaccess.com/full/1192277.jpg');
+  background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format');
   background-size: cover;
   background-position: center;
   height: 50vh;
   position: relative;
+  margin-top: 0; /* No margin needed because of body padding */
 }
+
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
 }
+
 .hero-content {
   position: relative;
   z-index: 10;
 }
 
-/* Navigation */
+/* Navigation - Heavy-duty iOS PWA fix */
 .sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: fixed !important; /* Force fixed positioning */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important; /* Extremely high z-index */
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(10px); /* iOS support */
+  background-color: rgba(255, 255, 255, 0.95); /* More opaque */
+  height: var(--nav-height); /* Fixed height */
+  transform: translateZ(0); /* Force hardware acceleration */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden; /* Prevent rendering issues */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Visible shadow to distinguish */
 }
+
+/* Nav container needs vertical centering when height is fixed */
+.sticky-nav > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Allow mobile menu to stack below */
+  justify-content: center;
+}
+
+/* Main nav row (title and menu items) */
+.sticky-nav > div > div.flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Mobile menu - COMPLETELY REDONE */
+#mobile-menu {
+  position: absolute;
+  top: var(--nav-height); /* Position exactly below navbar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile menu items need to be full width */
+#mobile-menu .flex.flex-col.space-y-3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile menu links should be left-aligned */
+#mobile-menu a,
+#mobile-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Fix submenus in mobile menu */
+#tips-submenu,
+#destinations-submenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#tips-submenu a,
+#destinations-submenu a {
+  padding-left: 32px; /* Indent submenu items */
+  background-color: #f9fafb;
+}
+
+/* Content container needs adjustment since body has padding */
+.max-w-6xl.mx-auto.px-4.py-12 {
+  padding-top: 1rem; /* Reduced padding since body already has space */
+}
+
+/* Site title styling */
 .text-red-600.font-bold.text-xl {
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent title from shrinking */
 }
+
 .page-title-visible {
   transform: scale(1.05);
 }
 
 /* Desktop dropdown menu */
-#desktop-destinations-menu {
+#desktop-destinations-menu, #desktop-tips-menu {
   position: absolute;
   left: 0;
   top: 100%;
@@ -83,21 +183,21 @@
   overflow: hidden;
   display: none;
 }
-#desktop-destinations-menu.visible { display: block; }
-#desktop-destinations-menu a {
+#desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+#desktop-destinations-menu a, #desktop-tips-menu a {
   display: block;
   padding: 0.5rem 1rem;
   color: #4a5568;
   transition: all 0.2s;
 }
-#desktop-destinations-menu a:hover {
+#desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
   background-color: #fee2e2;
   color: #c62828;
 }
 .relative { position: relative; }
 
 /* Dropdown button styling */
-#desktop-dropdown-button {
+#desktop-dropdown-button, #desktop-tips-button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -106,37 +206,7 @@
   transition: all 0.2s;
   height: 40px;
 }
-#desktop-dropdown-button:hover { background-color: #f9fafb; }
-
-/* Tips dropdown styling (matches destinations dropdown) */
-#desktop-tips-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 50;
-  overflow: hidden;
-  display: none;
-}
-
-#desktop-tips-menu.visible {
-  display: block;
-}
-
-#desktop-tips-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-
-#desktop-tips-menu a:hover {
-  background-color: #fee2e2;
-  color: #c62828;
-}
+#desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
 
 /* Menu alignment fixes */
 .md\:flex.md\:items-center.md\:space-x-6 > a,
@@ -166,12 +236,38 @@
   transform: rotate(180deg);
 }
 
+/* Enhanced backgrounds for culture cards */
+.card-header[data-target="kyoto-history-content"] {
+  background-color: rgba(244, 63, 94, 0.15) !important; /* rose-100 */
+}
+
+.card-header[data-target="geisha-content"] {
+  background-color: rgba(251, 191, 36, 0.15) !important; /* amber-100 */
+}
+
+.card-header[data-target="festivals-content"] {
+  background-color: rgba(59, 130, 246, 0.15) !important; /* blue-100 */
+}
+
+.card-header[data-target="fun-facts-content"] {
+  background-color: rgba(34, 197, 94, 0.15) !important; /* green-100 */
+}
+
+.card-header[data-target="arts-content"] {
+  background-color: rgba(168, 85, 247, 0.15) !important; /* purple-100 */
+}
+
+.card-header[data-target="gardens-content"] {
+  background-color: rgba(20, 184, 166, 0.15) !important; /* teal-100 */
+}
+
 /* Day indicators - Unified and fixed */
 .day-header .bg-blue-500,
 .day-header .bg-green-500,
 .day-header .bg-yellow-500,
 .day-header .bg-purple-500,
 .day-header .bg-orange-500,
+.day-header .bg-red-500,
 .day-header .bg-gray-500 {
   display: flex;
   align-items: center;
@@ -182,9 +278,22 @@
   font-weight: bold;
 }
 
-/* Ensure text is visible on gray background */
-.day-header .bg-gray-500 {
-  color: white;
+/* Specific day badge colors - force override */
+.day-header .bg-orange-500 {
+  background-color: rgb(249, 115, 22) !important; /* Force orange-500 */
+}
+
+.day-header .bg-red-500 {
+  background-color: rgb(239, 68, 68) !important; /* Force red-500 */
+}
+
+/* Fix text colors */
+.text-orange-800 {
+  color: rgb(154, 52, 18) !important; /* Force orange-800 */
+}
+
+.text-red-800 {
+  color: rgb(153, 27, 27) !important; /* Force red-800 */
 }
 
 /* Card hover effects */
@@ -232,23 +341,65 @@
 }
 
 /* Responsive styles */
-/* Day indicators oval on wider screens - FIXED with consistent sizes */
+/* Day indicators oval on wider screens */
 @media (min-width: 768px) {
+  /* Keep flex-row layout on desktop */
+  .sticky-nav > div {
+    flex-direction: row;
+  }
+  
   .day-header .bg-blue-500,
   .day-header .bg-green-500,
   .day-header .bg-yellow-500,
   .day-header .bg-purple-500,
   .day-header .bg-orange-500,
+  .day-header .bg-red-500,
   .day-header .bg-gray-500 {
-    width: 60px;
-    height: 32px;
-    border-radius: 16px;
+    width: 60px !important;
+    height: 32px !important;
+    border-radius: 16px !important;
     margin-right: 10px;
   }
 }
 
 /* Mobile optimizations */
 @media (max-width: 767px) {
+  /* Adjust body padding for mobile nav height */
+  body {
+    padding-top: var(--nav-height-mobile);
+  }
+  
+  /* Adjust nav height for mobile */
+  .sticky-nav {
+    height: var(--nav-height-mobile);
+  }
+  
+  /* Mobile menu position for smaller devices */
+  #mobile-menu {
+    top: var(--nav-height-mobile);
+    max-height: calc(100vh - var(--nav-height-mobile));
+  }
+  
+  /* Fix mobile menu spacing */
+  #mobile-menu .flex.flex-col.space-y-3 {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Adjust spacing for mobile menu items */
+  #mobile-menu a, 
+  #mobile-menu button {
+    margin: 0;
+    padding: 12px 16px;
+  }
+  
+  /* Fix space-y-3 override */
+  #mobile-menu .flex.flex-col.space-y-3 > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
   /* Day header layout */
   .day-header {
     display: flex;
@@ -262,16 +413,17 @@
     padding-right: 8px;
   }
   
-  /* Day indicators - UPDATED to include gray-500 */
+  /* Day indicators for mobile */
   .day-header .bg-blue-500,
   .day-header .bg-green-500,
   .day-header .bg-yellow-500,
   .day-header .bg-purple-500,
   .day-header .bg-orange-500,
+  .day-header .bg-red-500,
   .day-header .bg-gray-500 {
-    min-width: 40px;
-    min-height: 40px;
-    border-radius: 20px;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 20px !important;
     margin-right: 8px;
     flex-shrink: 0;
   }
@@ -290,16 +442,17 @@
     font-size: 0.9rem;
   }
   
-  /* Consistent styling for all day indicators including gray */
+  /* Consistent styling for all day indicators */
   .day-header .bg-blue-500,
   .day-header .bg-green-500,
   .day-header .bg-yellow-500,
   .day-header .bg-purple-500,
   .day-header .bg-orange-500,
+  .day-header .bg-red-500,
   .day-header .bg-gray-500 {
-    width: 48px;
-    height: 32px;
-    border-radius: 16px;
+    width: 48px !important;
+    height: 32px !important;
+    border-radius: 16px !important;
   }
   
   /* Add more space at bottom of cards */
@@ -318,6 +471,69 @@
     align-items: center;
   }
 }
+
+/* iOS-specific fixes for PWA */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific styles */
+  body {
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+  }
+  
+  .sticky-nav {
+    padding-top: env(safe-area-inset-top, 0);
+    height: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+  }
+  
+  #mobile-menu {
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+  }
+  
+  @media (max-width: 767px) {
+    body {
+      padding-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    .sticky-nav {
+      height: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    #mobile-menu {
+      top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+  }
+}
+
+/* Fix mobile menu dropdown button alignment */
+#tips-dropdown-button,
+#destinations-dropdown-button {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure span and svg are on the same line */
+#tips-dropdown-button span,
+#destinations-dropdown-button span {
+  display: inline-block;
+}
+
+#tips-dropdown-button svg,
+#destinations-dropdown-button svg,
+#dropdown-arrow,
+#tips-dropdown-arrow {
+  flex-shrink: 0;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Remove any flexbox adjustments that might be causing issues */
+#tips-dropdown-button.w-full.flex.justify-between.items-center,
+#destinations-dropdown-button.w-full.flex.justify-between.items-center {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
 </style>
 </head>
 <body class="bg-gray-50">
