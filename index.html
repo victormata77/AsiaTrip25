@@ -69,7 +69,8 @@
   <link rel="apple-touch-startup-image" href="splash/ipadpro2_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)">
   <link rel="apple-touch-startup-image" href="splash/ipadpro3_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
 
-  <style>
+
+<style>
     :root {
       --mata-red: #c62828;
       --mata-dark-red: #8e0000;
@@ -314,6 +315,7 @@
       }
     }
     
+    /* ===== IMPROVED SUBMENU STYLES ===== */
     /* Sub-menu styles */
     .sub-menu {
       position: absolute;
@@ -329,14 +331,33 @@
       transform: translateY(10px);
     }
     
-    .menu-item:hover .sub-menu {
+    /* Active submenu state for touch devices */
+    .sub-menu.active-submenu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
     
+    /* Keep hover functionality for non-touch devices */
+    @media (hover: hover) {
+      .menu-item:hover .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+    
     .menu-item {
       position: relative;
+    }
+    
+    /* Animation for the arrow rotation */
+    .transform {
+      transition-property: transform;
+    }
+    
+    .transition-transform {
+      transition-duration: 200ms;
     }
     
     @media (max-width: 768px) {
@@ -365,11 +386,31 @@
       .mobile-sub-menu {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
       }
       
       .mobile-sub-menu.show {
-        max-height: 500px;
+        max-height: 500px; /* This will be overridden by JS for precise height */
+        opacity: 1;
+      }
+    }
+    
+    /* Specific iOS/Safari fixes */
+    @supports (-webkit-touch-callout: none) {
+      /* iOS-specific modifications */
+      .sub-menu {
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+      }
+      
+      /* Better touch targets for iOS */
+      .menu-item > a, 
+      .mobile-sub-menu a,
+      .sub-menu a {
+        padding: 12px 16px;
+        margin: 0;
+        min-height: 44px; /* Apple recommends 44px minimum touch target */
       }
     }
     
@@ -621,6 +662,13 @@
       html {
         scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
       }
+      
+      /* Fix for iOS standalone mode */
+      .sticky-nav .menu-item > a, 
+      .sticky-nav .sub-menu a {
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
     }
     
 /* Navbar adjustments - add to your existing style section */
@@ -769,87 +817,16 @@
   }
 }
     
-  </style>
-  
-  <!-- Detect standalone mode and adjust layout -->
-  <script>
-    
-document.addEventListener('DOMContentLoaded', function() {
-  // Check if running in standalone mode
-  const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
-  
-  if (isStandalone) {
-    // Fix mobile menu appearance and behavior
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.querySelector('.sticky-nav');
-    
-    if (mobileMenu && navbar) {
-      // Calculate proper top position based on navbar height
-      const navbarHeight = navbar.offsetHeight;
-      mobileMenu.style.top = `${navbarHeight}px`;
-      mobileMenu.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
-      mobileMenu.style.overflowY = 'auto';
-      
-      // Ensure menu is properly styled
-      mobileMenu.style.padding = '0';
-      mobileMenu.style.width = '100%';
-      
-      // Make submenus touchable
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.style.display = 'block';
-        link.style.width = '100%';
-        link.style.padding = '12px 16px';
-        
-        // Use touchend for better response on iOS
-        link.addEventListener('touchend', function(e) {
-          // If this is a submenu toggle, prevent default behavior
-          if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('toggleMobileSubmenu')) {
-            // Let the toggleMobileSubmenu function handle it
-          } else {
-            // Otherwise, hide the menu when clicking a regular link
-            mobileMenu.classList.add('hidden');
-          }
-        });
-      });
-      
-      // Fix submenu toggle functionality
-      window.toggleMobileSubmenu = function(id, event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        const submenu = document.getElementById(id);
-        if (submenu) {
-          submenu.classList.toggle('show');
-          
-          // Toggle arrow direction
-          const arrow = event.currentTarget.querySelector('svg');
-          if (arrow) {
-            arrow.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : 'none';
-            arrow.style.transition = 'transform 0.3s';
-          }
-        }
-        
-        return false;
-      };
-    }
-    
-    // Fix z-index issues with images and content
-    document.querySelectorAll('img, .destination-card, .journey-map-horizontal, .journey-map-vertical').forEach(el => {
-      el.style.zIndex = '1';
-      el.style.position = 'relative';
-    });
-  }
-});
-    
-  </script>
+ </style>
+	
 </head>
 
 <body class="bg-gray-50">
  
   
   <!-- Navigation Menu -->
+<!-- Navigation Menu with improved behavior for iOS Safari -->
 <nav class="sticky-nav shadow-md">
-  
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
       <div class="flex items-center">
@@ -858,16 +835,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
 
-      <!-- Desktop Menu (with Flight Info added) -->
- <div class="hidden md:flex space-x-4">
+      <!-- Desktop Menu (with improved behavior) -->
+      <div class="hidden md:flex space-x-4">
         <div class="menu-item">
-          <a href="#destinations" class="text-gray-700 hover:brand-text-red flex items-center">
+          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-destinations-submenu', event)">
             Destinations
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
-          <div class="sub-menu">
+          <div id="desktop-destinations-submenu" class="sub-menu">
             <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
             <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
             <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
@@ -881,13 +858,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:brand-text-red">Hotels</a>
         <div class="menu-item">
-          <a href="#tips" class="text-gray-700 hover:brand-text-red flex items-center">
+          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-tips-submenu', event)">
             Tips
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
-          <div class="sub-menu">
+          <div id="desktop-tips-submenu" class="sub-menu">
             <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
             <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
             <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
@@ -907,13 +884,13 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
     
-    <!-- Mobile Menu Dropdown with Flight Info added -->
+    <!-- Mobile Menu Dropdown with improved behavior -->
     <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
       <div class="flex flex-col space-y-3">
         <div>
-          <a href="#destinations" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
+          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
             Destinations
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
@@ -931,9 +908,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
         <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
         <div>
-          <a href="#tips" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
+          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
             Tips
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
@@ -949,7 +926,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </nav>
-
+	
 <!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
 <section style="background-color: #eeeada;" class="py-10">
   <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
@@ -2298,13 +2275,13 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </footer>
 
-
-  <script>
+<script>
     
-// Main initialization script with iOS home screen support
+// Enhanced initialization script with improved iOS Safari navigation support
 document.addEventListener('DOMContentLoaded', function() {
   // Check if running in standalone mode (added to home screen)
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
@@ -2326,6 +2303,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const navbarHeight = navbar.offsetHeight;
       document.body.style.paddingTop = (navbarHeight + 10) + 'px';
     }
+    
+    // Fix mobile menu appearance and behavior
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenu && navbar) {
+      // Calculate proper top position based on navbar height
+      const navbarHeight = navbar.offsetHeight;
+      mobileMenu.style.top = `${navbarHeight}px`;
+      mobileMenu.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
+      mobileMenu.style.overflowY = 'auto';
+      
+      // Ensure menu is properly styled
+      mobileMenu.style.padding = '0';
+      mobileMenu.style.width = '100%';
+      
+      // Make submenus touchable
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.style.display = 'block';
+        link.style.width = '100%';
+        link.style.padding = '12px 16px';
+      });
+    }
   }
   
   // Mobile menu toggle functionality
@@ -2338,7 +2337,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.preventDefault();
       if (mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.remove('hidden');
       } else {
@@ -2346,11 +2346,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Close menu when clicking on links
-    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+    // Close menu when clicking on links that aren't submenu toggles
+    document.querySelectorAll('#mobile-menu a:not([onclick])').forEach(function(link) {
       link.addEventListener('click', function() {
         mobileMenu.classList.add('hidden');
       });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
     });
   }
   
@@ -2381,13 +2388,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Mobile submenu toggle functionality
-  window.toggleMobileSubmenu = function(id, event) {
-    event.preventDefault();
-    const submenu = document.getElementById(id);
-    if (submenu) {
-      submenu.classList.toggle('show');
-    }
+  // For iOS devices, fix hover issues with click/touch events
+  if (isIOS) {
+    document.querySelectorAll('.menu-item').forEach(menuItem => {
+      const parentLink = menuItem.querySelector('a');
+      const submenu = menuItem.querySelector('.sub-menu');
+      
+      if (parentLink && submenu) {
+        // Close other submenus when a new one is opened
+        document.addEventListener('click', function(e) {
+          if (!menuItem.contains(e.target) && submenu.classList.contains('active-submenu')) {
+            submenu.classList.remove('active-submenu');
+            submenu.style.opacity = '0';
+            submenu.style.visibility = 'hidden';
+          }
+        });
+      }
+    });
   }
   
   // Time calculator function for both counters
@@ -2698,9 +2715,100 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// =====  NEW FUNCTIONS FOR IMPROVED MENU BEHAVIOR =====
+
+// Desktop submenu toggle for iOS and other touch devices
+function toggleDesktopSubmenu(submenuId, event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const submenu = document.getElementById(submenuId);
+  const arrow = event.currentTarget.querySelector('svg');
+  
+  // Check if any other submenus are open
+  document.querySelectorAll('.sub-menu').forEach(menu => {
+    if (menu.id !== submenuId && menu.classList.contains('active-submenu')) {
+      menu.classList.remove('active-submenu');
+      menu.style.opacity = '0';
+      menu.style.visibility = 'hidden';
+      menu.style.transform = 'translateY(10px)';
+      
+      // Reset other arrows
+      const otherArrow = menu.previousElementSibling.querySelector('svg');
+      if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+    }
+  });
+  
+  // Toggle current submenu
+  if (submenu) {
+    if (submenu.classList.contains('active-submenu')) {
+      // Close the submenu
+      submenu.classList.remove('active-submenu');
+      submenu.style.opacity = '0';
+      submenu.style.visibility = 'hidden';
+      submenu.style.transform = 'translateY(10px)';
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+    } else {
+      // Open the submenu
+      submenu.classList.add('active-submenu');
+      submenu.style.opacity = '1';
+      submenu.style.visibility = 'visible';
+      submenu.style.transform = 'translateY(0)';
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+  }
+  
+  // Close the submenu when clicking outside
+  const closeSubmenuOnClickOutside = function(e) {
+    if (submenu && !submenu.contains(e.target) && !event.currentTarget.contains(e.target)) {
+      submenu.classList.remove('active-submenu');
+      submenu.style.opacity = '0';
+      submenu.style.visibility = 'hidden';
+      submenu.style.transform = 'translateY(10px)';
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+      document.removeEventListener('click', closeSubmenuOnClickOutside);
+    }
+  };
+  
+  document.addEventListener('click', closeSubmenuOnClickOutside);
+  
+  return false;
+}
+
+// Mobile submenu toggle with improved behavior
+function toggleMobileSubmenu(id, event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const submenu = document.getElementById(id);
+  if (submenu) {
+    // Toggle the show class
+    submenu.classList.toggle('show');
+    
+    // Toggle arrow direction
+    const arrow = event.currentTarget.querySelector('svg');
+    if (arrow) {
+      arrow.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+      arrow.style.transition = 'transform 0.3s';
+    }
+    
+    // Ensure proper size - max-height is needed for the animation
+    if (submenu.classList.contains('show')) {
+      // Calculate the proper max-height based on content
+      const height = Array.from(submenu.children)
+                        .reduce((acc, child) => acc + child.offsetHeight, 0);
+      submenu.style.maxHeight = `${height + 20}px`; // Add some padding
+      submenu.style.opacity = '1';
+    } else {
+      submenu.style.maxHeight = '0';
+      submenu.style.opacity = '0';
+    }
+  }
+  
+  return false;
+}
 
   </script>
-
 
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
   <div class="flex justify-between items-center max-w-6xl mx-auto">
