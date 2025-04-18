@@ -18,6 +18,7 @@
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
   <style>
+  <style>
   /* Root variables and brand colors */
   :root {
     --mata-red: #c62828;
@@ -70,7 +71,7 @@
     z-index: 10;
   }
   
-  /* Navigation - Heavy-duty iOS PWA fix */
+  /* Navigation - Fixed for PWA and proper mobile menu */
   .sticky-nav {
     position: fixed !important; /* Force fixed positioning */
     top: 0 !important;
@@ -80,12 +81,25 @@
     z-index: 9999 !important; /* Extremely high z-index */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* iOS support */
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95); /* More opaque background */
     height: var(--nav-height); /* Fixed height */
     transform: translateZ(0); /* Force hardware acceleration */
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden; /* Prevent rendering issues */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Visible shadow to distinguish */
+  }
+  
+  /* Mobile menu fixes */
+  #mobile-menu {
+    position: absolute; /* Changed from static position */
+    top: 100%; /* Position right below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: white; /* Solid background */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 9998; /* Just below the navbar z-index */
+    max-height: calc(100vh - var(--nav-height)); /* Prevent overflow */
+    overflow-y: auto; /* Allow scrolling if menu is too tall */
   }
   
   /* Nav container needs vertical centering when height is fixed */
@@ -298,6 +312,12 @@
       height: var(--nav-height-mobile);
     }
     
+    /* Mobile menu specific styles */
+    #mobile-menu {
+      max-height: calc(100vh - var(--nav-height-mobile));
+      padding-bottom: env(safe-area-inset-bottom, 0); /* Safe area for iPhone X+ */
+    }
+    
     /* Day header layout */
     .day-header {
       display: flex;
@@ -392,6 +412,7 @@
       }
     }
   }
+</style>
   </style>
 </head>
 <body class="bg-gray-50">
