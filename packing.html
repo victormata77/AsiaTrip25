@@ -1469,303 +1469,165 @@ body {
 </footer>
 
 <script>
-// Single unified script with complete functionality
+// Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-  
-  // 2. Tips dropdown functionality
-  const desktopTipsButton = document.getElementById('desktop-tips-button');
-  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
-  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
-
-  if (desktopTipsButton && desktopTipsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopTipsButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopTipsMenu.classList.toggle('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.toggle('rotate-180');
-      }
-    });
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
     
-    // Close when clicking elsewhere (add to existing document click handler)
-    document.addEventListener('click', function() {
-      desktopTipsMenu.classList.remove('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopTipsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-
-  // 3. Mobile Tips submenu toggle
-  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-  const tipsSubmenu = document.getElementById('tips-submenu');
-  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
-
-  if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.addEventListener('click', function() {
-      tipsSubmenu.classList.toggle('hidden');
-      if (tipsDropdownArrow) {
-        tipsDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
-  
-  // 4. Desktop Destinations dropdown
-  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
-  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
-  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
-  
-  if (desktopDropdownButton && desktopDestinationsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopDestinationsMenu.classList.toggle('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopDestinationsMenu.classList.remove('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopDestinationsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // 5. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
-  
-  // REMOVED PDF VIEW TOGGLE BUTTONS AND FUNCTIONALITY
-  // Keep the interactive checklist visible at all times
-  const interactiveChecklist = document.getElementById('interactive-checklist');
-  if (interactiveChecklist) {
-    interactiveChecklist.classList.remove('hidden');
-  }
-  
-  // 7. Print functionality
-  const printChecklist = document.getElementById('print-checklist');
-  
-  if (printChecklist) {
-    printChecklist.addEventListener('click', function() {
-      // Just print directly
-      window.print();
-    });
-  }
-  
-  // 8. Filter functionality
-  const filterAll = document.getElementById('filter-all');
-  const filterUnpacked = document.getElementById('filter-unpacked');
-  const filterPacked = document.getElementById('filter-packed');
-  const checklistItems = document.querySelectorAll('.checklist-item');
-  
-  if (filterAll && filterUnpacked && filterPacked) {
-    filterAll.addEventListener('click', function() {
-      checklistItems.forEach(item => {
-        item.classList.remove('hidden');
-      });
-      
-      filterAll.classList.add('bg-red-600', 'text-white');
-      filterAll.classList.remove('bg-gray-200', 'text-gray-800');
-      filterUnpacked.classList.remove('bg-red-600', 'text-white');
-      filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
-      filterPacked.classList.remove('bg-green-600', 'text-white');
-      filterPacked.classList.add('bg-gray-200', 'text-gray-800');
-    });
-    
-    filterUnpacked.addEventListener('click', function() {
-      checklistItems.forEach(item => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        if (checkbox.checked) {
-          item.classList.add('hidden');
-        } else {
-          item.classList.remove('hidden');
-        }
-      });
-      
-      filterUnpacked.classList.add('bg-red-600', 'text-white');
-      filterUnpacked.classList.remove('bg-gray-200', 'text-gray-800');
-      filterAll.classList.remove('bg-red-600', 'text-white');
-      filterAll.classList.add('bg-gray-200', 'text-gray-800');
-      filterPacked.classList.remove('bg-green-600', 'text-white');
-      filterPacked.classList.add('bg-gray-200', 'text-gray-800');
-    });
-    
-    filterPacked.addEventListener('click', function() {
-      checklistItems.forEach(item => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        if (checkbox.checked) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
-      
-      filterPacked.classList.add('bg-green-600', 'text-white');
-      filterPacked.classList.remove('bg-gray-200', 'text-gray-800');
-      filterAll.classList.remove('bg-red-600', 'text-white');
-      filterAll.classList.add('bg-gray-200', 'text-gray-800');
-      filterUnpacked.classList.remove('bg-red-600', 'text-white');
-      filterUnpacked.classList.add('bg-gray-200', 'text-gray-800');
-    });
-  }
-  
-  // 9. Search functionality
-  const searchInput = document.getElementById('search-input');
-  const clearSearch = document.getElementById('clear-search');
-  
-  if (searchInput && clearSearch) {
-    searchInput.addEventListener('input', function() {
-      const searchTerm = searchInput.value.toLowerCase();
-      
-      if (searchTerm === '') {
-        clearSearch.classList.add('hidden');
-        checklistItems.forEach(item => {
-          item.classList.remove('hidden');
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
         });
-      } else {
-        clearSearch.classList.remove('hidden');
-        
-        checklistItems.forEach(item => {
-          const label = item.querySelector('label').textContent.toLowerCase();
-          if (label.includes(searchTerm)) {
-            item.classList.remove('hidden');
-          } else {
-            item.classList.add('hidden');
-          }
-        });
-      }
-    });
-    
-    clearSearch.addEventListener('click', function() {
-      searchInput.value = '';
-      clearSearch.classList.add('hidden');
-      checklistItems.forEach(item => {
-        item.classList.remove('hidden');
-      });
-    });
-  }
-  
-  // 10. Progress bar functionality
-  const progressBar = document.getElementById('progress-bar');
-  const progressText = document.getElementById('progress-text');
-  const checkboxes = document.querySelectorAll('.checklist-checkbox');
-  
-  if (progressBar && progressText && checkboxes.length > 0) {
-    // Function to update progress
-    const updateProgress = function() {
-      const total = checkboxes.length;
-      let checked = 0;
-      
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) checked++;
-      });
-      
-      const percentage = Math.round((checked / total) * 100);
-      progressBar.style.width = percentage + '%';
-      progressText.textContent = percentage + '% packed';
-    };
-    
-    // Add change event listener to all checkboxes
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        updateProgress();
-        saveChecklistState();
-      });
-    });
-    
-    // Initial update
-    updateProgress();
-  }
-  
-  // 11. Reset button functionality
-  const resetAllButton = document.getElementById('reset-all');
-  
-  if (resetAllButton && checkboxes.length > 0) {
-    resetAllButton.addEventListener('click', function() {
-      if (confirm('Are you sure you want to reset all checkboxes? This cannot be undone.')) {
-        checkboxes.forEach(checkbox => {
-          checkbox.checked = false;
-        });
-        
-        // Update progress
-        if (progressBar && progressText) {
-          progressBar.style.width = '0%';
-          progressText.textContent = '0% packed';
-        }
-        
-        // Save to localStorage
-        saveChecklistState();
-      }
-    });
-  }
-  
-  // 12. Save and load checklist state
-  const saveChecklistState = function() {
-    const state = {};
-    
-    checkboxes.forEach(checkbox => {
-      state[checkbox.id] = checkbox.checked;
-    });
-    
-    localStorage.setItem('mataAsianTrip2025PackingList', JSON.stringify(state));
-  };
-  
-  const loadChecklistState = function() {
-    const savedState = localStorage.getItem('mataAsianTrip2025PackingList');
-    
-    if (savedState) {
-      const state = JSON.parse(savedState);
-      
-      checkboxes.forEach(checkbox => {
-        if (state[checkbox.id] !== undefined) {
-          checkbox.checked = state[checkbox.id];
-        }
-      });
-      
-      // Update progress
-      if (progressBar && progressText) {
-        updateProgress();
-      }
     }
-  };
-  
-  // Load saved state on page load
-  loadChecklistState();
+    
+    // Tips dropdown functionality
+    const desktopTipsButton = document.getElementById('desktop-tips-button');
+    const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+    const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+    if (desktopTipsButton && desktopTipsMenu) {
+        // Use class-based toggle instead of hidden attribute
+        desktopTipsButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            desktopTipsMenu.classList.toggle('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.toggle('rotate-180');
+            }
+        });
+        
+        // Close when clicking elsewhere (add to existing document click handler)
+        document.addEventListener('click', function() {
+            desktopTipsMenu.classList.remove('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.remove('rotate-180');
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        desktopTipsMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Mobile Tips submenu toggle
+    const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+    const tipsSubmenu = document.getElementById('tips-submenu');
+    const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+
+    if (tipsDropdownButton && tipsSubmenu) {
+        tipsDropdownButton.addEventListener('click', function() {
+            tipsSubmenu.classList.toggle('hidden');
+            if (tipsDropdownArrow) {
+                tipsDropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+    }
+    
+    // Desktop Destinations dropdown
+    const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+    const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+    const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+    
+    if (desktopDropdownButton && desktopDestinationsMenu) {
+        // Use class-based toggle instead of hidden attribute
+        desktopDropdownButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            desktopDestinationsMenu.classList.toggle('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+        
+        // Close when clicking elsewhere
+        document.addEventListener('click', function() {
+            desktopDestinationsMenu.classList.remove('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.remove('rotate-180');
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        desktopDestinationsMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+    
+    // Mobile destinations submenu toggle
+    const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+    const destinationsSubmenu = document.getElementById('destinations-submenu');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    
+    if (destinationsDropdownButton && destinationsSubmenu) {
+        destinationsDropdownButton.addEventListener('click', function() {
+            destinationsSubmenu.classList.toggle('hidden');
+            if (dropdownArrow) {
+                dropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+    }
+    
+    // Country tabs functionality
+    const countryTabs = document.querySelectorAll('.country-tab');
+    const countryContents = document.querySelectorAll('.country-content');
+    
+    countryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const country = this.getAttribute('data-country');
+            
+            // Hide all content sections
+            countryContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected content
+            document.getElementById(country + '-content').classList.remove('hidden');
+            
+            // Update active tab styling
+            countryTabs.forEach(tab => {
+                tab.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                tab.classList.add('text-gray-500');
+            });
+            
+            this.classList.remove('text-gray-500');
+            this.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+        });
+    });
+    
+    // Print functionality
+    const printGuideButton = document.getElementById('print-guide');
+    
+    if (printGuideButton) {
+        printGuideButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+    
+    // Dynamic page title based on scroll position
+    const pageTitle = document.querySelector('.hero-content h1')?.textContent;
+    const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+    
+    if (pageTitle && navTitle) {
+        const originalTitle = navTitle.textContent;
+        
+        // Function to handle scroll events
+        function handleScroll() {
+            // Change the title when scrolled down (e.g., 100px from top)
+            if (window.scrollY > 100) {
+                navTitle.textContent = pageTitle;
+                navTitle.classList.add('page-title-visible');
+            } else {
+                navTitle.textContent = originalTitle;
+                navTitle.classList.remove('page-title-visible');
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    }
 });
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
