@@ -2144,265 +2144,167 @@ body {
   </footer>
 
   <script>
-    // Script for page functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      // 1. Mobile menu toggle
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-      
-      // 2. Tips dropdown functionality
-      const desktopTipsButton = document.getElementById('desktop-tips-button');
-      const desktopTipsMenu = document.getElementById('desktop-tips-menu');
-      const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
 
-      if (desktopTipsButton && desktopTipsMenu) {
+    // Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+    
+    // Tips dropdown functionality
+    const desktopTipsButton = document.getElementById('desktop-tips-button');
+    const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+    const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+
+    if (desktopTipsButton && desktopTipsMenu) {
         // Use class-based toggle instead of hidden attribute
         desktopTipsButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          desktopTipsMenu.classList.toggle('visible');
-          if (desktopTipsArrow) {
-            desktopTipsArrow.classList.toggle('rotate-180');
-          }
+            e.preventDefault();
+            e.stopPropagation();
+            desktopTipsMenu.classList.toggle('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.toggle('rotate-180');
+            }
         });
         
-        // Close when clicking elsewhere
+        // Close when clicking elsewhere (add to existing document click handler)
         document.addEventListener('click', function() {
-          desktopTipsMenu.classList.remove('visible');
-          if (desktopTipsArrow) {
-            desktopTipsArrow.classList.remove('rotate-180');
-          }
+            desktopTipsMenu.classList.remove('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.remove('rotate-180');
+            }
         });
         
         // Prevent menu from closing when clicking inside it
         desktopTipsMenu.addEventListener('click', function(e) {
-          e.stopPropagation();
+            e.stopPropagation();
         });
-      }
+    }
 
-      // 3. Mobile Tips submenu toggle
-      const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-      const tipsSubmenu = document.getElementById('tips-submenu');
-      const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+    // Mobile Tips submenu toggle
+    const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+    const tipsSubmenu = document.getElementById('tips-submenu');
+    const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
 
-      if (tipsDropdownButton && tipsSubmenu) {
+    if (tipsDropdownButton && tipsSubmenu) {
         tipsDropdownButton.addEventListener('click', function() {
-          tipsSubmenu.classList.toggle('hidden');
-          if (tipsDropdownArrow) {
-            tipsDropdownArrow.classList.toggle('rotate-180');
-          }
+            tipsSubmenu.classList.toggle('hidden');
+            if (tipsDropdownArrow) {
+                tipsDropdownArrow.classList.toggle('rotate-180');
+            }
         });
-      }
-      
-      // 4. Desktop Destinations dropdown
-      const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
-      const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
-      const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
-      
-      if (desktopDropdownButton && desktopDestinationsMenu) {
+    }
+    
+    // Desktop Destinations dropdown
+    const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+    const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+    const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+    
+    if (desktopDropdownButton && desktopDestinationsMenu) {
         // Use class-based toggle instead of hidden attribute
         desktopDropdownButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          desktopDestinationsMenu.classList.toggle('visible');
-          if (desktopDropdownArrow) {
-            desktopDropdownArrow.classList.toggle('rotate-180');
-          }
+            e.preventDefault();
+            e.stopPropagation();
+            desktopDestinationsMenu.classList.toggle('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.toggle('rotate-180');
+            }
         });
         
         // Close when clicking elsewhere
         document.addEventListener('click', function() {
-          desktopDestinationsMenu.classList.remove('visible');
-          if (desktopDropdownArrow) {
-            desktopDropdownArrow.classList.remove('rotate-180');
-          }
+            desktopDestinationsMenu.classList.remove('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.remove('rotate-180');
+            }
         });
         
         // Prevent menu from closing when clicking inside it
         desktopDestinationsMenu.addEventListener('click', function(e) {
-          e.stopPropagation();
+            e.stopPropagation();
         });
-      }
-      
-      // 5. Mobile destinations submenu toggle
-      const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-      const destinationsSubmenu = document.getElementById('destinations-submenu');
-      const dropdownArrow = document.getElementById('dropdown-arrow');
-      
-      if (destinationsDropdownButton && destinationsSubmenu) {
+    }
+    
+    // Mobile destinations submenu toggle
+    const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+    const destinationsSubmenu = document.getElementById('destinations-submenu');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    
+    if (destinationsDropdownButton && destinationsSubmenu) {
         destinationsDropdownButton.addEventListener('click', function() {
-          destinationsSubmenu.classList.toggle('hidden');
-          if (dropdownArrow) {
-            dropdownArrow.classList.toggle('rotate-180');
-          }
+            destinationsSubmenu.classList.toggle('hidden');
+            if (dropdownArrow) {
+                dropdownArrow.classList.toggle('rotate-180');
+            }
         });
-      }
-      
-      // 6. Print button functionality
-      const printPage = document.getElementById('print-page');
-      
-      if (printPage) {
-        printPage.addEventListener('click', function() {
-          window.print();
-        });
-      }
-
-      // 7. Currency converter functionality
-      const amountInput = document.getElementById('amount');
-      const fromCurrency = document.getElementById('from-currency');
-      const toCurrency = document.getElementById('to-currency');
-      const resultInput = document.getElementById('result');
-      const swapButton = document.getElementById('swap-button');
-      
-      // Define exchange rates (as of April 2025 in the context)
-      const exchangeRates = {
-        EUR: {
-          KRW: 1465,
-          JPY: 165,
-          SGD: 1.45,
-          MYR: 5.05,
-          MVR: 16.8,
-          USD: 1.07
-        },
-        KRW: {
-          EUR: 0.000683,
-          JPY: 0.113,
-          SGD: 0.00099,
-          MYR: 0.00345,
-          MVR: 0.0115,
-          USD: 0.00073
-        },
-        JPY: {
-          EUR: 0.00606,
-          KRW: 8.88,
-          SGD: 0.00879,
-          MYR: 0.0306,
-          MVR: 0.102,
-          USD: 0.00648
-        },
-        SGD: {
-          EUR: 0.69,
-          KRW: 1010.34,
-          JPY: 113.79,
-          MYR: 3.48,
-          MVR: 11.59,
-          USD: 0.738
-        },
-        MYR: {
-          EUR: 0.198,
-          KRW: 290.1,
-          JPY: 32.67,
-          SGD: 0.287,
-          MVR: 3.33,
-          USD: 0.212
-        },
-        MVR: {
-          EUR: 0.0595,
-          KRW: 87.2,
-          JPY: 9.82,
-          SGD: 0.0863,
-          MYR: 0.3,
-          USD: 0.0637
-        },
-        USD: {
-          EUR: 0.935,
-          KRW: 1370.1,
-          JPY: 154.21,
-          SGD: 1.355,
-          MYR: 4.72,
-          MVR: 15.7
-        }
-      };
-      
-      // Function to convert currencies
-      const convertCurrency = function() {
-        const amount = parseFloat(amountInput.value);
-        const from = fromCurrency.value;
-        const to = toCurrency.value;
-        
-        if (isNaN(amount)) {
-          resultInput.value = "Please enter a valid amount";
-          return;
-        }
-        
-        if (from === to) {
-          resultInput.value = amount.toFixed(2);
-          return;
-        }
-        
-        const result = amount * exchangeRates[from][to];
-        resultInput.value = result.toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }) + " " + to;
-      };
-      
-      // Add event listeners for conversion
-      if (amountInput && fromCurrency && toCurrency && resultInput) {
-        amountInput.addEventListener('input', convertCurrency);
-        fromCurrency.addEventListener('change', convertCurrency);
-        toCurrency.addEventListener('change', convertCurrency);
-        
-        // Initial conversion
-        convertCurrency();
-        
-        // Swap currencies button
-        if (swapButton) {
-          swapButton.addEventListener('click', function() {
-            const tempCurrency = fromCurrency.value;
-            fromCurrency.value = toCurrency.value;
-            toCurrency.value = tempCurrency;
-            convertCurrency();
-          });
-        }
-      }
-      
-      // 8. Checklist functionality
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      
-      if (checkboxes.length > 0) {
-        // Function to save checklist state
-        const saveChecklistState = function() {
-          const state = {};
-          
-          checkboxes.forEach(checkbox => {
-            state[checkbox.id] = checkbox.checked;
-          });
-          
-          localStorage.setItem('mataAsianTrip2025MoneyChecklist', JSON.stringify(state));
-        };
-        
-        // Function to load checklist state
-        const loadChecklistState = function() {
-          const savedState = localStorage.getItem('mataAsianTrip2025MoneyChecklist');
-          
-          if (savedState) {
-            const state = JSON.parse(savedState);
+    }
+    
+    // Country tabs functionality
+    const countryTabs = document.querySelectorAll('.country-tab');
+    const countryContents = document.querySelectorAll('.country-content');
+    
+    countryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const country = this.getAttribute('data-country');
             
-            checkboxes.forEach(checkbox => {
-              if (state[checkbox.id] !== undefined) {
-                checkbox.checked = state[checkbox.id];
-              }
+            // Hide all content sections
+            countryContents.forEach(content => {
+                content.classList.add('hidden');
             });
-          }
-        };
-        
-        // Add change event listener to all checkboxes
-        checkboxes.forEach(checkbox => {
-          checkbox.addEventListener('change', saveChecklistState);
+            
+            // Show selected content
+            document.getElementById(country + '-content').classList.remove('hidden');
+            
+            // Update active tab styling
+            countryTabs.forEach(tab => {
+                tab.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                tab.classList.add('text-gray-500');
+            });
+            
+            this.classList.remove('text-gray-500');
+            this.classList.add('text-red-600', 'border-b-2', 'border-red-600');
         });
-        
-        // Load saved state on page load
-        loadChecklistState();
-      }
     });
-    if ('serviceWorker' in navigator) {
+    
+    // Print functionality
+    const printGuideButton = document.getElementById('print-guide');
+    
+    if (printGuideButton) {
+        printGuideButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+    
+    // Dynamic page title based on scroll position
+    const pageTitle = document.querySelector('.hero-content h1')?.textContent;
+    const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+    
+    if (pageTitle && navTitle) {
+        const originalTitle = navTitle.textContent;
+        
+        // Function to handle scroll events
+        function handleScroll() {
+            // Change the title when scrolled down (e.g., 100px from top)
+            if (window.scrollY > 100) {
+                navTitle.textContent = pageTitle;
+                navTitle.classList.add('page-title-visible');
+            } else {
+                navTitle.textContent = originalTitle;
+                navTitle.classList.remove('page-title-visible');
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    }
+});
+
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
@@ -2413,6 +2315,7 @@ body {
         });
     });
   }
+    
   </script>
 </body>
 </html>
