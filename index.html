@@ -71,7 +71,6 @@
 
 
 <style>
-
 :root {
   --mata-red: #c62828;
   --mata-dark-red: #8e0000;
@@ -300,121 +299,6 @@
   background-color: #0d9488;
 }
 
-@media (max-width: 768px) {
-  .calendar th {
-    font-size: 0.7rem;
-    padding: 6px 2px;
-  }
-  
-  .calendar .date {
-    font-size: 0.8rem;
-  }
-  
-  .destination-tag {
-    font-size: 10px;
-    padding: 2px 6px;
-  }
-  
-  .journey-map-horizontal {
-    display: none;
-  }
-  .journey-map-vertical {
-    display: flex;
-  }
-  .logo-container {
-    height: 40px;
-  }
-}
-
-/* ===== IMPROVED SUBMENU STYLES ===== */
-/* Sub-menu styles */
-.sub-menu {
-  position: absolute;
-  background-color: white;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0;
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  transform: translateY(10px);
-}
-
-/* Active submenu state for touch devices */
-.sub-menu.active-submenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Keep hover functionality for non-touch devices */
-@media (hover: hover) {
-  .menu-item:hover .sub-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
-
-.menu-item {
-  position: relative;
-}
-
-/* Animation for the arrow rotation */
-.transform {
-  transition-property: transform;
-}
-
-.transition-transform {
-  transition-duration: 200ms;
-}
-
-@media (max-width: 768px) {
-  .sub-menu {
-    position: static;
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    padding-left: 1rem;
-    background-color: #f9fafb;
-    border-radius: 0;
-    margin: 0.5rem 0;
-  }
-  
-  .mobile-sub-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-  }
-  
-  .mobile-sub-menu.show {
-    max-height: 500px; /* This will be overridden by JS for precise height */
-    opacity: 1;
-  }
-}
-
-/* Specific iOS/Safari fixes */
-@supports (-webkit-touch-callout: none) {
-  /* iOS-specific modifications */
-  .sub-menu {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
-  
-  /* Better touch targets for iOS */
-  .menu-item > a, 
-  .mobile-sub-menu a,
-  .sub-menu a {
-    padding: 12px 16px;
-    margin: 0;
-    min-height: 44px; /* Apple recommends 44px minimum touch target */
-  }
-}
-
 .custom-journey-map {
   overflow-x: auto;
   padding: 20px 0;
@@ -526,6 +410,30 @@
   #hotels td:nth-child(8) {
     display: none;
   }
+
+  .calendar th {
+    font-size: 0.7rem;
+    padding: 6px 2px;
+  }
+  
+  .calendar .date {
+    font-size: 0.8rem;
+  }
+  
+  .destination-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .journey-map-horizontal {
+    display: none;
+  }
+  .journey-map-vertical {
+    display: flex;
+  }
+  .logo-container {
+    height: 40px;
+  }
 }
 
 /* Animation for current hotel marker */
@@ -608,35 +516,6 @@
   .countdown-unit {
     min-width: 45px;
   }
-}
-
-/* Fix for navigation styling and z-index */
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: white;
-  border-bottom: 3px solid var(--mata-red);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Fix for scrolling issue - adjust z-index for all potential elements */
-section, .destination-card, .map-line, .journey-map-horizontal, 
-.journey-map-vertical, .calendar, .tip-card, #mobile-menu,
-.sub-menu, .mobile-sub-menu {
-  z-index: 10;
-  position: relative;
-}
-
-/* For the scrolling issue with specific sections that might appear above the menu */
-#calendar, #flights, #hotels, #journey {
-  z-index: 10;
-  position: relative;
-}
-
-/* Add scroll padding to prevent content being hidden behind the navbar */
-html {
-  scroll-padding-top: 80px;
 }
 
 /* iOS home screen app specific styles */
@@ -729,7 +608,7 @@ html {
   }
 }
 
-/* 1. Fix wide margins on hamburger menu and text */
+/* Fix wide margins on hamburger menu and text */
 @media all and (display-mode: standalone) {
   /* Navbar layout improvements */
   .sticky-nav .max-w-6xl {
@@ -751,7 +630,7 @@ html {
     margin-left: 0 !important;
   }
   
-  /* 2. Prevent images from appearing above menu */
+  /* Prevent images from appearing above menu */
   body {
     padding-top: var(--total-top-space, 100px) !important;
     position: relative;
@@ -780,7 +659,7 @@ html {
     z-index: -1;
   }
   
-  /* 3. Add margins to submenu text */
+  /* Add margins to submenu text */
   #mobile-menu {
     padding: 0 !important;
     width: 100% !important;
@@ -798,11 +677,6 @@ html {
     width: calc(100% + 32px) !important;
   }
   
-  /* Proper submenu styling */
-  .mobile-sub-menu a {
-    padding-left: 32px !important;
-  }
-  
   /* Make menu visually cleaner */
   #mobile-menu {
     background-color: white !important;
@@ -817,202 +691,240 @@ html {
   }
 }
 
-/* Enhanced mobile submenu styles for better iOS behavior */
-@media (max-width: 768px) {
-  .mobile-sub-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    margin-left: 0;
-    padding-left: 0;
-  }
-  
-  .mobile-sub-menu.show {
-    max-height: 500px; /* This will be overridden by JS for precise height */
-    opacity: 1;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border-left: 2px solid var(--mata-red);
-  }
-  
-  /* Make submenu items more tappable on iOS */
-  .mobile-sub-menu a {
-    display: block;
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-left: 16px;
-    position: relative;
-  }
-  
-  .mobile-sub-menu a:last-child {
-    border-bottom: none;
-  }
-  
-  /* Add visual indicators for submenu items */
-  .mobile-sub-menu a::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--mata-red);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.6;
-  }
-  
-  /* Improve touch targets for iOS standalone mode */
-  @media all and (display-mode: standalone) {
-    #mobile-menu-button {
-      /* Increase touch target size for hamburger button */
-      padding: 12px !important;
-      margin: -8px -8px -8px 0 !important;
-    }
-    
-    /* Make the mobile menu full-width in standalone mode */
-    #mobile-menu {
-      width: 100% !important;
-      left: 0 !important;
-      right: 0 !important;
-    }
-    
-    /* Fix iOS hover states on menu items */
-    #mobile-menu a {
-      -webkit-tap-highlight-color: rgba(0,0,0,0.05);
-    }
-    
-    /* Fix submenu toggle spacing */
-    #mobile-menu a svg {
-      margin-right: 8px;
-    }
-  }
+/* Add scroll padding to prevent content being hidden behind the navbar */
+html {
+  scroll-padding-top: 80px;
 }
 
-/* Fix for iOS tapping issues with submenu toggles */
-a[onclick] {
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+/* Fix for scrolling issue - adjust z-index for all potential elements */
+section, .destination-card, .map-line, .journey-map-horizontal, 
+.journey-map-vertical, .calendar, .tip-card, #mobile-menu {
+  z-index: 10;
+  position: relative;
 }
 
-/* Ensure mobile menu doesn't get hidden behind other elements */
-#mobile-menu {
-  z-index: 9998 !important;
+/* For the scrolling issue with specific sections that might appear above the menu */
+#calendar, #flights, #hotels, #journey {
+  z-index: 10;
+  position: relative;
 }
+
+/* Root variables and brand colors */
+:root {
+  --mata-red: #c62828;
+  --mata-dark-red: #8e0000;
+  --mata-light-red: #ff5f52;
+  --mata-cream: #f5f0e1;
+}
+
+/* Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.text-red-600.font-bold.text-xl {
+  transition: all 0.3s ease;
+}
+.page-title-visible {
+  transform: scale(1.05);
+}
+
+/* Desktop dropdown menu */
+#desktop-destinations-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible { display: block; }
+#desktop-destinations-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover { background-color: #f9fafb; }
+
+/* Tips dropdown styling (matches destinations dropdown) */
+#desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+
+#desktop-tips-menu.visible {
+  display: block;
+}
+
+#desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+
+#desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+	
 	
 </style>
 	
 </head>
 
 <body class="bg-gray-50">
-<!-- Navigation Menu with improved behavior for iOS Safari -->
+
+<!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
     <div class="flex justify-between items-center">
-      <div class="flex items-center">
-        <div class="mr-3">
-          <h1 class="font-bold text-2xl brand-text-red">MATA'S ASIAN TOUR 2025</h1>
+      <div class="text-red-600 font-bold text-xl">MATA'S ASIAN TOUR 2025</div>
+      
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="#itinerary" class="text-gray-700 hover:text-red-600">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:text-red-600">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:text-red-600">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:text-red-600">Hotels</a>
+        
+        <!-- Tips Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Tips
+            <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-tips-menu" class="hidden">
+            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+          </div>
         </div>
+        
+        <!-- Desktop Destinations Dropdown -->
+        <div class="relative flex items-center">
+          <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+            Destinations
+            <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="desktop-destinations-menu" class="hidden">
+            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+          </div>
+        </div>
+        
+        <a href="#journey" class="text-gray-700 hover:text-red-600">Journey</a>
       </div>
       
-      <!-- Desktop Menu (with improved behavior) -->
-      <div class="hidden md:flex space-x-4">
-        <div class="menu-item relative">
-          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-destinations-menu', event)">
-            Destinations
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="desktop-destinations-arrow">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div id="desktop-destinations-menu" class="sub-menu">
-            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
-            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
-            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
-            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
-            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
-            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
-          </div>
-        </div>
-        <a href="#itinerary" class="text-gray-700 hover:brand-text-red">Itinerary</a>
-        <a href="#calendar" class="text-gray-700 hover:brand-text-red">Calendar</a>
-        <a href="#flights" class="text-gray-700 hover:brand-text-red">Flight Info</a>
-        <a href="#hotels" class="text-gray-700 hover:brand-text-red">Hotels</a>
-        <div class="menu-item relative">
-          <a href="javascript:void(0)" class="text-gray-700 hover:brand-text-red flex items-center" onclick="toggleDesktopSubmenu('desktop-tips-menu', event)">
-            Tips
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="desktop-tips-arrow">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div id="desktop-tips-menu" class="sub-menu">
-            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
-          </div>
-        </div>
-        <a href="#journey" class="text-gray-700 hover:brand-text-red">Journey</a>
-      </div>
-
       <!-- Mobile Menu Button -->
       <div class="md:hidden">
-        <button id="mobile-menu-button" class="text-gray-700 hover:brand-text-red focus:outline-none">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
     </div>
-
-    <!-- Mobile Menu Dropdown with improved behavior -->
+    
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
       <div class="flex flex-col space-y-3">
-        <!-- Destinations dropdown -->
-        <div class="relative">
-          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('destinations-submenu', event)">
-            <span>Destinations</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="destinations-dropdown-arrow">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-          <div id="destinations-submenu" class="mobile-sub-menu">
-            <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Seoul, South Korea</a>
-            <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Tokyo, Japan</a>
-            <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kyoto, Japan</a>
-            <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Singapore</a>
-            <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Kuala Lumpur, Malaysia</a>
-            <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Maldives</a>
-          </div>
-        </div>
+        <a href="#itinerary" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Itinerary</a>
+        <a href="#calendar" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Calendar</a>
+        <a href="#flights" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Flight Info</a>
+        <a href="#hotels" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Hotels</a>
         
-        <a href="#itinerary" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Itinerary</a>
-        <a href="#calendar" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Calendar</a>
-        <a href="#flights" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Flight Info</a>
-        <a href="#hotels" class="text-gray-700 hover:brand-text-red py-2 border-b border-gray-200">Hotels</a>
-        
-        <!-- Tips dropdown -->
+        <!-- Tips Accordion -->
         <div class="relative">
-          <a href="javascript:void(0)" class="flex justify-between items-center text-gray-700 hover:brand-text-red py-2 border-b border-gray-200" onclick="toggleMobileSubmenu('tips-submenu', event)">
+          <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
             <span>Tips</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="tips-dropdown-arrow">
+            <svg id="tips-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
-          </a>
-          <div id="tips-submenu" class="mobile-sub-menu">
-            <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Packing Essentials</a>
-            <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Health & Safety</a>
-            <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Connectivity</a>
-            <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100">Money & Payments</a>
+          </button>
+          
+          <div id="tips-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="packing.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Packing Essentials</a>
+            <a href="health.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Health & Safety</a>
+            <a href="connectivity.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Connectivity</a>
+            <a href="money.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Money & Payments</a>
           </div>
         </div>
         
-        <a href="#journey" class="text-gray-700 hover:brand-text-red py-2">Journey</a>
+        <!-- Destinations Accordion -->
+        <div class="relative">
+          <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
+            <span>Destinations</span>
+            <svg id="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div id="destinations-submenu" class="hidden mt-1 mb-2 space-y-0 border-b border-gray-200 pb-2">
+            <a href="seoul.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Seoul</a>
+            <a href="tokyo.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Tokyo</a>
+            <a href="kyoto.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kyoto</a>
+            <a href="singapore.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Singapore</a>
+            <a href="kl.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Kuala Lumpur</a>
+            <a href="maldives.html" class="block py-2 pl-4 text-gray-700 hover:text-red-600 border-t border-gray-100">Maldives</a>
+          </div>
+        </div>
+        
+        <a href="#journey" class="text-gray-700 hover:text-red-600 py-2">Journey</a>
       </div>
     </div>
   </div>
 </nav>
-
 	
 <!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
 <section style="background-color: #eeeada;" class="py-10">
@@ -2364,142 +2276,192 @@ a[onclick] {
 
 
 <script>
-
-// Function to toggle desktop submenus properly
-function toggleDesktopSubmenu(menuId, event) {
-  event.preventDefault();
-  event.stopPropagation();
-  
-  // Close all other submenus first
-  document.querySelectorAll('.sub-menu').forEach(submenu => {
-    if (submenu.id !== menuId && submenu.classList.contains('active-submenu')) {
-      submenu.classList.remove('active-submenu');
-      
-      // Reset other arrows
-      const otherButton = submenu.previousElementSibling;
-      if (otherButton) {
-        const otherArrow = otherButton.querySelector('svg');
-        if (otherArrow) otherArrow.style.transform = '';
-      }
-    }
-  });
-  
-  // Toggle the clicked submenu
-  const menu = document.getElementById(menuId);
-  if (menu) {
-    menu.classList.toggle('active-submenu');
-    
-    // Toggle arrow rotation
-    const arrow = event.currentTarget.querySelector('svg');
-    if (arrow) {
-      arrow.style.transform = menu.classList.contains('active-submenu') ? 'rotate(180deg)' : '';
-    }
-  }
-}
-
-// Function to toggle mobile submenus properly
-function toggleMobileSubmenu(menuId, event) {
-  event.preventDefault();
-  event.stopPropagation();
-  
-  const submenu = document.getElementById(menuId);
-  if (!submenu) return;
-  
-  submenu.classList.toggle('show');
-  
-  // Toggle arrow rotation
-  const arrow = event.currentTarget.querySelector('svg');
-  if (arrow) {
-    arrow.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : '';
-  }
-  
-  // Calculate proper height for animation if showing
-  if (submenu.classList.contains('show')) {
-    const height = Array.from(submenu.children)
-                   .reduce((acc, child) => acc + child.offsetHeight, 0);
-    submenu.style.maxHeight = `${height + 20}px`; // Add padding
-  } else {
-    submenu.style.maxHeight = '0';
-  }
-}
-
-// Enhanced initialization script with improved menu behavior
+// Complete script for index.html with navigation and other functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Check if running in standalone mode (added to home screen)
-  const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  
-  // 1. MOBILE MENU TOGGLE FUNCTIONALITY
+  // 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   
   if (mobileMenuButton && mobileMenu) {
-    // Ensure hamburger button works in all modes
-    mobileMenuButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
+    mobileMenuButton.addEventListener('click', function() {
       mobileMenu.classList.toggle('hidden');
-      
-      // For debugging in iOS
-      console.log('Mobile menu button clicked, menu is now:', 
-                 mobileMenu.classList.contains('hidden') ? 'hidden' : 'visible');
+    });
+  }
+
+  // 2. Close menu when links are clicked
+  if (mobileMenu) {
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Don't close menu for the destinations dropdown
+        if (!this.closest('#destinations-dropdown-button')) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
     });
   }
   
-  // 2. CLOSE MENU WHEN CLICKING NON-SUBMENU LINKS
-  // Close mobile menu when clicking regular links (not submenu toggles)
-  document.querySelectorAll('#mobile-menu a:not([onclick])').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobileMenu.classList.add('hidden');
+  // 3. Handle destinations submenu
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  if (destinationsSubmenu) {
+    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        destinationsSubmenu.classList.add('hidden');
+        mobileMenu.classList.add('hidden');
+      });
     });
-  });
+  }
   
-  // 3. HANDLE CLOSING MENU WHEN CLICKING SUBMENU LINKS
-  // For destinations submenu
-  document.querySelectorAll('#destinations-submenu a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobileMenu.classList.add('hidden');
-    });
-  });
-  
-  // For tips submenu
-  document.querySelectorAll('#tips-submenu a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobileMenu.classList.add('hidden');
-    });
-  });
-  
-  // 4. DOCUMENT CLICK TO CLOSE DESKTOP DROPDOWNS
-  document.addEventListener('click', function(e) {
-    // Close all desktop submenus when clicking outside
-    document.querySelectorAll('.sub-menu').forEach(function(menu) {
-      if (menu.classList.contains('active-submenu')) {
-        menu.classList.remove('active-submenu');
+  // 4. Fix scroll position for section links to show section titles
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the target element
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Calculate scroll position - offset by 80px to show the header
+        const scrollPosition = targetElement.offsetTop - 80;
         
-        // Reset arrow rotation
-        const button = menu.previousElementSibling;
-        if (button) {
-          const arrow = button.querySelector('svg');
-          if (arrow) arrow.style.transform = '';
-        }
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
       }
     });
   });
   
-  // Prevent clicks inside submenus from closing the menu
-  document.querySelectorAll('.sub-menu, .menu-item').forEach(function(element) {
-    element.addEventListener('click', function(e) {
+  // 5. Desktop dropdown functionality
+  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+  
+  if (desktopDropdownButton && desktopDestinationsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopDestinationsMenu.classList.toggle('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere
+    document.addEventListener('click', function() {
+      desktopDestinationsMenu.classList.remove('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopDestinationsMenu.addEventListener('click', function(e) {
       e.stopPropagation();
     });
-  });
+  }
   
-  // 5. SECTION NAVIGATION AND SCROLLING
-  // Add padding to section IDs for scroll offset with fixed header
-  document.querySelectorAll('section[id]').forEach(function(section) {
-    section.style.scrollMarginTop = isStandalone ? '100px' : '80px';
-  });
+  // 6. Mobile destinations submenu toggle
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
   
-  // 6. ACCORDION FUNCTIONALITY
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function() {
+      destinationsSubmenu.classList.toggle('hidden');
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 7. Highlight current page in destinations submenus
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  
+  // For mobile submenu
+  if (destinationsSubmenu) {
+    const mobileLinks = destinationsSubmenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('text-red-600', 'font-bold');
+      }
+    });
+  }
+  
+  // For desktop submenu
+  if (desktopDestinationsMenu) {
+    const desktopLinks = desktopDestinationsMenu.querySelectorAll('a');
+    desktopLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('text-red-600', 'font-bold');
+      }
+    });
+  }
+  
+  // 8. Tips dropdown functionality
+  const desktopTipsButton = document.getElementById('desktop-tips-button');
+  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+  
+  if (desktopTipsButton && desktopTipsMenu) {
+    // Use class-based toggle instead of hidden attribute
+    desktopTipsButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopTipsMenu.classList.toggle('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.toggle('rotate-180');
+      }
+    });
+    
+    // Close when clicking elsewhere
+    document.addEventListener('click', function() {
+      desktopTipsMenu.classList.remove('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopTipsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  
+  // 9. Mobile Tips submenu toggle
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+  
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.addEventListener('click', function() {
+      tipsSubmenu.classList.toggle('hidden');
+      if (tipsDropdownArrow) {
+        tipsDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // 10. Add click handlers for Tips submenu links
+  if (tipsSubmenu) {
+    const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+    tipsSubmenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close both the submenu and the main mobile menu
+        tipsSubmenu.classList.add('hidden');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  // 11. ACCORDION FUNCTIONALITY
   // Accordion functionality for itinerary section
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   
@@ -2527,7 +2489,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // 7. COUNTDOWN FUNCTIONALITY
+  // 12. COUNTDOWN FUNCTIONALITY
   // Time calculator function for both counters
   function getTimeUntilTrip() {
     const now = new Date();
@@ -2636,7 +2598,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // text: once a day
   setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
   
-  // 8. LOCATION HIGHLIGHTING
+  // 13. LOCATION HIGHLIGHTING
   // Journey map current location highlighting
   // Get today's date
   const today = new Date();
@@ -2683,7 +2645,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // 9. CALENDAR DATE HIGHLIGHTING
+  // 14. CALENDAR DATE HIGHLIGHTING
   // Calendar date highlighting
   // Format the date as DD/M (e.g., 12/8)
   const day = today.getDate();
@@ -2710,7 +2672,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // 10. HOTEL HIGHLIGHTING
+  // 15. HOTEL HIGHLIGHTING
   // Function to highlight current hotel
   function highlightCurrentHotel() {
     // Get today's date in YYYY-MM-DD format
@@ -2747,7 +2709,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call the function to highlight current hotel
   highlightCurrentHotel();
   
-  // 11. SERVICE WORKER REGISTRATION
+  // 16. SERVICE WORKER REGISTRATION
   // Register service worker for PWA functionality
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -2761,9 +2723,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 12. iOS INSTALL BANNER
+  // 17. iOS INSTALL BANNER
   // Show install banner for iOS users
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
   
   if (isIOS && !isStandalone) {
     const iosBanner = document.getElementById('ios-install-banner');
@@ -2797,7 +2760,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });	
-	
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
