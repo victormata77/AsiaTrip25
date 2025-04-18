@@ -6,7 +6,7 @@
   <title>MATA'S ASIAN TOUR 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="icon2.png" type="image/png">
-    <!-- Web App Manifest -->
+  <!-- Web App Manifest -->
   <link rel="manifest" href="/manifest.json">
 
   <!-- iOS PWA Meta Tags -->
@@ -18,9 +18,6 @@
   <!-- Theme color for browser UI -->
   <meta name="theme-color" content="#c62828">
   <style>
- <!-- Replace the existing STYLE section in your maldives.html with this updated version -->
-<style>
-<style>
   /* Root variables and brand colors */
   :root {
     --mata-red: #c62828;
@@ -123,7 +120,7 @@
   }
   
   /* Desktop dropdown menu */
-  #desktop-destinations-menu {
+  #desktop-destinations-menu, #desktop-tips-menu {
     position: absolute;
     left: 0;
     top: 100%;
@@ -135,21 +132,21 @@
     overflow: hidden;
     display: none;
   }
-  #desktop-destinations-menu.visible { display: block; }
-  #desktop-destinations-menu a {
+  #desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+  #desktop-destinations-menu a, #desktop-tips-menu a {
     display: block;
     padding: 0.5rem 1rem;
     color: #4a5568;
     transition: all 0.2s;
   }
-  #desktop-destinations-menu a:hover {
+  #desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
     background-color: #fee2e2;
     color: #c62828;
   }
   .relative { position: relative; }
   
   /* Dropdown button styling */
-  #desktop-dropdown-button {
+  #desktop-dropdown-button, #desktop-tips-button {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -158,37 +155,7 @@
     transition: all 0.2s;
     height: 40px;
   }
-  #desktop-dropdown-button:hover { background-color: #f9fafb; }
-  
-  /* Tips dropdown styling (matches destinations dropdown) */
-  #desktop-tips-menu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 200px;
-    background-color: white;
-    border-radius: 0.375rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    z-index: 50;
-    overflow: hidden;
-    display: none;
-  }
-  
-  #desktop-tips-menu.visible {
-    display: block;
-  }
-  
-  #desktop-tips-menu a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #4a5568;
-    transition: all 0.2s;
-  }
-  
-  #desktop-tips-menu a:hover {
-    background-color: #fee2e2;
-    color: #c62828;
-  }
+  #desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
   
   /* Menu alignment fixes */
   .md\:flex.md\:items-center.md\:space-x-6 > a,
@@ -258,6 +225,7 @@
   .day-header .bg-yellow-500,
   .day-header .bg-purple-500,
   .day-header .bg-orange-500,
+  .day-header .bg-red-500,
   .day-header .bg-gray-500 {
     display: flex;
     align-items: center;
@@ -330,10 +298,11 @@
     .day-header .bg-yellow-500,
     .day-header .bg-purple-500,
     .day-header .bg-orange-500,
+    .day-header .bg-red-500,
     .day-header .bg-gray-500 {
-      width: 60px;
-      height: 32px;
-      border-radius: 16px;
+      width: 60px !important;
+      height: 32px !important;
+      border-radius: 16px !important;
       margin-right: 10px;
     }
   }
@@ -363,16 +332,17 @@
       padding-right: 8px;
     }
     
-    /* Day indicators - UPDATED to include gray-500 */
+    /* Day indicators - UPDATED to include all colors */
     .day-header .bg-blue-500,
     .day-header .bg-green-500,
     .day-header .bg-yellow-500,
     .day-header .bg-purple-500,
     .day-header .bg-orange-500,
+    .day-header .bg-red-500,
     .day-header .bg-gray-500 {
-      min-width: 40px;
-      min-height: 40px;
-      border-radius: 20px;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      border-radius: 20px !important;
       margin-right: 8px;
       flex-shrink: 0;
     }
@@ -391,16 +361,17 @@
       font-size: 0.9rem;
     }
     
-    /* Consistent styling for all day indicators including gray */
+    /* Consistent styling for all day indicators including all colors */
     .day-header .bg-blue-500,
     .day-header .bg-green-500,
     .day-header .bg-yellow-500,
     .day-header .bg-purple-500,
     .day-header .bg-orange-500,
+    .day-header .bg-red-500,
     .day-header .bg-gray-500 {
-      width: 48px;
-      height: 32px;
-      border-radius: 16px;
+      width: 48px !important;
+      height: 32px !important;
+      border-radius: 16px !important;
     }
     
     /* Add more space at bottom of cards */
@@ -442,82 +413,7 @@
       }
     }
   }
-
-/* Fix the flex layout in the navigation container */
-.sticky-nav > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column; /* Allow mobile menu to stack below */
-  align-items: flex-start; /* Left alignment */
-  justify-content: center;
-}
-
-/* Main nav row needs to be full width */
-.sticky-nav > div > div.flex {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Mobile menu should be full width */
-#mobile-menu {
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-  margin-top: 0;
-  padding-top: 0.5rem;
-  z-index: 9998; /* High but below main nav */
-}
-
-/* Mobile menu items - ensure left alignment */
-#mobile-menu .flex-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-/* Style mobile menu items more like Kyoto */
-#mobile-menu a, 
-#mobile-menu button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem 0;
-}
-
-/* Style dropdown submenus */
-#tips-submenu a,
-#destinations-submenu a {
-  padding-left: 1rem !important; /* Indent submenu items */
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
-
-/* Ensure .hidden actually hides the menu */
-#mobile-menu.hidden,
-#destinations-submenu.hidden,
-#tips-submenu.hidden {
-  display: none !important;
-}
-
-/* Make dropdowns match Kyoto style */
-#destinations-submenu,
-#tips-submenu {
-  width: 100%;
-  padding-bottom: 0.5rem;
-}
-
-/* Fix desktop menu items alignment on mobile */
-@media (max-width: 767px) {
-  .sticky-nav > div {
-    align-items: stretch;
-  }
-}
-</style>
   </style>
-  
 </head>
 <body class="bg-gray-50">
   <!-- Fixed Navigation Menu with Better Alignment -->
@@ -535,41 +431,39 @@
           <a href="#photos" class="text-gray-700 hover:text-red-600">Photos</a>
           
           <!-- Tips Dropdown -->
-<div class="relative flex items-center">
-  <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-    Tips
-    <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-  <div id="desktop-tips-menu" class="hidden">
-    <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
-    <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
-    <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
-    <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
-  </div>
-</div>
+          <div class="relative flex items-center">
+            <button id="desktop-tips-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+              Tips
+              <svg id="desktop-tips-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="desktop-tips-menu" class="hidden">
+              <a href="packing.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Packing Essentials</a>
+              <a href="health.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Health & Safety</a>
+              <a href="connectivity.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Connectivity</a>
+              <a href="money.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Money & Payments</a>
+            </div>
+          </div>        
 
-           
-  <!-- Desktop Destinations Dropdown -->
-<div class="relative flex items-center">
-  <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
-    Other Destinations
-    <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-  <div id="desktop-destinations-menu" class="hidden">
-    <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
-    <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
-    <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
-    <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
-    <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
-    <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
-  </div>
-</div>
+          <!-- Desktop Destinations Dropdown -->
+          <div class="relative flex items-center">
+            <button id="desktop-dropdown-button" class="text-gray-700 hover:text-red-600 flex items-center gap-1 h-full">
+              Other Destinations
+              <svg id="desktop-dropdown-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="desktop-destinations-menu" class="hidden">
+              <a href="seoul.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Seoul</a>
+              <a href="tokyo.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Tokyo</a>
+              <a href="kyoto.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kyoto</a>
+              <a href="singapore.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Singapore</a>
+              <a href="kl.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Kuala Lumpur</a>
+              <a href="maldives.html" class="block px-4 py-2 text-gray-700 hover:bg-red-100 hover:text-red-800">Maldives</a>
+            </div>
+          </div>
         </div>
-        
         
         <!-- Mobile Menu Button -->
         <div class="md:hidden">
@@ -581,10 +475,7 @@
         </div>
       </div>
       
-      <!-- Mobile Menu -->
-     <!-- Replace the mobile menu section with this structure to match Kyoto's left-aligned style -->
-
-<!-- Mobile Menu -->
+      <!-- Mobile Menu (copied from Kyoto) -->
       <div id="mobile-menu" class="hidden md:hidden mt-2 pb-2">
         <div class="flex flex-col space-y-3">
           <a href="index.html" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Home</a>
@@ -593,7 +484,7 @@
           <a href="#culture" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Culture</a>
           <a href="#photos" class="text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">Photos</a>
           
-          <!-- Tips Accordion - Matches Kyoto structure -->
+          <!-- Tips Accordion -->
           <div class="relative">
             <button id="tips-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
               <span>Tips</span>
@@ -610,7 +501,7 @@
             </div>
           </div>
           
-          <!-- Destinations Accordion - Matches Kyoto structure -->
+          <!-- Destinations Accordion -->
           <div class="relative">
             <button id="destinations-dropdown-button" class="w-full flex justify-between items-center text-left text-gray-700 hover:text-red-600 py-2 border-b border-gray-200">
               <span>Other Destinations</span>
@@ -633,1171 +524,153 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section flex items-center justify-center">
+  <!-- The rest of your content would go here -->
+  <div class="hero-section flex items-center justify-center">
     <div class="hero-overlay"></div>
     <div class="hero-content max-w-4xl text-center text-white px-4">
       <h1 class="text-5xl font-bold mb-4">Maldives</h1>
-      <p class="text-xl mb-2">August 16 - August 20, 2025</p>
-      <p class="text-lg">Overwater paradise, turquoise lagoons, and pristine white sand beaches</p>
-    </div>
-  </section>
-
-  <div class="max-w-6xl mx-auto px-4 py-12">
-    <!-- Destination Summary -->
-    <section class="mb-12">
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-2xl font-bold mb-4 brand-text-red">Welcome to Paradise</h2>
-        <p class="text-gray-700 mb-4">
-          The Maldives, a string of coral islands in the Indian Ocean, represents the perfect finale to our Asian adventure. After exploring dynamic cities and cultural sites, we'll spend four nights in an idyllic overwater villa at the Radisson Blu Resort, surrounded by crystal-clear waters, vibrant coral reefs, and powdery white beaches. With minimal scheduled activities, this is your time to relax, recharge, and enjoy the incomparable beauty and luxury of this tropical paradise at your own pace.
-        </p>
-        <div class="flex flex-wrap justify-between mt-6">
-          <div class="w-full md:w-1/3 p-2">
-            <div class="bg-red-50 p-4 rounded-lg h-full">
-              <h3 class="font-bold text-red-800 mb-2">Accommodation</h3>
-              <p class="text-sm">Radisson Blu Resort Maldives</p>
-              <p class="text-sm text-gray-600">Huruelhi Island, Alifu Dhaalu Atoll</p>
-              <p class="text-sm text-gray-600">Luxury overwater villa with direct access to the lagoon and house reef</p>
-              <a href="https://maps.google.com/?q=Radisson+Blu+Resort+Maldives" target="_blank" class="inline-block mt-2 text-red-600 hover:text-red-800 text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1113.314-13.313 8 8 0 010 13.313z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                View on Google Maps
-              </a>
-            </div>
-          </div>
-          <div class="w-full md:w-1/3 p-2">
-            <div class="bg-red-50 p-4 rounded-lg h-full">
-              <h3 class="font-bold text-red-800 mb-2">Highlights</h3>
-              <p class="text-sm">• Exclusive overwater villa accommodation</p>
-              <p class="text-sm">• World-class snorkeling on house reef</p>
-              <p class="text-sm">• Variety of water sports activities</p>
-              <p class="text-sm">• Underwater restaurant dining</p>
-            </div>
-          </div>
-          <div class="w-full md:w-1/3 p-2">
-            <div class="bg-red-50 p-4 rounded-lg h-full">
-              <h3 class="font-bold text-red-800 mb-2">Daily Schedule</h3>
-              <p class="text-sm">• Day 17: Arrival via seaplane & resort introduction</p>
-              <p class="text-sm">• Days 18-20: Relaxation and optional activities</p>
-              <p class="text-sm">• Day 21: Final morning in paradise & departure</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Essential Information -->
-    <section id="essentials" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Essential Information</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Weather Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-yellow-50 p-4 cursor-pointer card-header" data-target="weather-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                </svg>
-                <h3 class="font-bold text-lg text-yellow-700">Weather in August</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="weather-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Average high: 30°C (86°F)</li>
-              <li>• Average low: 25°C (77°F)</li>
-              <li>• Humidity: High (75-85%)</li>
-              <li>• Rainfall: Moderate, brief showers possible</li>
-              <li>• Daylight: Sunrise ~5:50 AM, Sunset ~6:30 PM</li>
-              <li>• Ocean temperature: 28-29°C (82-84°F)</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">August is generally pleasant in the Maldives with plenty of sunshine despite being technically part of the monsoon season. Occasional brief showers provide a refreshing break from the tropical sun. The water is warm and perfect for swimming year-round.</p>
-          </div>
-        </div>
-        
-        <!-- Transportation Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="transport-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                </svg>
-                <h3 class="font-bold text-lg text-blue-700">Getting There & Around</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="transport-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Malé to Resort: 30-45 minute seaplane transfer</li>
-              <li>• Seaplane Hours: Operates only during daylight (6:00 AM - 4:00 PM)</li>
-              <li>• Resort Transportation: Golf carts for longer distances</li>
-              <li>• Walking: Wooden boardwalks connect all overwater villas</li>
-              <li>• Island Size: Small enough to walk around in 15-20 minutes</li>
-            </ul>
-            <p class="mt-3 text-sm text-gray-600">The seaplane journey to the resort is an experience in itself, offering breathtaking aerial views of the atolls. We've secured a 50% discount on the seaplane transfer as part of our accommodation package. Note that seaplanes have strict luggage weight restrictions (typically 20kg per person + 5kg hand luggage).</p>
-          </div>
-        </div>
-        
-        <!-- Resort Facilities Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="facilities-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-                <h3 class="font-bold text-lg text-green-700">Resort Facilities</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="facilities-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Overwater Villa: Private deck, direct ocean access, indoor/outdoor shower</li>
-              <li>• Dining: Multiple restaurants including underwater dining experience</li>
-              <li>• Spa: Overwater treatment pavilions with glass floors</li>
-              <li>• Pools: Main infinity pool with ocean views</li>
-              <li>• Fitness Center: Air-conditioned with ocean views</li>
-              <li>• Kids Club: Supervised activities for younger children</li>
-              <li>• Water Sports Center: Equipment rental and excursion booking</li>
-            </ul>
-            <div class="mt-3 bg-green-50 p-2 rounded text-sm">
-              <p class="font-bold">Internet Access</p>
-              <p>Complimentary high-speed Wi-Fi is available throughout the resort, including in your villa. Coverage might occasionally be affected by weather conditions.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Water Activities Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-red-50 p-4 cursor-pointer card-header" data-target="activities-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-                <h3 class="font-bold text-lg text-red-700">Water Activities</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="activities-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Snorkeling: House reef accessible directly from villas</li>
-              <li>• Diving: PADI-certified dive center with courses for beginners</li>
-              <li>• Non-motorized Water Sports: Kayaking, paddleboarding, windsurfing</li>
-              <li>• Motorized Water Sports: Jet skiing, parasailing, wakeboarding</li>
-              <li>• Excursions: Dolphin watching, fishing trips, island hopping</li>
-              <li>• Marine Wildlife: Manta rays, reef sharks, turtles, colorful fish</li>
-            </ul>
-            <div class="mt-3 bg-red-50 p-2 rounded text-sm">
-              <p class="font-bold">Snorkeling Tip</p>
-              <p>The best snorkeling times are during high tide when water currents are minimal. The resort provides complimentary snorkeling equipment for all guests. Consider bringing your own mask if you wear prescription glasses.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Dining Options Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="dining-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <h3 class="font-bold text-lg text-purple-700">Dining Experiences</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="dining-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Alifaan: All-day dining restaurant with international cuisine</li>
-              <li>• Crusoe's: Beach grill serving fresh seafood and steaks</li>
-              <li>• The Lab: Underwater restaurant for special dining experiences</li>
-              <li>• Mahurab: Overwater bar and lounge for sunset cocktails</li>
-              <li>• Eats & Beats: Pool bar with light snacks and refreshments</li>
-              <li>• In-Villa Dining: 24-hour room service</li>
-              <li>• Special Arrangements: Private beach dinners, floating breakfast</li>
-            </ul>
-            <div class="mt-3 bg-purple-50 p-2 rounded text-sm">
-              <p class="font-bold">Dining Recommendation</p>
-              <p>The underwater restaurant requires advance reservation (ideally before arrival). For a memorable experience, consider booking a private beach dinner under the stars on one evening of our stay.</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Travel Tips Card -->
-        <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-          <div class="bg-indigo-50 p-4 cursor-pointer card-header" data-target="travel-tips-content">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <svg class="w-6 h-6 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <h3 class="font-bold text-lg text-indigo-700">Essential Travel Tips</h3>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="travel-tips-content" class="p-5 card-content">
-            <ul class="text-gray-700 space-y-1">
-              <li>• Currency: USD widely accepted at resorts, credit cards (Visa/Mastercard) preferred</li>
-              <li>• Time Zone: Maldives Time (MVT) is UTC+5, 3 hours behind Singapore</li>
-              <li>• Language: Dhivehi is official, but English is widely spoken at the resort</li>
-              <li>• Electricity: 220-240V, UK-style three-pin plugs (adapters available at resort)</li>
-              <li>• Dress Code: Resort casual, modest attire for dining areas</li>
-              <li>• Tipping: Not required but appreciated (10-15% customary for good service)</li>
-              <li>• Health: No vaccines required, but travel insurance recommended</li>
-            </ul>
-            <div class="mt-3 bg-indigo-50 p-2 rounded text-sm">
-              <p class="font-bold">Important Note</p>
-              <p>The Maldives is a Muslim country with strict laws on alcohol and modest dress. However, these restrictions don't apply to resort islands like ours. Respect local customs if visiting inhabited islands.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- World Clock Widget (Full Width) -->
-        <div class="col-span-1 md:col-span-3 lg:col-span-3">
-          <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="bg-gray-50 p-4 cursor-pointer card-header" data-target="world-clock-content">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <svg class="w-6 h-6 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <h3 class="font-bold text-lg text-gray-700">Trip World Clock</h3>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-            <div id="world-clock-content" class="p-5 card-content">
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Barcelona Time (UTC+2) -->
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="barcelona-time">--:--</div>
-                  <div class="text-sm text-gray-600">Barcelona</div>
-                  <div class="text-xs text-gray-500">(UTC+2)</div>
-                </div>
-                
-                <!-- Maldives Time (UTC+5) -->
-                <div class="bg-red-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="maldives-time">--:--</div>
-                  <div class="text-sm text-gray-600">Maldives</div>
-                  <div class="text-xs text-gray-500">(UTC+5)</div>
-                </div>
-                
-                <!-- Southeast Asia Time (UTC+8) -->
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="seasia-time">--:--</div>
-                  <div class="text-sm text-gray-600">Singapore/KL</div>
-                  <div class="text-xs text-gray-500">(UTC+8)</div>
-                </div>
-                
-                <!-- East Asia Time (UTC+9) -->
-                <div class="bg-gray-100 p-3 rounded-lg text-center">
-                  <div class="font-bold text-lg mb-1" id="eastasia-time">--:--</div>
-                  <div class="text-sm text-gray-600">Seoul/Tokyo/Kyoto</div>
-                  <div class="text-xs text-gray-500">(UTC+9)</div>
-                </div>
-              </div>
-              
-              <p class="mt-3 text-sm text-gray-600 text-center">Time differences from Barcelona: Maldives +3h, Singapore/KL +6h, East Asia +7h</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Activities and Itinerary -->
-    <section id="activities" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Activities & Itinerary</h2>
-      
-      <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <!-- Day 17 -->
-        <div class="border-b">
-          <div class="px-6 py-3 bg-blue-50 flex justify-between items-center cursor-pointer day-header" data-target="day-17-content">
-            <h3 class="font-bold text-blue-800 pr-3">Saturday, August 16, 2025 – Arrival in Paradise</h3>
-            <div class="flex items-center">
-              <span class="bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 17</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="day-17-content" class="p-5 day-content">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <!-- Day 1 Icon -->
-                <div class="bg-blue-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                    </svg>
-                    <p class="font-medium mt-2">Seaplane Adventure</p>
-                    <p class="text-sm text-gray-600">Breathtaking aerial views</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">11:25:</span> Arrive at Malé International Airport</li>
-                  <li><span class="font-medium">11:30-12:30:</span> Welcome at Radisson Blu seaplane lounge</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Refreshments while waiting for seaplane transfer</li>
-                    <li>Complete resort check-in formalities</li>
-                  </ul>
-                  <li><span class="font-medium">12:30-13:30:</span> Seaplane transfer to Radisson Blu Resort</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Spectacular aerial views of atolls and islands</li>
-                    <li>30-45 minute scenic flight</li>
-                  </ul>
-                  <li><span class="font-medium">14:00:</span> Arrival and welcome at Radisson Blu Resort Maldives</li>
-                  <li><span class="font-medium">14:30-16:30:</span> Resort orientation and villa settling</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Tour of resort facilities with personal host</li>
-                    <li>Introduction to your luxury overwater villa</li>
-                    <li>Unpack and relax in your private accommodation</li>
-                  </ul>
-                  <li><span class="font-medium">17:00-18:30:</span> Beach time or pool relaxation</li>
-                  <li><span class="font-medium">19:00-21:00:</span> Welcome dinner at Alifaan Restaurant</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>International cuisine with Maldivian influences</li>
-                    <li>First taste of fresh seafood specialties</li>
-                  </ul>
-                </ul>
-                <div class="mt-4 bg-blue-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Highlight:</span> The seaplane journey offers breathtaking bird's-eye views of the Maldives' distinctive ring-shaped atolls, pearl-like islands, and countless shades of blue water. Have your camera ready for this incredible introduction to paradise!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Days 18-20 -->
-        <div class="border-b">
-          <div class="px-6 py-3 bg-green-50 flex justify-between items-center cursor-pointer day-header" data-target="days-18-20-content">
-            <h3 class="font-bold text-green-800 pr-3">Sunday-Tuesday, August 17-19, 2025 – Paradise at Your Pace</h3>
-            <div class="flex items-center">
-              <span class="bg-green-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">D 18-20</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="days-18-20-content" class="p-5 day-content">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <!-- Day 2-4 Icon -->
-                <div class="bg-green-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                    <p class="font-medium mt-2">Paradise at Your Pace</p>
-                    <p class="text-sm text-gray-600">Relaxation & adventure options</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <p class="text-gray-700 mb-4">
-                  These days are yours to enjoy the incomparable beauty and luxury of the Maldives at your own pace. With minimal scheduled activities, you can relax, recharge, and create your own perfect paradise experience. The resort offers a wealth of options for both relaxation and adventure.
-                </p>
-                
-                <h4 class="font-bold text-green-700 mb-2">Daily Schedule Framework:</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">07:00-10:30:</span> Breakfast at Alifaan Restaurant</li>
-                  <li><span class="font-medium">Morning Activities:</span> Choose from:</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Guided snorkeling tour of the house reef</li>
-                    <li>Introductory scuba diving lesson</li>
-                    <li>Morning yoga session on the beach</li>
-                    <li>Relaxation in your private villa</li>
-                  </ul>
-                  <li><span class="font-medium">12:30-14:30:</span> Lunch at your preferred venue</li>
-                  <li><span class="font-medium">Afternoon Activities:</span> Choose from:</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Water sports (kayaking, paddleboarding, jet skiing)</li>
-                    <li>Dolphin watching cruise</li>
-                    <li>Spa treatments</li>
-                    <li>Beach or infinity pool relaxation</li>
-                  </ul>
-                  <li><span class="font-medium">18:00-19:00:</span> Sunset cocktails at Mahurab Bar</li>
-                  <li><span class="font-medium">19:30-21:30:</span> Dinner at one of the resort's restaurants</li>
-                </ul>
-                
-                <div class="mt-4 bg-green-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Special Evening:</span> Consider reserving one evening for a special dining experience such as the underwater restaurant or a private beach dinner under the stars. These signature experiences should be booked in advance.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Day 21 -->
-        <div>
-          <div class="px-6 py-3 bg-orange-50 flex justify-between items-center cursor-pointer day-header" data-target="day-21-content">
-            <h3 class="font-bold text-orange-800 pr-3">Wednesday, August 20, 2025 – Final Morning & Departure</h3>
-            <div class="flex items-center">
-              <span class="bg-gray-500 text-white w-12 h-12 flex items-center justify-center rounded-full text-xs font-bold mr-3">Day 21</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
-          <div id="day-21-content" class="p-5 day-content">
-            <div class="flex flex-col md:flex-row gap-6 mb-4">
-              <div class="md:w-1/3">
-                <div class="bg-orange-50 rounded-lg shadow-md w-full h-48 flex items-center justify-center">
-                  <div class="text-center p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-orange-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                    </svg>
-                    <p class="font-medium mt-2">Farewell to Paradise</p>
-                    <p class="text-sm text-gray-600">Last glimpses of paradise</p>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-2/3">
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                  <li><span class="font-medium">05:30-06:30:</span> Optional sunrise viewing from your villa deck</li>
-                  <li><span class="font-medium">07:00-08:30:</span> Final breakfast at Alifaan Restaurant</li>
-                  <li><span class="font-medium">08:30-09:00:</span> Complete check-out procedures</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Settle any outstanding charges</li>
-                    <li>Arrange luggage collection</li>
-                  </ul>
-                  <li><span class="font-medium">09:00-11:00:</span> Free time for last-minute activities</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Final swim or snorkel</li>
-                    <li>Last photos of the beautiful surroundings</li>
-                    <li>Optional: Browse the resort boutique for souvenirs</li>
-                  </ul>
-                  <li><span class="font-medium">11:15:</span> Seaplane transfer to Malé Airport</li>
-                  <ul class="list-disc pl-5 ml-4 text-gray-600">
-                    <li>Farewell from resort staff</li>
-                    <li>Last aerial views of the stunning atolls</li>
-                  </ul>
-                  <li><span class="font-medium">13:15-21:00:</span> Flight SQ431 to Singapore</li>
-                  <li><span class="font-medium">23:35:</span> Flight SQ388 to Barcelona (overnight)</li>
-                </ul>
-                <div class="mt-4 bg-orange-50 p-3 rounded-lg">
-                  <p class="text-sm"><span class="font-bold">Last Morning Tip:</span> Consider setting your alarm early to witness a spectacular Maldivian sunrise from your private villa deck or the beach. This magical moment of tranquility will be the perfect farewell to paradise before our journey home.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <!-- Culture & Fun Facts -->
-<section id="culture" class="mb-12">
-  <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Culture & Fun Facts</h2>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Maldives Overview Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-rose-50 p-4 cursor-pointer card-header" data-target="maldives-overview-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">🏝️</span>
-            <h3 class="font-bold text-lg text-rose-700">Maldives Country Profile</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="maldives-overview-content" class="p-5 card-content">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🏛️ Official Name</p>
-            <p>Republic of Maldives (ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🏙️ Capital City</p>
-            <p>Malé (population: 252,000)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">👥 Population</p>
-            <p>540,000 (2025 est.)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🗺️ Area</p>
-            <p>298 km² (115 sq mi)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🗣️ Official Language</p>
-            <p>Dhivehi</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">💵 Currency</p>
-            <p>Maldivian Rufiyaa (MVR)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🏛️ Government</p>
-            <p>Presidential Republic</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">⛪ Religion</p>
-            <p>Sunni Islam (official state religion)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">💰 GDP per Capita</p>
-            <p>$19,450 (vs. Spain: $44,100)</p>
-          </div>
-          <div class="bg-gray-50 p-3 rounded">
-            <p class="font-bold text-sm text-gray-700">🕒 Time Zone</p>
-            <p>MVT (UTC+5)</p>
-          </div>
-        </div>
-        <div class="bg-rose-50 p-3 rounded text-sm">
-          <p class="font-bold mb-1">📉 Low-Lying Nation</p>
-          <p>The Maldives is the world's lowest country with an average elevation of just 1.5 meters (4.9 feet) above sea level. The highest natural point in the country is just 2.4 meters (7.9 feet) above sea level, making the Maldives particularly vulnerable to rising sea levels due to climate change.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Marine Life Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-amber-50 p-4 cursor-pointer card-header" data-target="marine-life-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">🐠</span>
-            <h3 class="font-bold text-lg text-amber-700">Incredible Marine Life</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="marine-life-content" class="p-5 card-content">
-        <ul class="text-gray-700 space-y-3">
-          <li><span class="font-medium">🪸 Coral Reefs:</span> The Maldives is home to approximately 5% of the world's coral reefs, supporting over 2,000 species of fish and other marine life.</li>
-          <li><span class="font-medium">🦈 Manta Rays:</span> The Maldives has the world's largest population of reef manta rays, which can be seen year-round at various cleaning stations.</li>
-          <li><span class="font-medium">🐋 Whale Sharks:</span> The gentle giants of the ocean can be spotted throughout the year, particularly in the South Ari Atoll.</li>
-          <li><span class="font-medium">🐢 Sea Turtles:</span> Five of the world's seven species of sea turtles can be found in Maldivian waters, including green turtles and hawksbill turtles.</li>
-          <li><span class="font-medium">🦈 Reef Sharks:</span> Several species of non-aggressive reef sharks are common, including blacktip reef sharks, whitetip reef sharks, and nurse sharks.</li>
-          <li><span class="font-medium">🐬 Dolphins:</span> Spinner dolphins and bottlenose dolphins are frequently spotted playing in the channels between islands.</li>
-        </ul>
-        <div class="mt-4 bg-amber-50 p-3 rounded text-sm">
-          <p class="font-bold mb-1">🤿 Snorkeling at Our Resort</p>
-          <p>The house reef at Radisson Blu Resort is known for its diverse marine life, including colorful reef fish, rays, reef sharks, and occasionally turtles. The waters surrounding the resort feature visibility up to 30 meters, creating perfect conditions for underwater exploration.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cultural Traditions Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-blue-50 p-4 cursor-pointer card-header" data-target="cultural-traditions-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">🏮</span>
-            <h3 class="font-bold text-lg text-blue-700">Maldivian Culture & Traditions</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="cultural-traditions-content" class="p-5 card-content">
-        <ul class="text-gray-700 space-y-3">
-          <li><span class="font-medium">🧠 Dhivehi Culture:</span> The Maldivian culture, known as Dhivehi, is a unique blend of influences from South Asia, Arabia, and East Africa.</li>
-          <li><span class="font-medium">🥁 Bodu Beru:</span> Traditional Maldivian music featuring drums made of coconut wood, often performed at resorts for guests.</li>
-          <li><span class="font-medium">👗 Libaas:</span> Traditional Maldivian costume consisting of a long dress for women and a sarong paired with a shirt for men.</li>
-          <li><span class="font-medium">🧶 Crafts:</span> Traditional crafts include mat weaving (Thundu Kunaa), coir rope making, lacquer work, and traditional boat (dhoni) building.</li>
-          <li><span class="font-medium">🍲 Cuisine:</span> Fresh seafood, coconut, and spices form the basis of Maldivian cuisine, with popular dishes including mas huni (tuna and coconut), garudhiya (fish soup), and hedhikaa (savory snacks).</li>
-          <li><span class="font-medium">🤝 Hospitality:</span> Maldivians are known for their warm hospitality, reflected in the resort industry's high service standards.</li>
-        </ul>
-        <div class="mt-4 bg-blue-50 p-3 rounded text-sm">
-          <p class="font-bold mb-1">🎭 Cultural Performances</p>
-          <p>Our resort occasionally offers cultural evenings featuring Bodu Beru performances, where drums start slowly and gradually build to a faster rhythm. Guests are often invited to join in the dancing, making it an interactive cultural experience.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Fun Facts Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-green-50 p-4 cursor-pointer card-header" data-target="fun-facts-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">💡</span>
-            <h3 class="font-bold text-lg text-green-700">Did You Know?</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="fun-facts-content" class="p-5 card-content">
-        <ul class="text-gray-700 space-y-3">
-          <li>🗺️ The Maldives is the smallest Asian country both by land area and population.</li>
-          <li>📝 The word "atoll" is derived from the Dhivehi word "atholhu."</li>
-          <li>🌊 The Maldives was the first country to hold an underwater cabinet meeting in 2009 to highlight the threat of climate change.</li>
-          <li>🥥 Coconut is considered the most important plant in the Maldives and is used in many aspects of daily life, from food and drink to construction materials and handicrafts.</li>
-          <li>🍽️ The Maldives is home to the world's first underwater restaurant, opened in 2005 at the Conrad Maldives Rangali Island resort.</li>
-          <li>📏 The unique geography of the Maldives means that no island is more than 1.8 meters (5.9 feet) above sea level.</li>
-          <li>🏨 The Maldives was the first country in South Asia to introduce private island resorts in the 1970s, pioneering the luxury tourism model that it's famous for today.</li>
-          <li>🏝️ Every resort in the Maldives occupies its own private island, leading to the concept of "one island, one resort."</li>
-          <li>📆 The Maldives follows both the Islamic calendar and the Gregorian calendar.</li>
-          <li>🐚 The Maldivian rufiyaa, the national currency, gets its name from the cowry shells once used as currency.</li>
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Sustainability Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-purple-50 p-4 cursor-pointer card-header" data-target="sustainability-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">♻️</span>
-            <h3 class="font-bold text-lg text-purple-700">Sustainability in Paradise</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="sustainability-content" class="p-5 card-content">
-        <ul class="text-gray-700 space-y-3">
-          <li><span class="font-medium">🌡️ Climate Change:</span> As the world's lowest-lying nation, the Maldives is particularly vulnerable to rising sea levels and has become a vocal advocate for climate action globally.</li>
-          <li><span class="font-medium">🪸 Coral Regeneration:</span> Many resorts, including ours, participate in coral regeneration programs to help restore damaged reefs.</li>
-          <li><span class="font-medium">🚯 Plastic Reduction:</span> The Maldives has implemented various initiatives to reduce single-use plastics, with many resorts eliminating plastic straws, bottles, and toiletry containers.</li>
-          <li><span class="font-medium">☀️ Renewable Energy:</span> Solar power is increasingly being adopted across resorts to reduce dependency on diesel generators.</li>
-          <li><span class="font-medium">💧 Desalination:</span> With no natural freshwater sources, the Maldives relies on desalination technology to produce drinking water.</li>
-          <li><span class="font-medium">🐠 Marine Conservation:</span> Protected marine areas and fishing regulations help preserve the rich biodiversity of Maldivian waters.</li>
-        </ul>
-        <div class="mt-4 bg-purple-50 p-3 rounded text-sm">
-          <p class="font-bold mb-1">🌿 How You Can Help</p>
-          <p>During our stay, we can contribute to sustainability efforts by using reef-safe sunscreen, avoiding touching or stepping on coral while snorkeling, conserving water, and participating in any conservation activities offered by the resort, such as coral planting or beach clean-ups.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Family & Group Activities Card -->
-    <div class="info-card bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="bg-teal-50 p-4 cursor-pointer card-header" data-target="family-activities-content">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <span class="mr-2">👨‍👩‍👧‍👦</span>
-            <h3 class="font-bold text-lg text-teal-700">Family & Group Activities</h3>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-      <div id="family-activities-content" class="p-5 card-content">
-        <ul class="text-gray-700 space-y-3">
-          <li><span class="font-medium">🤿 Group Snorkeling:</span> Guided house reef tours tailored for different ages and experience levels.</li>
-          <li><span class="font-medium">🐬 Dolphin Cruises:</span> Family-friendly excursions to watch playful dolphins in their natural habitat.</li>
-          <li><span class="font-medium">🎣 Fishing Trips:</span> Traditional Maldivian sunset fishing experiences where you can catch your own dinner.</li>
-          <li><span class="font-medium">🏐 Beach Games:</span> Volleyball, beach soccer, and other activities organized by the resort.</li>
-          <li><span class="font-medium">👨‍🍳 Cooking Classes:</span> Learn to prepare Maldivian specialties together as a family.</li>
-          <li><span class="font-medium">🐡 Marine Biology Talks:</span> Educational sessions about the resort's marine ecosystem, suitable for all ages.</li>
-          <li><span class="font-medium">🎬 Movie Nights:</span> Outdoor cinema experiences under the stars on the beach.</li>
-        </ul>
-        <p class="mt-3 text-sm text-gray-600">The Maldives is perfect for our group of six, offering activities for different ages while allowing everyone to participate in memorable shared experiences. Our spacious villa accommodation will provide both togetherness and privacy for all family members.</p>
-      </div>
+      <p class="text-xl mb-2">Example content - this is just to show the navigation</p>
     </div>
   </div>
-</section>
 
-
-    <!-- Photo Gallery with Wikipedia Links -->
-    <section id="photos" class="mb-12">
-      <h2 class="text-3xl font-bold mb-6 text-center brand-text-red">Maldives Photo Gallery</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Image 1: Overwater Villa -->
-        <a href="https://en.wikipedia.org/wiki/Maldives" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://holiyeah.com/wp-content/uploads/2022/10/radisson-blu-resort-maldives-2-870x555.jpg" alt="Overwater Villa" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Radisson Blu Overwater Villa</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Image 2: Aerial View -->
-        <a href="https://en.wikipedia.org/wiki/Atoll" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://images.pexels.com/photos/28843937/pexels-photo-28843937.jpeg?cs=srgb&dl=pexels-asadphoto-28843937.jpg&fm=jpg" alt="Aerial View" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Seaplane View of Atolls</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-        
-        <!-- Image 3: Underwater -->
-        <a href="https://en.wikipedia.org/wiki/Coral_reef" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://th.bing.com/th/id/R.5af2b49f580f96aff64a572b754f0cdf?rik=szD5IzZIraDmnw&pid=ImgRaw&r=0" alt="Underwater Scene" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Vibrant Coral Reef</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-
-        <!-- Image 4: Beach Dining -->
-        <a href="https://en.wikipedia.org/wiki/Tourism_in_the_Maldives" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://hoteliermaldives.com/wp-content/uploads/Hurawalhi-beach-dinner-lowres.jpg" alt="Beach Dining" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Private Beach Dining</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-
-        <!-- Image 5: Water Sports -->
-        <a href="https://en.wikipedia.org/wiki/Water_sports" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://www.holidify.com/images/cmsuploads/compressed/79c8148df9e593118721f4da4e295c11_20180813190054.jpg" alt="Water Sports" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Kayaking in Crystal Waters</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-
-        <!-- Image 6: Sunset -->
-        <a href="https://en.wikipedia.org/wiki/Sunset" target="_blank" class="block">
-          <div class="photo-card rounded-lg shadow-md overflow-hidden h-52 relative">
-            <img src="https://wallpaperaccess.com/full/4287258.jpg" alt="Maldives Sunset" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-            <div class="absolute bottom-3 left-3 text-white">
-              <p class="font-medium">Breathtaking Sunset</p>
-              <p class="text-xs">Click for Wikipedia 📚</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-  
-  </div>
-
-  <footer class="brand-bg-red text-white py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h3 class="text-xl font-bold mb-3">Mata Family Asian Adventure</h3>
-      <p class="mb-4">July 30 - August 21, 2025</p>
-      <p class="text-white text-opacity-80">Created with ❤️ for our family of 5+1</p>
-    </div>
-  </footer>
-
-<script>
-// COMPLETE REPLACEMENT FOR THE SCRIPT SECTION
-document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile menu toggle with proper event handling
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent event bubbling
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  // 2. Close menu when non-dropdown links are clicked
-  if (mobileMenu) {
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a:not([id*="dropdown"])');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Don't close menu for dropdown toggles - only for actual navigation links
-        if (!this.closest('[id*="dropdown"]')) {
-          mobileMenu.classList.add('hidden');
-        }
+  <script>
+  // Single unified script with complete functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
       });
-    });
-  }
-  
-  // 3. Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-    if (mobileMenu && 
-        !mobileMenu.classList.contains('hidden') && 
-        !mobileMenu.contains(event.target) && 
-        !mobileMenuButton.contains(event.target)) {
-      mobileMenu.classList.add('hidden');
     }
-  });
-  
-  // 4. Handle section link smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      // Get the target element
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      
-      if (targetElement) {
-        // Calculate scroll position - offset by fixed nav height
-        const navHeight = window.innerWidth >= 768 ? 60 : 52;
-        const scrollPosition = targetElement.offsetTop - navHeight - 10; // Extra 10px buffer
-        
-        // Scroll to the adjusted position
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: 'smooth'
+
+    // 2. Close menu when links are clicked
+    if (mobileMenu) {
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Don't close menu for the destinations dropdown
+          if (!this.closest('#destinations-dropdown-button')) {
+            mobileMenu.classList.add('hidden');
+          }
         });
-        
-        // Close mobile menu after clicking a section link
-        if (mobileMenu) {
+      });
+    }
+    
+    // 3. Handle destinations submenu
+    const destinationsSubmenu = document.getElementById('destinations-submenu');
+    if (destinationsSubmenu) {
+      const submenuLinks = destinationsSubmenu.querySelectorAll('a');
+      submenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Close both the submenu and the main mobile menu
+          destinationsSubmenu.classList.add('hidden');
           mobileMenu.classList.add('hidden');
-        }
-      }
-    });
-  });
-  
-  // 5. Collapsible cards in Essential Information
-  document.querySelectorAll('.card-header').forEach(header => {
-    const targetId = header.getAttribute('data-target');
-    const targetContent = document.getElementById(targetId);
-    
-    if (targetContent) {
-      // Start with content collapsed
-      targetContent.style.display = 'none';
-      
-      // Add click event
-      header.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent event bubbling
-        
-        // Toggle content visibility
-        const isHidden = targetContent.style.display === 'none';
-        targetContent.style.display = isHidden ? 'block' : 'none';
-        
-        // Toggle arrow rotation
-        const arrow = header.querySelector('svg');
-        if (arrow) {
-          if (isHidden) {
-            arrow.classList.add('rotate-180');
-          } else {
-            arrow.classList.remove('rotate-180');
-          }
-        }
+        });
       });
     }
-  });
-  
-  // 6. Collapsible days in Itinerary
-  document.querySelectorAll('.day-header').forEach(header => {
-    const targetId = header.getAttribute('data-target');
-    const targetContent = document.getElementById(targetId);
     
-    if (targetContent) {
-      // Start with content collapsed
-      targetContent.style.display = 'none';
-      
-      // Add click event
-      header.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent event bubbling
-        
-        // Toggle content visibility
-        const isHidden = targetContent.style.display === 'none';
-        targetContent.style.display = isHidden ? 'block' : 'none';
-        
-        // Toggle arrow rotation
-        const arrow = header.querySelector('svg');
-        if (arrow) {
-          if (isHidden) {
-            arrow.classList.add('rotate-180');
-          } else {
-            arrow.classList.remove('rotate-180');
-          }
+    // 4. Desktop dropdown functionality
+    const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+    const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+    const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+    
+    if (desktopDropdownButton && desktopDestinationsMenu) {
+      // Use class-based toggle instead of hidden attribute
+      desktopDropdownButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        desktopDestinationsMenu.classList.toggle('visible');
+        if (desktopDropdownArrow) {
+          desktopDropdownArrow.classList.toggle('rotate-180');
         }
       });
-    }
-  });
-  
-  // 7. World clocks functionality
-  updateWorldClocks();
-  setInterval(updateWorldClocks, 60000);
-  
-  // 8. Desktop destinations dropdown
-  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
-  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
-  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
-  
-  if (desktopDropdownButton && desktopDestinationsMenu) {
-    // Toggle dropdown menu
-    desktopDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent event bubbling
       
-      // First close tips menu if it's open
-      if (desktopTipsMenu && !desktopTipsMenu.classList.contains('hidden')) {
-        desktopTipsMenu.classList.remove('visible');
-        if (desktopTipsArrow) desktopTipsArrow.classList.remove('rotate-180');
-      }
-      
-      // Then toggle destinations menu
-      desktopDestinationsMenu.classList.toggle('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close dropdown when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopDestinationsMenu.classList.remove('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopDestinationsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // 9. Desktop tips dropdown
-  const desktopTipsButton = document.getElementById('desktop-tips-button');
-  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
-  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
-  
-  if (desktopTipsButton && desktopTipsMenu) {
-    // Toggle tips menu
-    desktopTipsButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent event bubbling
-      
-      // First close destinations menu if it's open
-      if (desktopDestinationsMenu && desktopDestinationsMenu.classList.contains('visible')) {
+      // Close when clicking elsewhere
+      document.addEventListener('click', function() {
         desktopDestinationsMenu.classList.remove('visible');
-        if (desktopDropdownArrow) desktopDropdownArrow.classList.remove('rotate-180');
-      }
-      
-      // Then toggle tips menu
-      desktopTipsMenu.classList.toggle('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close tips menu when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopTipsMenu.classList.remove('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopTipsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // 10. Mobile destinations dropdown
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent event bubbling
-      
-      // Close tips submenu if it's open
-      if (tipsSubmenu && !tipsSubmenu.classList.contains('hidden')) {
-        tipsSubmenu.classList.add('hidden');
-        if (tipsDropdownArrow) tipsDropdownArrow.classList.remove('rotate-180');
-      }
-      
-      // Toggle destinations submenu
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Handle destinations submenu links
-    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
-    submenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Close the submenu and main mobile menu
-        destinationsSubmenu.classList.add('hidden');
-        if (mobileMenu) mobileMenu.classList.add('hidden');
-        if (dropdownArrow) dropdownArrow.classList.remove('rotate-180');
+        if (desktopDropdownArrow) {
+          desktopDropdownArrow.classList.remove('rotate-180');
+        }
       });
-    });
-  }
-  
-  // 11. Mobile tips dropdown
-  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-  const tipsSubmenu = document.getElementById('tips-submenu');
-  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
-  
-  if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevent event bubbling
       
-      // Close destinations submenu if it's open
-      if (destinationsSubmenu && !destinationsSubmenu.classList.contains('hidden')) {
-        destinationsSubmenu.classList.add('hidden');
-        if (dropdownArrow) dropdownArrow.classList.remove('rotate-180');
-      }
-      
-      // Toggle tips submenu
-      tipsSubmenu.classList.toggle('hidden');
-      if (tipsDropdownArrow) {
-        tipsDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Handle tips submenu links
-    const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
-    tipsSubmenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Close the submenu and main mobile menu
-        tipsSubmenu.classList.add('hidden');
-        if (mobileMenu) mobileMenu.classList.add('hidden');
-        if (tipsDropdownArrow) tipsDropdownArrow.classList.remove('rotate-180');
+      // Prevent menu from closing when clicking inside it
+      desktopDestinationsMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
       });
-    });
-  }
-  
-  // 12. Highlight current page in navigation
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
-  // For mobile submenu
-  if (destinationsSubmenu) {
-    const mobileLinks = destinationsSubmenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('text-red-600', 'font-bold');
-      }
-    });
-  }
-  
-  // For desktop submenu
-  if (desktopDestinationsMenu) {
-    const desktopLinks = desktopDestinationsMenu.querySelectorAll('a');
-    desktopLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('text-red-600', 'font-bold');
-      }
-    });
-  }
-  
-  // 13. Dynamic page title based on scroll position
-  const pageTitle = document.querySelector('.hero-content h1')?.textContent;
-  const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
-  
-  if (pageTitle && navTitle) {
-    const originalTitle = navTitle.textContent;
-    
-    // Function to handle scroll events
-    function handleScroll() {
-      // Change the title when scrolled down
-      if (window.scrollY > 100) {
-        navTitle.textContent = pageTitle;
-        navTitle.classList.add('page-title-visible');
-      } else {
-        navTitle.textContent = originalTitle;
-        navTitle.classList.remove('page-title-visible');
-      }
     }
     
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-  }
-  
-  // 14. Service Worker Registration
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(err => {
-          console.error('Service Worker registration failed:', err);
+    // 5. Mobile destinations submenu toggle
+    const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    
+    if (destinationsDropdownButton && destinationsSubmenu) {
+      destinationsDropdownButton.addEventListener('click', function() {
+        destinationsSubmenu.classList.toggle('hidden');
+        if (dropdownArrow) {
+          dropdownArrow.classList.toggle('rotate-180');
+        }
+      });
+    }
+    
+    // 6. Desktop tips dropdown
+    const desktopTipsButton = document.getElementById('desktop-tips-button');
+    const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+    const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+    
+    if (desktopTipsButton && desktopTipsMenu) {
+      // Use class-based toggle
+      desktopTipsButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        desktopTipsMenu.classList.toggle('visible');
+        if (desktopTipsArrow) {
+          desktopTipsArrow.classList.toggle('rotate-180');
+        }
+      });
+      
+      // Close when clicking elsewhere
+      document.addEventListener('click', function() {
+        desktopTipsMenu.classList.remove('visible');
+        if (desktopTipsArrow) {
+          desktopTipsArrow.classList.remove('rotate-180');
+        }
+      });
+      
+      // Prevent menu from closing when clicking inside it
+      desktopTipsMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+    
+    // 7. Mobile tips submenu toggle
+    const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+    const tipsSubmenu = document.getElementById('tips-submenu');
+    const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+    
+    if (tipsDropdownButton && tipsSubmenu) {
+      tipsDropdownButton.addEventListener('click', function() {
+        tipsSubmenu.classList.toggle('hidden');
+        if (tipsDropdownArrow) {
+          tipsDropdownArrow.classList.toggle('rotate-180');
+        }
+      });
+    }
+    
+    // 8. Handle tips submenu links
+    if (tipsSubmenu) {
+      const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
+      tipsSubmenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Close both the submenu and the main mobile menu
+          tipsSubmenu.classList.add('hidden');
+          mobileMenu.classList.add('hidden');
         });
-    });
-  }
-});
-
-// World clocks function
-function updateWorldClocks() {
-  const now = new Date();
-  
-  // Barcelona time (CEST, UTC+2)
-  const barcelonaTime = new Date(now.getTime());
-  barcelonaTime.setHours(now.getUTCHours() + 2);
-  const barcelonaEl = document.getElementById('barcelona-time');
-  if (barcelonaEl) {
-    barcelonaEl.textContent = 
-      barcelonaTime.getHours().toString().padStart(2, '0') + ':' + 
-      barcelonaTime.getMinutes().toString().padStart(2, '0');
-  }
-  
-  // Maldives time (MVT, UTC+5)
-  const maldivesTime = new Date(now.getTime());
-  maldivesTime.setHours(now.getUTCHours() + 5);
-  const maldivesEl = document.getElementById('maldives-time');
-  if (maldivesEl) {
-    maldivesEl.textContent = 
-      maldivesTime.getHours().toString().padStart(2, '0') + ':' + 
-      maldivesTime.getMinutes().toString().padStart(2, '0');
-  }
-  
-  // Southeast Asia time (SGT/MYT, UTC+8)
-  const seAsiaTime = new Date(now.getTime());
-  seAsiaTime.setHours(now.getUTCHours() + 8);
-  const seAsiaEl = document.getElementById('seasia-time');
-  if (seAsiaEl) {
-    seAsiaEl.textContent = 
-      seAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
-      seAsiaTime.getMinutes().toString().padStart(2, '0');
-  }
-  
-  // East Asia time (JST/KST, UTC+9)
-  const eastAsiaTime = new Date(now.getTime());
-  eastAsiaTime.setHours(now.getUTCHours() + 9);
-  const eastAsiaEl = document.getElementById('eastasia-time');
-  if (eastAsiaEl) {
-    eastAsiaEl.textContent = 
-      eastAsiaTime.getHours().toString().padStart(2, '0') + ':' + 
-      eastAsiaTime.getMinutes().toString().padStart(2, '0');
-  }
-}
-
-</script>
-
+      });
+    }
+  });
+  </script>
 </body>
 </html>
