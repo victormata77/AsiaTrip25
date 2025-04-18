@@ -1649,105 +1649,166 @@ body {
 </footer>
 
 <script>
-// Mobile menu toggle
+
+  // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-  
-  // Tips dropdown functionality
-  const desktopTipsButton = document.getElementById('desktop-tips-button');
-  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
-  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+    
+    // Tips dropdown functionality
+    const desktopTipsButton = document.getElementById('desktop-tips-button');
+    const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+    const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
 
-  if (desktopTipsButton && desktopTipsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopTipsButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopTipsMenu.classList.toggle('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close when clicking elsewhere (add to existing document click handler)
-    document.addEventListener('click', function() {
-      desktopTipsMenu.classList.remove('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopTipsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
+    if (desktopTipsButton && desktopTipsMenu) {
+        // Use class-based toggle instead of hidden attribute
+        desktopTipsButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            desktopTipsMenu.classList.toggle('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.toggle('rotate-180');
+            }
+        });
+        
+        // Close when clicking elsewhere (add to existing document click handler)
+        document.addEventListener('click', function() {
+            desktopTipsMenu.classList.remove('visible');
+            if (desktopTipsArrow) {
+                desktopTipsArrow.classList.remove('rotate-180');
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        desktopTipsMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
 
-  // Mobile Tips submenu toggle
-  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-  const tipsSubmenu = document.getElementById('tips-submenu');
-  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+    // Mobile Tips submenu toggle
+    const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+    const tipsSubmenu = document.getElementById('tips-submenu');
+    const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
 
-  if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.addEventListener('click', function() {
-      tipsSubmenu.classList.toggle('hidden');
-      if (tipsDropdownArrow) {
-        tipsDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
-  
-  // Desktop Destinations dropdown
-  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
-  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
-  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
-  
-  if (desktopDropdownButton && desktopDestinationsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopDestinationsMenu.classList.toggle('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.toggle('rotate-180');
-      }
+    if (tipsDropdownButton && tipsSubmenu) {
+        tipsDropdownButton.addEventListener('click', function() {
+            tipsSubmenu.classList.toggle('hidden');
+            if (tipsDropdownArrow) {
+                tipsDropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+    }
+    
+    // Desktop Destinations dropdown
+    const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+    const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+    const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+    
+    if (desktopDropdownButton && desktopDestinationsMenu) {
+        // Use class-based toggle instead of hidden attribute
+        desktopDropdownButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            desktopDestinationsMenu.classList.toggle('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+        
+        // Close when clicking elsewhere
+        document.addEventListener('click', function() {
+            desktopDestinationsMenu.classList.remove('visible');
+            if (desktopDropdownArrow) {
+                desktopDropdownArrow.classList.remove('rotate-180');
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        desktopDestinationsMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+    
+    // Mobile destinations submenu toggle
+    const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+    const destinationsSubmenu = document.getElementById('destinations-submenu');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    
+    if (destinationsDropdownButton && destinationsSubmenu) {
+        destinationsDropdownButton.addEventListener('click', function() {
+            destinationsSubmenu.classList.toggle('hidden');
+            if (dropdownArrow) {
+                dropdownArrow.classList.toggle('rotate-180');
+            }
+        });
+    }
+    
+    // Country tabs functionality
+    const countryTabs = document.querySelectorAll('.country-tab');
+    const countryContents = document.querySelectorAll('.country-content');
+    
+    countryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const country = this.getAttribute('data-country');
+            
+            // Hide all content sections
+            countryContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected content
+            document.getElementById(country + '-content').classList.remove('hidden');
+            
+            // Update active tab styling
+            countryTabs.forEach(tab => {
+                tab.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                tab.classList.add('text-gray-500');
+            });
+            
+            this.classList.remove('text-gray-500');
+            this.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+        });
     });
     
-    // Close when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopDestinationsMenu.classList.remove('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.remove('rotate-180');
-      }
-    });
+    // Print functionality
+    const printGuideButton = document.getElementById('print-guide');
     
-    // Prevent menu from closing when clicking inside it
-    desktopDestinationsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
+    if (printGuideButton) {
+        printGuideButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+    
+    // Dynamic page title based on scroll position
+    const pageTitle = document.querySelector('.hero-content h1')?.textContent;
+    const navTitle = document.querySelector('.text-red-600.font-bold.text-xl');
+    
+    if (pageTitle && navTitle) {
+        const originalTitle = navTitle.textContent;
+        
+        // Function to handle scroll events
+        function handleScroll() {
+            // Change the title when scrolled down (e.g., 100px from top)
+            if (window.scrollY > 100) {
+                navTitle.textContent = pageTitle;
+                navTitle.classList.add('page-title-visible');
+            } else {
+                navTitle.textContent = originalTitle;
+                navTitle.classList.remove('page-title-visible');
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+    }
 });
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
