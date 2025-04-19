@@ -846,35 +846,41 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   aspect-ratio: 1 / 1;
 }	
 
-/* Add this to the end of your existing CSS to fix the PWA menu */
+/* Add this to the end of your existing CSS */
 
-/* Specific PWA menu height fix */
+/* Height-only fix for PWA menu */
 @media all and (display-mode: standalone) {
-  /* Keep the title visible but make navbar compact */
+  /* Force the nav to be exactly the right height */
   .sticky-nav {
-    position: fixed !important;
-    top: env(safe-area-inset-top, 0) !important;
     height: 60px !important;
+    min-height: 60px !important;
     max-height: 60px !important;
-    background-color: white !important;
-    z-index: 9999 !important;
-    border-bottom: 3px solid var(--mata-red) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
   }
   
-  /* Keep the hamburger menu visible and title */
-  .text-red-600.font-bold.text-xl,
-  #mobile-menu-button {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+  /* Adjust padding on container */
+  .sticky-nav > .max-w-6xl {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 100% !important;
   }
   
-  /* Hide only the secondary logo that might be causing height issues */
-  section:first-of-type .mb-6.w-full.max-w-2xl img {
-    display: none !important;
+  /* Remove any extra padding from flex container */
+  .sticky-nav > .max-w-6xl > .flex {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
   
-  /* Properly position content below the fixed navbar */
+  /* Force single line for title */
+  .text-red-600.font-bold.text-xl {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  
+  /* Adjust body padding to match the smaller header */
   body {
     padding-top: calc(60px + env(safe-area-inset-top, 0)) !important;
   }
@@ -884,32 +890,17 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     top: calc(60px + env(safe-area-inset-top, 0)) !important;
   }
   
-  /* Fix spacing in the navbar container */
-  .sticky-nav > div {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    height: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-  
-  /* Keep the first row/section visible and adjust position */
-  section:first-of-type {
-    margin-top: 0 !important;
-    padding-top: 16px !important;
-  }
-  
-  /* Fix scroll and layout issues with Safari */
-  html, body {
-    height: 100% !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  
-  /* Ensure the title and hamburger menu are visible with !important */
-  .sticky-nav div.flex {
-    display: flex !important;
-    justify-content: space-between !important;
-    width: 100% !important;
+  /* Handle notch on iOS */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    .sticky-nav {
+      padding-top: env(safe-area-inset-top) !important;
+      height: calc(60px + env(safe-area-inset-top)) !important;
+      max-height: calc(60px + env(safe-area-inset-top)) !important;
+    }
+    
+    .sticky-nav > .max-w-6xl {
+      height: 60px !important;
+    }
   }
 }
 </style>
