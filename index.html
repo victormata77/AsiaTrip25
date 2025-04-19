@@ -859,6 +859,41 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     }
   }
 }
+
+.shadow-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: Add transition effect for smoother loading */
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.hero-image.loaded::before {
+  opacity: 1;
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 640px) {
+  .hero-image {
+    height: 400px;
+  }
+}
 	
 </style>
 	
@@ -980,19 +1015,20 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   </div>
 </nav>
 	
-<!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
-<section style="background-color: #eeeada;" class="py-10">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
-    <!-- Logo displayed as a prominent image with updated filename -->
+<!-- Updated Hero Section with Background Image and Logo -->
+<section class="hero-image relative" style="background-image: url('ASIATRIP.jpg'); background-size: cover; background-position: center; height: 500px;">
+  <!-- Overlay to ensure text is readable -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  
+  <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col items-center relative z-10">
+    <!-- Logo displayed as a prominent image -->
     <div class="mb-6 w-full max-w-2xl">
-      <img src="https://victormata77.github.io/AsiaTrip25/logowide.png" alt="Mata's Asian Tour 2025" class="w-full">
-
-
+      <img src="logo-wide-white.png" alt="Mata's Asian Tour 2025" class="w-full">
     </div>
     
     <!-- Text content below the logo -->
-    <div class="text-center">
-      <p class="text-lg mb-5 text-gray-700">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
+    <div class="text-center text-white">
+      <p class="text-lg mb-5 text-white shadow-text">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
       
       <div class="flex flex-wrap justify-center gap-4 mb-4">
         <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
@@ -1005,40 +1041,40 @@ section, .destination-card, .map-line, .journey-map-horizontal,
           <p class="font-bold text-white">23 Days</p>
         </div>
       </div>
-      <!-- Nuevo contador estilo YouTube -->
-<div class="countdown-container">
-  <div class="countdown-box">
-    <div class="countdown-unit">
-      <span id="countdown-days" class="countdown-value">000</span>
-      <span class="countdown-label">days</span>
-    </div>
-    <div class="countdown-separator">:</div>
-    <div class="countdown-unit">
-      <span id="countdown-hours" class="countdown-value">00</span>
-      <span class="countdown-label">hours</span>
-    </div>
-    <div class="countdown-separator">:</div>
-    <div class="countdown-unit">
-      <span id="countdown-minutes" class="countdown-value">00</span>
-      <span class="countdown-label">minutes</span>
-    </div>
-    <div class="countdown-separator">:</div>
-    <div class="countdown-unit">
-      <span id="countdown-seconds" class="countdown-value">00</span>
-      <span class="countdown-label">seconds</span>
-    </div>
-  </div>
-</div>
-
-
-      <!-- Countdown Timer -->
-      <div class="bg-red-100 p-4 rounded-lg shadow-md inline-block">
-        <p class="text-xl font-bold text-red-700">
-	<span id="text-countdown-days">...</span> days until departure!
-        </p>
-        <p class="text-sm text-red-600">Our adventure begins July 30, 2025</p>
+      
+      <!-- YouTube-style Countdown Timer -->
+      <div class="countdown-container">
+        <div class="countdown-box">
+          <div class="countdown-unit">
+            <span id="countdown-days" class="countdown-value">000</span>
+            <span class="countdown-label">days</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="countdown-hours" class="countdown-value">00</span>
+            <span class="countdown-label">hours</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="countdown-minutes" class="countdown-value">00</span>
+            <span class="countdown-label">minutes</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="countdown-seconds" class="countdown-value">00</span>
+            <span class="countdown-label">seconds</span>
+          </div>
+        </div>
       </div>
-</div>
+
+      <!-- Text Countdown Timer -->
+      <div class="bg-red-600 bg-opacity-80 p-4 rounded-lg shadow-md inline-block mt-4">
+        <p class="text-xl font-bold text-white">
+          <span id="text-countdown-days">...</span> days until departure!
+        </p>
+        <p class="text-sm text-white text-opacity-90">Our adventure begins July 30, 2025</p>
+      </div>
+    </div>
   </div>
 </section>
 
