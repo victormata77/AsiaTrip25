@@ -846,33 +846,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   aspect-ratio: 1 / 1;
 }	
 
-/* Fix for content spilling in PWA mode */
-@media all and (display-mode: standalone) {
-  /* Ensure navbar has higher z-index than all content */
-  .sticky-nav {
-    z-index: 9999 !important;
-    position: fixed !important;
-    background-color: white !important;
-    width: 100% !important;
-  }
-  
-  /* Add space at top of body to prevent content overlap */
-  body {
-    padding-top: 80px !important;
-  }
-  
-  /* Lower z-index for all content sections */
-  section, 
-  .destination-card, 
-  .countdown-container, 
-  .journey-map-horizontal, 
-  .journey-map-vertical,
-  .hero-image,
-  img {
-    z-index: 1 !important;
-    position: relative !important;
-  }
-}	
+
 </style>
 	
 </head>
@@ -2345,47 +2319,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
 <script>
 // Complete script for index.html with navigation and other functionality
 document.addEventListener('DOMContentLoaded', function() {
-// Check if we're in standalone/PWA mode
-  if (window.matchMedia('(display-mode: standalone)').matches || 
-      window.navigator.standalone === true) {
-    
-    console.log("Running in PWA mode - applying fixes");
-    
-    // Fix navbar
-    const navbar = document.querySelector('.sticky-nav');
-    if (navbar) {
-      navbar.style.position = 'fixed';
-      navbar.style.top = '0';
-      navbar.style.left = '0';
-      navbar.style.right = '0';
-      navbar.style.width = '100%';
-      navbar.style.zIndex = '9999';
-      navbar.style.backgroundColor = 'white';
-      navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-    }
-    
-    // Add padding to body
-    document.body.style.paddingTop = '80px';
-    
-    // Lower z-index for all content sections
-    const contentElements = document.querySelectorAll('section, .destination-card, .countdown-container, img, .journey-map-horizontal, .journey-map-vertical');
-    contentElements.forEach(el => {
-      el.style.position = 'relative';
-      el.style.zIndex = '1';
-    });
-    
-    // Fix mobile menu
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-      mobileMenu.style.position = 'fixed';
-      mobileMenu.style.top = '60px';
-      mobileMenu.style.left = '0';
-      mobileMenu.style.right = '0';
-      mobileMenu.style.zIndex = '9998';
-      mobileMenu.style.backgroundColor = 'white';
-      mobileMenu.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-    }
-  }
+
 	
 	// 1. Mobile menu toggle
   const mobileMenuButton = document.getElementById('mobile-menu-button');
