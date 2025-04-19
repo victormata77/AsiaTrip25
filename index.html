@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Mata Family Asian Adventure 2025</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1.0"> 
+	<title>Mata Family Asian Adventure 2025</title>
   
   <!-- Base URL -->
   <base href="https://victormata77.github.io/AsiaTrip25/">
@@ -845,6 +845,104 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
+/* PWA-specific fixes - add these to your existing style section */
+@media all and (display-mode: standalone) {
+  /* Improved navbar height and spacing */
+  .sticky-nav {
+    position: fixed !important;
+    top: env(safe-area-inset-top, 0px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 60px !important; /* Fixed height for consistency */
+    max-height: 60px !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 3px solid var(--mata-red) !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+  
+  /* Ensure content stays below the fixed navbar */
+  body {
+    padding-top: calc(60px + env(safe-area-inset-top, 0px)) !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Proper mobile menu positioning and styling */
+  #mobile-menu {
+    position: fixed !important;
+    top: calc(60px + env(safe-area-inset-top, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    background-color: white !important;
+    z-index: 9998 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    max-height: calc(100vh - 60px - env(safe-area-inset-top, 0px)) !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+  }
+  
+  /* Prevent content from displaying through the navbar using a higher z-index barrier */
+  .sticky-nav::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px + env(safe-area-inset-top, 0px));
+    background-color: white;
+    z-index: 9990;
+    pointer-events: none;
+  }
+  
+  /* Ensure all content has a lower z-index than the navbar */
+  main, section, .countdown-container, .journey-map-horizontal, 
+  .journey-map-vertical, .destination-card, img, .hero-image {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Fix for submenu items to have proper padding and margins */
+  #mobile-menu .py-2 {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  
+  #mobile-menu a, 
+  #mobile-menu button {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Create a scrollable mobile menu that doesn't overflow the screen */
+  #mobile-menu {
+    max-height: calc(100vh - 60px - env(safe-area-inset-top, 0px)) !important;
+    overflow-y: auto !important;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  #mobile-menu::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+  
+  /* Improve dropdown buttons in mobile menu */
+  #destinations-dropdown-button,
+  #tips-dropdown-button {
+    width: 100% !important;
+    padding: 12px 16px !important;
+  }
+  
+  /* Prevent submenu items from being too tall */
+  #destinations-submenu a,
+  #tips-submenu a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
 	
 </style>
 	
@@ -2823,6 +2921,83 @@ if (window.matchMedia('(display-mode: standalone)').matches ||
     });
   }
 });	
+// PWA-specific enhancements
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if running in standalone/PWA mode
+  if (window.matchMedia('(display-mode: standalone)').matches || 
+      window.navigator.standalone === true) {
+    
+    // Set a data attribute for easier CSS targeting
+    document.documentElement.setAttribute('data-display-mode', 'standalone');
+    
+    // Enhance mobile menu behavior for PWA
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    
+    if (mobileMenu && mobileMenuButton) {
+      // Calculate proper menu height for PWA mode
+      function updateMenuHeight() {
+        if (!mobileMenu.classList.contains('hidden')) {
+          const safeAreaTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top') || '0');
+          const navbarHeight = 60; // Fixed navbar height
+          const maxHeight = window.innerHeight - navbarHeight - safeAreaTop;
+          mobileMenu.style.maxHeight = maxHeight + 'px';
+          
+          // Ensure we have proper body padding to prevent content from going under navbar
+          document.body.style.paddingTop = (navbarHeight + safeAreaTop) + 'px';
+        }
+      }
+      
+      // Update height on menu toggle
+      mobileMenuButton.addEventListener('click', function() {
+        setTimeout(updateMenuHeight, 10); // Small delay to ensure DOM updates
+      });
+      
+      // Update on orientation change or resize
+      window.addEventListener('resize', updateMenuHeight);
+      window.addEventListener('orientationchange', updateMenuHeight);
+      
+      // Fix scrolling issues by preventing body scroll when menu is open
+      mobileMenuButton.addEventListener('click', function() {
+        if (!mobileMenu.classList.contains('hidden')) {
+          document.body.classList.add('overflow-hidden');
+        } else {
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      
+      // Close menu when clicking a link
+      const menuLinks = mobileMenu.querySelectorAll('a:not([href="#"]):not(.dropdown-toggle)');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+    
+    // Ensure the CSS variables for safe areas are set
+    function setRootVariables() {
+      document.documentElement.style.setProperty(
+        '--safe-area-inset-top', 
+        'env(safe-area-inset-top, 0px)'
+      );
+      document.documentElement.style.setProperty(
+        '--navbar-height', 
+        '60px'
+      );
+      document.documentElement.style.setProperty(
+        '--total-top-space', 
+        'calc(var(--safe-area-inset-top) + var(--navbar-height))'
+      );
+    }
+    
+    // Set variables on load and resize
+    setRootVariables();
+    window.addEventListener('resize', setRootVariables);
+  }
+});
+	
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
