@@ -993,78 +993,144 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   margin-top: 1px; /* Fine-tune the arrow alignment */
 }
 
-	<!-- Changes to fix mobile menu spilling content from below -->
-
-/* Fix for mobile menu z-index and positioning */
+	/* CRITICAL FIX: Prevent content from spilling under the mobile menu */
 #mobile-menu {
-  position: absolute;
+  position: fixed !important;
   top: var(--nav-height, 60px);
   left: 0;
   right: 0;
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  z-index: 9998;
-  max-height: calc(100vh - var(--nav-height, 60px));
+  z-index: 9999 !important;
+  max-height: 80vh;
   overflow-y: auto;
   padding: 0;
   margin: 0;
 }
 
-/* Fix z-index for content sections to prevent appearing above menu */
-section, .destination-card, .map-line, .journey-map-horizontal, 
-.journey-map-vertical, .calendar, .tip-card {
-  z-index: 1;
-  position: relative;
-}
-
-/* Improved spacing between menu items for desktop */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
-/* Fix to reduce the gap between hero and destinations section */
-.hero-image {
-  margin-bottom: 0;
-  padding-bottom: 1rem;
-}
-
-section#destinations {
-  margin-top: 0;
-  padding-top: 1rem;
-}
-
-/* Fix for mobile menu items spacing */
-#mobile-menu .flex-col > a,
-#mobile-menu .flex-col > div {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* Additional z-index adjustment for hero section */
-.hero-image, .hero-content {
-  z-index: 1;
-}
-
-/* Fix for navbar positioning */
-.sticky-nav {
-  position: sticky;
+/* Add an overlay behind the mobile menu when open */
+.menu-overlay {
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9998;
+  display: none;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+/* Fixed navbar to ensure it stays above content */
+.sticky-nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10000 !important;
   background-color: white;
   border-bottom: 3px solid var(--mata-red);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Body padding to prevent content from going under fixed navbar */
+body {
+  padding-top: var(--nav-height, 60px);
+  overflow-x: hidden;
+}
+
+/* Give content a lower z-index to stay below menu */
+main, section, div.max-w-6xl, .destination-card, .map-line, 
+.journey-map-horizontal, .journey-map-vertical, .calendar, .tip-card,
+footer, .hero-image, .hero-content {
+  z-index: 1;
+  position: relative;
+}
+
+/* FIXED: Make menu items equal size by standardizing height and enforcing flex layout */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+}
+
+/* Make dropdown buttons same height/padding as other menu items */
+#desktop-dropdown-button,
+#desktop-tips-button {
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+}
+
+/* Adjust overall spacing in nav menu */
+.md\:flex.md\:items-center.md\:space-x-6 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* FIXED: Drastically reduce gap between hero and destinations section */
+.hero-image {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+section#destinations {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.max-w-6xl.mx-auto.px-4.py-12 {
+  padding-top: 0 !important;
+}
+
+/* Fix for mobile menu items spacing */
+#mobile-menu .flex-col > a,
+#mobile-menu .flex-col > div {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* PWA specific fixes */
+@media all and (display-mode: standalone) {
+  body {
+    padding-top: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px));
+  }
+  
+  .sticky-nav {
+    height: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px)) !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  
+  #mobile-menu {
+    top: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px)) !important;
+  }
+}
+
 /* Fixed spacing for mobile menu */
 @media (max-width: 768px) {
+  body {
+    padding-top: var(--nav-height-mobile, 52px);
+  }
+  
+  .sticky-nav {
+    height: var(--nav-height-mobile, 52px);
+  }
+  
   #mobile-menu {
     top: var(--nav-height-mobile, 52px);
-    max-height: calc(100vh - var(--nav-height-mobile, 52px));
   }
   
   #mobile-menu .flex-col.space-y-3 > * {
@@ -1073,22 +1139,23 @@ section#destinations {
   }
 }
 
-/* Ensure proper z-index layering for all elements */
-html {
-  overflow-x: hidden;
+/* Override any other conflicting styles */
+.py-12 {
+  padding-top: 1rem !important;
 }
 
-body {
-  overflow-x: hidden;
-  min-height: 100vh;
+.mb-16 {
+  margin-bottom: 2rem !important;
 }
-
+	
 </style>
 	
 </head>
 
 <body class="bg-gray-50">
 
+	<div id="menu-overlay" class="menu-overlay"></div>
+	
 <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
@@ -3036,6 +3103,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });	
+	const menuOverlay = document.getElementById('menu-overlay');
+if (menuOverlay && mobileMenuButton && mobileMenu) {
+  mobileMenuButton.addEventListener('click', function() {
+    if (mobileMenu.classList.contains('hidden')) {
+      menuOverlay.classList.remove('active');
+    } else {
+      menuOverlay.classList.add('active');
+    }
+  });
+  
+  menuOverlay.addEventListener('click', function() {
+    mobileMenu.classList.add('hidden');
+    menuOverlay.classList.remove('active');
+  });
+}
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
