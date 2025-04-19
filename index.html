@@ -69,13 +69,14 @@
   <link rel="apple-touch-startup-image" href="splash/ipadpro2_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)">
   <link rel="apple-touch-startup-image" href="splash/ipadpro3_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
 
-
 <style>
 :root {
   --mata-red: #c62828;
   --mata-dark-red: #8e0000;
   --mata-light-red: #ff5f52;
   --mata-cream: #f5f0e1;
+  --nav-height: 60px;
+  --nav-height-mobile: 52px;
 }
 
 .destination-card {
@@ -112,12 +113,30 @@
 
 /* Improved navigation styling for all modes */
 .sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: white;
-  border-bottom: 3px solid var(--mata-red);
+  position: fixed !important; 
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important; 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+  height: var(--nav-height);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-bottom: 3px solid var(--mata-red);
+}
+
+/* Body adjustments for fixed navbar */
+body {
+  -webkit-overflow-scrolling: touch;
+  padding-top: var(--nav-height);
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .journey-map-horizontal {
@@ -399,6 +418,57 @@ html[data-display-mode="standalone"] .current-location p {
   background-color: var(--mata-red);
 }
 
+/* Mobile menu structure & appearance */
+#mobile-menu {
+  position: absolute;
+  top: var(--nav-height); /* Position exactly below navbar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile menu items need to be full width */
+#mobile-menu .flex.flex-col.space-y-3 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile menu links should be left-aligned */
+#mobile-menu a,
+#mobile-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Fix submenus in mobile menu */
+#tips-submenu,
+#destinations-submenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#tips-submenu a,
+#destinations-submenu a {
+  padding-left: 32px; /* Indent submenu items */
+  background-color: #f9fafb;
+}
+
 /* Responsive adjustments for hotel table */
 @media (max-width: 768px) {
   #hotels table {
@@ -447,6 +517,42 @@ html[data-display-mode="standalone"] .current-location p {
   }
   .logo-container {
     height: 40px;
+  }
+
+  /* Adjust navbar for mobile */
+  .sticky-nav {
+    height: var(--nav-height-mobile);
+  }
+  
+  /* Adjust body padding for mobile */
+  body {
+    padding-top: var(--nav-height-mobile);
+  }
+  
+  /* Mobile menu position for smaller devices */
+  #mobile-menu {
+    top: var(--nav-height-mobile);
+    max-height: calc(100vh - var(--nav-height-mobile));
+  }
+  
+  /* Fix mobile menu spacing */
+  #mobile-menu .flex.flex-col.space-y-3 {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Adjust spacing for mobile menu items */
+  #mobile-menu a, 
+  #mobile-menu button {
+    margin: 0;
+    padding: 12px 16px;
+  }
+  
+  /* Fix space-y-3 override */
+  #mobile-menu .flex.flex-col.space-y-3 > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
 
@@ -532,45 +638,169 @@ html[data-display-mode="standalone"] .current-location p {
   }
 }
 
-/* iOS home screen app specific styles */
-@media all and (display-mode: standalone) {
+/* Desktop dropdown menu */
+#desktop-destinations-menu, #desktop-tips-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 200px;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  overflow: hidden;
+  display: none;
+}
+#desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
+#desktop-destinations-menu a, #desktop-tips-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  transition: all 0.2s;
+}
+#desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
+  background-color: #fee2e2;
+  color: #c62828;
+}
+.relative { position: relative; }
+
+/* Dropdown button styling */
+#desktop-dropdown-button, #desktop-tips-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  height: 40px;
+}
+#desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
+
+/* Menu alignment fixes */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
+
+/* iOS-specific PWA fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific styles */
   body {
-    /* Account for status bar */
-    padding-top: env(safe-area-inset-top, 0);
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
   
   .sticky-nav {
-    position: fixed;
-    top: env(safe-area-inset-top, 0);
-    left: 0;
-    right: 0;
-    width: 100%;
+    padding-top: env(safe-area-inset-top, 0);
+    height: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
   
-  /* Add padding to body to prevent content from going under the fixed header */
-  body {
-    padding-top: 70px; /* Adjust based on your navbar height */
+  #mobile-menu {
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
   
-  /* Adjust scroll behavior */
-  html {
-    scroll-padding-top: calc(70px + env(safe-area-inset-top, 0));
-  }
-  
-  /* Fix for iOS standalone mode */
-  .sticky-nav .menu-item > a, 
-  .sticky-nav .sub-menu a {
-    padding-top: 14px;
-    padding-bottom: 14px;
+  @media (max-width: 767px) {
+    body {
+      padding-top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    .sticky-nav {
+      height: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
+    
+    #mobile-menu {
+      top: calc(var(--nav-height-mobile) + env(safe-area-inset-top, 0));
+    }
   }
 }
 
-/* Navbar adjustments - add to your existing style section */
+/* Fix dropdown arrow alignment */
+#tips-dropdown-button,
+#destinations-dropdown-button {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure span and svg are on the same line */
+#tips-dropdown-button span,
+#destinations-dropdown-button span {
+  display: inline-block;
+}
+
+#tips-dropdown-button svg,
+#destinations-dropdown-button svg,
+#dropdown-arrow,
+#tips-dropdown-arrow {
+  flex-shrink: 0;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Add scroll padding to prevent content being hidden behind the navbar */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Fix for scrolling issue - adjust z-index for all potential elements */
+section, .destination-card, .map-line, .journey-map-horizontal, 
+.journey-map-vertical, .calendar, .tip-card, #mobile-menu {
+  z-index: 10;
+  position: relative;
+}
+
+/* For the scrolling issue with specific sections that might appear above the menu */
+#calendar, #flights, #hotels, #journey {
+  z-index: 10;
+  position: relative;
+}
+
+/* Map dot specific fixes */
+.map-stop .map-dot,
+.map-stop-vertical .map-dot {
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--mata-red);
+  border-radius: 50% !important;
+  border: 3px solid white !important;
+  box-shadow: 0 0 0 2px var(--mata-red) !important;
+  display: block;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  overflow: visible;
+}
+
+/* Ensure KL dot specifically has correct styling */
+.map-stop:nth-child(7) .map-dot,
+.map-stop-vertical:nth-child(7) .map-dot {
+  transform: none;
+  aspect-ratio: 1 / 1;
+}
+
+/* PWA standalone mode specific fixes */
 @media all and (display-mode: standalone) {
-  /* Account for Dynamic Island and status bar on newer iPhones */
+  /* Nav container needs vertical centering when height is fixed */
+  .sticky-nav > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Main nav row (title and menu items) */
+  .sticky-nav > div > div.flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   :root {
     --safe-area-inset-top: env(safe-area-inset-top, 0px);
-    --navbar-height: 60px;
+    --navbar-height: var(--nav-height);
     --total-top-space: calc(var(--safe-area-inset-top) + var(--navbar-height));
   }
   
@@ -598,32 +828,15 @@ html[data-display-mode="standalone"] .current-location p {
     margin-top: 0 !important;
   }
   
-  /* Handle hero images and headers */
-  .hero-image, .destination-header {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  
-  /* Adjust landing page logo/hero section */
-  section:first-of-type {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Fix mobile menu positioning */
+  /* Mobile menu positioning */
   #mobile-menu {
     position: fixed !important;
     top: var(--total-top-space) !important;
     left: 0 !important;
     right: 0 !important;
     z-index: 9998 !important;
-    background-color: white !important;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
   }
-}
 
-/* Fix wide margins on hamburger menu and text */
-@media all and (display-mode: standalone) {
   /* Navbar layout improvements */
   .sticky-nav .max-w-6xl {
     width: 100%;
@@ -640,25 +853,8 @@ html[data-display-mode="standalone"] .current-location p {
   /* Title text proper size and spacing */
   .sticky-nav h1.brand-text-red, 
   .sticky-nav .brand-text-red {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     margin-left: 0 !important;
-  }
-  
-  /* Prevent images from appearing above menu */
-  body {
-    padding-top: var(--total-top-space, 100px) !important;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .destination-card, 
-  img, 
-  .hero-image,
-  .countdown-container,
-  .journey-map-horizontal,
-  .journey-map-vertical {
-    z-index: 1 !important;
-    position: relative !important;
   }
   
   /* Create a barrier to prevent images from scrolling above navbar */
@@ -704,150 +900,7 @@ html[data-display-mode="standalone"] .current-location p {
     max-height: 45px !important;
   }
 }
-
-/* Add scroll padding to prevent content being hidden behind the navbar */
-html {
-  scroll-padding-top: 80px;
-}
-
-/* Fix for scrolling issue - adjust z-index for all potential elements */
-section, .destination-card, .map-line, .journey-map-horizontal, 
-.journey-map-vertical, .calendar, .tip-card, #mobile-menu {
-  z-index: 10;
-  position: relative;
-}
-
-/* For the scrolling issue with specific sections that might appear above the menu */
-#calendar, #flights, #hotels, #journey {
-  z-index: 10;
-  position: relative;
-}
-
-/* Root variables and brand colors */
-:root {
-  --mata-red: #c62828;
-  --mata-dark-red: #8e0000;
-  --mata-light-red: #ff5f52;
-  --mata-cream: #f5f0e1;
-}
-
-/* Navigation */
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.text-red-600.font-bold.text-xl {
-  transition: all 0.3s ease;
-}
-.page-title-visible {
-  transform: scale(1.05);
-}
-
-/* Desktop dropdown menu */
-#desktop-destinations-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 50;
-  overflow: hidden;
-  display: none;
-}
-#desktop-destinations-menu.visible { display: block; }
-#desktop-destinations-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-#desktop-destinations-menu a:hover {
-  background-color: #fee2e2;
-  color: #c62828;
-}
-.relative { position: relative; }
-
-/* Dropdown button styling */
-#desktop-dropdown-button {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  transition: all 0.2s;
-  height: 40px;
-}
-#desktop-dropdown-button:hover { background-color: #f9fafb; }
-
-/* Tips dropdown styling (matches destinations dropdown) */
-#desktop-tips-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 200px;
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  z-index: 50;
-  overflow: hidden;
-  display: none;
-}
-
-#desktop-tips-menu.visible {
-  display: block;
-}
-
-#desktop-tips-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-
-#desktop-tips-menu a:hover {
-  background-color: #fee2e2;
-  color: #c62828;
-}
-
-/* Menu alignment fixes */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  display: flex;
-  align-items: center;
-  height: 40px;
-}
-.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-/* Add this to your CSS in the style section */
-.map-stop .map-dot,
-.map-stop-vertical .map-dot {
-  width: 20px !important;
-  height: 20px !important;
-  background-color: var(--mata-red);
-  border-radius: 50% !important;
-  border: 3px solid white !important;
-  box-shadow: 0 0 0 2px var(--mata-red) !important;
-  display: block;
-  min-width: 20px;
-  min-height: 20px;
-  max-width: 20px;
-  max-height: 20px;
-  overflow: visible;
-}
-
-/* Ensure KL dot specifically has correct styling */
-.map-stop:nth-child(7) .map-dot,
-.map-stop-vertical:nth-child(7) .map-dot {
-  transform: none;
-  aspect-ratio: 1 / 1;
-}	
-
 </style>
-	
 </head>
 
 <body class="bg-gray-50">
