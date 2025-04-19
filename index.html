@@ -766,7 +766,6 @@ body {
     }
   }
 }
-
 /* Fix for scrolling issue - adjust z-index for all potential elements */
 section, .destination-card, .map-line, .journey-map-horizontal, 
 .journey-map-vertical, .calendar, .tip-card, #mobile-menu {
@@ -784,6 +783,37 @@ section, .destination-card, .map-line, .journey-map-horizontal,
 html {
   scroll-padding-top: 80px;
 }	
+
+	/* Fix mobile menu dropdown button alignment */
+#tips-dropdown-button,
+#destinations-dropdown-button {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure span and svg are on the same line */
+#tips-dropdown-button span,
+#destinations-dropdown-button span {
+  display: inline-block;
+}
+
+#tips-dropdown-button svg,
+#destinations-dropdown-button svg,
+#dropdown-arrow,
+#tips-dropdown-arrow {
+  flex-shrink: 0;
+  margin-left: auto; /* Push to the right */
+}
+
+/* Remove any flexbox adjustments that might be causing issues */
+#tips-dropdown-button.w-full.flex.justify-between.items-center,
+#destinations-dropdown-button.w-full.flex.justify-between.items-center {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
 </style>
 	
 </head>
@@ -2251,7 +2281,6 @@ html {
 
 
 <script>
-
 // Debugging for mobile menu
 console.log("Script loaded");
 console.log("Mobile menu button exists:", !!document.getElementById('mobile-menu-button'));
@@ -2265,11 +2294,8 @@ document.addEventListener('click', function(e) {
   }
 }, true);
 
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile menu toggle - FIXED VERSION
+// 1. Mobile menu toggle - FIXED VERSION
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
