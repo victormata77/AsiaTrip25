@@ -933,6 +933,71 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     }
   }
 }
+
+/* Add this to your CSS to enhance submenu appearance */
+
+/* Submenu styling for dropdown items */
+#destinations-submenu,
+#tips-submenu {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid #eeeaea !important;
+  background-color: #f9f9f9 !important;
+  margin-top: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* Individual submenu items */
+#destinations-submenu a,
+#tips-submenu a {
+  border-left: 3px solid transparent !important;
+  transition: all 0.2s ease !important;
+  background-color: white !important;
+  margin: 2px 0 !important;
+}
+
+/* Submenu hover effect */
+#destinations-submenu a:hover,
+#tips-submenu a:hover {
+  border-left-color: var(--mata-red) !important;
+  background-color: #fff5f5 !important;
+  padding-left: 36px !important;
+}
+
+/* Apply these styles to both PWA and regular iOS */
+@media all and (display-mode: standalone), screen {
+  /* Ensure submenu is visually distinct */
+  #destinations-submenu,
+  #tips-submenu {
+    border-top: 1px solid #eee !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Add indent to submenu items */
+  #destinations-submenu a,
+  #tips-submenu a {
+    padding-left: 32px !important;
+    color: #555 !important;
+    font-size: 15px !important;
+  }
+  
+  /* Style submenu headers */
+  #destinations-dropdown-button,
+  #tips-dropdown-button {
+    font-weight: bold !important;
+    color: #333 !important;
+  }
+  
+  /* Add a subtle indicator to show submenu items */
+  #destinations-submenu a::before,
+  #tips-submenu a::before {
+    content: "•" !important;
+    margin-right: 8px !important;
+    color: var(--mata-red) !important;
+    opacity: 0.7 !important;
+  }
+}
+
 </style>
 	
 </head>
