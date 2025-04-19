@@ -845,56 +845,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
-/* Add this to your existing CSS in the style section */
 
-/* PWA mobile menu specific fixes */
-@media all and (display-mode: standalone) and (max-width: 767px) {
-  /* Compress the navbar height */
-  .sticky-nav {
-    height: auto !important;
-    min-height: 52px !important;
-    max-height: 60px !important;
-  }
-  
-  /* Reduce the padding within the navbar */
-  .sticky-nav .py-3 {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-  }
-  
-  /* Ensure the navbar contents are properly aligned */
-  .sticky-nav > div {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  
-  /* Make the site title smaller if needed */
-  .text-red-600.font-bold.text-xl {
-    font-size: 1rem !important;
-  }
-  
-  /* Ensure hamburger button is properly aligned */
-  #mobile-menu-button {
-    margin: 0 !important;
-    padding: 4px !important;
-  }
-  
-  /* Fix mobile menu positioning */
-  #mobile-menu {
-    top: 52px !important; /* Match the navbar height */
-  }
-  
-  /* Handle notch/Dynamic Island */
-  @supports (padding-top: env(safe-area-inset-top)) {
-    .sticky-nav {
-      padding-top: env(safe-area-inset-top) !important;
-    }
-    
-    #mobile-menu {
-      top: calc(52px + env(safe-area-inset-top)) !important;
-    }
-  }
-}
 </style>
 	
 </head>
