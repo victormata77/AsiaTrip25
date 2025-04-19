@@ -28,15 +28,16 @@
   <link rel="mask-icon" href="icons/icon-512x512.png" color="#c62828">
   
   <!-- Android/Chrome Icons -->
-  <link rel="icon" sizes="192x192" href="icons/icon-192x192.png">
+  <link rel="icon" sizes="192x192" href="icons/icon-192x1<meta name="mobile-web-app-capable" content="yes">
+92.png">
   <link rel="icon" sizes="512x512" href="icons/icon-512x512.png">
   
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
   
   <!-- iOS PWA Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes"> 	
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Mata's Asian Tour">
   
   <!-- SEO and Social Meta Tags -->
@@ -2801,7 +2802,50 @@ if (mobileMenuButton && mobileMenu) {
       }
     });
   }
-});	
+});
+
+window.addEventListener('load', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.onclick = function(e) {
+      e.preventDefault();
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        console.log("Menu opened");
+      } else {
+        mobileMenu.classList.add('hidden');
+        console.log("Menu closed");
+      }
+    };
+  }
+  
+  // Also add direct click handlers to the dropdowns
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      tipsSubmenu.classList.toggle('hidden');
+      console.log("Tips menu toggled");
+    };
+  }
+  
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      destinationsSubmenu.classList.toggle('hidden');
+      console.log("Destinations menu toggled");
+    };
+  }
+});
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
