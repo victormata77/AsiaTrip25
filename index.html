@@ -845,7 +845,76 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
+/* Add this to your existing CSS in the style section */
 
+/* PWA-specific menu fixes - single row layout */
+@media all and (display-mode: standalone) {
+  /* Force single row layout in the navbar */
+  .sticky-nav > div {
+    display: flex;
+    flex-direction: row !important; /* Force row layout */
+    align-items: center;
+    justify-content: space-between;
+    height: auto !important; /* Allow natural height */
+    min-height: 60px;
+  }
+  
+  /* Ensure the menu row is properly aligned */
+  .sticky-nav > div > div.flex {
+    display: flex;
+    align-items: center;
+    height: auto !important;
+    flex-grow: 0;
+  }
+  
+  /* Constrain the title to prevent overflow */
+  .text-red-600.font-bold.text-xl {
+    max-width: 50%; /* Limit width of title */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  /* Proper alignment for menu items */
+  .md\:flex.md\:items-center.md\:space-x-6 {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+  }
+  
+  /* Reduced vertical padding to help with height */
+  .sticky-nav .py-3 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Ensure mobile menu is properly positioned */
+  #mobile-menu {
+    position: absolute;
+    top: 60px; /* Position right below the navbar */
+    max-height: calc(100vh - 60px);
+  }
+}
+
+/* Fix for iOS with notch/Dynamic Island */
+@media all and (display-mode: standalone) {
+  @supports (padding-top: env(safe-area-inset-top)) {
+    .sticky-nav {
+      padding-top: env(safe-area-inset-top) !important;
+    }
+    
+    /* Prevent stretching of navbar */
+    .sticky-nav > div {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    
+    /* Adjust mobile menu top position for notched devices */
+    #mobile-menu {
+      top: calc(60px + env(safe-area-inset-top)) !important;
+    }
+  }
+}
 
 </style>
 	
