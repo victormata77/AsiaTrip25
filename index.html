@@ -808,345 +808,7 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   height: 40px;
 }
 .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-
-	/* Critical iOS PWA fixes - Add these at the very end of your style section */
-:root {
-  --safe-area-top: env(safe-area-inset-top, 0px);
-  --total-top-space: calc(var(--nav-height) + var(--safe-area-top));
-  --total-top-space-mobile: calc(var(--nav-height-mobile) + var(--safe-area-top));
-}
-
-/* Fix for content showing behind navbar */
-.sticky-nav::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--safe-area-top);
-  background-color: white;
-  z-index: 10000;
-}
-
-/* Improved navbar positioning for iOS */
-@supports (-webkit-touch-callout: none) {
-  .sticky-nav {
-    top: 0 !important;
-    padding-top: var(--safe-area-top) !important;
-    height: calc(var(--nav-height) + var(--safe-area-top)) !important;
-    background-color: rgba(255, 255, 255, 0.98) !important;
-  }
-  
-  body {
-    padding-top: var(--total-top-space) !important;
-  }
-  
-  #mobile-menu {
-    top: var(--total-top-space) !important;
-  }
-  
-  @media (max-width: 767px) {
-    .sticky-nav {
-      height: calc(var(--nav-height-mobile) + var(--safe-area-top)) !important;
-    }
-    
-    body {
-      padding-top: var(--total-top-space-mobile) !important;
-    }
-    
-    #mobile-menu {
-      top: var(--total-top-space-mobile) !important;
-    }
-  }
-}
-
-.shadow-text {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.hero-image {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Optional: Add transition effect for smoother loading */
-.hero-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: inherit;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 0.5s;
-  opacity: 0;
-}
-
-.hero-image.loaded::before {
-  opacity: 1;
-}
-
-/* Adjust for mobile screens */
-@media (max-width: 640px) {
-  .hero-image {
-    height: 400px;
-  }
-}
-<!-- Additional CSS for the hero section -->
-<style>
-.shadow-text {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.hero-image {
-  position: relative;
-  overflow: hidden;
-  background-color: #000; /* Black background as a fallback */
-}
-
-/* Improved countdown visibility on dark backgrounds */
-.countdown-box {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Ensure minimum height while allowing content to expand naturally */
-@media (max-width: 640px) {
-  .hero-image {
-    min-height: 450px;
-  }
-  
-  /* Make logo even smaller on mobile */
-  .hero-image .max-w-md {
-    max-width: 80%;
-  }
-}
-
-/* Menu Item Spacing Fix */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-#desktop-dropdown-button,
-#desktop-tips-button {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/* Mobile menu spacing fix */
-#mobile-menu a,
-#destinations-dropdown-button,
-#tips-dropdown-button {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  display: flex;
-  align-items: center;
-}
-
-/* Hero content spacing fix */
-.hero-image {
-  padding-top: 60px; /* Add top padding to push content down */
-  margin-top: 0;
-}
-
-@media all and (display-mode: standalone) {
-  /* PWA specific fixes */
-  .hero-image {
-    padding-top: max(60px, var(--safe-area-inset-top, 0px));
-  }
-  
-  body {
-    padding-top: 0 !important; /* Remove the body padding */
-  }
-  
-  .sticky-nav {
-    position: fixed !important;
-    top: 0 !important;
-    padding-top: var(--safe-area-inset-top, 0px) !important;
-    height: calc(60px + var(--safe-area-inset-top, 0px)) !important;
-    z-index: 1000 !important;
-  }
-  
-  /* Create proper content spacing */
-  section:first-of-type {
-    margin-top: calc(60px + var(--safe-area-inset-top, 0px)) !important;
-  }
-  
-  #mobile-menu {
-    top: calc(60px + var(--safe-area-inset-top, 0px)) !important;
-  }
-}
-
-/* Fix for vertical alignment in dropdown buttons */
-#desktop-dropdown-button svg,
-#desktop-tips-button svg {
-  margin-top: 1px; /* Fine-tune the arrow alignment */
-}
-
-	/* CRITICAL FIX: Prevent content from spilling under the mobile menu */
-#mobile-menu {
-  position: fixed !important;
-  top: var(--nav-height, 60px);
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  z-index: 9999 !important;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 0;
-  margin: 0;
-}
-
-/* Add an overlay behind the mobile menu when open */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 9998;
-  display: none;
-}
-
-.menu-overlay.active {
-  display: block;
-}
-
-/* Fixed navbar to ensure it stays above content */
-.sticky-nav {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 10000 !important;
-  background-color: white;
-  border-bottom: 3px solid var(--mata-red);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Body padding to prevent content from going under fixed navbar */
-body {
-  padding-top: var(--nav-height, 60px);
-  overflow-x: hidden;
-}
-
-/* Give content a lower z-index to stay below menu */
-main, section, div.max-w-6xl, .destination-card, .map-line, 
-.journey-map-horizontal, .journey-map-vertical, .calendar, .tip-card,
-footer, .hero-image, .hero-content {
-  z-index: 1;
-  position: relative;
-}
-
-/* FIXED: Make menu items equal size by standardizing height and enforcing flex layout */
-.md\:flex.md\:items-center.md\:space-x-6 > a,
-.md\:flex.md\:items-center.md\:space-x-6 > div {
-  height: 40px !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 0 12px !important;
-  margin: 0 !important;
-}
-
-/* Make dropdown buttons same height/padding as other menu items */
-#desktop-dropdown-button,
-#desktop-tips-button {
-  height: 40px !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 0 12px !important;
-  margin: 0 !important;
-}
-
-/* Adjust overall spacing in nav menu */
-.md\:flex.md\:items-center.md\:space-x-6 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* FIXED: Drastically reduce gap between hero and destinations section */
-.hero-image {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-section#destinations {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-.max-w-6xl.mx-auto.px-4.py-12 {
-  padding-top: 0 !important;
-}
-
-/* Fix for mobile menu items spacing */
-#mobile-menu .flex-col > a,
-#mobile-menu .flex-col > div {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* PWA specific fixes */
-@media all and (display-mode: standalone) {
-  body {
-    padding-top: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px));
-  }
-  
-  .sticky-nav {
-    height: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px)) !important;
-    padding-top: env(safe-area-inset-top, 0px) !important;
-  }
-  
-  #mobile-menu {
-    top: calc(var(--nav-height, 60px) + env(safe-area-inset-top, 0px)) !important;
-  }
-}
-
-/* Fixed spacing for mobile menu */
-@media (max-width: 768px) {
-  body {
-    padding-top: var(--nav-height-mobile, 52px);
-  }
-  
-  .sticky-nav {
-    height: var(--nav-height-mobile, 52px);
-  }
-  
-  #mobile-menu {
-    top: var(--nav-height-mobile, 52px);
-  }
-  
-  #mobile-menu .flex-col.space-y-3 > * {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-}
-
-/* Override any other conflicting styles */
-.py-12 {
-  padding-top: 1rem !important;
-}
-
-.mb-16 {
-  margin-bottom: 2rem !important;
-}
+	
 	
 </style>
 	
@@ -1154,8 +816,6 @@ section#destinations {
 
 <body class="bg-gray-50">
 
-	<div id="menu-overlay" class="menu-overlay"></div>
-	
 <!-- Navigation Menu -->
 <nav class="sticky-nav shadow-md">
   <div class="max-w-6xl mx-auto px-4 py-3">
@@ -1269,68 +929,69 @@ section#destinations {
     </div>
   </div>
 </nav>
-	<!-- Updated Hero Section with Background Image and Reduced Logo Size -->
-<section class="hero-image relative bg-black" style="background-image: url('ASIATRIP.jpg'); background-size: cover; background-position: center; height: auto; min-height: 400px;">
-  <!-- Darker overlay for better text visibility -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-  
-  <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col items-center relative z-10">
-    <!-- Logo with reduced size -->
-    <div class="mb-4 w-full max-w-md">
-      <img src="logo-wide-white.png" alt="Mata's Asian Tour 2025" class="w-full">
+	
+<!-- Updated Hero Section with Background Matching Logo - REDUCED HEIGHT -->
+<section style="background-color: #eeeada;" class="py-10">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+    <!-- Logo displayed as a prominent image with updated filename -->
+    <div class="mb-6 w-full max-w-2xl">
+      <img src="https://victormata77.github.io/AsiaTrip25/logowide.png" alt="Mata's Asian Tour 2025" class="w-full">
+
+
     </div>
     
     <!-- Text content below the logo -->
-    <div class="text-center text-white">
-      <p class="text-lg mb-4 text-white shadow-text">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
+    <div class="text-center">
+      <p class="text-lg mb-5 text-gray-700">23 unforgettable days across 5 countries. From ancient temples to futuristic cities, bustling markets to serene beaches.</p>
       
-      <div class="flex flex-wrap justify-center gap-3 mb-4">
-        <div class="bg-red-600 bg-opacity-90 px-4 py-2 rounded-lg shadow-md">
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
           <p class="font-bold text-white">6 Travelers</p>
         </div>
-        <div class="bg-red-600 bg-opacity-90 px-4 py-2 rounded-lg shadow-md">
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
           <p class="font-bold text-white">6 Destinations</p>
         </div>
-        <div class="bg-red-600 bg-opacity-90 px-4 py-2 rounded-lg shadow-md">
+        <div class="bg-red-600 bg-opacity-90 px-5 py-2 rounded-lg shadow-md">
           <p class="font-bold text-white">23 Days</p>
         </div>
       </div>
-      
-      <!-- YouTube-style Countdown Timer -->
-      <div class="countdown-container">
-        <div class="countdown-box">
-          <div class="countdown-unit">
-            <span id="countdown-days" class="countdown-value">000</span>
-            <span class="countdown-label">days</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <span id="countdown-hours" class="countdown-value">00</span>
-            <span class="countdown-label">hours</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <span id="countdown-minutes" class="countdown-value">00</span>
-            <span class="countdown-label">minutes</span>
-          </div>
-          <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <span id="countdown-seconds" class="countdown-value">00</span>
-            <span class="countdown-label">seconds</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Text Countdown Timer -->
-      <div class="bg-red-600 bg-opacity-80 p-3 rounded-lg shadow-md inline-block mt-4 mb-2">
-        <p class="text-xl font-bold text-white">
-          <span id="text-countdown-days">...</span> days until departure!
-        </p>
-        <p class="text-sm text-white text-opacity-90">Our adventure begins July 30, 2025</p>
-      </div>
+      <!-- Nuevo contador estilo YouTube -->
+<div class="countdown-container">
+  <div class="countdown-box">
+    <div class="countdown-unit">
+      <span id="countdown-days" class="countdown-value">000</span>
+      <span class="countdown-label">days</span>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-unit">
+      <span id="countdown-hours" class="countdown-value">00</span>
+      <span class="countdown-label">hours</span>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-unit">
+      <span id="countdown-minutes" class="countdown-value">00</span>
+      <span class="countdown-label">minutes</span>
+    </div>
+    <div class="countdown-separator">:</div>
+    <div class="countdown-unit">
+      <span id="countdown-seconds" class="countdown-value">00</span>
+      <span class="countdown-label">seconds</span>
     </div>
   </div>
+</div>
+
+
+      <!-- Countdown Timer -->
+      <div class="bg-red-100 p-4 rounded-lg shadow-md inline-block">
+        <p class="text-xl font-bold text-red-700">
+	<span id="text-countdown-days">...</span> days until departure!
+        </p>
+        <p class="text-sm text-red-600">Our adventure begins July 30, 2025</p>
+      </div>
+</div>
+  </div>
 </section>
+
   <div class="max-w-6xl mx-auto px-4 py-12">
     <!-- Destinations Section -->
     <section id="destinations" class="mb-16">
@@ -3103,21 +2764,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });	
-	const menuOverlay = document.getElementById('menu-overlay');
-if (menuOverlay && mobileMenuButton && mobileMenu) {
-  mobileMenuButton.addEventListener('click', function() {
-    if (mobileMenu.classList.contains('hidden')) {
-      menuOverlay.classList.remove('active');
-    } else {
-      menuOverlay.classList.add('active');
-    }
-  });
-  
-  menuOverlay.addEventListener('click', function() {
-    mobileMenu.classList.add('hidden');
-    menuOverlay.classList.remove('active');
-  });
-}
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
