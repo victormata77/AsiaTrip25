@@ -1502,6 +1502,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   
+  
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', function() {
       mobileMenu.classList.toggle('hidden');
@@ -1619,54 +1620,53 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // 7. New functionality to handle direct day links
-  function handleDayLinks() {
-    // Check if there's a day-specific hash in the URL
-    const hash = window.location.hash;
-    if (hash && (hash.startsWith('#day12') || hash.startsWith('#day13') || 
-                hash.startsWith('#day14') || hash.startsWith('#day15'))) {
+ function handleDayLinks() {
+  // Check if there's a day-specific hash in the URL
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#day')) {
+    
+    // First, make sure the activities section is visible
+    const activitiesSection = document.getElementById('activities');
+    if (activitiesSection) {
+      // Scroll to the activities section with adjustment for fixed header
+      window.scrollTo({
+        top: activitiesSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
       
-      // First, make sure the activities section is visible
-      const activitiesSection = document.getElementById('activities');
-      if (activitiesSection) {
-        // Scroll to the activities section with adjustment for fixed header
-        window.scrollTo({
-          top: activitiesSection.offsetTop - 80,
-          behavior: 'smooth'
-        });
+      // Extract the full day number, not just a single character
+      const dayNumber = hash.substring(4); // Get everything after '#day'
+      
+      // Find the corresponding content element
+      const contentId = `day-${dayNumber}-content`;
+      const contentElement = document.getElementById(contentId);
+      const headerElement = document.querySelector(`[data-target="${contentId}"]`);
+      
+      // If we found the content element, open it
+      if (contentElement && headerElement) {
+        // Show the content
+        contentElement.style.display = 'block';
         
-        // Find which day number is in the hash
-        const dayNumber = hash.charAt(4); // Extract the number from #day1, #day2, etc.
-        
-        // Find the corresponding content element
-        const contentId = `day-${dayNumber}-content`;
-        const contentElement = document.getElementById(contentId);
-        const headerElement = document.querySelector(`[data-target="${contentId}"]`);
-        
-        // If we found the content element, open it
-        if (contentElement && headerElement) {
-          // Show the content
-          contentElement.style.display = 'block';
-          
-          // Rotate the arrow
-          const arrow = headerElement.querySelector('svg');
-          if (arrow) {
-            arrow.classList.add('rotate-180');
-          }
-          
-          // Scroll to the specific day after a short delay to ensure content is visible
-          setTimeout(() => {
-            const dayElement = document.getElementById(hash.substring(1));
-            if (dayElement) {
-              window.scrollTo({
-                top: dayElement.offsetTop - 80,
-                behavior: 'smooth'
-              });
-            }
-          }, 100);
+        // Rotate the arrow
+        const arrow = headerElement.querySelector('svg');
+        if (arrow) {
+          arrow.classList.add('rotate-180');
         }
+        
+        // Scroll to the specific day after a short delay to ensure content is visible
+        setTimeout(() => {
+          const dayElement = document.getElementById(hash.substring(1));
+          if (dayElement) {
+            window.scrollTo({
+              top: dayElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
       }
     }
   }
+}
   
   // Call the function when the page loads
   handleDayLinks();
