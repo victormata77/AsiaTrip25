@@ -923,6 +923,75 @@ section, .destination-card, .map-line, .journey-map-horizontal,
     max-width: 80%;
   }
 }
+
+/* Menu Item Spacing Fix */
+.md\:flex.md\:items-center.md\:space-x-6 > a,
+.md\:flex.md\:items-center.md\:space-x-6 > div {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#desktop-dropdown-button,
+#desktop-tips-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Mobile menu spacing fix */
+#mobile-menu a,
+#destinations-dropdown-button,
+#tips-dropdown-button {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Hero content spacing fix */
+.hero-image {
+  padding-top: 60px; /* Add top padding to push content down */
+  margin-top: 0;
+}
+
+@media all and (display-mode: standalone) {
+  /* PWA specific fixes */
+  .hero-image {
+    padding-top: max(60px, var(--safe-area-inset-top, 0px));
+  }
+  
+  body {
+    padding-top: 0 !important; /* Remove the body padding */
+  }
+  
+  .sticky-nav {
+    position: fixed !important;
+    top: 0 !important;
+    padding-top: var(--safe-area-inset-top, 0px) !important;
+    height: calc(60px + var(--safe-area-inset-top, 0px)) !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Create proper content spacing */
+  section:first-of-type {
+    margin-top: calc(60px + var(--safe-area-inset-top, 0px)) !important;
+  }
+  
+  #mobile-menu {
+    top: calc(60px + var(--safe-area-inset-top, 0px)) !important;
+  }
+}
+
+/* Fix for vertical alignment in dropdown buttons */
+#desktop-dropdown-button svg,
+#desktop-tips-button svg {
+  margin-top: 1px; /* Fine-tune the arrow alignment */
+}
 	
 </style>
 	
