@@ -808,7 +808,29 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   height: 40px;
 }
 .md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
-	
+/* Add this to your CSS in the style section */
+.map-stop .map-dot,
+.map-stop-vertical .map-dot {
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--mata-red);
+  border-radius: 50% !important;
+  border: 3px solid white !important;
+  box-shadow: 0 0 0 2px var(--mata-red) !important;
+  display: block;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  overflow: visible;
+}
+
+/* Ensure KL dot specifically has correct styling */
+.map-stop:nth-child(7) .map-dot,
+.map-stop-vertical:nth-child(7) .map-dot {
+  transform: none;
+  aspect-ratio: 1 / 1;
+}	
 	
 </style>
 	
@@ -2229,15 +2251,15 @@ section, .destination-card, .map-line, .journey-map-horizontal,
       </div>
       
       <!-- Kuala Lumpur -->
-      <div class="map-stop-vertical" style="top: 75%;">
-        <div class="map-dot"></div>
-        <div class="map-label-vertical">
-          <p class="font-medium"><img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag"> 
-            <a href="kl.html" class="hover:text-red-600 transition-colors">Kuala Lumpur</a>
-          </p>
-          <p class="text-xs text-gray-500">2 nights: Aug 14 - 16</p>
-        </div>
-      </div>
+	<div class="map-stop-vertical" style="top: 75%;">
+	  <div class="map-dot"></div>
+	 	 <div class="map-label-vertical">
+	 	   <p class="font-medium"><img src="https://flagcdn.com/w40/my.png" class="flag-icon" alt="Malaysia flag"> 
+	 	     <a href="kl.html" class="hover:text-red-600 transition-colors">Kuala Lumpur</a>
+		    </p>
+		    <p class="text-xs text-gray-500">2 nights: Aug 14 - 16</p>
+	  </div>
+	</div>
       
       <!-- Maldives -->
       <div class="map-stop-vertical" style="top: 87.5%;">
