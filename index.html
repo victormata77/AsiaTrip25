@@ -123,34 +123,34 @@ body {
   width: 100%;
 }
 
-/* Navigation - Heavy-duty iOS PWA fix */
+/* =============== NAVIGATION - REVISED =============== */
 .sticky-nav {
-  position: fixed !important; /* Force fixed positioning */
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  z-index: 9999 !important; /* Extremely high z-index */
+  z-index: 9999 !important;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* iOS support */
-  background-color: rgba(255, 255, 255, 0.95); /* More opaque */
-  height: var(--nav-height); /* Fixed height */
-  transform: translateZ(0); /* Force hardware acceleration */
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+  height: var(--nav-height);
+  transform: translateZ(0);
   -webkit-transform: translateZ(0);
-  -webkit-backface-visibility: hidden; /* Prevent rendering issues */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Visible shadow to distinguish */
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border-bottom: 3px solid var(--mata-red);
 }
 
-/* Nav container needs vertical centering when height is fixed */
+/* Nav container vertical centering */
 .sticky-nav > div {
   height: 100%;
   display: flex;
-  flex-direction: column; /* Allow mobile menu to stack below */
+  flex-direction: column;
   justify-content: center;
 }
 
-/* Main nav row (title and menu items) */
+/* Main nav row */
 .sticky-nav > div > div.flex {
   display: flex;
   width: 100%;
@@ -158,10 +158,10 @@ body {
   align-items: center;
 }
 
-/* Mobile menu - COMPLETELY REDONE */
+/* =============== MOBILE MENU - COMPLETELY REVISED =============== */
 #mobile-menu {
   position: absolute;
-  top: var(--nav-height); /* Position exactly below navbar */
+  top: var(--nav-height);
   left: 0;
   right: 0;
   width: 100%;
@@ -172,9 +172,10 @@ body {
   overflow-y: auto;
   padding: 0;
   margin: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* Mobile menu items need to be full width */
+/* Mobile menu structure */
 #mobile-menu .flex.flex-col.space-y-3 {
   display: flex;
   flex-direction: column;
@@ -183,7 +184,7 @@ body {
   padding: 0;
 }
 
-/* Mobile menu links should be left-aligned */
+/* Individual mobile menu items */
 #mobile-menu a,
 #mobile-menu button {
   display: block;
@@ -195,37 +196,56 @@ body {
   font-size: 16px;
 }
 
-/* Fix submenus in mobile menu */
+/* Mobile submenus */
 #tips-submenu,
 #destinations-submenu {
   width: 100%;
   margin: 0;
   padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
+/* Show submenus when not hidden */
+#tips-submenu:not(.hidden),
+#destinations-submenu:not(.hidden) {
+  max-height: 500px; /* Large enough to contain all items */
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Submenu items styling */
 #tips-submenu a,
 #destinations-submenu a {
   padding-left: 32px; /* Indent submenu items */
   background-color: #f9fafb;
+  border-bottom: 1px solid #edf2f7;
 }
 
-/* Content container needs adjustment since body has padding */
+/* Last submenu item */
+#tips-submenu a:last-child,
+#destinations-submenu a:last-child {
+  border-bottom: none;
+}
+
+/* Content container */
 .max-w-6xl.mx-auto.px-4.py-12 {
-  padding-top: 1rem; /* Reduced padding since body already has space */
+  padding-top: 1rem;
 }
 
 /* Site title styling */
 .text-red-600.font-bold.text-xl {
   transition: all 0.3s ease;
-  flex-shrink: 0; /* Prevent title from shrinking */
+  flex-shrink: 0;
 }
 
 .page-title-visible {
   transform: scale(1.05);
 }
 
-/* Desktop dropdown menu */
-#desktop-destinations-menu, #desktop-tips-menu {
+/* =============== DESKTOP DROPDOWN MENU =============== */
+#desktop-destinations-menu, 
+#desktop-tips-menu {
   position: absolute;
   left: 0;
   top: 100%;
@@ -235,23 +255,40 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   z-index: 50;
   overflow: hidden;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
-#desktop-destinations-menu.visible, #desktop-tips-menu.visible { display: block; }
-#desktop-destinations-menu a, #desktop-tips-menu a {
+
+#desktop-destinations-menu.visible, 
+#desktop-tips-menu.visible { 
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#desktop-destinations-menu a, 
+#desktop-tips-menu a {
   display: block;
   padding: 0.5rem 1rem;
   color: #4a5568;
   transition: all 0.2s;
 }
-#desktop-destinations-menu a:hover, #desktop-tips-menu a:hover {
+
+#desktop-destinations-menu a:hover, 
+#desktop-tips-menu a:hover {
   background-color: #fee2e2;
   color: #c62828;
 }
-.relative { position: relative; }
+
+.relative { 
+  position: relative; 
+}
 
 /* Dropdown button styling */
-#desktop-dropdown-button, #desktop-tips-button {
+#desktop-dropdown-button, 
+#desktop-tips-button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -260,7 +297,16 @@ body {
   transition: all 0.2s;
   height: 40px;
 }
-#desktop-dropdown-button:hover, #desktop-tips-button:hover { background-color: #f9fafb; }
+
+#desktop-dropdown-button:hover, 
+#desktop-tips-button:hover { 
+  background-color: #f9fafb; 
+}
+
+/* Rotation for dropdown arrows */
+.rotate-180 {
+  transform: rotate(180deg);
+}
 
 /* Menu alignment fixes */
 .md\:flex.md\:items-center.md\:space-x-6 > a,
@@ -269,8 +315,12 @@ body {
   align-items: center;
   height: 40px;
 }
-.md\:flex.md\:items-center.md\:space-x-6 { min-height: 40px; }
 
+.md\:flex.md\:items-center.md\:space-x-6 { 
+  min-height: 40px; 
+}
+
+/* =============== MOBILE DROPDOWN BUTTONS =============== */
 /* Fix mobile menu dropdown button alignment */
 #tips-dropdown-button,
 #destinations-dropdown-button {
@@ -278,6 +328,7 @@ body {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
+  cursor: pointer;
 }
 
 /* Ensure span and svg are on the same line */
@@ -291,35 +342,31 @@ body {
 #dropdown-arrow,
 #tips-dropdown-arrow {
   flex-shrink: 0;
-  margin-left: auto; /* Push to the right */
+  margin-left: auto;
+  transition: transform 0.2s ease;
 }
 
-/* Remove any flexbox adjustments that might be causing issues */
-#tips-dropdown-button.w-full.flex.justify-between.items-center,
-#destinations-dropdown-button.w-full.flex.justify-between.items-center {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-}
-
-/* Journey map */
+/* =============== JOURNEY MAP =============== */
 .journey-map-horizontal {
   display: flex;
   flex-direction: column;
   padding: 20px;
 }
+
 .journey-map-vertical {
   display: none;
   flex-direction: column;
   padding: 20px;
   width: 100%;
 }
+
 .map-line {
   height: 5px;
   background-color: var(--mata-red);
   margin: 30px 0;
   position: relative;
 }
+
 .map-line-vertical {
   width: 5px;
   background-color: var(--mata-red);
@@ -327,6 +374,7 @@ body {
   position: relative;
   height: 600px;
 }
+
 .map-stop {
   position: absolute;
   top: -8px;
@@ -334,6 +382,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .map-stop-vertical {
   position: absolute;
   left: -8px;
@@ -341,6 +390,7 @@ body {
   flex-direction: row;
   align-items: center;
 }
+
 .map-dot {
   width: 20px;
   height: 20px;
@@ -349,23 +399,28 @@ body {
   border: 3px solid white;
   box-shadow: 0 0 0 2px var(--mata-red);
 }
+
 .map-label {
   margin-top: 12px;
   text-align: center;
   white-space: nowrap;
 }
+
 .map-label-vertical {
   margin-left: 12px;
   text-align: left;
   white-space: nowrap;
 }
+
 .tip-card {
   transition: transform 0.3s ease;
 }
+
 .tip-card:hover {
   transform: translateY(-5px);
 }
 
+/* =============== BRAND COLORS AND ELEMENTS =============== */
 .brand-bg-red {
   background-color: var(--mata-red);
 }
@@ -401,7 +456,7 @@ body {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Calendar styles */
+/* =============== CALENDAR STYLES =============== */
 .calendar {
   table-layout: fixed;
   width: 100%;
@@ -409,7 +464,7 @@ body {
 }
 
 .calendar th {
-  background-color: #e57373; /* Softer red for headers */
+  background-color: #e57373;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -429,7 +484,7 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 0.9rem;
-  color: #e57373; /* Softer red for day numbers */
+  color: #e57373;
 }
 
 .calendar .today {
@@ -442,6 +497,7 @@ body {
   color: #9ca3af;
 }
 
+/* =============== DESTINATION TAGS =============== */
 .destination-tag {
   display: inline-block;
   padding: 3px 8px;
@@ -458,39 +514,25 @@ body {
   transform: scale(1.05);
 }
 
-.seoul-tag {
-  background-color: #e53e3e;
-}
+.seoul-tag { background-color: #e53e3e; }
+.tokyo-tag { background-color: #3182ce; }
+.kyoto-tag { background-color: #805ad5; }
+.singapore-tag { background-color: #38a169; }
+.kl-tag { background-color: #dd6b20; }
+.maldives-tag { background-color: #0d9488; }
 
-.tokyo-tag {
-  background-color: #3182ce;
-}
-
-.kyoto-tag {
-  background-color: #805ad5;
-}
-
-.singapore-tag {
-  background-color: #38a169;
-}
-
-.kl-tag {
-  background-color: #dd6b20;
-}
-
-.maldives-tag {
-  background-color: #0d9488;
-}
-
+/* =============== JOURNEY MAP =============== */
 .custom-journey-map {
   overflow-x: auto;
   padding: 20px 0;
 }
+
 .journey-line {
   height: 4px;
   background-color: var(--mata-red);
   position: relative;
 }
+
 .journey-stop {
   position: absolute;
   top: 50%;
@@ -499,6 +541,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .journey-dot {
   width: 16px;
   height: 16px;
@@ -507,12 +550,14 @@ body {
   border-radius: 50%;
   margin-bottom: 10px;
 }
+
 .journey-label {
   white-space: nowrap;
   text-align: center;
   font-weight: 500;
   margin-top: 5px;
 }
+
 .journey-nights {
   font-size: 12px;
   color: #666;
@@ -528,9 +573,10 @@ body {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+/* =============== CURRENT LOCATION HIGHLIGHTING =============== */
 .current-location .map-dot {
   background-color: white;
-  border: 3px solid #38b2ac; /* Teal color */
+  border: 3px solid #38b2ac;
   box-shadow: 0 0 0 2px #38b2ac, 0 0 10px rgba(56, 178, 172, 0.5);
   animation: pulse 2s infinite;
 }
@@ -542,18 +588,12 @@ body {
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(56, 178, 172, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(56, 178, 172, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(56, 178, 172, 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgba(56, 178, 172, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(56, 178, 172, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 178, 172, 0); }
 }
 
-/* Additional styles for the hotel section */
+/* =============== HOTEL SECTION =============== */
 .hotel-row.bg-red-50 {
   position: relative;
 }
@@ -568,7 +608,7 @@ body {
   background-color: var(--mata-red);
 }
 
-/* Responsive adjustments */
+/* =============== RESPONSIVE ADJUSTMENTS =============== */
 @media (max-width: 768px) {
   /* Adjust body padding for mobile nav height */
   body {
@@ -605,7 +645,8 @@ body {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
-
+  
+  /* Adjust hotel table for mobile */
   #hotels table {
     display: block;
   }
@@ -629,7 +670,8 @@ body {
   #hotels td:nth-child(8) {
     display: none;
   }
-
+  
+  /* Calendar adjustments for mobile */
   .calendar th {
     font-size: 0.7rem;
     padding: 6px 2px;
@@ -644,35 +686,33 @@ body {
     padding: 2px 6px;
   }
   
+  /* Journey map mobile adjustments */
   .journey-map-horizontal {
     display: none;
   }
+  
   .journey-map-vertical {
     display: flex;
   }
+  
   .logo-container {
     height: 40px;
   }
 }
 
+/* =============== ANIMATIONS =============== */
 /* Animation for current hotel marker */
 @keyframes pulse-red {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .hotel-row .current-marker {
   animation: pulse-red 2s infinite;
 }
 
-/* Estilos para el contador estilo YouTube */
+/* =============== COUNTDOWN STYLES =============== */
 .countdown-container {
   display: flex;
   justify-content: center;
@@ -737,9 +777,8 @@ body {
   }
 }
 
-/* iOS-specific fixes for PWA */
+/* =============== iOS-SPECIFIC FIXES =============== */
 @supports (-webkit-touch-callout: none) {
-  /* iOS-specific styles */
   body {
     padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
@@ -767,14 +806,14 @@ body {
     }
   }
 }
-/* Fix for scrolling issue - adjust z-index for all potential elements */
+
+/* =============== Z-INDEX FIXES =============== */
 section, .destination-card, .map-line, .journey-map-horizontal, 
 .journey-map-vertical, .calendar, .tip-card, #mobile-menu {
   z-index: 10;
   position: relative;
 }
 
-/* For the scrolling issue with specific sections that might appear above the menu */
 #calendar, #flights, #hotels, #journey {
   z-index: 10;
   position: relative;
@@ -783,38 +822,44 @@ section, .destination-card, .map-line, .journey-map-horizontal,
 /* Add scroll padding to prevent content being hidden behind the navbar */
 html {
   scroll-padding-top: 80px;
-}	
-
-	/* Fix mobile menu dropdown button alignment */
-#tips-dropdown-button,
-#destinations-dropdown-button {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
 }
 
-/* Ensure span and svg are on the same line */
-#tips-dropdown-button span,
-#destinations-dropdown-button span {
-  display: inline-block;
+/* Additional mobile menu fixes */
+@media (max-width: 768px) {
+  #mobile-menu {
+    display: none; /* Default state is hidden */
+  }
+  
+  #mobile-menu.hidden {
+    display: none;
+  }
+  
+  #mobile-menu:not(.hidden) {
+    display: block;
+  }
+  
+  #tips-submenu,
+  #destinations-submenu {
+    display: none; /* Default state is hidden */
+  }
+  
+  #tips-submenu.hidden,
+  #destinations-submenu.hidden {
+    display: none;
+  }
+  
+  #tips-submenu:not(.hidden),
+  #destinations-submenu:not(.hidden) {
+    display: block;
+  }
 }
 
-#tips-dropdown-button svg,
-#destinations-dropdown-button svg,
-#dropdown-arrow,
-#tips-dropdown-arrow {
-  flex-shrink: 0;
-  margin-left: auto; /* Push to the right */
+/* Fix for icon errors */
+.icon-fix {
+  width: auto;
+  height: auto;
 }
 
-/* Remove any flexbox adjustments that might be causing issues */
-#tips-dropdown-button.w-full.flex.justify-between.items-center,
-#destinations-dropdown-button.w-full.flex.justify-between.items-center {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-}
 </style>
 	
 </head>
@@ -2282,76 +2327,169 @@ html {
 
 
 <script>
-// Debugging for mobile menu
-console.log("Script loaded");
-console.log("Mobile menu button exists:", !!document.getElementById('mobile-menu-button'));
-console.log("Mobile menu exists:", !!document.getElementById('mobile-menu'));
 
-// Try to identify if the click event is being intercepted
-document.addEventListener('click', function(e) {
-  const path = e.composedPath ? e.composedPath() : e.path;
-  if (path && path.some(el => el.id === 'mobile-menu-button')) {
-    console.log("Button clicked in capture phase");
-  }
-}, true);
-
+// Main script file - optimized for mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-// 1. Mobile menu toggle - FIXED VERSION
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (mobileMenuButton && mobileMenu) {
-  // Remove any existing event listeners by cloning and replacing
-  const newButton = mobileMenuButton.cloneNode(true);
-  mobileMenuButton.parentNode.replaceChild(newButton, mobileMenuButton);
+  console.log("DOM fully loaded");
   
-  // Add click event with explicit prevention
-  newButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    mobileMenu.classList.toggle('hidden');
-  });
-}
-
-
-
-  // 2. Close menu when links are clicked
-  if (mobileMenu) {
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Don't close menu for the destinations dropdown
-        if (!this.closest('#destinations-dropdown-button')) {
-          mobileMenu.classList.add('hidden');
-        }
-      });
-    });
-  }
+  // ================= MOBILE MENU FUNCTIONALITY =================
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
   
-  // 3. Handle destinations submenu
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  if (destinationsSubmenu) {
-    const submenuLinks = destinationsSubmenu.querySelectorAll('a');
-    submenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Close both the submenu and the main mobile menu
-        destinationsSubmenu.classList.add('hidden');
+  // Simple toggle function with debugging
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Mobile menu button clicked");
+      
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        console.log("Menu opened");
+      } else {
         mobileMenu.classList.add('hidden');
-      });
+        console.log("Menu closed");
+      }
     });
   }
   
-  // 4. Fix scroll position for section links to show section titles
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (mobileMenu && !mobileMenu.contains(e.target) && 
+        e.target !== mobileMenuButton && 
+        !mobileMenuButton.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+  
+  // Stop propagation for clicks inside the menu
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+  
+  // ================= MOBILE DROPDOWNS =================
+  // Tips dropdown in mobile menu
+  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
+  const tipsSubmenu = document.getElementById('tips-submenu');
+  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
+  
+  if (tipsDropdownButton && tipsSubmenu) {
+    tipsDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      tipsSubmenu.classList.toggle('hidden');
+      
+      if (tipsDropdownArrow) {
+        tipsDropdownArrow.classList.toggle('rotate-180');
+      }
+      console.log("Tips submenu toggled");
+    });
+  }
+  
+  // Destinations dropdown in mobile menu
+  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
+  const destinationsSubmenu = document.getElementById('destinations-submenu');
+  const dropdownArrow = document.getElementById('dropdown-arrow');
+  
+  if (destinationsDropdownButton && destinationsSubmenu) {
+    destinationsDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      destinationsSubmenu.classList.toggle('hidden');
+      
+      if (dropdownArrow) {
+        dropdownArrow.classList.toggle('rotate-180');
+      }
+      console.log("Destinations submenu toggled");
+    });
+  }
+  
+  // ================= DESKTOP DROPDOWNS =================
+  // Desktop destinations dropdown
+  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
+  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
+  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
+  
+  if (desktopDropdownButton && desktopDestinationsMenu) {
+    desktopDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopDestinationsMenu.classList.toggle('visible');
+      
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // Desktop tips dropdown
+  const desktopTipsButton = document.getElementById('desktop-tips-button');
+  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
+  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
+  
+  if (desktopTipsButton && desktopTipsMenu) {
+    desktopTipsButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      desktopTipsMenu.classList.toggle('visible');
+      
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.toggle('rotate-180');
+      }
+    });
+  }
+  
+  // Close desktop dropdowns when clicking elsewhere
+  document.addEventListener('click', function(e) {
+    if (desktopDestinationsMenu && desktopDropdownButton && 
+        !desktopDestinationsMenu.contains(e.target) && 
+        !desktopDropdownButton.contains(e.target)) {
+      desktopDestinationsMenu.classList.remove('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.remove('rotate-180');
+      }
+    }
+    
+    if (desktopTipsMenu && desktopTipsButton && 
+        !desktopTipsMenu.contains(e.target) && 
+        !desktopTipsButton.contains(e.target)) {
+      desktopTipsMenu.classList.remove('visible');
+      if (desktopTipsArrow) {
+        desktopTipsArrow.classList.remove('rotate-180');
+      }
+    }
+  });
+  
+  // ================= ACCORDION FUNCTIONALITY =================
+  // Accordion functionality for itinerary section
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      this.classList.toggle('active');
+      
+      const content = this.nextElementSibling;
+      content.classList.toggle('hidden');
+      
+      const arrow = this.querySelector('svg');
+      if (arrow) {
+        arrow.classList.toggle('rotate-180');
+      }
+    });
+  });
+  
+  // ================= SMOOTH SCROLL FUNCTIONALITY =================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
-      // Get the target element
       const targetId = this.getAttribute('href').substring(1);
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        // Calculate scroll position - offset by the navbar height plus some padding
+        // Get navbar height based on screen size
         const navHeight = window.innerWidth <= 768 ? 
                          parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height-mobile')) : 
                          parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'));
@@ -2360,10 +2498,9 @@ if (mobileMenuButton && mobileMenu) {
         const safeAreaInset = window.getComputedStyle(document.documentElement).getPropertyValue('env(safe-area-inset-top)') || '0px';
         const safeAreaInsetValue = parseInt(safeAreaInset) || 0;
         
-        // Calculate final offset with safe area consideration
-        const scrollPosition = targetElement.offsetTop - (navHeight + safeAreaInsetValue + 10);
+        // Calculate offset
+        const scrollPosition = targetElement.offsetTop - (navHeight + safeAreaInsetValue + 20);
         
-        // Scroll to the adjusted position
         window.scrollTo({
           top: scrollPosition,
           behavior: 'smooth'
@@ -2372,177 +2509,15 @@ if (mobileMenuButton && mobileMenu) {
     });
   });
   
-  // 5. Desktop dropdown functionality
-  const desktopDropdownButton = document.getElementById('desktop-dropdown-button');
-  const desktopDestinationsMenu = document.getElementById('desktop-destinations-menu');
-  const desktopDropdownArrow = document.getElementById('desktop-dropdown-arrow');
-  
-  if (desktopDropdownButton && desktopDestinationsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopDropdownButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopDestinationsMenu.classList.toggle('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopDestinationsMenu.classList.remove('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopDestinationsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // 6. Mobile destinations submenu toggle
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function() {
-      destinationsSubmenu.classList.toggle('hidden');
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
-  
-  // 7. Highlight current page in destinations submenus
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
-  // For mobile submenu
-  if (destinationsSubmenu) {
-    const mobileLinks = destinationsSubmenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('text-red-600', 'font-bold');
-      }
-    });
-  }
-  
-  // For desktop submenu
-  if (desktopDestinationsMenu) {
-    const desktopLinks = desktopDestinationsMenu.querySelectorAll('a');
-    desktopLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('text-red-600', 'font-bold');
-      }
-    });
-  }
-  
-  // 8. Tips dropdown functionality
-  const desktopTipsButton = document.getElementById('desktop-tips-button');
-  const desktopTipsMenu = document.getElementById('desktop-tips-menu');
-  const desktopTipsArrow = document.getElementById('desktop-tips-arrow');
-  
-  if (desktopTipsButton && desktopTipsMenu) {
-    // Use class-based toggle instead of hidden attribute
-    desktopTipsButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      desktopTipsMenu.classList.toggle('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.toggle('rotate-180');
-      }
-    });
-    
-    // Close when clicking elsewhere
-    document.addEventListener('click', function() {
-      desktopTipsMenu.classList.remove('visible');
-      if (desktopTipsArrow) {
-        desktopTipsArrow.classList.remove('rotate-180');
-      }
-    });
-    
-    // Prevent menu from closing when clicking inside it
-    desktopTipsMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-  
-  // 9. Mobile Tips submenu toggle
-  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-  const tipsSubmenu = document.getElementById('tips-submenu');
-  const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
-  
-  if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.addEventListener('click', function() {
-      tipsSubmenu.classList.toggle('hidden');
-      if (tipsDropdownArrow) {
-        tipsDropdownArrow.classList.toggle('rotate-180');
-      }
-    });
-  }
-  
-  // 10. Add click handlers for Tips submenu links
-  if (tipsSubmenu) {
-    const tipsSubmenuLinks = tipsSubmenu.querySelectorAll('a');
-    tipsSubmenuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // Close both the submenu and the main mobile menu
-        tipsSubmenu.classList.add('hidden');
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  }
-
-  // 11. Fix mobile menu dropdown button alignment
-  document.querySelectorAll('#tips-dropdown-button, #destinations-dropdown-button').forEach(button => {
-    if (button) {
-      button.style.display = "flex";
-      button.style.justifyContent = "space-between";
-      button.style.alignItems = "center";
-      button.style.width = "100%";
-    }
-  });
-
-  // 12. ACCORDION FUNCTIONALITY
-  // Accordion functionality for itinerary section
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
-  
-  // Add click event to each header
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function() {
-      // Toggle the active class
-      this.classList.toggle('active');
-      
-      // Get the content panel
-      const content = this.nextElementSibling;
-      
-      // Toggle the hidden class
-      content.classList.toggle('hidden');
-      
-      // Rotate the arrow icon
-      const arrow = this.querySelector('svg');
-      if (arrow) {
-        if (content.classList.contains('hidden')) {
-          arrow.classList.remove('rotate-180');
-        } else {
-          arrow.classList.add('rotate-180');
-        }
-      }
-    });
-  });
-  
-  // 13. COUNTDOWN FUNCTIONALITY
-  // Time calculator function for both counters
+  // ================= COUNTDOWN FUNCTIONALITY =================
   function getTimeUntilTrip() {
     const now = new Date();
     // Trip start date - July 30, 2025
-    const tripStart = new Date(2025, 6, 30, 0, 0, 0); // July 30, 2025 at 00:00:00
+    const tripStart = new Date(2025, 6, 30, 0, 0, 0);
     
-    // Calculate time difference in milliseconds
+    // Calculate difference
     const diffTime = tripStart.getTime() - now.getTime();
     
-    // If the trip has already started
     if (diffTime <= 0) {
       const tripEnd = new Date(2025, 7, 21); // August 21, 2025
       if (now <= tripEnd) {
@@ -2585,7 +2560,7 @@ if (mobileMenuButton && mobileMenu) {
     };
   }
   
-  // Update text countdown (original)
+  // Update text countdown
   function updateTextCountdown() {
     const timeData = getTimeUntilTrip();
     const countdownElement = document.getElementById('text-countdown-days');
@@ -2594,10 +2569,8 @@ if (mobileMenuButton && mobileMenu) {
       if (timeData.status === 'countdown') {
         countdownElement.textContent = timeData.days;
       } else if (timeData.status === 'in-progress') {
-        countdownElement.textContent = "Day " + timeData.days;
         countdownElement.parentElement.textContent = timeData.text;
       } else {
-        countdownElement.textContent = "Completed";
         countdownElement.parentElement.textContent = timeData.text;
       }
     }
@@ -2607,7 +2580,6 @@ if (mobileMenuButton && mobileMenu) {
   function updateYouTubeStyleCountdown() {
     const timeData = getTimeUntilTrip();
     
-    // If countdown elements exist
     const daysElement = document.getElementById('countdown-days');
     const hoursElement = document.getElementById('countdown-hours');
     const minutesElement = document.getElementById('countdown-minutes');
@@ -2628,21 +2600,20 @@ if (mobileMenuButton && mobileMenu) {
     }
   }
   
-  // Main function to update all countdowns
+  // Update all countdowns
   function updateAllCountdowns() {
     updateTextCountdown();
     updateYouTubeStyleCountdown();
   }
   
-  // Start countdowns immediately
+  // Initialize countdowns
   updateAllCountdowns();
   
-  // Update countdowns: text once a day, YouTube every second
-  setInterval(updateTextCountdown, 1000 * 60 * 60 * 24); // text: once a day
-  setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
+  // Update intervals
+  setInterval(updateTextCountdown, 1000 * 60 * 60); // Text: once an hour
+  setInterval(updateYouTubeStyleCountdown, 1000); // YouTube-style: every second
   
-  // 14. LOCATION HIGHLIGHTING
-  // Journey map current location highlighting
+  // ================= LOCATION HIGHLIGHTING =================
   // Get today's date
   const today = new Date();
   
@@ -2668,17 +2639,17 @@ if (mobileMenuButton && mobileMenu) {
   });
   
   if (currentLocation) {
-    // Handle special case for start and end
-    let selector = `.map-stop`;
+    // Handle special cases and add highlighting
     if (currentLocation === 'BCN-Start') {
-      selector = `.map-stop:first-child`;
+      const firstStops = document.querySelectorAll('.map-stop:first-child, .map-stop-vertical:first-child');
+      firstStops.forEach(stop => stop.classList.add('current-location'));
     } else if (currentLocation === 'BCN-End') {
-      selector = `.map-stop:last-child`;
+      const lastStops = document.querySelectorAll('.map-stop:last-child, .map-stop-vertical:last-child');
+      lastStops.forEach(stop => stop.classList.add('current-location'));
     } else {
       // Find the location in both desktop and mobile versions
-      document.querySelectorAll(`.map-stop .map-label a, .map-stop-vertical .map-label-vertical a`).forEach(element => {
+      document.querySelectorAll('.map-stop .map-label a, .map-stop-vertical .map-label-vertical a').forEach(element => {
         if (element.textContent.trim() === currentLocation) {
-          // Add highlighting to parent .map-stop
           let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
           if (mapStop) {
             mapStop.classList.add('current-location');
@@ -2688,72 +2659,76 @@ if (mobileMenuButton && mobileMenu) {
     }
   }
   
-  // 15. CALENDAR DATE HIGHLIGHTING
-  // Calendar date highlighting
-  // Format the date as DD/M (e.g., 12/8)
+  // ================= CALENDAR HIGHLIGHTING =================
+  // Format date as DD/M
   const day = today.getDate();
-  const month = today.getMonth() + 1; // JavaScript months are 0-based
+  const month = today.getMonth() + 1;
   const dateString = `${day}/${month}`;
   
-  // Find the table cell corresponding to today's date
+  // Find calendar cell for today
   const cells = document.querySelectorAll('.calendar th');
-  let todayCell = null;
-  
-  // Loop through all header cells to find the matching date
   cells.forEach(cell => {
     const cellText = cell.textContent;
     if (cellText.includes(dateString)) {
-      // Get the column index of this header
       const index = Array.from(cell.parentNode.children).indexOf(cell);
       const tbody = cell.closest('thead').nextElementSibling;
       const row = tbody.querySelector('tr');
       if (row && row.children[index]) {
-        // Add the "today" class to the corresponding cell in the current row
-        todayCell = row.children[index];
-        todayCell.classList.add('today');
+        row.children[index].classList.add('today');
       }
     }
   });
   
-  // 16. HOTEL HIGHLIGHTING
-  // Function to highlight current hotel
+  // ================= HOTEL HIGHLIGHTING =================
+  // Highlight current hotel
   function highlightCurrentHotel() {
-    // Get today's date in YYYY-MM-DD format
     const today = new Date();
     const formattedDate = today.getFullYear() + '-' + 
                          String(today.getMonth() + 1).padStart(2, '0') + '-' + 
                          String(today.getDate()).padStart(2, '0');
     
-    // Check each hotel row
     document.querySelectorAll('.hotel-row').forEach(row => {
       const checkIn = row.getAttribute('data-check-in');
       const checkOut = row.getAttribute('data-check-out');
       
-      // If today is between check-in and check-out (inclusive of check-in, exclusive of check-out)
       if (formattedDate >= checkIn && formattedDate < checkOut) {
-        // Add highlighting classes
         row.classList.add('bg-red-50');
         row.classList.add('font-medium');
         
-        // Add a marker to show it's the current hotel
-        const currentMarker = document.createElement('div');
-        currentMarker.className = 'inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-full ml-2 current-marker';
-        currentMarker.innerText = 'Current Stay';
-        
-        // Add the marker to the hotel name cell
         const hotelCell = row.querySelector('td:nth-child(5)');
         if (hotelCell && !hotelCell.querySelector('.current-marker')) {
+          const currentMarker = document.createElement('div');
+          currentMarker.className = 'inline-block bg-red-600 text-white text-xs px-2 py-1 rounded-full ml-2 current-marker';
+          currentMarker.innerText = 'Current Stay';
           hotelCell.appendChild(currentMarker);
         }
       }
     });
   }
   
-  // Call the function to highlight current hotel
   highlightCurrentHotel();
   
-  // 17. SERVICE WORKER REGISTRATION
-  // Register service worker for PWA functionality
+  // ================= MOBILE LINKS HANDLING =================
+  // Handle mobile menu links clicks
+  if (mobileMenu) {
+    const allMobileLinks = mobileMenu.querySelectorAll('a:not([id])');
+    allMobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        // Close the mobile menu when a link is clicked
+        mobileMenu.classList.add('hidden');
+        
+        // Also close any open submenu
+        if (tipsSubmenu) tipsSubmenu.classList.add('hidden');
+        if (destinationsSubmenu) destinationsSubmenu.classList.add('hidden');
+        
+        // Reset dropdown arrows
+        if (tipsDropdownArrow) tipsDropdownArrow.classList.remove('rotate-180');
+        if (dropdownArrow) dropdownArrow.classList.remove('rotate-180');
+      });
+    });
+  }
+  
+  // ================= SERVICE WORKER REGISTRATION =================
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('service-worker.js', {scope: './'})
@@ -2766,15 +2741,13 @@ if (mobileMenuButton && mobileMenu) {
     });
   }
   
-  // 18. iOS INSTALL BANNER
-  // Show install banner for iOS users
+  // ================= iOS INSTALL BANNER =================
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
   
   if (isIOS && !isStandalone) {
     const iosBanner = document.getElementById('ios-install-banner');
     if (iosBanner) {
-      // Check if user previously closed the banner
       const bannerClosed = localStorage.getItem('installBannerClosed') === 'true';
       if (!bannerClosed) {
         iosBanner.classList.remove('hidden');
@@ -2782,7 +2755,7 @@ if (mobileMenuButton && mobileMenu) {
     }
   }
   
-  // Set up install button click handler
+  // Install button handler
   const installButton = document.getElementById('install-button');
   if (installButton) {
     installButton.addEventListener('click', () => {
@@ -2790,62 +2763,20 @@ if (mobileMenuButton && mobileMenu) {
     });
   }
   
-  // Set up close banner button
+  // Close banner button handler
   const closeBannerButton = document.getElementById('close-banner');
   if (closeBannerButton) {
     closeBannerButton.addEventListener('click', () => {
       const banner = document.getElementById('ios-install-banner');
       if (banner) {
         banner.classList.add('hidden');
-        // Store preference in localStorage
         localStorage.setItem('installBannerClosed', 'true');
       }
     });
   }
 });
 
-window.addEventListener('load', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.onclick = function(e) {
-      e.preventDefault();
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        console.log("Menu opened");
-      } else {
-        mobileMenu.classList.add('hidden');
-        console.log("Menu closed");
-      }
-    };
-  }
-  
-  // Also add direct click handlers to the dropdowns
-  const tipsDropdownButton = document.getElementById('tips-dropdown-button');
-  const tipsSubmenu = document.getElementById('tips-submenu');
-  
-  if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      tipsSubmenu.classList.toggle('hidden');
-      console.log("Tips menu toggled");
-    };
-  }
-  
-  const destinationsDropdownButton = document.getElementById('destinations-dropdown-button');
-  const destinationsSubmenu = document.getElementById('destinations-submenu');
-  
-  if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.onclick = function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      destinationsSubmenu.classList.toggle('hidden');
-      console.log("Destinations menu toggled");
-    };
-  }
-});
+	
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
