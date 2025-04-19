@@ -2603,52 +2603,70 @@ document.addEventListener('DOMContentLoaded', function() {
   setInterval(updateYouTubeStyleCountdown, 1000); // YouTube: every second
   
   // 13. LOCATION HIGHLIGHTING
-  // Journey map current location highlighting
-  // Get today's date
-  const today = new Date();
-  
-  // Define location date ranges
-  const locations = [
-    { name: 'BCN-Start', start: new Date(2025, 6, 30), end: new Date(2025, 6, 30) },
-    { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
-    { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
-    { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
-    { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
-    { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
-    { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
-    { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) },
-    { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
-  ];
-  
-  // Find current location
-  let currentLocation = null;
-  locations.forEach(location => {
-    if (today >= location.start && today <= location.end) {
-      currentLocation = location.name;
-    }
-  });
-  
-  if (currentLocation) {
-    // Handle special case for start and end
-    let selector = `.map-stop`;
-    if (currentLocation === 'BCN-Start') {
-      selector = `.map-stop:first-child`;
-    } else if (currentLocation === 'BCN-End') {
-      selector = `.map-stop:last-child`;
-    } else {
-      // Find the location in both desktop and mobile versions
-      document.querySelectorAll(`.map-stop .map-label a, .map-stop-vertical .map-label-vertical a`).forEach(element => {
-        if (element.textContent.trim() === currentLocation) {
-          // Add highlighting to parent .map-stop
-          let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
-          if (mapStop) {
-            mapStop.classList.add('current-location');
-          }
-        }
-      });
-    }
-  }
-  
+  	// Journey map current location highlighting
+	// Get today's date
+	const today = new Date();
+	
+	// Define location date ranges
+	const locations = [
+	  { name: 'BCN-Start', start: new Date(2025, 6, 30), end: new Date(2025, 6, 30) },
+	  { name: 'Seoul', start: new Date(2025, 6, 31), end: new Date(2025, 7, 3) },
+	  { name: 'Tokyo', start: new Date(2025, 7, 4), end: new Date(2025, 7, 7) },
+	  { name: 'Kyoto', start: new Date(2025, 7, 8), end: new Date(2025, 7, 9) },
+	  { name: 'Narita', start: new Date(2025, 7, 10), end: new Date(2025, 7, 10) },
+	  { name: 'Singapore', start: new Date(2025, 7, 11), end: new Date(2025, 7, 13) },
+	  { name: 'Kuala Lumpur', start: new Date(2025, 7, 14), end: new Date(2025, 7, 15) },
+	  { name: 'Maldives', start: new Date(2025, 7, 16), end: new Date(2025, 7, 20) },
+	  { name: 'BCN-End', start: new Date(2025, 7, 21), end: new Date(2025, 7, 21) }
+	];
+	
+	// Check if trip has started
+	const tripStart = new Date(2025, 6, 30); // July 30, 2025
+	const tripEnd = new Date(2025, 7, 21);   // August 21, 2025
+	
+	// Find current location
+	let currentLocation = null;
+	
+	if (today < tripStart) {
+	  // Trip hasn't started yet - highlight BCN Start
+	  currentLocation = 'BCN-Start';
+	} else if (today > tripEnd) {
+	  // Trip is over - highlight BCN End
+	  currentLocation = 'BCN-End';
+	} else {
+	  // Trip is in progress - find current location
+	  locations.forEach(location => {
+	    if (today >= location.start && today <= location.end) {
+	      currentLocation = location.name;
+	    }
+	  });
+	}
+	
+	// Apply highlighting based on currentLocation
+	if (currentLocation) {
+	  if (currentLocation === 'BCN-Start') {
+	    // Highlight BCN Start location in both horizontal and vertical maps
+	    document.querySelectorAll('.map-line .map-stop:first-child, .map-line-vertical .map-stop-vertical:first-child').forEach(element => {
+	      element.classList.add('current-location');
+	    });
+	  } else if (currentLocation === 'BCN-End') {
+	    // Highlight BCN End location in both maps
+	    document.querySelectorAll('.map-line .map-stop:last-child, .map-line-vertical .map-stop-vertical:last-child').forEach(element => {
+	      element.classList.add('current-location');
+	    });
+	  } else {
+	    // Find the location in both desktop and mobile versions by text content
+	    document.querySelectorAll('.map-stop .map-label a, .map-stop-vertical .map-label-vertical a').forEach(element => {
+	      if (element.textContent.trim() === currentLocation) {
+	        // Add highlighting to parent .map-stop
+	        let mapStop = element.closest('.map-stop') || element.closest('.map-stop-vertical');
+	        if (mapStop) {
+	          mapStop.classList.add('current-location');
+	        }
+	      }
+	    });
+	  }
+	}  
   // 14. CALENDAR DATE HIGHLIGHTING
   // Calendar date highlighting
   // Format the date as DD/M (e.g., 12/8)
