@@ -859,7 +859,34 @@ html {
   width: auto;
   height: auto;
 }
+@media (max-width: 768px) {
+  /* Make sure mobile menu is properly hidden/shown */
+  #mobile-menu {
+    display: block;
+  }
 
+  #mobile-menu.hidden {
+    display: none !important;
+  }
+
+  /* Make sure submenus are properly hidden/shown */
+  #tips-submenu,
+  #destinations-submenu {
+    display: block;
+  }
+
+  #tips-submenu.hidden,
+  #destinations-submenu.hidden {
+    display: none !important;
+  }
+  
+  /* Fix submenu arrow rotation */
+  #tips-dropdown-arrow.rotate-180,
+  #dropdown-arrow.rotate-180 {
+    transform: rotate(180deg);
+  }
+}
+	
 </style>
 	
 </head>
@@ -2328,7 +2355,7 @@ html {
 
 <script>
 
-// Main script file - optimized for mobile menu functionality
+	// Complete script with fixed mobile menu and all original functionality
 document.addEventListener('DOMContentLoaded', function() {
   console.log("DOM fully loaded");
   
@@ -2343,29 +2370,14 @@ document.addEventListener('DOMContentLoaded', function() {
       e.stopPropagation();
       console.log("Mobile menu button clicked");
       
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
+      // Toggle the hidden class
+      mobileMenu.classList.toggle('hidden');
+      
+      if (!mobileMenu.classList.contains('hidden')) {
         console.log("Menu opened");
       } else {
-        mobileMenu.classList.add('hidden');
         console.log("Menu closed");
       }
-    });
-  }
-  
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (mobileMenu && !mobileMenu.contains(e.target) && 
-        e.target !== mobileMenuButton && 
-        !mobileMenuButton.contains(e.target)) {
-      mobileMenu.classList.add('hidden');
-    }
-  });
-  
-  // Stop propagation for clicks inside the menu
-  if (mobileMenu) {
-    mobileMenu.addEventListener('click', function(e) {
-      e.stopPropagation();
     });
   }
   
@@ -2376,15 +2388,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const tipsDropdownArrow = document.getElementById('tips-dropdown-arrow');
   
   if (tipsDropdownButton && tipsSubmenu) {
-    tipsDropdownButton.addEventListener('click', function(e) {
+    // Replace any existing event listeners
+    const newTipsButton = tipsDropdownButton.cloneNode(true);
+    tipsDropdownButton.parentNode.replaceChild(newTipsButton, tipsDropdownButton);
+    
+    newTipsButton.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      
+      // Log the current state for debugging
+      console.log("Tips button clicked", 
+                 "Current submenu hidden state:", tipsSubmenu.classList.contains('hidden'));
+      
+      // Toggle the hidden class
       tipsSubmenu.classList.toggle('hidden');
       
-      if (tipsDropdownArrow) {
-        tipsDropdownArrow.classList.toggle('rotate-180');
+      // Toggle arrow rotation
+      const arrow = this.querySelector('svg');
+      if (arrow) {
+        arrow.classList.toggle('rotate-180');
       }
-      console.log("Tips submenu toggled");
+      
+      // Log the new state for debugging
+      console.log("Tips submenu toggled", 
+                 "New hidden state:", tipsSubmenu.classList.contains('hidden'));
     });
   }
   
@@ -2394,15 +2421,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const dropdownArrow = document.getElementById('dropdown-arrow');
   
   if (destinationsDropdownButton && destinationsSubmenu) {
-    destinationsDropdownButton.addEventListener('click', function(e) {
+    // Replace any existing event listeners
+    const newDestButton = destinationsDropdownButton.cloneNode(true);
+    destinationsDropdownButton.parentNode.replaceChild(newDestButton, destinationsDropdownButton);
+    
+    newDestButton.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      
+      // Log the current state for debugging
+      console.log("Destinations button clicked", 
+                 "Current submenu hidden state:", destinationsSubmenu.classList.contains('hidden'));
+      
+      // Toggle the hidden class
       destinationsSubmenu.classList.toggle('hidden');
       
-      if (dropdownArrow) {
-        dropdownArrow.classList.toggle('rotate-180');
+      // Toggle arrow rotation
+      const arrow = this.querySelector('svg');
+      if (arrow) {
+        arrow.classList.toggle('rotate-180');
       }
-      console.log("Destinations submenu toggled");
+      
+      // Log the new state for debugging
+      console.log("Destinations submenu toggled", 
+                 "New hidden state:", destinationsSubmenu.classList.contains('hidden'));
     });
   }
   
@@ -2417,10 +2459,22 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       desktopDestinationsMenu.classList.toggle('visible');
-      
       if (desktopDropdownArrow) {
         desktopDropdownArrow.classList.toggle('rotate-180');
       }
+    });
+    
+    // Close when clicking elsewhere
+    document.addEventListener('click', function() {
+      desktopDestinationsMenu.classList.remove('visible');
+      if (desktopDropdownArrow) {
+        desktopDropdownArrow.classList.remove('rotate-180');
+      }
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopDestinationsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
     });
   }
   
@@ -2434,33 +2488,24 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       desktopTipsMenu.classList.toggle('visible');
-      
       if (desktopTipsArrow) {
         desktopTipsArrow.classList.toggle('rotate-180');
       }
     });
-  }
-  
-  // Close desktop dropdowns when clicking elsewhere
-  document.addEventListener('click', function(e) {
-    if (desktopDestinationsMenu && desktopDropdownButton && 
-        !desktopDestinationsMenu.contains(e.target) && 
-        !desktopDropdownButton.contains(e.target)) {
-      desktopDestinationsMenu.classList.remove('visible');
-      if (desktopDropdownArrow) {
-        desktopDropdownArrow.classList.remove('rotate-180');
-      }
-    }
     
-    if (desktopTipsMenu && desktopTipsButton && 
-        !desktopTipsMenu.contains(e.target) && 
-        !desktopTipsButton.contains(e.target)) {
+    // Close when clicking elsewhere
+    document.addEventListener('click', function() {
       desktopTipsMenu.classList.remove('visible');
       if (desktopTipsArrow) {
         desktopTipsArrow.classList.remove('rotate-180');
       }
-    }
-  });
+    });
+    
+    // Prevent menu from closing when clicking inside it
+    desktopTipsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
   
   // ================= ACCORDION FUNCTIONALITY =================
   // Accordion functionality for itinerary section
@@ -2776,7 +2821,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-	
 </script>
 	  
 <div id="ios-install-banner" class="hidden fixed bottom-0 left-0 right-0 bg-red-50 p-4 border-t-4 border-red-600 shadow-lg z-50">
