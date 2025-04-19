@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-sc
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>MATA'S ASIAN TOUR 2025 - Connectivity Guide</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="icon" href="icon2.png" type="image/png">
   <!-- Web App Manifest -->
   <link rel="manifest" href="/manifest.json">
@@ -339,6 +340,49 @@ body {
 .text-purple-700, .text-indigo-700, .text-yellow-800, 
 .text-orange-800, .text-purple-800, .text-blue-800 {
   font-weight: 600;
+}
+
+/* Adapter and app grid layouts */
+.adapter-grid, .app-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .adapter-grid, .app-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .adapter-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .app-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.adapter-card, .app-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.adapter-card > div:first-child,
+.app-card > div:first-child {
+  flex-shrink: 0;
+}
+
+.adapter-card > div:last-child,
+.app-card > div:last-child {
+  flex-grow: 1;
 }
 
 /* Responsive styles */
