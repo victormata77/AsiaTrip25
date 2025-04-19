@@ -845,6 +845,34 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
+	/* Add just these few lines to your existing CSS */
+@media all and (display-mode: standalone) {
+  /* Fix menu visibility */
+  .sticky-nav {
+    z-index: 1000 !important;
+    background-color: white !important; 
+    position: fixed !important;
+    top: env(safe-area-inset-top, 0) !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+  
+  /* Prevent content from appearing above navbar */
+  body {
+    padding-top: calc(70px + env(safe-area-inset-top, 0)) !important;
+  }
+  
+  /* Fix mobile menu positioning */
+  #mobile-menu {
+    position: fixed !important;
+    top: calc(60px + env(safe-area-inset-top, 0)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 999 !important;
+    background-color: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+}
 	
 </style>
 	
