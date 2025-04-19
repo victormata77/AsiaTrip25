@@ -846,7 +846,46 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   aspect-ratio: 1 / 1;
 }	
 
-
+/* Specific PWA menu height fix */
+@media all and (display-mode: standalone) {
+  /* Hide the logo image in PWA mode to make room for the text title */
+  .logo-container, 
+  .logo-container img,
+  .mb-6.w-full.max-w-2xl img {
+    display: none !important;
+  }
+  
+  /* Ensure the navbar is fixed and has the correct height */
+  .sticky-nav {
+    position: fixed !important;
+    top: env(safe-area-inset-top, 0) !important;
+    height: 60px !important;
+    max-height: 60px !important;
+    background-color: var(--mata-red) !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Make the title text white for better contrast on red */
+  .text-red-600.font-bold.text-xl {
+    color: white !important;
+  }
+  
+  /* Make hamburger menu white */
+  #mobile-menu-button svg {
+    stroke: white !important;
+  }
+  
+  /* Ensure the content starts below the navbar */
+  body {
+    padding-top: calc(60px + env(safe-area-inset-top, 0)) !important;
+  }
+  
+  /* Position the mobile menu correctly */
+  #mobile-menu {
+    top: calc(60px + env(safe-area-inset-top, 0)) !important;
+  }
+}
 </style>
 	
 </head>
