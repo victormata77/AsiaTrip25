@@ -845,75 +845,91 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
-/* Add this to the end of your existing CSS */
 
-/* Fix for the top space in PWA menu */
+	/* EMERGENCY RESET - Add this at the very end of your style section */
+
 @media all and (display-mode: standalone) {
-  /* Adjust specific elements that might be causing the extra space */
+  /* Reset to basic, functional navigation */
   .sticky-nav {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: 50px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 0 !important;
-  }
-  
-  /* Ensure the flex container inside sticky-nav is properly sized */
-  .sticky-nav > .max-w-6xl {
-    padding: 0 1rem !important;
-    height: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     width: 100% !important;
-    max-height: 50px !important;
-  }
-  
-  /* Force the inner flex container to align items center */
-  .sticky-nav > .max-w-6xl > div.flex {
-    height: 50px !important;
-    max-height: 50px !important;
-    align-items: center !important;
+    height: 60px !important;
+    background-color: white !important;
+    z-index: 9999 !important;
+    border-bottom: 3px solid #c62828 !important;
     padding: 0 !important;
-  }
-  
-  /* Adjust the title and button within the navbar */
-  .sticky-nav .text-red-600.font-bold.text-xl,
-  .sticky-nav #mobile-menu-button {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  /* Ensure mobile button is properly positioned */
-  .sticky-nav .md\:hidden {
     display: flex !important;
     align-items: center !important;
-    height: 50px !important;
+  }
+
+  /* Reset all other potential fixes to avoid conflicts */
+  .sticky-nav * {
+    margin: 0 !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+
+  /* Reset padding for main container */
+  .sticky-nav > .max-w-6xl {
+    padding: 0 16px !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Ensure flex container is correctly formatted */
+  .sticky-nav > .max-w-6xl > div.flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
   }
   
-  /* If there's a container div with py-3 class inside sticky-nav */
-  .sticky-nav .py-3 {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  /* Ensure title and button are visible */
+  .text-red-600.font-bold.text-xl,
+  #mobile-menu-button {
+    display: block !important;
   }
-  
-  /* Make title text size appropriate */
-  .sticky-nav .text-red-600.font-bold.text-xl {
-    font-size: 1.1rem !important;
+
+  /* Ensure site title has correct styling */
+  .text-red-600.font-bold.text-xl {
+    color: #c62828 !important;
+    font-weight: bold !important;
   }
-  
-  /* Handle safe area insets for notched devices */
+
+  /* Reset body padding to account for fixed navbar */
+  body {
+    padding-top: 60px !important;
+  }
+
+  /* Reset mobile menu position */
+  #mobile-menu {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9998 !important;
+    background-color: white !important;
+  }
+
+  /* Support notched devices */
   @supports (padding-top: env(safe-area-inset-top)) {
     .sticky-nav {
       padding-top: env(safe-area-inset-top) !important;
+      height: calc(60px + env(safe-area-inset-top)) !important;
     }
-    
-    /* Adjust body padding to match shortened header */
+
     body {
-      padding-top: calc(50px + env(safe-area-inset-top)) !important;
+      padding-top: calc(60px + env(safe-area-inset-top)) !important;
     }
-    
-    /* Position mobile menu correctly */
+
     #mobile-menu {
-      top: calc(50px + env(safe-area-inset-top)) !important;
+      top: calc(60px + env(safe-area-inset-top)) !important;
     }
   }
 }
