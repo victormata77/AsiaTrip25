@@ -845,35 +845,34 @@ section, .destination-card, .map-line, .journey-map-horizontal,
   transform: none;
   aspect-ratio: 1 / 1;
 }	
-	/* Add just these few lines to your existing CSS */
+
+/* Fix for content spilling in PWA mode */
 @media all and (display-mode: standalone) {
-  /* Fix menu visibility */
+  /* Ensure navbar has higher z-index than all content */
   .sticky-nav {
-    z-index: 1000 !important;
-    background-color: white !important; 
+    z-index: 9999 !important;
     position: fixed !important;
-    top: env(safe-area-inset-top, 0) !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
-  
-  /* Prevent content from appearing above navbar */
-  body {
-    padding-top: calc(70px + env(safe-area-inset-top, 0)) !important;
-  }
-  
-  /* Fix mobile menu positioning */
-  #mobile-menu {
-    position: fixed !important;
-    top: calc(60px + env(safe-area-inset-top, 0)) !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 999 !important;
     background-color: white !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    width: 100% !important;
   }
-}
-	
+  
+  /* Add space at top of body to prevent content overlap */
+  body {
+    padding-top: 80px !important;
+  }
+  
+  /* Lower z-index for all content sections */
+  section, 
+  .destination-card, 
+  .countdown-container, 
+  .journey-map-horizontal, 
+  .journey-map-vertical,
+  .hero-image,
+  img {
+    z-index: 1 !important;
+    position: relative !important;
+  }
+}	
 </style>
 	
 </head>
